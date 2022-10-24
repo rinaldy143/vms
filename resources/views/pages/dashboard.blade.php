@@ -1,5 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-<div>Ada Apa Dengan Cinta</div>
+<div class="content">
+    <h1>Dashboard</h1>
+</div>
 @endsection
