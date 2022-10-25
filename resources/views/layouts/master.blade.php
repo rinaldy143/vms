@@ -43,6 +43,7 @@
             <div class="wrapper d-flex flex-column flex-column-fluid" id="kt_wrapper">
                 @yield('content')
             </div>
+            <div></div>
             <!--end::Wrapper-->
         </div>
         <!--end::Page-->
