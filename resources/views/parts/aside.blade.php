@@ -9,7 +9,7 @@
     <!--begin::Brand-->
     <div class="aside-logo py-8" id="kt_aside_logo">
         <!--begin::Logo-->
-        <a href="#" class="d-flex align-items-center" style="padding-top: 60px;">
+        <a href="/dashboard" class="d-flex align-items-center" style="padding-top: 60px;">
             <img src="assets/media/logos/VMS Logo.svg" alt="Logo" class="h-55.69px logo me-2">
             <div style="width: 116px" class="subtitle-1">
                 Vehicle Management System
@@ -22,7 +22,7 @@
         <hr style="width: 220px; margin-top: 40px">
     </div>
     <div class="w-lg-220px">
-        <a href="">
+        <a href="/account-setting">
             <div class="d-flex justify-content-center">
                 <img src="img/Ellipse 44.svg" alt="" style="width: 48px">
                 <div class="d-flex align-items-center mx-1">
@@ -56,43 +56,43 @@
             <div class="menu menu-column">
                 <div class="menu-item body-1" style="margin-left: 40px">Navigation</div>
                 <div class="menu-item py-3" style="margin-left: 57px">
-                    <a class="menu-link" href="#">
+                    <a class="menu-link" href="/dashboard">
                         <span><img src="assets/media/icons/system-icon/outline/Chart.svg" alt=""></span>
                         <span class="subtitle-1">Dashboard</span>
                     </a>
                 </div>
                 <div class="menu-item py-3" style="margin-left: 57px">
-                    <a class="menu-link" href="#">
+                    <a class="menu-link" href="/maintenances">
                         <span><img src="assets/media/icons/system-icon/material-style/codicon_tools.svg" alt=""></span>
                         <span class="subtitle-1">Maintenances</span>
                     </a>
                 </div>
                 <div class="menu-item py-3" style="margin-left: 57px">
-                    <a class="menu-link" href="#">
+                    <a class="menu-link" href="/vehicles">
                         <span><img src="assets/media/icons/system-icon/material-style/2871481021571183084 1.svg" alt=""></span>
                         <span class="subtitle-1">Vehicles</span>
                     </a>
                 </div>
                 <div class="menu-item py-3" style="margin-left: 57px">
-                    <a class="menu-link" href="#">
+                    <a class="menu-link" href="/spareparts">
                         <span><img src="assets/media/icons/system-icon/outline/Setting.svg" alt=""></span>
                         <span class="subtitle-1">Spareparts</span>
                     </a>
                 </div>
                 <div class="menu-item py-3" style="margin-left: 57px">
-                    <a class="menu-link" ref="#">
+                    <a class="menu-link" href="/users">
                         <span><img src="assets/media/icons/system-icon/outline/person.svg" alt=""></span>
                         <span class="subtitle-1">Users</span>
                     </a>
                 </div>
                 <div class="menu-item py-3" style="margin-left: 57px">
-                    <a class="menu-link" href="#">
+                    <a class="menu-link" href="/history">
                         <span><img src="assets/media/icons/system-icon/outline/Time Circle.svg" alt=""></span>
                         <span class="subtitle-1">History</span>
                     </a>
                 </div>
                 <div class="menu-item py-3" style="margin-left: 57px">
-                    <a class="menu-link" href="#">
+                    <a class="menu-link" href="/access-features">
                         <span><img src="assets/media/icons/system-icon/outline/Key.svg" alt=""></span>
                         <span class="subtitle-1">Access Features</span>
                     </a>

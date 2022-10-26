@@ -29,6 +29,30 @@ Route::get('/dashboard', function() {
     return view('/pages/dashboard');
 });
 
+Route::get('/maintenances', function() {
+    return view('/pages/maintenances');
+});
+
+Route::get('/vehicles', function() {
+    return view('/pages/vehicles');
+});
+
+Route::get('/spareparts', function() {
+    return view('/pages/spareparts');
+});
+
 Route::get('/users', function() {
     return view('/pages/users');
+});
+
+Route::get('/history', function() {
+    return view('/pages/history');
+});
+
+Route::get('/access-features', function() {
+    return view('/pages/access-features');
+});
+
+Route::get('/account-setting', function() {
+    return view('/pages/account/setting');
 });
