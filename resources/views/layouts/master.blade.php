@@ -40,7 +40,7 @@
                 @include('parts.aside')
             </div>
             <!--begin::Wrapper-->
-            <div class="wrapper d-flex flex-column flex-column-fluid" id="kt_wrapper">
+            <div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">
                 @yield('content')
             </div>
             <div></div>
