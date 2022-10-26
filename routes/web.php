@@ -28,3 +28,7 @@ Route::get('/reset', function() {
 Route::get('/dashboard', function() {
     return view('/pages/dashboard');
 });
+
+Route::get('/users', function() {
+    return view('/pages/users');
+});
