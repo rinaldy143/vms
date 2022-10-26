@@ -5,7 +5,7 @@
     <div class="container-xxl">
         {{-- <div class="text-black fw-bolder fs-2 mb-2 mt-5">Users</div> --}}
         <div class="d-flex justify-content-between align-items-center">
-            <div class="text-black fw-bolder fs-2 mb-2 mt-5">Users</div>
+            <div class="text-black fw-bolder fs-2 mb-2 mt-5">Users </div>
                 <div class="d-flex align-items-center position-relative my-1">
                     <!--begin::Svg Icon | path: icons/duotune/general/gen021.svg-->
                     <span class="position-absolute ms-6">
@@ -23,7 +23,7 @@
         <!--begin::Row-->
         <nav class="navbar navbar-expand-md navbar-light">
             <div class="container px-0">
-                <div class="collapse navbar-collapse" style="justify-content: space-between">
+                <div class="navbar-collapse" style="justify-content: space-between">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto ">
                         <li class="nav-item px-2 rounded" style="background-color: red;">
@@ -80,8 +80,8 @@
                         <h2 class="card-text text-color-dark font-weight-bold text-3 pb-1 mb-4 px-10 text-truncate">Johny yes papa
                         </h2>
                         <p class="text-center pb-5" style="line-height: 0%"><a href="">Operation</a></p>
-                        <p class="text-center m-0"><img src="img/call.png" alt=""> +62897635164518</p>
-                        <p class="text-center" style="line-height: 0%"><img src="img/Message.png" alt=""> Johnyyespapa@transtrack.id</p>
+                        <p class="text-center num m-0"><img src="img/call.png" alt=""> +62897635164518</p>
+                        <p class="text-center email" style="line-height: 0%"><img src="img/Message.png" alt=""> Johnyyespapa@transtrack.id</p>
                         {{-- <div class="btnset">
                             <button class="btn btn1">Button</button>
                             <button class="btn btn2">button</button>
@@ -105,8 +105,8 @@
                         <h2 class="card-text text-color-dark font-weight-bold text-3 pb-1 mb-4 px-10 text-truncate">Johny yes papa
                         </h2>
                         <p class="text-center pb-5" style="line-height: 0%"><a href="">Operation</a></p>
-                        <p class="text-center m-0"><img src="img/call.png" alt=""> +62897635164518</p>
-                        <p class="text-center" style="line-height: 0%"><img src="img/Message.png" alt=""> Johnyyespapa@transtrack.id</p>
+                        <p class="text-center num m-0"><img src="img/call.png" alt=""> +62897635164518</p>
+                        <p class="text-center email" style="line-height: 0%"><img src="img/Message.png" alt=""> Johnyyespapa@transtrack.id</p>
                         {{-- <div class="btnset">
                             <button class="btn btn1">Button</button>
                             <button class="btn btn2">button</button>
@@ -130,8 +130,8 @@
                         <h2 class="card-text text-color-dark font-weight-bold text-3 pb-1 mb-4 px-10 text-truncate">Johny yes papa
                         </h2>
                         <p class="text-center pb-5" style="line-height: 0%"><a href="">Operation</a></p>
-                        <p class="text-center m-0"><img src="img/call.png" alt=""> +62897635164518</p>
-                        <p class="text-center" style="line-height: 0%"><img src="img/Message.png" alt=""> Johnyyespapa@transtrack.id</p>
+                        <p class="text-center num m-0"><img src="img/call.png" alt=""> +62897635164518</p>
+                        <p class="text-center email" style="line-height: 0%"><img src="img/Message.png" alt=""> Johnyyespapa@transtrack.id</p>
                         {{-- <div class="btnset">
                             <button class="btn btn1">Button</button>
                             <button class="btn btn2">button</button>
@@ -155,8 +155,8 @@
                         <h2 class="card-text text-color-dark font-weight-bold text-3 pb-1 mb-4 px-10 text-truncate">Johny yes papa
                         </h2>
                         <p class="text-center pb-5" style="line-height: 0%"><a href="">Operation</a></p>
-                        <p class="text-center m-0"><img src="img/call.png" alt=""> +62897635164518</p>
-                        <p class="text-center" style="line-height: 0%"><img src="img/Message.png" alt=""> Johnyyespapa@transtrack.id</p>
+                        <p class="text-center num"><img src="img/call.png" alt=""> +62897635164518</p>
+                        <p class="text-center email" style="line-height: 0%"><img src="img/Message.png" alt=""> Johnyyespapa@transtrack.id</p>
                         {{-- <div class="btnset">
                             <button class="btn btn1">Button</button>
                             <button class="btn btn2">button</button>
@@ -225,5 +225,66 @@
     border-radius: 8px;
     margin: 20px;
 }
+
+.aside-enabled.aside-fixed .wrapper {
+    padding-left: 0px;
+}
+
+
+@media (min-width: 992px){
+    .aside-enabled.aside-fixed .wrapper {
+    padding-left: 120px;
+}
+}
+
+@media (min-width: 1350px){
+    .aside-enabled.aside-fixed .wrapper {
+    padding-left: 40px;
+}
+}
+.navbar-expand-md .navbar-nav {
+    font-size: unset;
+}
+@media (min-width: 768px){
+.navbar-expand-md .navbar-nav {
+    font-size: smaller;
+}
+}
+
+@media (min-width: 1350px){
+    .navbar-expand-md .navbar-nav {
+        font-size: medium;
+}
+}
+
+.card .card-body .text-center.num{
+        font-size: smaller;
+        margin-bottom: 0%
+}
+    .card .card-body .text-center.email{
+        font-size: smaller;
+}
+
+@media (min-width: 768px){
+    .card .card-body .text-center.num{
+        font-size: smaller;
+        margin-bottom: 0%
+}
+    .card .card-body .text-center.email{
+        font-size: smaller;
+}
+}
+
+@media (min-width: 1350px){
+    .card .card-body .text-center.num{
+        font-size: small;
+        margin-bottom: 0%
+}
+    .card .card-body .text-center.email{
+        font-size: small;
+}
+}
+
+
 </style>
 @endsection
