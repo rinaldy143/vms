@@ -1,11 +1,11 @@
 @extends('layouts.master')
 @section('content')
-<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+<div class="content">
     <!--begin::Container-->
-    <div class="container-xxl">
+    <div class="container">
         {{-- <div class="text-black fw-bolder fs-2 mb-2 mt-5">Users</div> --}}
         <div class="d-flex justify-content-between align-items-center">
-            <div class="text-black fw-bolder fs-2 mb-2 mt-5">Users </div>
+            <div class="text-black fw-bolder heading-3 fs-2 mb-2 mt-5">Users </div>
                 <div class="d-flex align-items-center position-relative my-1">
                     <!--begin::Svg Icon | path: icons/duotune/general/gen021.svg-->
                     <span class="position-absolute ms-6">
