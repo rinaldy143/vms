@@ -1,11 +1,12 @@
 @extends('layouts.master')
 
 @section('content')
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 <div class="content">
     <div class="container">
         {{-- <div class="text-black fw-bolder fs-2 mb-2 mt-5">Users</div> --}}
         <div class="d-flex justify-content-between align-items-center">
-            <div class="text-black fw-bolder heading-3 fs-1 mb-2 mt-5">Spareparts </div>
+            <div class="text-black fw-bolder heading-3 fs-1 me-3">Spareparts </div>
                 <div class="d-flex align-items-center position-relative my-1">
                     <!--begin::Svg Icon | path: icons/duotune/general/gen021.svg-->
                     <span class="position-absolute ms-6">
@@ -27,15 +28,15 @@
                     <!-- Left Side Of Navbar -->
                     <div class="card-title">
                         <!--begin::Search-->
-                        <button type="button" class="btn btn-danger me-3">
+                        <button type="button" class="btn btn-danger me-3 py-2 font-weight-bolder " style="border-radius: 8px;">
                             <!--begin::Svg Icon | path: icons/duotune/arrows/arr078.svg-->
                             <img class="pt-2" src="img/Plus.png" alt="">
                             <!--end::Svg Icon-->Restock
                         </button>
-                        <button type="button" class="btn me-3 text-danger fw-bolder" style="border: 1px solid red">
+                        <button type="button" class="btn me-3 text-danger font-weight-bolder py-2" style="border: 1px solid red; border-radius: 8px;">
                             <!--begin::Svg Icon | path: icons/duotune/arrows/arr078.svg-->
                             <img class="pt-2" src="img/Plus 1.png" alt="">
-                            <!--end::Svg Icon-->Sparepart
+                            <!--end::Svg Icon--> Add Sparepart
                         </button>
                         <!--end::Search-->
                     </div>
@@ -43,27 +44,48 @@
                     <!-- Right Side Of Navbar -->
                     <div class="card-title">
                         <!--begin::Search-->
-                        {{-- <button type="button" class="btn me-3" style="border: 1px solid black">
-                            <!--begin::Svg Icon | path: icons/duotune/arrows/arr078.svg-->
-                            <img src="img/Filter 2.png" alt="">
-                            <!--end::Svg Icon-->Filter
-                        </button> --}}
+                        <button type="button" class="btn me-3 p-0 border" style="border-radius: 8px">
+                            <ul class="menu-nav p-0 m-0">
+                                <li class="menu-item dropdown ">
+                                    <a class="nav-link text-dark" style="padding: 11px 11px;" href="#" role="button"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <img src="img/Filter 2.png" alt=""><strong> Filter</strong>
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                            <a class="dropdown-item" href="#"> <img src="/assets/media/icons/system-icon/outline/Arrow - Up-1.svg" width="25px" alt=""> Ascending</a>
+                                            <a class="dropdown-item" href="#"> <img src="/assets/media/icons/system-icon/outline/Arrow - Down-1.svg" width="25px" alt=""> Descending</a>
+                                            <a class="dropdown-item" href="#"> <img src="/assets/media/icons/system-icon/outline/Delete.svg" width="25px" alt=""> High Stock</a>
+                                            <a class="dropdown-item" href="#"> <img src="/assets/media/icons/system-icon/outline/Delete.svg" width="25px" alt=""> Low Stock</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </button>
 
-                        <div class="dropdown dropdown-filter">
-                            <button onclick="myFunction()" class="dropbtn fw-bold"><img src="img/Filter 2.png" alt="">
-                                Filter</button>
-                            <div id="myDropdown" class="dropdown-content">
-                              <a class="fw-bolder" href="#home"><img src="img/arrow1.png" alt=""> Ascending</a>
-                              <a class="fw-bolder" href="#about"><img src="img/arrow2.png" alt=""> Descending</a>
-                              <a class="fw-bolder" href="#contact">High Stock</a>
-                              <a class="fw-bolder" href="#contact">Low Stock</a>
-                            </div>
-                        </div>
-                        <button type="button" class="btn me-3" style="border: 1px solid black">
+                        <button type="button" class="btn me-3 border" style="border-radius: 8px">
                             <!--begin::Svg Icon | path: icons/duotune/arrows/arr078.svg-->
                             <img src="img/Download.png" alt="">
-                            <!--end::Svg Icon-->Export
+                            <!--end::Svg Icon--> <strong>Export</strong>
                         </button>
+                        {{-- <div class="d-flex flex-row text-left w-100 fs-xxl-3">
+                            <ul class="menu-nav">
+                                <li class="menu-item dropdown ">
+                                    <a class="nav-link text-dark" href="#" role="button"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        {{__('Produk')}}
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item {{ Route::is('TMS') ? 'active':'' }}"
+                                            href="#">Transportation Management System</a>
+                                        <a class="dropdown-item {{ Route::is('WMS') ? 'active':'' }}"
+                                            href="#">Warehouse Management System</a>
+                                        <a class="dropdown-item {{ Route::is('VMS') ? 'active':'' }}"
+                                            href="#">Vendor Management System</a>
+                                        <a class="dropdown-item {{ Route::is('SCF') ? 'active':'' }}"
+                                            href="#">Supply Chain Financing</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div> --}}
 
                         <!--end::Search-->
                     </div>
@@ -76,14 +98,26 @@
         <div class="row pt-5 pb-5">
 
             <div class="col-lg-4 col-md-6 col-11 pb-5">
-                <div class="card drop-shadow border-secondary align-items-start">
+                <div class="card drop-shadow align-items-start" style="border-radius: 8px;" >
                     {{-- <img src="/img/img_videos/{{$video->thumbnail}}" alt="" class="card-img-top video-thumb "> --}}
                     <div class="pt-10 d-flex justify-content-between align-items-center m-0 w-100" style="padding-left: 2.5rem">
                         <p class="fw-bolder fs-4" style="display: contents">OLI</p>
-                        <a class="m-lg-3" style="padding-right: 2rem" href="#" title="" >
+                        <ul class="menu-nav">
+                            <li class="menu-item dropdown ">
+                                <a class="nav-link text-dark" href="#" role="button"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <img src="img/kebab.png" style="padding-right: 2rem" alt="">
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="#"> <img src="/assets/media/icons/system-icon/outline/Edit Square.svg" width="25px" alt=""> Update</a>
+                                        <a class="dropdown-item" href="#"> <img src="/assets/media/icons/system-icon/outline/Delete.svg" width="25px" alt=""> Delete</a>
+                                </div>
+                            </li>
+                        </ul>
+                        {{-- <a class="m-lg-3" style="padding-right: 2rem" href="#" title="" >
                             <img src="img/kebab.png" alt="" title=""
                                 />
-                        </a>
+                        </a> --}}
                     </div>
 
                         <div class="d-flex align-items-center" style="padding-left: 2.5rem">
@@ -105,14 +139,22 @@
                 </div>
             </div>
             <div class="col-lg-4 col-md-6 col-11 pb-5">
-                <div class="card drop-shadow border-secondary align-items-start">
+                <div class="card drop-shadow align-items-start" style="border-radius: 8px;">
                     {{-- <img src="/img/img_videos/{{$video->thumbnail}}" alt="" class="card-img-top video-thumb "> --}}
                     <div class="pt-10 d-flex justify-content-between align-items-center m-0 w-100" style="padding-left: 2.5rem">
                         <p class="fw-bolder fs-4" style="display: contents">OLI</p>
-                        <a class="m-lg-3" style="padding-right: 2rem" href="#" title="" >
-                            <img src="img/kebab.png" alt="" title=""
-                                />
-                        </a>
+                        <ul class="menu-nav">
+                            <li class="menu-item dropdown ">
+                                <a class="nav-link text-dark" href="#" role="button"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <img src="img/kebab.png" style="padding-right: 2rem" alt="">
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="#"> <img src="/assets/media/icons/system-icon/outline/Edit Square.svg" width="25px" alt=""> Update</a>
+                                        <a class="dropdown-item" href="#"> <img src="/assets/media/icons/system-icon/outline/Delete.svg" width="25px" alt=""> Delete</a>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
 
                         <div class="d-flex align-items-center" style="padding-left: 2.5rem">
@@ -134,14 +176,22 @@
                 </div>
             </div>
             <div class="col-lg-4 col-md-6 col-11 pb-5">
-                <div class="card drop-shadow border-secondary align-items-start">
+                <div class="card drop-shadow align-items-start" style="border-radius: 8px;">
                     {{-- <img src="/img/img_videos/{{$video->thumbnail}}" alt="" class="card-img-top video-thumb "> --}}
                     <div class="pt-10 d-flex justify-content-between align-items-center m-0 w-100" style="padding-left: 2.5rem">
                         <p class="fw-bolder fs-4" style="display: contents">OLI</p>
-                        <a class="m-lg-3" style="padding-right: 2rem" href="#" title="" >
-                            <img src="img/kebab.png" alt="" title=""
-                                />
-                        </a>
+                        <ul class="menu-nav">
+                            <li class="menu-item dropdown ">
+                                <a class="nav-link text-dark" href="#" role="button"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <img src="img/kebab.png" style="padding-right: 2rem" alt="">
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="#"> <img src="/assets/media/icons/system-icon/outline/Edit Square.svg" width="25px" alt=""> Update</a>
+                                        <a class="dropdown-item" href="#"> <img src="/assets/media/icons/system-icon/outline/Delete.svg" width="25px" alt=""> Delete</a>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
 
                         <div class="d-flex align-items-center" style="padding-left: 2.5rem">
@@ -169,74 +219,7 @@
 
         <!--end::Row-->
     </div></div>
-    <style>
-        .dropbtn.filter {
-          background-color: transparent;
-          color: black;
-          padding: 11px;
-          font-size: 15px;
-          border: solid ;
-          border-radius: 5px;
-          border-width: thin
-          /* cursor: pointer; */
-        }
-        .dropbtn {
-          background-color: transparent;
-          color: black;
-          padding: 11px;
-          font-size: 15px;
-          border: solid ;
-          border-radius: 5px;
-          border-width: thin
-          /* cursor: pointer; */
-        }
 
-        .dropdown {
-          position: relative;
-          display: inline-block;
-        }
-
-        .dropdown-content {
-          display: none;
-          position: absolute;
-          background-color: #f1f1f1;
-          min-width: 160px;
-          overflow: auto;
-          box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-          z-index: 1;
-        }
-
-        .dropdown-content a {
-          color: black;
-          background-color: white;
-          padding: 12px 16px;
-          text-decoration: none;
-          display: block;
-        }
-
-        .dropdown a:hover {background-color: white;}
-
-        .show {display: block;}
-        </style>
-    <script>
-        /* When the user clicks on the button,
-        toggle between hiding and showing the dropdown content */
-        function myFunction() {
-          document.getElementById("myDropdown").classList.toggle("show");
-        }
-
-        // Close the dropdown if the user clicks outside of it
-        window.onclick = function(event) {
-          if (!event.target.matches('.dropbtn')) {
-            var dropdowns = document.getElementsByClassName("dropdown-content");
-            var i;
-            for (i = 0; i < dropdowns.length; i++) {
-              var openDropdown = dropdowns[i];
-              if (openDropdown.classList.contains('show')) {
-                openDropdown.classList.remove('show');
-              }
-            }
-          }
-        }
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
 @endsection
