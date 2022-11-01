@@ -7015,6 +7015,9 @@ fieldset:disabled .btn {
 .w-1000px {
     width: 1000px !important;
 }
+.w-1060px {
+    width: 1060px !important;
+}
 .mw-unset {
     max-width: unset !important;
 }
