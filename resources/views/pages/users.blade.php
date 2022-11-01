@@ -51,11 +51,11 @@
                             <img src="img/Download.png" alt="">
                             <!--end::Svg Icon-->Export
                         </button>
-                        <button type="button" class="btn btn-danger me-3">
-                            <!--begin::Svg Icon | path: icons/duotune/arrows/arr078.svg-->
-                            <img src="img/Add User.png" alt="">
-                            <!--end::Svg Icon-->Add User
-                        </button>
+                        <a class="btn btn-danger me-3 fw-bold py-3"  data-toggle="modal"
+                        href="#modalUser" title="Download">
+                        <img class src="img/Add User.png" alt="">
+                        Add User
+                        </a>
                         <!--end::Search-->
                     </div>
 
@@ -219,8 +219,253 @@
     </div>
     <!--end::Container-->
 </div>
+<!-- Modal contact-->
+<div class="modal fade" id="modalUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    {{-- <div class="modal-dialog modal-dialog-centered modal-md-contact" role="document"> --}}
+    <div class="modal-dialog modal-dialog-centered " role="document">
+        <form action="#" method="post"
+            enctype="multipart/form-data">
+            @csrf
+            <div class="modal-content m-lg-10 p-3 p-3 ">
+                <div class="modal-header">
+                    <h4 class="text-color-dark font-weight-semibold text-transform-none text-5 m-0"
+                        id="exampleModalLongTitle">Add User</h4>
+                    <button type="button" class="close-share border-0" style="background-color: transparent" data-dismiss="modal" aria-label="Close">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-x-lg" viewBox="0 0 16 16">
+                            <path
+                                d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" />
+                        </svg>
+                    </button>
+
+                </div>
+                <div class="modal-body pb-0">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-12 mb-3 mb-lg-0 col-lg-12">
+                                <label for="Name"
+                                    class="fw-bold text-black mt-4">{{__('Name')}} <span
+                                        class="text-danger">*</span></label>
+                                <div class="field-input py-5">
+                                    <input type="text" id="Name" name="Name" class="form-control"
+                                        placeholder="Your Name" maxlength="200" value={{old('Name')}}>
+                                    @error('Name')
+                                    <div class="invalid-feedback d-flex">
+                                        {{ $message }}
+                                    </div>
+                                    @enderror
+                                    {{-- <label for="inputName"
+                                        class="text-color-light">{{__('contact-form.name')}}</label>
+                                    <input type="text" class="form-control" id="inputName"
+                                        placeholder="Ex. Jonathan" name="name"> --}}
+                                    {{-- @error('name')
+                                    <span class="text-danger">{{ $message }}</span>
+                                    @enderror --}}
+                                </div>
+
+                                <label for="email"
+                                    class="fw-bold text-black mt-4">email <span
+                                    class="text-danger">*</span></label>
+                                <div class="field-input py-5">
+                                    <input type="email" id="email" name="email" class="form-control"
+                                        placeholder="email" maxlength="200" value={{old('email')}}>
+                                    @error('email')
+                                    <div class="invalid-feedback d-flex">
+                                        {{ $message }}
+                                    </div>
+                                    @enderror
+                                </div>
+
+                                <label for="contact_phone"
+                                class="fw-bold text-black">{{__('No Handphone')}} <span
+                                    class="text-danger">*</span></label>
+                            <div class="field-input py-5">
+                                <div class="input-group mb-0 border rounded">
+                                    <div class="input-group-prepend">
+                                        <select class="btn dropdown-toggle" type="button"
+                                             data-toggle="dropdown"
+                                            aria-haspopup="true" aria-expanded="false" id="country_codes"
+                                            name="country_codes">
+                                            <option value="+62" selected>+62</option>
+                                        </select>
+                                    </div>
+                                    <input type="text" class="form-control border-0" id="no_contact"
+                                        placeholder="89xxxxxxx" name="no_contact"
+                                        aria-label="Text input with dropdown button"
+                                        placeholder="89xx-xxxx-xxxx" maxlength="15" value={{old('no_contact')}}>
+
+                                </div>
+                                @error('country_codes')
+                                <div class="invalid-feedback d-flex">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+
+                                @error('no_contact')
+                                <div class="invalid-feedback d-flex">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+
+                            </div>
+
+
+                            <label for="role"
+                            class="font-weight-bold text-black mt-4">{{__('Role')}} <span
+                                class="text-danger">*</span></label></label>
+                        <div class="field-input">
+                            <select class="form-control" aria-label="role" id="roles"
+                                name="roles">
+
+                                <option value="">{{__('Select role of user')}}</option>
+
+                                <option value="Accretia" >Accretia</option>
+                                <option value="Bellato" >Bellato</option>
+                                <option value="Cora" >Cora</option>
+                                {{-- <select class="form-select " aria-label="select location"
+                                    id="inputLocations" name="locations" required>
+                                    <option selected>{{__('contact-form.selectLocation')}}</option>
+                                    @foreach ($locations as $location)
+                                    <option value="{{ $location->id }}">{{$location->nama}}</option>
+                                    @endforeach --}}
+                                </select>
+                                @error('role')
+                                <div class="invalid-feedback d-flex">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                        </div>
+
+                                <div class="form-group d-flex align-items-center py-5">
+                                    <div>
+                                        <p class="fw-bold fs-3 text-black">Upload Photo</p>
+                                        <label for="image" id="labelImg"
+                                        class="font-weight-bold text-black m-0 border p-5">
+                                        <img class="py-5 px-10" src="/assets/media/icons/system-icon/outline/Camera.svg" width="120px">
+                                        <p class="fs-3">Upload Photo</p>
+                                        </label>
+
+
+                                        <img class="img-preview img-fluid mb-3 col-sm-5 d-block w-75" src="" alt="">
+                                        <input type="file" src="/assets/media/icons/system-icon/outline/Edit Square.svg" class="form-control-file"
+                                        id="image" name="image" style="display: none" multiple onchange="previewImage()" onclick="document.getElementById('labelImg').style.display = 'none'">
+                                    </div>
+                                     <div class="h-50">
+                                        <div class="fw-bolder fs-3" id="list_file"></div>
+                                        <div id="size_file"></div>
+                                     </div>
+
+                                    @error('image')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                              </div>
+                            </div>
+
+
+                        </div>
+
+                        {{-- <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                        </div> --}}
+                    </div>
+                </div>
+                <div class="modal-footer border-0 pt-0" style="flex-wrap: nowrap;">
+                    <div class="col-md-6 text-center">
+                        <button class="btn shadow btn-danger text-3 rounded-8 w-100 p-md-3 h-100" type="submit"
+                            id="downloadWp" name="downloadWp">Submit</button>
+                    </div>
+                    <div class="col-md-6 text-center">
+                        <button type="reset" class="btn shadow border border-danger text-danger text-3 rounded-8 w-100 p-md-3 h-100 close-share" data-dismiss="modal" aria-label="Close"
+                            id="downloadWp" name="downloadWp">Cancel</button>
+                    </div>
+
+                </div>
+        </form>
+
+
+        {{-- <p class="text-center text-1 px-3">{{__('whitepapers.desc')}} <a
+                href="#">{{__('whitepapers.span1')}}</a>
+        </p> --}}
+        {{-- /upload/whitepaper/{{$value->upload_file_name}} --}}
+    </div>
+</div>
+
 <style>
-    .blog-thumb {
+    /* .form-group>input {
+  display: none;
+    } */
+
+    label[for="image"] {
+        border-style: dashed !important;
+        border-width: medium !important;
+    }
+
+  input[type="number"] {
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+
+.number-input {
+  border: 2px solid #ddd;
+  display: inline-flex;
+}
+
+.number-input,
+.number-input * {
+  box-sizing: border-box;
+}
+
+.number-input button {
+  outline:none;
+  -webkit-appearance: none;
+  background-color: transparent;
+  border: none;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  cursor: pointer;
+  margin: 0;
+  position: relative;
+}
+
+.number-input button:before,
+.number-input button:after {
+  display: inline-block;
+  position: absolute;
+  content: '';
+  width: 1rem;
+  height: 2px;
+  background-color: #212121;
+  transform: translate(-50%, -50%);
+}
+.number-input button.plus:after {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.number-input input[type=number] {
+  font-family: sans-serif;
+  max-width: 5rem;
+  padding: .5rem;
+  border: solid #ddd;
+  border-width: 0 2px;
+  font-size: 1.5rem;
+  height: 3rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.blog-thumb {
     height: 200px;
     border-radius: 8px;
     margin: 20px;
@@ -285,6 +530,74 @@
 }
 }
 
-
 </style>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+<script>
+        var fileInput = document.getElementById('image');
+        var listFile = document.getElementById('list_file');
+        var sizeFile = document.getElementById('size_file');
+
+        function fileSizeSI(){
+            var a,b,c,d,e
+        return (b=Math,c=b.log,d=1000,e=c(a)/c(d)|0,a/b.pow(d,e)).toFixed(2)
+        +' '+(e?'kMGTPEZY'[--e]+'B':'Bytes')
+    }
+
+
+        fileInput.onchange = function () {
+        var files = Array.from(this.files);
+        files = files.map(file => file.name);
+        listFile.innerHTML = files.join('<br/>');
+        var sizes = Array.from(this.files);
+        sizes = sizes.map(file => file.size);
+        sizeFile.innerHTML = sizes.join('<br/>');
+
+
+        const Image= document.querySelector('#image');
+        const imgPreview = document.querySelector('.img-preview');
+
+        imgPreview.style.display = 'block';
+        const oFReader = new FileReader();
+        oFReader.readAsDataURL(image.files[0]);
+
+        oFReader.onload = function(oFREvent) {
+            imgPreview.src = oFREvent.target.result;
+        }
+        }
+
+
+
+    //     function previewImage() {
+    //     const Image= document.querySelector('#image');
+    //     const imgPreview = document.querySelector('.img-preview');
+
+    //     imgPreview.style.display = 'block';
+    //     const oFReader = new FileReader();
+    //     oFReader.readAsDataURL(image.files[0]);
+
+    //     oFReader.onload = function(oFREvent) {
+    //         imgPreview.src = oFREvent.target.result;
+    //     }
+    // }
+    var buttons = document.querySelectorAll('form button:not([type="submit"])');
+for (i = 0; i < buttons.length; i++) {
+  buttons[i].addEventListener('click', function(e) {
+    e.preventDefault();
+  });
+}
+
+// var fileInput = document.getElementById('image');
+//         var listFile = document.getElementById('size_file');
+
+//         fileInput.onchange = function () {
+//         var files = Array.from(this.files);
+//         files = files.map(file => file.size);
+//         listFile.innerHTML = files.join('<br/>');
+//         }
+
+
+</script>
 @endsection
