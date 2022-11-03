@@ -14,15 +14,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('/pages/login');
+    return view('/pages/auth/login');
 });
 
 Route::get('/login', function() {
-    return view('/pages/login');
+    return view('/pages/auth/login');
 });
 
 Route::get('/reset', function() {
-    return view('/pages/reset');
+    return view('/pages/auth/reset');
 });
 
 Route::get('/dashboard', function() {
