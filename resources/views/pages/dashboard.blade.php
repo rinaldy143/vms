@@ -45,7 +45,7 @@
             <div class="d-flex flex-row mt-10 me-10 mx-10">
                 <div class="flex-column">
                     <div class="card w-300px h-630px">
-                        <div class="heading-4 mt-10" style="margin-left: 40px">Stock Spareparts</div>
+                        <div class="heading-4 mt-10" style="margin-left: 40px">Activities</div>
                     </div>
                 </div>
             </div>

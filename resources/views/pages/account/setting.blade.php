@@ -2,19 +2,19 @@
 
 @section('content')
 <div class="content">
-    <a href="/dashboard" style="z-index: 100">
-        <div class="d-flex align-items-center position-absolute subtitle-1 p-2">
+    <div class="d-flex align-items-center position-absolute subtitle-1 p-2">
+            <a href="/dashboard" style="z-index: 100" class="subtitle-1">
             <span style="margin-left: 57.75px"><img src="/assets/media/icons/system-icon/outline/Arrow - left.svg" alt=""></span>
             Back
-        </div>
-    </a>
+        </a>
+    </div>
     <div class="d-flex position-relative justify-content-center m-0 p-0 heading-3">Account Setting</div>
     <div class="d-flex justify-content-center" style="margin-top: 40px">
         <div class="col-lg-3 col-md-6 col-11 pb-5" style="width: 326px">
             <div class="card drop-shadow border border-secondary align-items-center">
                 {{-- <img src="/img/img_videos/{{$video->thumbnail}}" alt="" class="card-img-top video-thumb "> --}}
                 <div class="pt-10">
-                    <a class="download round m-lg-3" href="#" title="" >
+                    <a class="download round m-lg-3" title="" data-toggle="modal" href="#modalUpdate">
                         <img src="img/kebab.png" alt="download" title="download"
                             style="right: 20px;position: absolute;" />
                     </a>
@@ -31,10 +31,224 @@
         </div>
     </div>
     <div class="d-flex justify-content-center mb-5">
-        <div class="btn btn-outline-danger" style="width: 326px">Change Password</div>
+        <div class="btn btn-outline-danger" style="width: 326px" data-toggle="modal" href="#modalPassword">Change Password</div>
     </div>
     <div class="d-flex justify-content-center">
         <div class="btn btn-danger" style="width: 326px">Logout</div>
     </div>
 </div>
+<!--begin::Modal-->
+<!--begin::Modal Update User-->
+<div class="modal fade" id="modalUpdate" tabindex="-1" aria-labelledby="modalChangePassword" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <form action="#" method="POST" enctype="multipart/form-data">
+            @csrf
+            <div class="modal-content m-lg-10 p-3">
+                <div class="modal-header">
+                    <div class="heading-3 m-0" id="exampleModalLongTitle">Update User</div>
+                    <button type="button" class="close-share border-0" style="background-color: transparent" data-dismiss="modal" aria-label="Close">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-x-lg" viewBox="0 0 16 16">
+                            <path
+                                d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-6 mb-3 mb-lg-0 col-lg-6">
+                                <label for="Name" class="subtitle-1 mt-4">
+                                    {{__('Name')}}
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <div class="field-input py-5">
+                                    <input type="text" id="Name" name="Name" class="form-control" placeholder="Ex. John" maxlength="200" value={{old('Identity_Sparepart')}}>
+                                    @error('Identity_Sparepart')
+                                    <div class="invalid-feedback d-flex">
+                                        {{ $message }}
+                                    </div>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3 mb-lg-0 col-lg-6">
+                                <label for="Email" class="subtitle-1 mt-4">
+                                    {{__('Email')}}
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <div class="field-input py-5">
+                                    <input type="text" id="Email" name="Email" class="form-control" placeholder="Ex. Johnpantau@example.com" maxlength="200" value={{old('Email')}}>
+                                    @error('Email')
+                                    <div class="invalid-feedback d-flex">
+                                        {{ $message }}
+                                    </div>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3 mb-lg-0 col-lg-6">
+                                <label for="No_Handphone" class="subtitle-1 mt-4">
+                                    {{__('No Handphone')}}
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <div class="field-input py-5">
+                                    <input type="text" id="No_Handphone" name="No_Handphone" class="form-control" placeholder="Ex. Johnpantau@example.com" maxlength="200" value={{old('No_Handphone')}}>
+                                    @error('No_Handphone')
+                                    <div class="invalid-feedback d-flex">
+                                        {{ $message }}
+                                    </div>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3 mb-lg-0 col-lg-6">
+                                <label for="No_Handphone" class="subtitle-1 mt-4">
+                                    {{__('Role')}}
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <div class="field-input py-5">
+                                    <input type="text" id="No_Handphone" name="No_Handphone" class="form-control" placeholder="Ex. Johnpantau@example.com" maxlength="200" value={{old('No_Handphone')}}>
+                                    @error('No_Handphone')
+                                    <div class="invalid-feedback d-flex">
+                                        {{ $message }}
+                                    </div>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group d-flex align-items-center py-5">
+                                <div>
+                                    <div class="subtitle-1">Upload Photo</div>
+                                    <label for="image" id="labelImg"
+                                        class="font-weight-bold text-black m-0 border p-5">
+                                        <img class="py-5 px-10" src="/assets/media/icons/system-icon/outline/Camera.svg" width="120px">
+                                        <p class="fs-3">Upload Photo</p>
+                                    </label>
+                                    <img class="img-preview img-fluid mb-3 col-sm-5 d-block w-75" src="" alt="">
+                                        <input type="file" src="/assets/media/icons/system-icon/outline/Edit Square.svg" class="form-control-file"
+                                        id="image" name="image" style="display: none" multiple onchange="previewImage()" onclick="document.getElementById('labelImg').style.display = 'none'">
+                                </div>
+                                <div class="h-50">
+                                    <div class="fw-bolder fs-3" id="list_file"></div>
+                                    <div id="size_file"></div>
+                                </div>
+                                @error('image')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer border-0" style="flex-wrap: nowrap;">
+                    <div class="col-md-6 text-center">
+                        <button class="btn btn-danger text-3 rounded-8 w-25 p-md-3 h-100" type="submit" id="downloadWp" name="downloadWp">
+                            Submit
+                        </button>
+                    </div>
+                    <div class="col-md-6 text-center">
+                        <button type="reset" class="btn border border-danger text-danger text-3 rounded-8 w-25 p-md-3 h-100 close-share" data-dismiss="modal" aria-label="Close" id="downloadWp" name="downloadWp">
+                            Cancel
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<!--end::Modal Update User-->
+<!--begin::Modal Change Password-->
+<div class="modal fade" id="modalPassword" tabindex="-1" aria-labelledby="modalChangePassword" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <form action="#" method="POST" enctype="multipart/form-data">
+            @csrf
+            <div class="modal-content m-lg-10 p-3">
+                <div class="modal-header">
+                    <div class="heading-3 m-0" id="exampleModalLongTitle">Change Password</div>
+                    <button type="button" class="close-share border-0" style="background-color: transparent" data-dismiss="modal" aria-label="Close">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-x-lg" viewBox="0 0 16 16">
+                            <path
+                                d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-6 mb-3 mb-lg-0 col-lg-6">
+                                <label for="Name" class="subtitle-1 mt-4">
+                                    {{__('Last Password')}}
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <div class="field-input py-5">
+                                    <input type="text" id="Name" name="Name" class="form-control" placeholder="Ex. John" maxlength="200" value={{old('Identity_Sparepart')}}>
+                                    @error('Identity_Sparepart')
+                                    <div class="invalid-feedback d-flex">
+                                        {{ $message }}
+                                    </div>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3 mb-lg-0 col-lg-6">
+                                <label for="Email" class="subtitle-1 mt-4">
+                                    {{__('New Password')}}
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <div class="field-input py-5">
+                                    <input type="text" id="Email" name="Email" class="form-control" placeholder="Ex. Johnpantau@example.com" maxlength="200" value={{old('Email')}}>
+                                    @error('Email')
+                                    <div class="invalid-feedback d-flex">
+                                        {{ $message }}
+                                    </div>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3 mb-lg-0 col-lg-6">
+                                <label for="No_Handphone" class="subtitle-1 mt-4">
+                                    {{__('Confirm New Password')}}
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <div class="field-input py-5">
+                                    <input type="text" id="No_Handphone" name="No_Handphone" class="form-control" placeholder="Ex. Johnpantau@example.com" maxlength="200" value={{old('No_Handphone')}}>
+                                    @error('No_Handphone')
+                                    <div class="invalid-feedback d-flex">
+                                        {{ $message }}
+                                    </div>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer border-0" style="flex-wrap: nowrap;">
+                    <div class="col-md-6 text-center">
+                        <button class="btn btn-danger text-3 rounded-8 w-25 p-md-3 h-100" type="submit" id="downloadWp" name="downloadWp">
+                            Submit
+                        </button>
+                    </div>
+                    <div class="col-md-6 text-center">
+                        <button type="reset" class="btn border border-danger text-danger text-3 rounded-8 w-25 p-md-3 h-100 close-share" data-dismiss="modal" aria-label="Close" id="downloadWp" name="downloadWp">
+                            Cancel
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<!--end::Modal Change Password-->
+<!--end::Modal-->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
 @endsection
