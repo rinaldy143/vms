@@ -286,7 +286,6 @@
                                 d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" />
                         </svg>
                     </button>
-
                 </div>
                 <div class="modal-body">
                     <div class="container-fluid">
@@ -294,7 +293,8 @@
                             <div class="col-md-6 mb-3 mb-lg-0 col-lg-6">
                                 <label for="Identity_Sparepart"
                                     class="fw-bold text-black mt-4">{{__('Identity Sparepart')}} <span
-                                        class="text-danger">*</span></label>
+                                        class="text-danger">*</span>
+                                </label>
                                 <div class="field-input py-5">
                                     <input type="text" id="Identity_Sparepart" name="Identity_Sparepart" class="form-control"
                                         placeholder="Your Name" maxlength="200" value={{old('Identity_Sparepart')}}>
@@ -311,7 +311,6 @@
                                     <span class="text-danger">{{ $message }}</span>
                                     @enderror --}}
                                 </div>
-
                                 <label for="Name_Sparepart"
                                     class="fw-bold text-black mt-4">Name Sparepart <span
                                     class="text-danger">*</span></label>
@@ -352,7 +351,6 @@
                               </div>
                             </div>
                             <div class="col-md-6 mb-3 mb-lg-0 col-lg-6">
-
                                 <label for="Brand"
                                     class="fw-bold text-black mt-4">Brand
                                     <span class="text-danger">*</span></label>
@@ -377,7 +375,6 @@
                                     {{ $message }}
                                 </div>
                                 @enderror --}}
-
                                 <label for="Stock"
                                 class="fw-bold text-black mt-4 pb-5">Stock<span
                                 class="text-danger">*</span></label><br>
@@ -386,10 +383,7 @@
                                     <input class="quantity" min="0" name="quantity" value="1" type="number" value={{old('Stock')}}>
                                     <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
                                   </div>
-
                             </div>
-
-
                         </div>
 
                         {{-- <div class="modal-footer">
@@ -407,11 +401,8 @@
                         <button type="reset" class="btn border border-danger text-danger text-3 rounded-8 w-25 p-md-3 h-100 close-share" data-dismiss="modal" aria-label="Close"
                             id="downloadWp" name="downloadWp">Cancel</button>
                     </div>
-
                 </div>
         </form>
-
-
         {{-- <p class="text-center text-1 px-3">{{__('whitepapers.desc')}} <a
                 href="#">{{__('whitepapers.span1')}}</a>
         </p> --}}
