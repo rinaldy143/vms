@@ -7,11 +7,11 @@
         <!--begin::Row-->
         <div class="d-flex">
             {{-- <div class="text-black fw-bolder heading-3 fs-2 mb-2 mt-5">Vehicles </div> --}}
-            <div class="d-flex flex-column flex-xl-row px-5" >
+            <div class="col-lg-5 mx-2 px-3" style="background-color: #F5F5F5">
                 {{-- <div class="text-black fw-bolder heading-3 fs-2 mb-2 mt-5">Vehicles </div> --}}
 
                 <!--begin::Sidebar-->
-                <div class="flex-column flex-lg-row-auto w-100 w-xl-350px mb-10">
+                <div class="flex-column flex-lg-row-auto w-100 mb-10">
                     <!--begin::Card-->
                     <div class="text-black fw-bolder heading-3 fs-2 mb-2 ">Vehicle </div>
 
@@ -23,12 +23,12 @@
                         <!--begin::Card body-->
                         <div class="pt-2 ">
                             <div class="d-flex align-items-center py-8">
-                                <a href="#" class="btn btn-danger px-4 w-100 "><img src="assets/media/icons/system-icon/outline/Plus-3.svg" alt="">Add Vehicle/Trailer</a>
+                                <a href="#" class="btn btn-danger fs-7 px-4 w-100 "><img src="assets/media/icons/system-icon/outline/Plus-3.svg" width="20px" alt="">Add Vehicle/Trailer</a>
 
                             </div>
                             <div class="d-flex justify-content-between align-items-center">
-                                <a href="#" class="btn  pe-20" style="background-color: #fff"><img src="assets/media/icons/system-icon/outline/Swap-1.svg" alt=""> Syncronize Vehicles</a>
-                                <a href="#" class="btn  px-4" style="background-color: #fff"><img src="assets/media/icons/system-icon/outline/Setting.svg" alt=""></a>
+                                <a href="#" class="btn border fs-7 w-75" style="background-color: #fff"><img src="assets/media/icons/system-icon/outline/Swap-1.svg" width="20px" alt=""> Syncronize Vehicles</a>
+                                <a href="#" class="btn border px-4" style="background-color: #fff"><img src="assets/media/icons/system-icon/outline/Setting.svg" alt=""></a>
                             </div>
 
                             <div class="separator separator-dashed my-5"></div>
@@ -40,7 +40,7 @@
                                 </span>
                                 <!--end::Svg Icon-->
                                 <input type="text" data-kt-customer-table-filter="search"
-                                    class="form-control form-control-lg w-350px ps-15" placeholder="Search...">
+                                    class="form-control form-control-lg ps-15" placeholder="Search...">
                             </div>
                             <div class="d-flex justify-content-between align-items-center pt-8">
                                 <a href="#" class="btn btn-danger w-50">Vehicle </a>
@@ -125,30 +125,30 @@
                 <!--end::Sidebar-->
                 <!--begin::Content-->
             </div>
-            <div class="flex-lg-row-fluid ms-lg-15 mb-5 mb-xl-8">
+            <div class="col-lg-7">
                 <!--begin:::Tabs-->
                 <div class="card my-5">
                     <div class="card-body pt-2">
                         <div class="d-flex justify-content-between">
                             <div class="w-75 mt-10">
-                                <p>Plate Number</p>
+                                <p class="pvehicle">Plate Number</p>
                                 <h3 class="fw-bolder heading-3 fs-1">D 1234 ABC</h3>
                                 {{-- <div class="separator separator-dashed my-5"></div> --}}
                                 {{-- <div class="separator separator-solid fw-bolder my-5"></div> --}}
                                 <hr class="solid">
                                 <div class="d-flex">
-                                    <div class="col-lg-6">
-                                        <p class="mb-2">Model Vehicle</p>
-                                        <h4 class="fw-bold pb-5">Grand Max</h4>
-                                        <p class="mb-2">Scheduling maintenance</p>
-                                        <h4 class="fw-bold">20</h4>
+                                    <div class="col-lg-6 px-1">
+                                        <p class="pvehicle mb-2">Model Vehicle</p>
+                                        <h4 class="bvehicle fw-bold pb-5">Grand Max</h4>
+                                        <p class="pvehicle mb-2">Scheduling maintenance</p>
+                                        <h4 class="bvehicle fw-bold">20</h4>
 
                                     </div>
-                                    <div class="col-lg-6">
-                                        <p class="mb-2">Vehicle Type</p>
-                                        <h4 class="fw-bold pb-5">Van</h4>
-                                        <p class="mb-2">Last Maintained</p>
-                                        <h4 class="fw-bold">20 May 2022</h4>
+                                    <div class="col-lg-6 px-1">
+                                        <p class="pvehicle mb-2">Vehicle Type</p>
+                                        <h4 class="bvehicle fw-bold pb-5">Van</h4>
+                                        <p class="pvehicle mb-2">Last Maintained</p>
+                                        <h4 class="bvehicle fw-bold">20 May 2022</h4>
                                     </div>
                                 </div>
                             </div>
@@ -215,10 +215,10 @@
                             </div>
                         </nav>
                         <div class="d-flex flex-row-fluid mt-5">
-                            <div class="col-lg-3 subtitle-1">
+                            <div class="pvehicle col-lg-3 col-md-3 subtitle-1">
                                 Date
                             </div>
-                            <div class="col-lg-4 subtitle-1">
+                            <div class="pvehicle col-lg-5 col-md-5 subtitle-1">
                                 Maintentance Type
                             </div>
 
@@ -229,10 +229,10 @@
                                 <div class="col-lg-3 col-md-3 subtitle-1 fw-bold">
                                     20 May 2022
                                 </div>
-                                <div class="col-lg-4 col-md-4 subtitle-1">
+                                <div class="col-lg-5 col-md-5 subtitle-1">
                                     Maintenance
                                 </div>
-                                <div class=" col-lg-5 col-md-5" style="text-align: right" >
+                                <div class=" col-lg-4 col-md-4" style="text-align: right" >
                                     <a class="fs-4" style="color: #6E6666" href="#">Detail <img src="assets/media/icons/system-icon/outline/Arrow - Right.svg" alt="" >
                                     </a>
                                 </div>
@@ -266,4 +266,20 @@
         <!--begin::Layout-->
 
 </div>
+<style>
+        .pvehicle{
+        font-size: 16px
+    }
+    .bvehicle{
+        font-size: 16px;
+    }
+@media(max-width: 1200px) {
+    .pvehicle{
+        font-size: 0.80rem;;
+    }
+    .bvehicle{
+        font-size: 1.10rem;
+    }
+}
+</style>
 @endsection
