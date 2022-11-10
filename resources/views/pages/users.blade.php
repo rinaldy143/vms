@@ -21,7 +21,7 @@
                 </div>
         </div>
         <!--begin::Row-->
-        <nav class="navbar navbar-expand-md navbar-light">
+        {{-- <nav class="navbar navbar-expand-md navbar-light">
             <div class="container px-0">
                 <div class="navbar-collapse" style="justify-content: space-between">
                     <!-- Left Side Of Navbar -->
@@ -59,6 +59,52 @@
                         <!--end::Search-->
                     </div>
 
+                </div>
+            </div>
+        </nav> --}}
+        <nav class="navbar navbar-expand-md navbar-light">
+            <div class="container px-0 py-5">
+                <div class="navbar-collapse" style="justify-content: space-between">
+                    <!-- Left Side Of Navbar -->
+                    <div class="card-title">
+                        <!--begin::Search-->
+                        <a  class=" text-danger fw-bolder me-3 py-3 font-weight-bolder " href="#" style="border-bottom: 1px solid red; padding-bottom: 3px">
+                            <!--begin::Svg Icon | path: icons/duotune/arrows/arr078.svg-->
+                            <!--end::Svg Icon-->All
+                        </a>
+                        <a  class=" text-dark me-6 py-3 font-weight-bolder " style="">
+                            <!--begin::Svg Icon | path: icons/duotune/arrows/arr078.svg-->
+                            <!--end::Svg Icon-->Operation
+                        </a>
+                        <a  class=" text-dark me-6 py-3 font-weight-bolder " style="">
+                            <!--begin::Svg Icon | path: icons/duotune/arrows/arr078.svg-->
+                            <!--end::Svg Icon-->Lead Mechanice
+                        </a>
+                        <a  class=" text-dark me-6 py-3 font-weight-bolder " style="">
+                            <!--begin::Svg Icon | path: icons/duotune/arrows/arr078.svg-->
+                            <!--end::Svg Icon-->Mechanice
+                        <a  class=" text-dark me-6 py-3 font-weight-bolder " style="">
+                            <!--begin::Svg Icon | path: icons/duotune/arrows/arr078.svg-->
+                            <!--end::Svg Icon-->Logistic
+                        </a>
+                        <!--end::Search-->
+                    </div>
+
+                    <!-- Right Side Of Navbar -->
+                    <div class="card-title">
+                        <!--begin::Search-->
+                        <button type="button" class="btn me-3" style="border: 1px solid">
+                            <!--begin::Svg Icon | path: icons/duotune/arrows/arr078.svg-->
+                            <img src="img/Download.png" alt="">
+                            <!--end::Svg Icon-->Export
+                        </button>
+                        <a class="btn btn-danger me-3 fw-bold py-3"  data-toggle="modal"
+                        href="#modalUser" title="Download">
+                        <img class src="img/Add User.png" alt="">
+                        Add User
+                        </a>
+                        <!--end::Search-->
+                    </div>
                 </div>
             </div>
         </nav>
@@ -392,140 +438,6 @@
 </div>
 
 <style>
-    /* .form-group>input {
-  display: none;
-    } */
-
-    label[for="image"] {
-        border-style: dashed !important;
-        border-width: medium !important;
-    }
-
-  input[type="number"] {
-  -webkit-appearance: textfield;
-  -moz-appearance: textfield;
-  appearance: textfield;
-}
-
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-}
-
-.number-input {
-  border: 2px solid #ddd;
-  display: inline-flex;
-}
-
-.number-input,
-.number-input * {
-  box-sizing: border-box;
-}
-
-.number-input button {
-  outline:none;
-  -webkit-appearance: none;
-  background-color: transparent;
-  border: none;
-  align-items: center;
-  justify-content: center;
-  width: 3rem;
-  height: 3rem;
-  cursor: pointer;
-  margin: 0;
-  position: relative;
-}
-
-.number-input button:before,
-.number-input button:after {
-  display: inline-block;
-  position: absolute;
-  content: '';
-  width: 1rem;
-  height: 2px;
-  background-color: #212121;
-  transform: translate(-50%, -50%);
-}
-.number-input button.plus:after {
-  transform: translate(-50%, -50%) rotate(90deg);
-}
-
-.number-input input[type=number] {
-  font-family: sans-serif;
-  max-width: 5rem;
-  padding: .5rem;
-  border: solid #ddd;
-  border-width: 0 2px;
-  font-size: 1.5rem;
-  height: 3rem;
-  font-weight: bold;
-  text-align: center;
-}
-
-.blog-thumb {
-    height: 200px;
-    border-radius: 8px;
-    margin: 20px;
-}
-
-.aside-enabled.aside-fixed .wrapper {
-    padding-left: 0px;
-}
-
-
-@media (min-width: 992px){
-    .aside-enabled.aside-fixed .wrapper {
-    padding-left: 120px;
-}
-}
-
-@media (min-width: 1350px){
-    .aside-enabled.aside-fixed .wrapper {
-    padding-left: 40px;
-}
-}
-.navbar-expand-md .navbar-nav {
-    font-size: unset;
-}
-@media (min-width: 768px){
-.navbar-expand-md .navbar-nav {
-    font-size: smaller;
-}
-}
-
-@media (min-width: 1350px){
-    .navbar-expand-md .navbar-nav {
-        font-size: medium;
-}
-}
-
-.card .card-body .text-center.num{
-        font-size: smaller;
-        margin-bottom: 0%
-}
-    .card .card-body .text-center.email{
-        font-size: smaller;
-}
-
-@media (min-width: 768px){
-    .card .card-body .text-center.num{
-        font-size: smaller;
-        margin-bottom: 0%
-}
-    .card .card-body .text-center.email{
-        font-size: smaller;
-}
-}
-
-@media (min-width: 1350px){
-    .card .card-body .text-center.num{
-        font-size: small;
-        margin-bottom: 0%
-}
-    .card .card-body .text-center.email{
-        font-size: small;
-}
-}
 
 </style>
 
