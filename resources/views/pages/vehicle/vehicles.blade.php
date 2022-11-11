@@ -28,7 +28,7 @@
                             </div>
                             <div class="d-flex justify-content-between align-items-center">
                                 <a href="#" class="btn border fs-7 w-75" style="background-color: #fff"><img src="assets/media/icons/system-icon/outline/Swap-1.svg" width="20px" alt=""> Syncronize Vehicles</a>
-                                <a href="#" class="btn border px-4" style="background-color: #fff"><img src="assets/media/icons/system-icon/outline/Setting.svg" alt=""></a>
+                                <a href="/setting" class="btn border px-4" style="background-color: #fff"><img src="assets/media/icons/system-icon/outline/Setting.svg" alt=""></a>
                             </div>
 
                             <div class="separator separator-dashed my-5"></div>
