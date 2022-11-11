@@ -34,7 +34,10 @@ Route::get('/maintenances', function() {
 });
 
 Route::get('/vehicles', function() {
-    return view('/pages/vehicles');
+    return view('/pages/vehicle/vehicles');
+});
+Route::get('/setting', function() {
+    return view('/pages/vehicle/vehicle-setting');
 });
 
 Route::get('/spareparts', function() {
