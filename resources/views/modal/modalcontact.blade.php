@@ -59,8 +59,8 @@
 
                                         <img class="img-preview img-fluid mb-3 col-sm-5 d-block w-75" src="" alt="">
                                         <input type="file" class="imgInput form-control-file" style="background-image: url(/assets/media/icons/system-icon/outline/Edit Square.svg)"
-                                        id="image" name="image" multiple onchange="previewImage()" >
-                                        {{-- onclick="document.getElementById('labelImg').style.display = 'none'" --}}
+                                        id="image" name="image" multiple onchange="previewImage()" onclick="document.getElementById('labelImg').style.display = 'none'">
+
                                     </div>
                                      <div class="h-50">
                                         <div class="fw-bolder fs-3" id="list_file"></div>
