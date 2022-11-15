@@ -27,13 +27,18 @@
                     <!-- Left Side Of Navbar -->
                     <div class="card-title">
                         <!--begin::Search-->
-                        <button type="button" class="btn btn-danger me-3 py-2 font-weight-bolder " style="border-radius: 8px;">
+                        {{-- <button type="button" class="btn btn-danger me-3 py-2 font-weight-bolder " style="border-radius: 8px;">
                             <!--begin::Svg Icon | path: icons/duotune/arrows/arr078.svg-->
                             <img class="pt-2" src="img/Plus.png" alt="">
                             <!--end::Svg Icon-->Restock
-                        </button>
+                        </button> --}}
+                        <a class="btn btn-danger me-3 font-weight-bolder py-2" style="border-radius: 8px;" data-toggle="modal"
+                        href="#modalRestock" title="Restock">
+                        <img class="pt-2" src="img/Plus.png" alt="">
+                        Restock
+                        </a>
                         <a class="btn me-3 text-danger font-weight-bolder py-2" style="border: 1px solid red; border-radius: 8px;" data-toggle="modal"
-                        href="#modalContact" title="Download">
+                        href="#modalContact" title="Add Sparepart">
                         <img class="pt-2" src="img/Plus 1.png" alt="">
                         Add Sparepart
                         </a>
@@ -268,149 +273,15 @@
         <!--end::Row-->
     </div></div>
     <!-- Modal contact-->
-<div class="modal fade" id="modalContact" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-    aria-hidden="true">
-    {{-- <div class="modal-dialog modal-dialog-centered modal-md-contact" role="document"> --}}
-    <div class="modal-dialog modal-lg" role="document">
-        <form action="#" method="post"
-            enctype="multipart/form-data">
-            @csrf
-            <div class="modal-content m-lg-10 p-3 p-3">
-                <div class="modal-header">
-                    <h4 class="text-color-dark font-weight-semibold text-transform-none text-5 m-0"
-                        id="exampleModalLongTitle">Add Sparepart</h4>
-                    <button type="button" class="close-share border-0" style="background-color: transparent" data-dismiss="modal" aria-label="Close">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                            class="bi bi-x-lg" viewBox="0 0 16 16">
-                            <path
-                                d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" />
-                        </svg>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-md-6 mb-3 mb-lg-0 col-lg-6">
-                                <label for="Identity_Sparepart"
-                                    class="fw-bold text-black mt-4">{{__('Identity Sparepart')}} <span
-                                        class="text-danger">*</span>
-                                </label>
-                                <div class="field-input py-5">
-                                    <input type="text" id="Identity_Sparepart" name="Identity_Sparepart" class="form-control"
-                                        placeholder="Your Name" maxlength="200" value={{old('Identity_Sparepart')}}>
-                                    @error('Identity_Sparepart')
-                                    <div class="invalid-feedback d-flex">
-                                        {{ $message }}
-                                    </div>
-                                    @enderror
-                                    {{-- <label for="inputName"
-                                        class="text-color-light">{{__('contact-form.name')}}</label>
-                                    <input type="text" class="form-control" id="inputName"
-                                        placeholder="Ex. Jonathan" name="name"> --}}
-                                    {{-- @error('name')
-                                    <span class="text-danger">{{ $message }}</span>
-                                    @enderror --}}
-                                </div>
-                                <label for="Name_Sparepart"
-                                    class="fw-bold text-black mt-4">Name Sparepart <span
-                                    class="text-danger">*</span></label>
-                                <div class="field-input py-5">
-                                    <input type="text" id="Name_Sparepart" name="Name_Sparepart" class="form-control"
-                                        placeholder="Name Sparepart" maxlength="200" value={{old('Name_Sparepart')}}>
-                                    @error('Name_Sparepart')
-                                    <div class="invalid-feedback d-flex">
-                                        {{ $message }}
-                                    </div>
-                                    @enderror
-                                </div>
-
-                                <div class="form-group d-flex align-items-center py-5">
-                                    <div>
-                                        <p class="fw-bold fs-3 text-black">Upload Photo</p>
-                                        <label for="image" id="labelImg"
-                                        class="font-weight-bold text-black m-0 border p-5">
-                                        <img class="py-5 px-10" src="/assets/media/icons/system-icon/outline/Camera.svg" width="120px">
-                                        <p class="fs-3">Upload Photo</p>
-                                        </label>
-
-
-                                        <img class="img-preview img-fluid mb-3 col-sm-5 d-block w-75" src="" alt="">
-                                        <input type="file" src="/assets/media/icons/system-icon/outline/Edit Square.svg" class="form-control-file"
-                                        id="image" name="image" style="display: none" multiple onchange="previewImage()" onclick="document.getElementById('labelImg').style.display = 'none'">
-                                    </div>
-                                     <div class="h-50">
-                                        <div class="fw-bolder fs-3" id="list_file"></div>
-                                        <div id="size_file"></div>
-                                     </div>
-
-                                    @error('image')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                              </div>
-                            </div>
-                            <div class="col-md-6 mb-3 mb-lg-0 col-lg-6">
-                                <label for="Brand"
-                                    class="fw-bold text-black mt-4">Brand
-                                    <span class="text-danger">*</span></label>
-                                <div class="field-input py-5">
-                                    <input type="text" id="Brand" name="Brand" class="form-control"
-                                        placeholder="Your Brand" maxlength="200" value={{old('Brand')}}>
-                                    @error('Brand')
-                                    <div class="invalid-feedback d-flex">
-                                        {{ $message }}
-                                    </div>
-                                    @enderror
-
-                                </div>
-{{--
-                                <label for="Stock"
-                                    class="font-weight-bold text-black mt-4">Stock --}}
-
-                                {{-- <input type="number" id="Stock" name="Stock" class="form-control"
-                                    placeholder="Website" maxlength="200" value={{old('Stock')}}>
-                                @error('Stock')
-                                <div class="invalid-feedback alert alert-danger">
-                                    {{ $message }}
-                                </div>
-                                @enderror --}}
-                                <label for="Stock"
-                                class="fw-bold text-black mt-4 pb-5">Stock<span
-                                class="text-danger">*</span></label><br>
-                                <div class="number-input">
-                                    <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" ></button>
-                                    <input class="quantity" min="0" name="quantity" value="1" type="number" value={{old('Stock')}}>
-                                    <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
-                                  </div>
-                            </div>
-                        </div>
-
-                        {{-- <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
-                        </div> --}}
-                    </div>
-                </div>
-                <div class="modal-footer border-0" style="flex-wrap: nowrap;">
-                    <div class="col-md-6 text-center">
-                        <button class="btn btn-danger text-3 rounded-8 w-25 p-md-3 h-100" type="submit"
-                            id="downloadWp" name="downloadWp">Submit</button>
-                    </div>
-                    <div class="col-md-6 text-center">
-                        <button type="reset" class="btn border border-danger text-danger text-3 rounded-8 w-25 p-md-3 h-100 close-share" data-dismiss="modal" aria-label="Close"
-                            id="downloadWp" name="downloadWp">Cancel</button>
-                    </div>
-                </div>
-        </form>
-        {{-- <p class="text-center text-1 px-3">{{__('whitepapers.desc')}} <a
-                href="#">{{__('whitepapers.span1')}}</a>
-        </p> --}}
-        {{-- /upload/whitepaper/{{$value->upload_file_name}} --}}
+    <div>
+        @include('modal.modalcontact')
     </div>
-</div>
+    @include('modal.modalRestock')
 
 <style>
+    .imgInput{
+        display: none;
+    }
     /* .form-group>input {
   display: none;
     } */
@@ -490,11 +361,14 @@ input[type=number]::-webkit-outer-spin-button {
         var listFile = document.getElementById('list_file');
         var sizeFile = document.getElementById('size_file');
 
-        function fileSizeSI(){
-            var a,b,c,d,e
-        return (b=Math,c=b.log,d=1000,e=c(a)/c(d)|0,a/b.pow(d,e)).toFixed(2)
-        +' '+(e?'kMGTPEZY'[--e]+'B':'Bytes')
-    }
+        function formatBytes(bytes,decimals) {
+            if(bytes == 0) return '0 Bytes';
+            var k = 1024,
+                dm = decimals || 0,
+                sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'],
+                i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
+        }
 
 
         fileInput.onchange = function () {
@@ -502,7 +376,7 @@ input[type=number]::-webkit-outer-spin-button {
         files = files.map(file => file.name);
         listFile.innerHTML = files.join('<br/>');
         var sizes = Array.from(this.files);
-        sizes = sizes.map(file => file.size);
+        sizes = sizes.map(file => formatBytes(file.size));
         sizeFile.innerHTML = sizes.join('<br/>');
 
 
