@@ -355,30 +355,31 @@
 
 
                             <label for="role"
-                            class="font-weight-bold text-black mt-4">{{__('Role')}} <span
-                                class="text-danger">*</span></label></label>
-                        <div class="field-input">
-                            <select class="form-control" aria-label="role" id="roles"
-                                name="roles">
+                                class="font-weight-bold text-black mt-4">{{__('Role')}} <span
+                                class="text-danger">*</span></label>
+                            </label>
+                            <div class="field-input">
+                                <select class="form-control" aria-label="role" id="roles"
+                                    name="roles">
 
-                                <option value="">{{__('Select role of user')}}</option>
+                                    <option value="">{{__('Select role of user')}}</option>
 
-                                <option value="Accretia" >Accretia</option>
-                                <option value="Bellato" >Bellato</option>
-                                <option value="Cora" >Cora</option>
-                                {{-- <select class="form-select " aria-label="select location"
-                                    id="inputLocations" name="locations" required>
-                                    <option selected>{{__('contact-form.selectLocation')}}</option>
-                                    @foreach ($locations as $location)
-                                    <option value="{{ $location->id }}">{{$location->nama}}</option>
-                                    @endforeach --}}
-                                </select>
-                                @error('role')
-                                <div class="invalid-feedback d-flex">
-                                    {{ $message }}
-                                </div>
-                                @enderror
-                        </div>
+                                    <option value="Accretia" >Accretia</option>
+                                    <option value="Bellato" >Bellato</option>
+                                    <option value="Cora" >Cora</option>
+                                    {{-- <select class="form-select " aria-label="select location"
+                                        id="inputLocations" name="locations" required>
+                                        <option selected>{{__('contact-form.selectLocation')}}</option>
+                                        @foreach ($locations as $location)
+                                        <option value="{{ $location->id }}">{{$location->nama}}</option>
+                                        @endforeach --}}
+                                    </select>
+                                    @error('role')
+                                    <div class="invalid-feedback d-flex">
+                                        {{ $message }}
+                                    </div>
+                                    @enderror
+                            </div>
 
                                 <div class="form-group d-flex align-items-center py-5">
                                     <div>
@@ -453,11 +454,14 @@
         var listFile = document.getElementById('list_file');
         var sizeFile = document.getElementById('size_file');
 
-        function fileSizeSI(){
-            var a,b,c,d,e
-        return (b=Math,c=b.log,d=1000,e=c(a)/c(d)|0,a/b.pow(d,e)).toFixed(2)
-        +' '+(e?'kMGTPEZY'[--e]+'B':'Bytes')
-    }
+        function formatBytes(bytes,decimals) {
+            if(bytes == 0) return '0 Bytes';
+            var k = 1024,
+                dm = decimals || 0,
+                sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'],
+                i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
+        }
 
 
         fileInput.onchange = function () {
@@ -465,7 +469,7 @@
         files = files.map(file => file.name);
         listFile.innerHTML = files.join('<br/>');
         var sizes = Array.from(this.files);
-        sizes = sizes.map(file => file.size);
+        sizes = sizes.map(file => formatBytes(file.size));
         sizeFile.innerHTML = sizes.join('<br/>');
 
 
@@ -496,11 +500,11 @@
     //     }
     // }
     var buttons = document.querySelectorAll('form button:not([type="submit"])');
-for (i = 0; i < buttons.length; i++) {
-  buttons[i].addEventListener('click', function(e) {
-    e.preventDefault();
-  });
-}
+    for (i = 0; i < buttons.length; i++) {
+    buttons[i].addEventListener('click', function(e) {
+        e.preventDefault();
+    });
+    }
 
 // var fileInput = document.getElementById('image');
 //         var listFile = document.getElementById('size_file');

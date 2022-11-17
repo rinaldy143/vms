@@ -27,13 +27,18 @@
                     <!-- Left Side Of Navbar -->
                     <div class="card-title">
                         <!--begin::Search-->
-                        <button type="button" class="btn btn-danger me-3 py-2 font-weight-bolder " style="border-radius: 8px;">
+                        {{-- <button type="button" class="btn btn-danger me-3 py-2 font-weight-bolder " style="border-radius: 8px;">
                             <!--begin::Svg Icon | path: icons/duotune/arrows/arr078.svg-->
                             <img class="pt-2" src="img/Plus.png" alt="">
                             <!--end::Svg Icon-->Restock
-                        </button>
+                        </button> --}}
+                        <a class="btn btn-danger me-3 font-weight-bolder py-2" style="border-radius: 8px;" data-toggle="modal"
+                        href="#modalRestock" title="Restock">
+                        <img class="pt-2" src="img/Plus.png" alt="">
+                        Restock
+                        </a>
                         <a class="btn me-3 text-danger font-weight-bolder py-2" style="border: 1px solid red; border-radius: 8px;" data-toggle="modal"
-                        href="#modalContact" title="Download">
+                        href="#modalContact" title="Add Sparepart">
                         <img class="pt-2" src="img/Plus 1.png" alt="">
                         Add Sparepart
                         </a>
@@ -412,9 +417,12 @@
         </p> --}}
         {{-- /upload/whitepaper/{{$value->upload_file_name}} --}}
     </div>
-</div>
+    @include('modal.modalRestock')
 
 <style>
+    .imgInput{
+        display: none;
+    }
     /* .form-group>input {
   display: none;
     } */
@@ -494,11 +502,14 @@ input[type=number]::-webkit-outer-spin-button {
         var listFile = document.getElementById('list_file');
         var sizeFile = document.getElementById('size_file');
 
-        function fileSizeSI(){
-            var a,b,c,d,e
-        return (b=Math,c=b.log,d=1000,e=c(a)/c(d)|0,a/b.pow(d,e)).toFixed(2)
-        +' '+(e?'kMGTPEZY'[--e]+'B':'Bytes')
-    }
+        function formatBytes(bytes,decimals) {
+            if(bytes == 0) return '0 Bytes';
+            var k = 1024,
+                dm = decimals || 0,
+                sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'],
+                i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
+        }
 
 
         fileInput.onchange = function () {
@@ -506,7 +517,7 @@ input[type=number]::-webkit-outer-spin-button {
         files = files.map(file => file.name);
         listFile.innerHTML = files.join('<br/>');
         var sizes = Array.from(this.files);
-        sizes = sizes.map(file => file.size);
+        sizes = sizes.map(file => formatBytes(file.size));
         sizeFile.innerHTML = sizes.join('<br/>');
 
 
