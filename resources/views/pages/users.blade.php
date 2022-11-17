@@ -396,7 +396,7 @@
 
                                         <img class="img-preview img-fluid mb-3 col-sm-5 d-block w-75" src="" alt="">
                                         <input type="file" src="/assets/media/icons/system-icon/outline/Edit Square.svg" class="form-control-file"
-                                        id="image" name="image" style="display: none" multiple onchange="previewImage()" onclick="document.getElementById('labelImg').style.display = 'none'">
+                                        id="image" name="image" style="display: none" multiple onchange="previewImage()" onclick="document.getElementById('labelImg').style.opacity = 0">
                                     </div>
                                      <div class="h-50">
                                         <div class="fw-bolder fs-3" id="list_file"></div>
