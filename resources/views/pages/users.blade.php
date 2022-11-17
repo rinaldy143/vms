@@ -384,9 +384,13 @@
                                     <div>
                                         <p class="fw-bold fs-3 text-black">Upload Photo</p>
                                         <label for="image" id="labelImg"
-                                        class="font-weight-bold text-black m-0 border p-5">
-                                        <img class="py-5 px-10" src="/assets/media/icons/system-icon/outline/Camera.svg" width="120px">
-                                        <p class="fs-3">Upload Photo</p>
+                                        class="font-weight-bold text-black m-0 border p-5" style="background-image: url(/assets/media/icons/system-icon/outline/Camera.svg);  background-repeat: no-repeat;
+                                        background-size: cover;
+                                        width: 100px;
+                                        height:100px;
+                                        position: absolute;">
+                                        {{-- <img class="py-5 px-10" src="/assets/media/icons/system-icon/outline/Camera.svg" width="120px"> --}}
+                                        {{-- <p class="fs-3">Upload Photo</p> --}}
                                         </label>
 
 
@@ -416,7 +420,7 @@
                         </div> --}}
                     </div>
                 </div>
-                <div class="modal-footer border-0 pt-0" style="flex-wrap: nowrap;">
+                <div class="modal-footer border-0 pt-20 mt-10" style="flex-wrap: nowrap;">
                     <div class="col-md-6 text-center">
                         <button class="btn shadow btn-danger text-3 rounded-8 w-100 p-md-3 h-100" type="submit"
                             id="downloadWp" name="downloadWp">Submit</button>
