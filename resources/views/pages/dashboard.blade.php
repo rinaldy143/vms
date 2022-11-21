@@ -6,7 +6,7 @@
     <br>
     <div class="d-flex flex-row">
         <div class="flex-column">
-            <div class="card" style="width: 450px; height: 383px; margin-right: 40px">
+            <div class="card" style="width: 470px; height: 383px; margin-right: 40px">
                 <div class="card-body">
                     <div class="heading-4">Report Maintenances</div>
                     <hr>
@@ -15,7 +15,7 @@
             </div>
         </div>
         <div class="flex-column">
-            <div class="card" style="width: 500px; height: 383px">
+            <div class="card" style="width: 542px; height: 383px">
                 <div class="card-body">
                     <div class="heading-4">Users</div>
                     <hr>
@@ -25,16 +25,16 @@
         </div>
     </div>
     <div class="d-flex flex-row">
-        <div class="flex-column">
+        <div class="flex-column" style="margin-right: 40px">
             <div class="d-flex flex-row mt-10">
                 <div class="flex-column">
-                    <div class="card w-700px h-300px position-relative">
+                    <div class="card w-710px h-300px position-relative">
                         <div class="heading-4 mt-10" style="margin-left: 40px">Report Vehicles</div>
                         <div style="position: absolute; right: 40px; top: 45px;">
                             <img src="img/Stroke-1.svg" alt="">
                         </div>
                         <div class="d-flex" style="margin-left: 40px">
-                            <div class="d-flex flex-column" style="margin-top: 42px"> 
+                            <div class="d-flex flex-column" style="margin-top: 42px">
                                 <div class="d-flex align-items-center">
                                     <h1 style="color: #EF3434; font-size: 48px">100</h1>
                                     <p class="fw-bold" style="font-size: 16px; margin-left: 24px">Vehicles</p>
@@ -77,13 +77,13 @@
             </div>
             <div class="d-flex flex-row mt-10">
                 <div class="flex-column">
-                    <div class="card w-700px h-300px position-relative">
+                    <div class="card w-710px h-300px position-relative">
                         <div class="heading-4 mt-10" style="margin-left: 40px">Stock Spareparts</div>
                         <div style="position: absolute; right: 40px; top: 45px;">
                             <img src="img/Stroke-1.svg" alt="">
                         </div>
                         <div class="d-flex" style="margin-left: 40px">
-                            <div class="d-flex flex-column" style="margin-top: 42px"> 
+                            <div class="d-flex flex-column" style="margin-top: 42px">
                                 <div class="d-flex align-items-center">
                                     <h1 style="color: #EF3434; font-size: 48px">1200</h1>
                                     <p class="fw-bold" style="font-size: 16px; margin-left: 24px">Sparepart</p>
@@ -135,10 +135,10 @@
                 </div>
             </div>
         </div>
-        <div class="flex-column">
-            <div class="d-flex flex-row mt-10 me-10 mx-10">
+        <div class="flex-column" style="padding-right: 40px">
+            <div class="d-flex flex-row mt-10">
                 <div class="flex-column">
-                    <div class="card w-300px h-630px">
+                    <div class="card w-302px h-630px">
                         <div class="heading-4 mt-10" style="margin-left: 40px">Activities</div>
                         <p style="margin-left: 40px; margin-top: 16px">20 oct</p>
                         <div style="border: 1px solid #CFCCCC;margin-left: 40px; margin-right: 40px"></div>

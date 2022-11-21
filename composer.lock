@@ -7921,12 +7921,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/harinugroho/Transtrackid-Arch-Support.git",
-                "reference": "ac659e2d44acb7bc798417991dffffd129bd31f8"
+                "reference": "cbd6c0c27fd76cc5739014549d4fe6bd93c44a3e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/harinugroho/Transtrackid-Arch-Support/zipball/ac659e2d44acb7bc798417991dffffd129bd31f8",
-                "reference": "ac659e2d44acb7bc798417991dffffd129bd31f8",
+                "url": "https://api.github.com/repos/harinugroho/Transtrackid-Arch-Support/zipball/cbd6c0c27fd76cc5739014549d4fe6bd93c44a3e",
+                "reference": "cbd6c0c27fd76cc5739014549d4fe6bd93c44a3e",
                 "shasum": ""
             },
             "require": {
@@ -7964,7 +7964,7 @@
                 "issues": "https://github.com/harinugroho/Transtrackid-Arch-Support/issues",
                 "source": "https://github.com/harinugroho/Transtrackid-Arch-Support/tree/main"
             },
-            "time": "2022-07-22T04:30:25+00:00"
+            "time": "2022-08-09T11:30:18+00:00"
         }
     ],
     "aliases": [],

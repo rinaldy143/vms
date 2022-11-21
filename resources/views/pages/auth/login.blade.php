@@ -74,7 +74,9 @@
                         <div class="w-lg-400px align-item-center p-10">
                             <p class="text-center fw-bold">Powered by</p>
                             <div class="d-flex justify-content-center">
-                                <img src="/img/Frame 1622.svg" alt="">
+                                <a href="https://www.transtrack.id/" target="_blank">
+                                    <img src="/img/Frame 1622.svg" alt="">
+                                </a>
                             </div>
                         </div>
                     <!--end::Form-->

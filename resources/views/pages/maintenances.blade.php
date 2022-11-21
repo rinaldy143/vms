@@ -19,10 +19,10 @@
         </div>
     </div>
     <div class="nav" style="margin-top: 46px">
-        <a href="">
+        <a href="/maintenances">
             <div class="subtitle-1 me-10">Report</div>
         </a>
-        <a href="">
+        <a href="/maintenance">
             <div class="subtitle-1 me-10">Maintenance</div>
         </a>
         <a href="">

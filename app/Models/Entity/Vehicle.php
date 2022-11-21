@@ -23,7 +23,12 @@ class Vehicle extends AppModel
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'plat_number',
+        'trailer_connected',
+        'photo',
+        'monthly_maintenance',
+        'last_maintenance',
+        'id_fms',
     ];
 
     /**

@@ -33,6 +33,10 @@ Route::get('/maintenances', function() {
     return view('/pages/maintenances');
 });
 
+Route::get('/maintenance', function() {
+    return view('/pages/maintenance');
+});
+
 Route::get('/vehicles', function() {
     return view('/pages/vehicle/vehicles');
 });
