@@ -1,5 +1,4 @@
-<div class="modal fade" id="modalContact" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-    aria-hidden="true">
+<div class="modal fade" id="modalContact" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     {{-- <div class="modal-dialog modal-dialog-centered modal-md-contact" role="document"> --}}
     <div class="modal-dialog modal-lg" role="document">
         <form action="#" method="post"
@@ -20,7 +19,7 @@
                 <div class="modal-body">
                     <div class="container-fluid">
                         <div class="row">
-                            <div class="col-md-6 mb-3 mb-lg-0 col-lg-6">
+                            <div class="sparepart1 col-md-6 mb-3 mb-lg-0 col-lg-6">
                                 <label for="Identity_Sparepart"
                                     class="fw-bold text-black mt-4">{{__('Identity Sparepart')}} <span
                                         class="text-danger">*</span>
@@ -33,6 +32,13 @@
                                         {{ $message }}
                                     </div>
                                     @enderror
+                                    {{-- <label for="inputName"
+                                        class="text-color-light">{{__('contact-form.name')}}</label>
+                                    <input type="text" class="form-control" id="inputName"
+                                        placeholder="Ex. Jonathan" name="name"> --}}
+                                    {{-- @error('name')
+                                    <span class="text-danger">{{ $message }}</span>
+                                    @enderror --}}
                                 </div>
                                 <label for="Name_Sparepart"
                                     class="fw-bold text-black mt-4">Name Sparepart <span
@@ -51,16 +57,19 @@
                                     <div>
                                         <p class="fw-bold fs-3 text-black">Upload Photo</p>
                                         <label for="image" id="labelImg"
-                                        class="font-weight-bold text-black m-0 border p-5">
-                                        <img class="py-5 px-10" src="/assets/media/icons/system-icon/outline/Camera.svg" width="120px">
-                                        <p class="fs-3">Upload Photo</p>
+                                        class="font-weight-bold text-black m-0 border p-5" style="background-image: url(/assets/media/icons/system-icon/outline/Camera.svg);  background-repeat: no-repeat;
+                                        background-size: cover;
+                                        width: 100px;
+                                        height:100px;
+                                        position: absolute;">
+                                        {{-- <img class="py-5 px-10" src="/assets/media/icons/system-icon/outline/Camera.svg" width="120px"> --}}
+                                        {{-- <p class="fs-3">Upload Photo</p> --}}
                                         </label>
 
 
                                         <img class="img-preview img-fluid mb-3 col-sm-5 d-block w-75" src="" alt="">
-                                        <input type="file" class="imgInput form-control-file" style="background-image: url(/assets/media/icons/system-icon/outline/Edit Square.svg)"
-                                        id="image" name="image" multiple onchange="previewImage()" onclick="document.getElementById('labelImg').style.display = 'none'">
-
+                                        <input type="file" src="/assets/media/icons/system-icon/outline/Edit Square.svg" class="form-control-file"
+                                        id="image" name="image" style="display: none" multiple onchange="previewImage()" onclick="document.getElementById('labelImg').style.opacity = 0">
                                     </div>
                                      <div class="h-50">
                                         <div class="fw-bolder fs-3" id="list_file"></div>
@@ -74,7 +83,7 @@
                                 @enderror
                               </div>
                             </div>
-                            <div class="col-md-6 mb-3 mb-lg-0 col-lg-6">
+                            <div class="sparepart2 col-md-6 mb-3 mb-lg-0 col-lg-6">
                                 <label for="Brand"
                                     class="fw-bold text-black mt-4">Brand
                                     <span class="text-danger">*</span></label>
@@ -86,7 +95,9 @@
                                         {{ $message }}
                                     </div>
                                     @enderror
+
                                 </div>
+
                                 <label for="Stock"
                                 class="fw-bold text-black mt-4 pb-5">Stock<span
                                 class="text-danger">*</span></label><br>
@@ -94,7 +105,7 @@
                                     <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" ></button>
                                     <input class="quantity" min="0" name="quantity" value="1" type="number" value={{old('Stock')}}>
                                     <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
-                                  </div>
+                                </div>
                             </div>
                         </div>
 
@@ -104,13 +115,13 @@
                         </div> --}}
                     </div>
                 </div>
-                <div class="modal-footer border-0" style="flex-wrap: nowrap;">
+                <div class="modal-footer border-0 pt-20" style="flex-wrap: nowrap;">
                     <div class="col-md-6 text-center">
-                        <button class="btn btn-danger text-3 rounded-8 w-25 p-md-3 h-100" type="submit"
+                        <button class="btn btn-danger text-3 rounded-8 w-50 p-md-3 h-100" type="submit"
                             id="downloadWp" name="downloadWp">Submit</button>
                     </div>
                     <div class="col-md-6 text-center">
-                        <button type="reset" class="btn border border-danger text-danger text-3 rounded-8 w-25 p-md-3 h-100 close-share" data-dismiss="modal" aria-label="Close"
+                        <button type="reset" class="btn border border-danger text-danger text-3 rounded-8 w-50 p-md-3 h-100 close-share" data-dismiss="modal" aria-label="Close"
                             id="downloadWp" name="downloadWp">Cancel</button>
                     </div>
                 </div>
@@ -121,3 +132,4 @@
         {{-- /upload/whitepaper/{{$value->upload_file_name}} --}}
     </div>
 </div>
+
