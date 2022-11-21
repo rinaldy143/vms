@@ -40,7 +40,7 @@
 <!--begin::Modal-->
 <!--begin::Modal Update User-->
 <div class="modal fade" id="modalUpdate" tabindex="-1" aria-labelledby="modalChangePassword" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-dialog modal-md" role="document">
         <form action="#" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="modal-content m-lg-10 p-3">
@@ -57,7 +57,7 @@
                 <div class="modal-body">
                     <div class="container-fluid">
                         <div class="row">
-                            <div class="col-md-6 mb-3 mb-lg-0 col-lg-6">
+                            <div class="col-md-12 mb-3 mb-lg-0 col-lg-12">
                                 <label for="Name" class="subtitle-1 mt-4">
                                     {{__('Name')}}
                                     <span class="text-danger">*</span>
@@ -73,7 +73,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6 mb-3 mb-lg-0 col-lg-6">
+                            <div class="col-md-12 mb-3 mb-lg-0 col-lg-12">
                                 <label for="Email" class="subtitle-1 mt-4">
                                     {{__('Email')}}
                                     <span class="text-danger">*</span>
@@ -89,13 +89,21 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6 mb-3 mb-lg-0 col-lg-6">
+                            <div class="col-md-12 mb-3 mb-lg-0 col-lg-12">
                                 <label for="No_Handphone" class="subtitle-1 mt-4">
                                     {{__('No Handphone')}}
                                     <span class="text-danger">*</span>
                                 </label>
                                 <div class="field-input py-5">
-                                    <input type="text" id="No_Handphone" name="No_Handphone" class="form-control" placeholder="Ex. Johnpantau@example.com" maxlength="200" value={{old('No_Handphone')}}>
+                                    <div class="d-flex">
+                                        <select class="form-select w-25" aria-label="Default select example">
+                                            <option selected>+62</option>
+                                            <option value="1">+63</option>
+                                            <option value="2">+65</option>
+                                            <option value="3">+66</option>
+                                        </select>
+                                        <input type="text" id="No_Handphone" name="No_Handphone" class="form-control" placeholder="892-7635-1645-18" maxlength="200" value={{old('No_Handphone')}}>
+                                    </div>
                                     @error('No_Handphone')
                                     <div class="invalid-feedback d-flex">
                                         {{ $message }}
@@ -105,19 +113,17 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6 mb-3 mb-lg-0 col-lg-6">
-                                <label for="No_Handphone" class="subtitle-1 mt-4">
+                            <div class="col-md-12 mb-3 mb-lg-0 col-lg-12">
+                                <label for="Role" class="subtitle-1 mt-4 mb-5">
                                     {{__('Role')}}
                                     <span class="text-danger">*</span>
                                 </label>
-                                <div class="field-input py-5">
-                                    <input type="text" id="No_Handphone" name="No_Handphone" class="form-control" placeholder="Ex. Johnpantau@example.com" maxlength="200" value={{old('No_Handphone')}}>
-                                    @error('No_Handphone')
-                                    <div class="invalid-feedback d-flex">
-                                        {{ $message }}
-                                    </div>
-                                    @enderror
-                                </div>
+                                <select class="form-select" aria-label="Default select example">
+                                    <option selected>Operation</option>
+                                    <option value="1">One</option>
+                                    <option value="2">Two</option>
+                                    <option value="3">Three</option>
+                                </select>
                             </div>
                         </div>
                         <div class="row">
@@ -148,12 +154,12 @@
                 </div>
                 <div class="modal-footer border-0" style="flex-wrap: nowrap;">
                     <div class="col-md-6 text-center">
-                        <button class="btn btn-danger text-3 rounded-8 w-25 p-md-3 h-100" type="submit" id="downloadWp" name="downloadWp">
-                            Submit
+                        <button class="btn btn-danger text-3 rounded-8 w-75 p-md-3 h-100" type="submit" id="downloadWp" name="downloadWp">
+                            Update
                         </button>
                     </div>
                     <div class="col-md-6 text-center">
-                        <button type="reset" class="btn border border-danger text-danger text-3 rounded-8 w-25 p-md-3 h-100 close-share" data-dismiss="modal" aria-label="Close" id="downloadWp" name="downloadWp">
+                        <button type="reset" class="btn border border-danger text-danger text-3 rounded-8 w-75 p-md-3 h-100 close-share" data-dismiss="modal" aria-label="Close" id="downloadWp" name="downloadWp">
                             Cancel
                         </button>
                     </div>
@@ -165,7 +171,7 @@
 <!--end::Modal Update User-->
 <!--begin::Modal Change Password-->
 <div class="modal fade" id="modalPassword" tabindex="-1" aria-labelledby="modalChangePassword" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-dialog modal-md" role="document">
         <form action="#" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="modal-content m-lg-10 p-3">
@@ -182,13 +188,19 @@
                 <div class="modal-body">
                     <div class="container-fluid">
                         <div class="row">
-                            <div class="col-md-6 mb-3 mb-lg-0 col-lg-6">
+                            <div class="col-md-12 mb-3 mb-lg-0 col-lg-12">
                                 <label for="Name" class="subtitle-1 mt-4">
                                     {{__('Last Password')}}
                                     <span class="text-danger">*</span>
                                 </label>
-                                <div class="field-input py-5">
-                                    <input type="text" id="Name" name="Name" class="form-control" placeholder="Ex. John" maxlength="200" value={{old('Identity_Sparepart')}}>
+                                <div class="field-input py-5 relative">
+                                     <div style="position: absolute; top: 85px;padding-left: 15px">
+                                        <img src="img/locked.svg" alt="">
+                                    </div>
+                                    <div style="position: absolute; top: 85px;right:75px;">
+                                        <img src="img/showhide.svg" alt="">
+                                    </div>
+                                    <input type="text" id="Name" name="Name" class="form-control" style="padding-left: 55px;" placeholder="********" maxlength="200" value={{old('Identity_Sparepart')}}>
                                     @error('Identity_Sparepart')
                                     <div class="invalid-feedback d-flex">
                                         {{ $message }}
@@ -198,13 +210,19 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6 mb-3 mb-lg-0 col-lg-6">
+                            <div class="col-md-12 mb-3 mb-lg-0 col-lg-12">
                                 <label for="Email" class="subtitle-1 mt-4">
                                     {{__('New Password')}}
                                     <span class="text-danger">*</span>
                                 </label>
                                 <div class="field-input py-5">
-                                    <input type="text" id="Email" name="Email" class="form-control" placeholder="Ex. Johnpantau@example.com" maxlength="200" value={{old('Email')}}>
+                                    <div style="position: absolute; top: 197px;padding-left: 15px">
+                                        <img src="img/locked.svg" alt="">
+                                    </div>
+                                    <div style="position: absolute; top: 197px;right:75px;">
+                                        <img src="img/showhide.svg" alt="">
+                                    </div>
+                                    <input type="text" id="Email" name="Email" class="form-control" placeholder="********" style="padding-left: 55px;" maxlength="200" value={{old('Email')}}>
                                     @error('Email')
                                     <div class="invalid-feedback d-flex">
                                         {{ $message }}
@@ -214,13 +232,19 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6 mb-3 mb-lg-0 col-lg-6">
+                            <div class="col-md-12 mb-3 mb-lg-0 col-lg-12">
                                 <label for="No_Handphone" class="subtitle-1 mt-4">
                                     {{__('Confirm New Password')}}
                                     <span class="text-danger">*</span>
                                 </label>
                                 <div class="field-input py-5">
-                                    <input type="text" id="No_Handphone" name="No_Handphone" class="form-control" placeholder="Ex. Johnpantau@example.com" maxlength="200" value={{old('No_Handphone')}}>
+                                    <div style="position: absolute; top: 309px;padding-left: 15px">
+                                        <img src="img/locked.svg" alt="">
+                                    </div>
+                                    <div style="position: absolute; top: 309px;right:75px;">
+                                        <img src="img/showhide.svg" alt="">
+                                    </div>
+                                    <input type="text" id="No_Handphone" name="No_Handphone" class="form-control" placeholder="********" style="padding-left: 55px;" maxlength="200" value={{old('No_Handphone')}}>
                                     @error('No_Handphone')
                                     <div class="invalid-feedback d-flex">
                                         {{ $message }}
@@ -233,12 +257,12 @@
                 </div>
                 <div class="modal-footer border-0" style="flex-wrap: nowrap;">
                     <div class="col-md-6 text-center">
-                        <button class="btn btn-danger text-3 rounded-8 w-25 p-md-3 h-100" type="submit" id="downloadWp" name="downloadWp">
-                            Submit
+                        <button class="btn btn-danger text-3 rounded-8 w-75 p-md-3 h-100" type="submit" id="downloadWp" name="downloadWp">
+                            Change Password
                         </button>
                     </div>
                     <div class="col-md-6 text-center">
-                        <button type="reset" class="btn border border-danger text-danger text-3 rounded-8 w-25 p-md-3 h-100 close-share" data-dismiss="modal" aria-label="Close" id="downloadWp" name="downloadWp">
+                        <button type="reset" class="btn border border-danger text-danger text-3 rounded-8 w-75 p-md-3 h-100 close-share" data-dismiss="modal" aria-label="Close" id="downloadWp" name="downloadWp">
                             Cancel
                         </button>
                     </div>
