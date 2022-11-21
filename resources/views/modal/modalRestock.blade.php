@@ -28,7 +28,7 @@
 
                                     <option value="" disabled>{{__('Search Sparepart or brand')}}</option>
 
-                                    <option value="Accretia" >Oli</option>
+                                    <option value="Oli" >Oli</option>
                                     <option value="Bellato" >Bellato</option>
                                     <option value="Cora" >Cora</option>
                                     {{-- <select class="form-select " aria-label="select location"
@@ -38,6 +38,21 @@
                                         <option value="{{ $location->id }}">{{$location->nama}}</option>
                                         @endforeach --}}
                                     </select>
+                                    <div class="form-group d-flex justify-content-between align-items-center py-5">
+                                        <div>
+                                            <img id="my_imgS" class="pt-3" src="" alt="">
+                                        </div>
+                                         <div class="h-50">
+                                            <h2 id="list_file1"> </h2>
+                                            <span class="fw-lighter" id="text_file1"></span>
+                                         </div>
+                                         <div class="number-input" id="input1" style="display: none;">
+                                            <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" ></button>
+                                            <input class="quantity" min="0" name="quantity" value="1" type="number" value={{old('Stock')}}>
+                                            <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+                                        </div>
+                                    </div>
+
                                     @error('Sparepart')
                                     <div class="invalid-feedback d-flex">
                                         {{ $message }}
@@ -66,3 +81,44 @@
         </form>
     </div>
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+<script>
+     $(function() {
+   $('#Sparepart').change( function() {
+   restock = $(this).val();
+      if (restock == 'Oli') {
+          $('#my_imgS').attr("src","img/Mask group.png");
+          $('#list_file1').text("Oli Castrol");
+          $('#text_file1').text("Castrol");
+      }
+      if (restock == 'Bellato') {
+          $('#my_imgS').attr("src","img/Mask group.png");
+          $('#list_file1').text("Oli Castrol");
+          $('#text_file1').text("Castrol");
+
+      }
+      if (restock == 'Cora') {
+          $('#my_imgS').attr("src","img/Mask group.png");
+          $('#list_file1').text("Oli Castrol");
+          $('#text_file1').text("Castrol");
+
+      }
+      var input1 = document.getElementById('input1');
+      input1.style.display = 'inline-flex';
+
+  });
+});
+
+
+
+</script>
+<script>
+var fullPath = document.getElementById("my_imgS").src;
+var filename = fullPath.replace(/^.*[\\\/]/, '');
+     // or, try this,
+     // var filename = fullPath.split("/").pop();
+
+    document.getElementById("list_file1").value = filename
+</script>
