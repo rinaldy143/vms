@@ -414,7 +414,9 @@
         }
     }
 
-    select#Vehicle_Model option[value=""]   { background-image:url(img/Search.png);   }
+    select#Vehicle_Model option[value=""]   {
+         background-image:url(img/Search.png);
+        }
 
 </style>
 
