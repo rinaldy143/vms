@@ -7,22 +7,22 @@
         <div class="d-flex align-items-center position-relative my-1">
             <!--begin::Svg Icon | path: icons/duotune/general/gen021.svg-->
             <span class="position-absolute ms-6">
-                <img src="img/Search.png" alt="">
+                <img src="/img/Search.png" alt="">
             </span>
             <!--end::Svg Icon-->
             <input type="text" data-kt-customer-table-filter="search"
                 class="form-control form-control-lg w-325px h-50px ps-15" placeholder="Search...">
 
             <div class="px-10 btn btn-icon btn-active-light-primary w-30px h-30px w-md-40px h-md-40px">
-                <img src="img/Frame 1637.png" alt="">
+                <img src="/img/Frame 1637.png" alt="">
             </div>
         </div>
     </div>
     <div class="nav" style="margin-top: 46px">
-        <a href="/maintenances">
+        <a href="/maintenance/report">
             <div class="subtitle-1 me-10">Report</div>
         </a>
-        <a href="/maintenance">
+        <a href="/maintenance/maintenance">
             <div class="subtitle-1 me-10">Maintenance</div>
         </a>
         <a href="">
@@ -31,8 +31,8 @@
     </div>
     <div class="card w-1000px mt-8">
         <div class="card-body">
-            <div class="heading-4 mt-10">
-                <span class="rounded me-4"><img src="img/Ellipse 47.png" alt=""></span>
+            <div class="heading-4">
+                <span class="rounded me-4"><img src="/img/Ellipse 47.png" alt=""></span>
                 Request Maintenance
             </div>
             <div class="d-flex flex-row-fluid mt-10">
@@ -58,7 +58,7 @@
                         1
                     </div>
                     <div class="col-lg-3 subtitle-1">
-                        <img src="img/image 1.png" alt="">
+                        <img src="/img/image 1.png" alt="">
                     </div>
                     <div class="col-lg-2 body-1">
                         Monthly
@@ -75,7 +75,7 @@
                         1
                     </div>
                     <div class="col-lg-3 subtitle-1">
-                        <img src="img/image 1.png" alt="">
+                        <img src="/img/image 1.png" alt="">
                     </div>
                     <div class="col-lg-2 body-1">
                         Monthly
@@ -92,7 +92,7 @@
                         1
                     </div>
                     <div class="col-lg-3 subtitle-1">
-                        <img src="img/image 1.png" alt="">
+                        <img src="/img/image 1.png" alt="">
                     </div>
                     <div class="col-lg-2 body-1">
                         Monthly
@@ -113,7 +113,7 @@
                 <div class="card-body">
                     <div class="heading-4">Report Maintenances</div>
                     <hr>
-                    <img class="card-img" src="img/Group 2283.png" alt="">
+                    <img class="card-img" src="/img/Group 2283.png" alt="">
                 </div>
             </div>
         </div>
@@ -122,7 +122,7 @@
                 <div class="card-body">
                     <div class="heading-4">Users</div>
                     <hr>
-                    <img class="card-img" src="img/Frame 2282.png" alt="">
+                    <img class="card-img" src="/img/Frame 2282.png" alt="">
                 </div>
             </div>
         </div>

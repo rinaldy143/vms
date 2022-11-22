@@ -29,12 +29,12 @@ Route::get('/dashboard', function() {
     return view('/pages/dashboard');
 });
 
-Route::get('/maintenances', function() {
-    return view('/pages/maintenances');
+Route::get('/maintenance/report', function() {
+    return view('/pages/maintenance/report');
 });
 
-Route::get('/maintenance', function() {
-    return view('/pages/maintenance');
+Route::get('/maintenance/maintenance', function() {
+    return view('/pages/maintenance/maintenance');
 });
 
 Route::get('/vehicles', function() {
