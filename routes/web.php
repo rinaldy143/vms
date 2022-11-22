@@ -38,7 +38,7 @@ Route::get('/maintenance', function() {
 });
 
 Route::get('/vehicles', function() {
-    return view('/pages/vehicle/vehicles');
+    return view('/pages/vehicle/vehicle1');
 });
 Route::get('/setting', function() {
     return view('/pages/vehicle/vehicle-setting');
