@@ -560,6 +560,16 @@ progress {
         font-size: 14px;
     }
 }
+.caption {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 18px;
+}
+@media (min-width: 1200px) {
+    .caption {
+        font-size: 12px;
+    }
+}
 .button {
     font-size: 16px;
     font-weight: 600;
@@ -6988,6 +6998,9 @@ fieldset:disabled .btn {
 .w-500px {
     width: 500px !important;
 }
+.w-543px {
+    width: 543px !important;
+}
 .w-550px {
     width: 550px !important;
 }
@@ -7362,6 +7375,9 @@ fieldset:disabled .btn {
 }
 .h-550px {
     height: 550px !important;
+}
+.h-577px {
+    height: 577px !important;
 }
 .h-600px {
     height: 600px !important;
@@ -8145,6 +8161,9 @@ fieldset:disabled .btn {
 .me-auto {
     margin-right: auto !important;
 }
+.me-custom {
+    margin-right: 11.25rem !important;
+}
 .mb-0 {
     margin-bottom: 0 !important;
 }
@@ -8273,6 +8292,9 @@ fieldset:disabled .btn {
 }
 .ms-20 {
     margin-left: 5rem !important;
+}
+.ms-custom {
+    margin-left: 9.813rem !important;
 }
 .ms-auto {
     margin-left: auto !important;
