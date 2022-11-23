@@ -6,6 +6,8 @@ use App\Models\AppModel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+use function PHPSTORM_META\map;
+
 class WorkOrder extends AppModel
 {
     use HasFactory, SoftDeletes;
@@ -23,7 +25,13 @@ class WorkOrder extends AppModel
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'req_sparepart',
+        'rm_id',
+        'user_id',
+        'type_job_id',
+        'deleted_at',
+        'created_at',
+        'updated_at',
     ];
 
     /**

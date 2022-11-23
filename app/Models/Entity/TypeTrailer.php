@@ -23,7 +23,10 @@ class TypeTrailer extends AppModel
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'trailer_type',
+        'deleted_at',
+        'created_at',
+        'updated_at',
     ];
 
     /**
