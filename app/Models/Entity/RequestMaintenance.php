@@ -23,7 +23,15 @@ class RequestMaintenance extends AppModel
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'report_by',
+        'report_problem',
+        'maintenance_date',
+        'vehicle_id',
+        'trailer_id',
+        'type_maintenance_id',
+        'deleted_at',
+        'created_at',
+        'updated_at',
     ];
 
     /**

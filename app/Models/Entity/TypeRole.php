@@ -23,7 +23,10 @@ class TypeRole extends AppModel
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'role',
+        'deleted_at',
+        'created_at',
+        'updated_at',
     ];
 
     /**

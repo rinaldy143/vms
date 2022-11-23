@@ -29,6 +29,11 @@ class Vehicle extends AppModel
         'monthly_maintenance',
         'last_maintenance',
         'id_fms',
+        'model_vehicle_id',
+        'type_vehicle_id',
+        'deleted_at',
+        'created_at',
+        'updated_at',
     ];
 
     /**

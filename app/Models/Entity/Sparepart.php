@@ -23,7 +23,13 @@ class Sparepart extends AppModel
      * @var array<int, string>
      */
     protected $fillable = [
+        'photo',
+        'brand',
         'name',
+        'count',
+        'deleted_at',
+        'created_at',
+        'updated_at',
     ];
 
     /**

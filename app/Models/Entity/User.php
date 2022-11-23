@@ -9,6 +9,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
+use function PHPSTORM_META\map;
+
 class User extends AppAuthenticatable
 {
     use HasApiTokens, HasFactory, Notifiable, SoftDeletes;
@@ -28,9 +30,18 @@ class User extends AppAuthenticatable
     protected $fillable = [
         'name',
         'email',
+        'photo',
         'role',
         'fcm_token',
+        'email_verified_at',
         'password',
+        'phone_country_code',
+        'phone_number',
+        'type_role_id',
+        'remember_token',
+        'deleted_at',
+        'created_at',
+        'updated_at'
     ];
 
     /**

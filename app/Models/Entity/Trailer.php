@@ -23,7 +23,16 @@ class Trailer extends AppModel
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'code_trailer',
+        'vehicle_connected',
+        'photo',
+        'monthly_maintenance',
+        'last_maintenance',
+        'model_trailer_id',
+        'type_trailer_id',
+        'deleted_at',
+        'created_at',
+        'updated_at',
     ];
 
     /**
