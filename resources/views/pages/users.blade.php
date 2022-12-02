@@ -362,7 +362,7 @@
                                 <select class="form-control" aria-label="role" id="roles"
                                     name="roles">
 
-                                    <option value="">{{__('Select role of user')}}</option>
+                                    <option value="" disabled selected>{{__('Select role of user')}}</option>
 
                                     <option value="Accretia" >Accretia</option>
                                     <option value="Bellato" >Bellato</option>
