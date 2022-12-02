@@ -22,7 +22,7 @@
                         <!--begin::Card body-->
                         <div class="pt-2 ">
                             <div class="d-flex align-items-center py-8">
-                                <a href="#modalVehicle" class="btn btn-danger fs-7 px-4 w-100 " data-toggle="modal"><img src="assets/media/icons/system-icon/outline/Plus-3.svg" width="20px" alt="">Add Vehicle/Trailer</a>
+                                <a href="#modalTrailer" class="btn btn-danger fs-7 px-4 w-100 " data-toggle="modal"><img src="assets/media/icons/system-icon/outline/Plus-3.svg" width="20px" alt="">Add Vehicle/Trailer</a>
 
                             </div>
                             <div class="d-flex justify-content-between align-items-center">
@@ -239,7 +239,7 @@
 
         <!--begin::Layout-->
 
-<div class="modal fade" id="modalVehicle" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+<div class="modal fade" id="modalTrailer" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
     aria-hidden="true">
     {{-- <div class="modal-dialog modal-dialog-centered modal-md-contact" role="document"> --}}
     <div class="modal-dialog modal-dialog-centered " role="document">
@@ -263,13 +263,13 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-md-12 mb-3 mb-lg-0 col-lg-12">
-                                <label for="Plate Number"
-                                    class="fw-bold text-black mt-4">{{__('Plate Number')}} <span
+                                <label for="Code_trailer"
+                                    class="fw-bold text-black mt-4">{{__('Code Trailer')}} <span
                                         class="text-danger">*</span></label>
                                 <div class="field-input">
-                                    <input type="text" id="Plate Number" name="Plate Number" class="form-control"
-                                        placeholder="Ex. D 1234 ABC" maxlength="200" value={{old('Plate Number')}}>
-                                    @error('Plate Number')
+                                    <input type="text" id="Code_trailer" name="Code_trailer" class="form-control"
+                                        placeholder="Ex. D 1234 ABC" maxlength="200" value={{old('Code_trailer')}}>
+                                    @error('Code_trailer')
                                     <div class="invalid-feedback d-flex">
                                         {{ $message }}
                                     </div>
@@ -282,19 +282,19 @@
                                     <span class="text-danger">{{ $message }}</span>
                                     @enderror --}}
                                 </div>
-                                <label for="Vehicle_Type"
-                                    class="fw-bold text-black mt-4">{{__('Vehicle Type')}} <span
+                                <label for="Trailer_Type"
+                                    class="fw-bold text-black mt-4">{{__('Trailer Type')}} <span
                                     class="text-danger">*</span></label>
                                 </label>
                                 <div class="field-input">
-                                    <select class="form-control" aria-label="Vehicle_Type" id="Vehicle_Type"
-                                        name="Vehicle_Type">
+                                    <select class="form-control" aria-label="Trailer_Type" id="Trailer_Type"
+                                        name="Trailer_Type">
 
-                                        <option value="" disabled>{{__('Select Vehicle Type')}}</option>
+                                        <option value="" disabled selected >{{__('Select Trailer Type')}}</option>
 
-                                        <option value="Cost Diesel Double (CDD)" >Cost Diesel Double (CDD)</option>
-                                        <option value="Van" >Van</option>
-                                        <option value="Cost Diesel Engkel (CDE)" >Cost Diesel Engkel (CDE)</option>
+                                        <option value="Flatbed Trailer" >Flatbed Trailer</option>
+                                        <option value="Skeletal Trailer" >Skeletal Trailer</option>
+
                                         {{-- <select class="form-select " aria-label="select location"
                                             id="inputLocations" name="locations" required>
                                             <option selected>{{__('contact-form.selectLocation')}}</option>
@@ -302,21 +302,21 @@
                                             <option value="{{ $location->id }}">{{$location->nama}}</option>
                                             @endforeach --}}
                                         </select>
-                                        @error('Vehicle_Type')
+                                        @error('Trailer_Type')
                                         <div class="invalid-feedback d-flex">
                                             {{ $message }}
                                         </div>
                                         @enderror
                                 </div>
-                                <label for="Vehicle_Model"
-                                    class="fw-bold text-black mt-4">{{__('Vehicle Model')}} <span
+                                <label for="Trailer_Model"
+                                    class="fw-bold text-black mt-4">{{__('Trailer Model')}} <span
                                     class="text-danger">*</span></label>
                                 </label>
                                 <div class="field-input">
-                                    <select class="form-control" aria-label="Vehicle_Model" id="Vehicle_Model"
-                                        name="Vehicle_Model">
+                                    <select class="form-control" aria-label="Trailer_Model" id="Trailer_Model"
+                                        name="Trailer_Model">
 
-                                        <option style="background-image:url(img/Search.png);" value="" disabled>{{__('Select Vehicle Model')}}</option>
+                                        <option value="" disabled selected>{{__('Select Vehicle Model')}}</option>
 
                                         <option value="Colt Diesel Double (CDD) Bak" >Colt Diesel Double (CDD) Bak</option>
                                         <option value="Colt Diesel Double (CDD) Los Bak" >Colt Diesel Double (CDD) Los Bak</option>
@@ -328,7 +328,33 @@
                                             <option value="{{ $location->id }}">{{$location->nama}}</option>
                                             @endforeach --}}
                                         </select>
-                                        @error('Vehicle_Model')
+                                        @error('Trailer_Model')
+                                        <div class="invalid-feedback d-flex">
+                                            {{ $message }}
+                                        </div>
+                                        @enderror
+                                </div>
+                                <label for="Trailer_Connected"
+                                    class="fw-bold text-black mt-4">{{__('Trailer Connected')}} <span
+                                    class="text-danger">*</span></label>
+                                </label>
+                                <div class="field-input">
+                                    <select class="form-control" aria-label="Trailer_Connected" id="Trailer_Connected"
+                                        name="Trailer_Connected">
+
+                                        <option style="background-image:url(img/Search.png);" value="" disabled selected>{{__('Select Vehicle Model')}}</option>
+
+                                        <option value="Colt Diesel Double (CDD) Bak" >Colt Diesel Double (CDD) Bak</option>
+                                        <option value="Colt Diesel Double (CDD) Los Bak" >Colt Diesel Double (CDD) Los Bak</option>
+                                        <option value="Colt Diesel Double (CDD) Long Box" >Colt Diesel Double (CDD) Long Box</option>
+                                        {{-- <select class="form-select " aria-label="select location"
+                                            id="inputLocations" name="locations" required>
+                                            <option selected>{{__('contact-form.selectLocation')}}</option>
+                                            @foreach ($locations as $location)
+                                            <option value="{{ $location->id }}">{{$location->nama}}</option>
+                                            @endforeach --}}
+                                        </select>
+                                        @error('Trailer_Connected')
                                         <div class="invalid-feedback d-flex">
                                             {{ $message }}
                                         </div>
@@ -386,10 +412,6 @@
             font-size: 1.10rem;
         }
     }
-
-    select#Vehicle_Model option[value=""]   {
-         background-image:url(img/Search.png);
-        }
 
 </style>
 

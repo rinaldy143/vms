@@ -330,7 +330,7 @@
                                     <select class="form-control" aria-label="Vehicle_Type" id="Vehicle_Type"
                                         name="Vehicle_Type">
 
-                                        <option value="" disabled>{{__('Select Vehicle Type')}}</option>
+                                        <option value="" disabled selected>{{__('Select Vehicle Type')}}</option>
 
                                         <option value="Cost Diesel Double (CDD)" >Cost Diesel Double (CDD)</option>
                                         <option value="Van" >Van</option>
@@ -356,7 +356,7 @@
                                     <select class="form-control" aria-label="Vehicle_Model" id="Vehicle_Model"
                                         name="Vehicle_Model">
 
-                                        <option style="background-image:url(img/Search.png);" value="" disabled>{{__('Select Vehicle Model')}}</option>
+                                        <option value="" disabled selected>{{__('Select Vehicle Model')}}</option>
 
                                         <option value="Colt Diesel Double (CDD) Bak" >Colt Diesel Double (CDD) Bak</option>
                                         <option value="Colt Diesel Double (CDD) Los Bak" >Colt Diesel Double (CDD) Los Bak</option>
@@ -426,10 +426,6 @@
             font-size: 1.10rem;
         }
     }
-
-    select#Vehicle_Model option[value=""]   {
-         background-image:url(img/Search.png);
-        }
 
 </style>
 
