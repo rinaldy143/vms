@@ -40,6 +40,9 @@ Route::get('/maintenance/maintenance', function() {
 Route::get('/vehicles', function() {
     return view('/pages/vehicle/vehicle1');
 });
+Route::get('/trailer', function() {
+    return view('/pages/vehicle/trailer');
+});
 Route::get('/setting', function() {
     return view('/pages/vehicle/vehicle-setting');
 });
