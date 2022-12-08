@@ -42,8 +42,8 @@
                                     class="form-control form-control-lg ps-15" placeholder="Search...">
                             </div>
                             <div class="d-flex justify-content-between align-items-center pt-8">
-                                <a href="#" class="btn btn-danger w-50">Vehicle </a>
-                                <a href="#" class="btn w-50"style="background-color: #fff">Trailer </a>
+                                <a href="/vehicles" class="btn btn-danger w-50">Vehicle </a>
+                                <a href="/trailer" class="btn w-50"style="background-color: #fff">Trailer </a>
                             </div>
                             <!--end::Notice-->
                             <!--begin::Items-->
@@ -151,16 +151,16 @@
                                 <hr class="solid">
                                 <div class="d-flex">
                                     <div class="col-lg-6 px-1">
-                                        <p class="pvehicle mb-2">Model Vehicle</p>
+                                        <p class="pvehicle mb-2 fs-7">Model Vehicle</p>
                                         <h4 class="bvehicle fw-bold pb-5">Grand Max</h4>
-                                        <p class="pvehicle mb-2">Scheduling Maintained</p>
+                                        <p class="pvehicle mb-2 fs-7">Scheduling Maintained</p>
                                         <h4 class="bvehicle fw-bold">20</h4>
 
                                     </div>
                                     <div class="col-lg-6 px-1">
-                                        <p class="pvehicle mb-2">Vehicle Type</p>
+                                        <p class="pvehicle mb-2 fs-7">Vehicle Type</p>
                                         <h4 class="bvehicle fw-bold pb-5">Van</h4>
-                                        <p class="pvehicle mb-2">Last Maintained</p>
+                                        <p class="pvehicle mb-2 fs-7">Last Maintained</p>
                                         <h4 class="bvehicle fw-bold">20 May 2022</h4>
                                     </div>
                                 </div>
@@ -330,7 +330,7 @@
                                     <select class="form-control" aria-label="Vehicle_Type" id="Vehicle_Type"
                                         name="Vehicle_Type">
 
-                                        <option value="" disabled>{{__('Select Vehicle Type')}}</option>
+                                        <option value="" disabled selected>{{__('Select Vehicle Type')}}</option>
 
                                         <option value="Cost Diesel Double (CDD)" >Cost Diesel Double (CDD)</option>
                                         <option value="Van" >Van</option>
@@ -356,7 +356,7 @@
                                     <select class="form-control" aria-label="Vehicle_Model" id="Vehicle_Model"
                                         name="Vehicle_Model">
 
-                                        <option style="background-image:url(img/Search.png);" value="" disabled>{{__('Select Vehicle Model')}}</option>
+                                        <option value="" disabled selected>{{__('Select Vehicle Model')}}</option>
 
                                         <option value="Colt Diesel Double (CDD) Bak" >Colt Diesel Double (CDD) Bak</option>
                                         <option value="Colt Diesel Double (CDD) Los Bak" >Colt Diesel Double (CDD) Los Bak</option>
@@ -426,10 +426,6 @@
             font-size: 1.10rem;
         }
     }
-
-    select#Vehicle_Model option[value=""]   {
-         background-image:url(img/Search.png);
-        }
 
 </style>
 

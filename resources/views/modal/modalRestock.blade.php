@@ -26,7 +26,7 @@
                                 <select class="form-control" aria-label="Sparepart" id="Sparepart"
                                     name="Sparepart">
 
-                                    <option value="" disabled>{{__('Search Sparepart or brand')}}</option>
+                                    <option value="" disabled selected>{{__('Search Sparepart or brand')}}</option>
 
                                     <option value="Oli" >Oli</option>
                                     <option value="Bellato" >Bellato</option>
