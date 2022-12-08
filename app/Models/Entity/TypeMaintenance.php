@@ -24,9 +24,6 @@ class TypeMaintenance extends AppModel
      */
     protected $fillable = [
         'maintenance_type',
-        'deleted_at',
-        'created_at',
-        'updated_at',
     ];
 
     /**

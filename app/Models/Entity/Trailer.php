@@ -30,9 +30,6 @@ class Trailer extends AppModel
         'last_maintenance',
         'model_trailer_id',
         'type_trailer_id',
-        'deleted_at',
-        'created_at',
-        'updated_at',
     ];
 
     /**

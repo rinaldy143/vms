@@ -29,9 +29,6 @@ class RequestMaintenance extends AppModel
         'vehicle_id',
         'trailer_id',
         'type_maintenance_id',
-        'deleted_at',
-        'created_at',
-        'updated_at',
     ];
 
     /**

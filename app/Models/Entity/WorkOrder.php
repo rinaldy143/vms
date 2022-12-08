@@ -29,9 +29,6 @@ class WorkOrder extends AppModel
         'rm_id',
         'user_id',
         'type_job_id',
-        'deleted_at',
-        'created_at',
-        'updated_at',
     ];
 
     /**

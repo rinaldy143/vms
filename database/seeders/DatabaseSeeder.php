@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\Table\ModelTrailerTable;
 use App\Models\Table\TypeRoleTable;
 use Illuminate\Database\Seeder;
 
@@ -20,10 +21,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $this->call(ModelTrailerSeeder::class);
         $this->call(UserTableSeeder::class);
         $this->call(NotificationSeeder::class);
-        $this->call(TypeJobSeeder::class);
         $this->call(SparepartSeeder::class);
+        $this->call(TypeJobSeeder::class);
         $this->call(TypeRoleSeeder::class);
+        $this->call(TypeTrailerSeeder::class);
     }
 }
