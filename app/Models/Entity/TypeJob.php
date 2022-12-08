@@ -24,9 +24,6 @@ class TypeJob extends AppModel
      */
     protected $fillable = [
         'job_type',
-        'deleted_at',
-        'created_at',
-        'updated_at',
     ];
 
     /**

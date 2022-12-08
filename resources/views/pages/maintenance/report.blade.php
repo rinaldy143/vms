@@ -25,7 +25,7 @@
         <a href="/maintenance/maintenance">
             <div class="subtitle-1 me-10">Maintenance</div>
         </a>
-        <a href="">
+        <a href="/maintenance/workorder">
             <div class="subtitle-1 me-10">Work Order</div>
         </a>
     </div>
@@ -120,7 +120,7 @@
             </table>
         </div>
     </div>
-    <div class="d-flex flex-row mt-10">
+    <div class="d-flex flex-row mt-10 mb-10">
         <div class="flex-column">
             <div class="card" style="width: 450px; height: 300px; margin-right: 40px">
                 <div class="card-body">

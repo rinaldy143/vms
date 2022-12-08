@@ -28,7 +28,10 @@ class SparepartService extends AppService implements AppServiceInterface
     public function create($data)
     {
         return SparepartTable::create([
+            'photo' => $data['photo'],
+            'brand' => $data['brand'],
             'name' => $data['name'],
+            'count' => $data['count']
         ]);
     }
 
@@ -36,7 +39,10 @@ class SparepartService extends AppService implements AppServiceInterface
     {
         $row = SparepartTable::findOrFail($id);
         $row->update([
+            'photo' => $data['photo'],
+            'brand' => $data['brand'],
             'name' => $data['name'],
+            'count' => $data['count']
         ]);
         return $row;
     }

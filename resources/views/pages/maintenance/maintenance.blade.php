@@ -25,7 +25,7 @@
         <a href="/maintenance/maintenance">
             <div class="subtitle-1 me-10">Maintenance</div>
         </a>
-        <a href="">
+        <a href="/maintenance/workorder">
             <div class="subtitle-1 me-10">Work Order</div>
         </a>
     </div>
@@ -36,48 +36,48 @@
             </div>
             <form action="#">
                 <div class="row">
-                    <div class="form-group mt-10 w-400px me-5">
+                    <div class="form-group mt-10 w-400px me-10">
                         <label for="role" class="subtitle-1">Role<span class="text-danger">*</span></label>
-                        <select name="" id="" class="form-select">
+                        <select name="" id="" class="form-select mt-2">
                             <option value="">Test</option>
                         </select>
                     </div>
                     <div class="form-group mt-10 w-400px">
                         <label for="role" class="subtitle-1">Maintenance Type<span class="text-danger">*</span></label>
-                        <select name="" id="" class="form-select">
+                        <select name="" id="" class="form-select mt-2">
                             <option value="">Test</option>
                         </select>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="form-group mt-4 w-400px me-5">
+                    <div class="form-group mt-4 w-400px me-10">
                         <label for="role" class="subtitle-1">Select Vehicle<span class="text-danger">*</span></label>
-                        <select name="" id="" class="form-select">
+                        <select name="" id="" class="form-select mt-2">
                             <option value="">Test</option>
                         </select>
                     </div>
                     <div class="form-group mt-4 w-400px">
                         <label for="role" class="subtitle-1">Date Maintenance<span class="text-danger">*</span></label>
-                        <select name="" id="" class="form-select">
+                        <select name="" id="" class="form-select mt-2">
                             <option value="">Test</option>
                         </select>
                     </div>
                 </div>
                 <div class="row mb-10">
-                    <div class="form-group mt-4 w-400px me-5">
+                    <div class="form-group mt-4 w-400px me-10">
                         <label for="role" class="subtitle-1">Report by</label>
-                        <select name="" id="" class="form-select">
+                        <select name="" id="" class="form-select mt-2">
                             <option value="">Test</option>
                         </select>
                     </div>
                     <div class="form-group mt-4 w-400px">
                         <label for="role" class="subtitle-1">Problem<span class="text-danger">*</span></label>
-                        <select name="" id="" class="form-select h-80px">
+                        <select name="" id="" class="form-select h-80px mt-2">
                             <option value="">Test</option>
                         </select>
                     </div>
                 </div>
-                <button class="btn btn-danger text-3 rounded-8 w-200px p-md-3 h-100">Create Maintenance</button>
+                <button class="btn btn-danger text-3 rounded-8 w-200px p-md-3 h-100 me-4">Create Maintenance</button>
                 <button class="btn border border-danger text-danger text-3 rounded-8 w-200px p-md-3 h-100">Cancel</button>
             </form>
         </div>

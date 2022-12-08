@@ -27,9 +27,6 @@ class Sparepart extends AppModel
         'brand',
         'name',
         'count',
-        'deleted_at',
-        'created_at',
-        'updated_at',
     ];
 
     /**
