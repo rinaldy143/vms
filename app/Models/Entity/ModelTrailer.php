@@ -24,9 +24,6 @@ class ModelTrailer extends AppModel
      */
     protected $fillable = [
         'trailer_model',
-        'deleted_at',
-        'created_at',
-        'updated_at',
     ];
 
     /**

@@ -26,9 +26,6 @@ class RequestSparepart extends AppModel
         'description',
         'wo_id',
         'sparepart_id',
-        'deleted_at',
-        'created_at',
-        'updated_at',
     ];
 
     /**

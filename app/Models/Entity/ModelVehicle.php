@@ -24,9 +24,6 @@ class ModelVehicle extends AppModel
      */
     protected $fillable = [
         'vehicle_model',
-        'deleted_at',
-        'created_at',
-        'updated_at',
     ];
 
     /**
