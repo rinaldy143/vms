@@ -26,6 +26,7 @@ class DatabaseSeeder extends Seeder
         $this->call(NotificationSeeder::class);
         $this->call(SparepartSeeder::class);
         $this->call(TypeJobSeeder::class);
+        $this->call(TypeMaintenanceSeeder::class);
         $this->call(TypeRoleSeeder::class);
         $this->call(TypeTrailerSeeder::class);
     }

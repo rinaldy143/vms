@@ -6,6 +6,7 @@ use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\Notification\NotificationController;
 use App\Http\Controllers\Sparepart\SparepartController;
 use App\Http\Controllers\TypeJob\TypeJobController;
+use App\Http\Controllers\TypeMaintenance\TypeMaintenanceController;
 use App\Http\Controllers\TypeRole\TypeRoleController;
 use App\Http\Controllers\TypeTrailer\TypeTrailerController;
 use Illuminate\Http\Request;
@@ -40,6 +41,11 @@ Route::group(['prefix' => 'v1'], function () {
     Route::post('/typejob', [TypeJobController::class, 'store']);
     Route::put('/typejob/{id}', [TypeJobController::class, 'update']);
     Route::delete('/typejob/{id}', [TypeJobController::class, 'destroy']);
+
+    Route::get('/typemaintenance', [TypeMaintenanceController::class, 'index']);
+    Route::post('/typemaintenance', [TypeMaintenanceController::class, 'store']);
+    Route::put('/typemaintenance/{id}', [TypeMaintenanceController::class, 'update']);
+    Route::delete('/typemaintenance/{id}', [TypeMaintenanceController::class, 'destroy']);
 
     Route::get('/typerole', [TypeRoleController::class, 'index']);
     Route::post('/typerole', [TypeRoleController::class, 'store']);

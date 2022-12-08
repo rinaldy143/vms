@@ -24,7 +24,7 @@ class StoreTypeMaintenanceRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string|max:255',
+            'maintenance_type' => 'required|string|max:255',
         ];
     }
 }
