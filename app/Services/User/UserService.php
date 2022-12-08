@@ -2,6 +2,7 @@
 
 namespace App\Services\User;
 
+use App\Models\Table\TypeRoleTable;
 use App\Models\Table\UserTable;
 use App\Services\AppService;
 use App\Services\AppServiceInterface;

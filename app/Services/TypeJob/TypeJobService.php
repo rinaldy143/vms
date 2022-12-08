@@ -28,7 +28,7 @@ class TypeJobService extends AppService implements AppServiceInterface
     public function create($data)
     {
         return TypeJobTable::create([
-            'name' => $data['name'],
+            'job_type' => $data['job_type'],
         ]);
     }
 
@@ -36,7 +36,7 @@ class TypeJobService extends AppService implements AppServiceInterface
     {
         $row = TypeJobTable::findOrFail($id);
         $row->update([
-            'name' => $data['name'],
+            'job_type' => $data['job_type'],
         ]);
         return $row;
     }
