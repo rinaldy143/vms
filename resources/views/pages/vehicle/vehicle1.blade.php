@@ -303,13 +303,13 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-md-12 mb-3 mb-lg-0 col-lg-12">
-                                <label for="Plate Number"
+                                <label for="plat_number"
                                     class="fw-bold text-black mt-4">{{__('Plate Number')}} <span
                                         class="text-danger">*</span></label>
                                 <div class="field-input">
-                                    <input type="text" id="Plate Number" name="Plate Number" class="form-control" required
-                                        placeholder="Ex. D 1234 ABC" maxlength="200" value={{old('Plate Number')}}>
-                                    @error('Plate Number')
+                                    <input type="text" id="plat_number" name="plat_number" class="form-control" required
+                                        placeholder="Ex. D 1234 ABC" maxlength="200" value={{old('plat_number')}}>
+                                    @error('plat_number')
                                     <div class="invalid-feedback d-flex">
                                         {{ $message }}
                                     </div>
@@ -322,49 +322,49 @@
                                     <span class="text-danger">{{ $message }}</span>
                                     @enderror --}}
                                 </div>
-                                <label for="Vehicle_Type"
+                                <label for="type_vehicle_id"
                                     class="fw-bold text-black mt-4">{{__('Vehicle Type')}} <span
                                     class="text-danger">*</span></label>
                                 </label>
                                 <div class="field-input">
-                                    <select class="form-control" aria-label="Vehicle_Type" id="Vehicle_Type"
-                                        name="Vehicle_Type" required>
+                                    <select class="form-control" aria-label="type_vehicle_id" id="type_vehicle_id"
+                                        name="type_vehicle_id" required>
                                         <option value="" disabled selected>{{__('Select Vehicle Type')}}</option>
                                         @foreach ($vehiclesT as $model)
 
-                                        <option value="{{$model->id}}" {{ old('locations')==$model->id ?
+                                        <option value="{{$model->id}}" {{ old('type_vehicle_id')==$model->id ?
                                             'selected' : '' }}>{{$model->vehicle_type}}</option>
                                         @endforeach
 
                                     </select>
                                 </div>
-                                <label for="Vehicle_Model"
+                                <label for="model_vehicle_id"
                                     class="fw-bold text-black mt-4">{{__('Vehicle Model')}} <span
                                     class="text-danger">*</span></label>
                                 </label>
                                 <div class="field-input">
-                                    <select class="form-control" aria-label="Vehicle_Model" id="Vehicle_Model"
-                                        name="Vehicle_Model" required>
+                                    <select class="form-control" aria-label="model_vehicle_id" id="model_vehicle_id"
+                                        name="model_vehicle_id" required>
 
                                         <option value="" disabled selected>{{__('Select Vehicle Model')}}</option>
                                         @foreach ($vehiclesM as $model)
 
-                                        <option value="{{$model->id}}" {{ old('locations')==$model->id ?
+                                        <option value="{{$model->id}}" {{ old('model_vehicle_id')==$model->id ?
                                             'selected' : '' }}>{{$model->vehicle_model}}</option>
                                         @endforeach
                                         </select>
-                                        @error('Vehicle_Model')
+                                        @error('model_vehicle_id')
                                         <div class="invalid-feedback d-flex">
                                             {{ $message }}
                                         </div>
                                         @enderror
                                 </div>
-                                <label for="date"
+                                <label for="monthly_maintenance"
                                     class="fw-bold text-black mt-4">{{__('Monthly Maintenance')}} <span
                                     class="text-danger">*</span></label>
                                 </label>
                                 <div class="input-group date border border-secondary  rounded" data-provide="datepicker">
-                                    <input type="text" id="date" class="datepicker form-control  border-0 rounded" required>
+                                    <input type="text" id="monthly_maintenance" name="monthly_maintenance" class="datepicker form-control  border-0 rounded" required>
                                     <div class="input-group-addon border-0" style="background-color: #fff">
                                         <span><img src="assets/media/icons/system-icon/outline/Calendar.svg" width="23px" alt=""></span>
                                     </div>
