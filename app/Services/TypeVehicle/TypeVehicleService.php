@@ -28,7 +28,7 @@ class TypeVehicleService extends AppService implements AppServiceInterface
     public function create($data)
     {
         return TypeVehicleTable::create([
-            'name' => $data['name'],
+            'vehicle_type' => $data['vehicle_type'],
         ]);
     }
 
@@ -36,7 +36,7 @@ class TypeVehicleService extends AppService implements AppServiceInterface
     {
         $row = TypeVehicleTable::findOrFail($id);
         $row->update([
-            'name' => $data['name'],
+            'vehicle_type' => $data['vehicle_type'],
         ]);
         return $row;
     }

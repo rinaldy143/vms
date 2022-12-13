@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\DB;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,11 +43,19 @@ Route::get('/maintenance/workorder', function() {
 });
 
 Route::get('/vehicles', function() {
-    return view('/pages/vehicle/vehicle1');
+    $vehiclesM = DB::table('model_vehicles')->get();
+    $vehiclesT = DB::table('type_vehicles')->get();
+    return view('/pages/vehicle/vehicle1', ['vehiclesM' => $vehiclesM, 'vehiclesT' => $vehiclesT]);
 });
+
+Route::post('/vehicles',  [App\Http\Controllers\Vehicle\VehicleController::class, 'store'])->name('vehicles.store');
+
 Route::get('/trailer', function() {
     return view('/pages/vehicle/trailer');
 });
+
+Route::post('/trailer',  [App\Http\Controllers\Trailer\TrailerController::class, 'store'])->name('trailer.store');
+
 Route::get('/setting', function() {
     return view('/pages/vehicle/vehicle-setting');
 });
