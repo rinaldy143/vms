@@ -6,6 +6,7 @@ use App\Http\Controllers\ModelVehicle\ModelVehicleController;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\Notification\NotificationController;
 use App\Http\Controllers\Sparepart\SparepartController;
+use App\Http\Controllers\Trailer\TrailerController;
 use App\Http\Controllers\TypeJob\TypeJobController;
 use App\Http\Controllers\TypeMaintenance\TypeMaintenanceController;
 use App\Http\Controllers\TypeRole\TypeRoleController;
@@ -49,6 +50,11 @@ Route::group(['prefix' => 'v1'], function () {
     Route::post('/vehicle', [VehicleController::class, 'store']);
     Route::put('/vehicle/{id}', [VehicleController::class, 'update']);
     Route::delete('/vehicle/{id}', [VehicleController::class, 'destroy']);
+
+    Route::get('/trailer', [TrailerController::class, 'index']);
+    Route::post('/trailer', [TrailerController::class, 'store']);
+    Route::put('/trailer/{id}', [TrailerController::class, 'update']);
+    Route::delete('/trailer/{id}', [TrailerController::class, 'destroy']);
 
     Route::get('/typejob', [TypeJobController::class, 'index']);
     Route::post('/typejob', [TypeJobController::class, 'store']);

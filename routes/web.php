@@ -51,7 +51,9 @@ Route::get('/vehicles', function() {
 Route::post('/vehicles',  [App\Http\Controllers\Vehicle\VehicleController::class, 'store'])->name('vehicles.store');
 
 Route::get('/trailer', function() {
-    return view('/pages/vehicle/trailer');
+    $trailerM = DB::table('model_trailers')->get();
+    $trailerT = DB::table('type_trailers')->get();
+    return view('/pages/vehicle/trailer', ['trailerM' => $trailerM, 'trailerT' => $trailerT]);
 });
 
 Route::post('/trailer',  [App\Http\Controllers\Trailer\TrailerController::class, 'store'])->name('trailer.store');

@@ -25,12 +25,21 @@ class Trailer extends AppModel
     protected $fillable = [
         'code_trailer',
         'vehicle_connected',
-        'photo',
+        // 'photo',
         'monthly_maintenance',
-        'last_maintenance',
+        // 'last_maintenance',
         'model_trailer_id',
         'type_trailer_id',
     ];
+
+    public function ModelTrailer()
+    {
+        return $this->belongsTo(ModelTrailer::class, 'model_trailer_id');
+    }
+    public function TypeTrailer()
+    {
+        return $this->belongsTo(TypeTrailer::class, 'type_trailer_id');
+    }
 
     /**
      * The attributes that should be hidden for arrays.
