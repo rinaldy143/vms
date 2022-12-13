@@ -25,18 +25,31 @@ class VehicleService extends AppService implements AppServiceInterface
         return VehicleTable::findOrFail($id);
     }
 
+    // public function index()
+    // {
+    //     return view("pages.vehicle.vehicle1");
+    // }
+
+
     public function create($data)
     {
         return VehicleTable::create([
-            'name' => $data['name'],
+            'plat_number' => $data['plat_number'],
+            'monthly_maintenance' => $data['monthly_maintenance'],
+            'model_vehicle_id' => $data['model_vehicle_id'],
+            'type_vehicle_id' => $data['type_vehicle_id'],
         ]);
+        dd($data);
     }
 
     public function update($id, $data)
     {
         $row = VehicleTable::findOrFail($id);
         $row->update([
-            'name' => $data['name'],
+            'plat_number' => $data['plat_number'],
+            'monthly_maintenance' => $data['monthly_maintenance'],
+            'model_vehicle_id' => $data['model_vehicle_id'],
+            'type_vehicle_id' => $data['type_vehicle_id'],
         ]);
         return $row;
     }
