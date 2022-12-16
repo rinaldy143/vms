@@ -1,5 +1,6 @@
 <?php
-
+use App\Models\Entity\model_vehicles;
+use App\Models\Entity\ModelVehicle;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
 
@@ -42,13 +43,16 @@ Route::get('/maintenance/workorder', function() {
     return view('/pages/maintenance/workorder');
 });
 
-Route::get('/vehicles', function() {
-    $vehiclesM = DB::table('model_vehicles')->get();
-    $vehiclesT = DB::table('type_vehicles')->get();
-    return view('/pages/vehicle/vehicle1', ['vehiclesM' => $vehiclesM, 'vehiclesT' => $vehiclesT]);
-});
+// Route::get('/vehicles', function() {
+//     $model_vehicle = ModelVehicle::all();
+//     $vehiclesT = DB::table('type_vehicles')->get();
+//     $vehicles = DB::table('vehicles')->get();
+//     return view('/pages/vehicle/vehicle1', ['model_vehicle' => $model_vehicle, 'vehiclesT' => $vehiclesT, 'vehicles' => $vehicles]);
+// });
 
-Route::post('/vehicles',  [App\Http\Controllers\Vehicle\VehicleController::class, 'store'])->name('vehicles.store');
+// Route::post('/vehicles',  [App\Http\Controllers\Vehicle\VehicleController::class, 'store'])->name('vehicles.store');
+    Route::resource('vehicles', App\Http\Controllers\Vehicle\VehicleController::class);
+
 
 Route::get('/trailer', function() {
     $trailerM = DB::table('model_trailers')->get();
