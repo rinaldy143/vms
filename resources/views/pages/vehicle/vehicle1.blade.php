@@ -54,58 +54,10 @@
                                     <div class="d-flex w-100">
 
                                         <div class="d-flex flex-column w-100">
-                                            <a href="#" class="fs-5 text-dark fw-bolder text-hover-primary border p-3 " style="border-radius: 8px; background-color:#fff;">D 1123 ABC</a>
-
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <div class="d-flex flex-stack pt-3 ">
-                                    <div class="d-flex w-100">
-
-                                        <div class="d-flex flex-column w-100">
-                                            <a href="#" class="fs-5 text-dark fw-bolder text-hover-primary border p-3 " style="border-radius: 8px; background-color:#fff;">D 1123 ABC</a>
-
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <div class="d-flex flex-stack pt-3 ">
-                                    <div class="d-flex w-100">
-
-                                        <div class="d-flex flex-column w-100">
-                                            <a href="#" class="fs-5 text-dark fw-bolder text-hover-primary border p-3 " style="border-radius: 8px; background-color:#fff;">D 1123 ABC</a>
-
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <div class="d-flex flex-stack pt-3 ">
-                                    <div class="d-flex w-100">
-
-                                        <div class="d-flex flex-column w-100">
-                                            <a href="#" class="fs-5 text-dark fw-bolder text-hover-primary border p-3 " style="border-radius: 8px; background-color:#fff;">D 1123 ABC</a>
-
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <div class="d-flex flex-stack pt-3 ">
-                                    <div class="d-flex w-100">
-
-                                        <div class="d-flex flex-column w-100">
-                                            <a href="#" class="fs-5 text-dark fw-bolder text-hover-primary border p-3 " style="border-radius: 8px; background-color:#fff;">D 1123 ABC</a>
-
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <div class="d-flex flex-stack pt-3 ">
-                                    <div class="d-flex w-100">
-
-                                        <div class="d-flex flex-column w-100">
-                                            <a href="#" class="fs-5 text-dark fw-bolder text-hover-primary border p-3 " style="border-radius: 8px; background-color:#fff;">D 1123 ABC</a>
-
+                                        @foreach ($vehicles as $key=>$model)
+                                            <a href="javascript:void(0)" class="fs-5 text-danger btn-address fw-bolder text-hover-danger border p-3 my-1 {{$key==0?'text-danger':'text-dark'}}" style="border-radius: 8px; background-color:#fff;"
+                                            onclick="changeAddress('{{$model->plat_number}}','{{$model->monthly_maintenance}}','{{$model->model_vehicle_id}}','{{$model->type_vehicle_id}}')">{{$model->plat_number}}</a>
+                                        @endforeach
                                         </div>
                                     </div>
 
@@ -147,26 +99,28 @@
                         <div class="d-flex justify-content-between">
                             <div class="w-100 mt-10">
                                 <p class="pvehicle">Plate Number</p>
-                                <h3 class="fw-bolder heading-3 fs-1">D 1234 ABC</h3>
+                                <h3 class="fw-bolder heading-3 fs-1" id="vehicle-plat_number"></h3>
                                 <hr class="solid">
                                 <div class="d-flex">
                                     <div class="col-lg-6 px-1">
-                                        <p class="pvehicle mb-2 fs-7">Model Vehicle</p>
-                                        <h4 class="bvehicle fw-bold pb-5">Grand Max</h4>
+                                        <p class="pvehicle mb-2 fs-7" >Model Vehicle</p>
+                                        <h4 class="bvehicle fw-bold pb-5" id="vehicle-model_vehicle_id">Grand Max</h4>
                                         <p class="pvehicle mb-2 fs-7">Scheduling Maintained</p>
-                                        <h4 class="bvehicle fw-bold">20</h4>
+                                        <h4 class="bvehicle fw-bold" id="vehicle-monthly_maintenance"></h4>
 
                                     </div>
                                     <div class="col-lg-6 px-1">
                                         <p class="pvehicle mb-2 fs-7">Vehicle Type</p>
-                                        <h4 class="bvehicle fw-bold pb-5">Van</h4>
+                                        <h4 class="bvehicle fw-bold pb-5" id="vehicle-type_vehicle_id">Van</h4>
                                         <p class="pvehicle mb-2 fs-7">Last Maintained</p>
                                         <h4 class="bvehicle fw-bold">20 May 2022</h4>
                                     </div>
                                 </div>
                             </div>
                             <div>
-                                <img src="/assets/media/icons/system-icon/outline/Edit Square.svg" alt="" style="float: right;">
+                                <a href="#modaleditvehicle" data-toggle="modal" class="btn border-0 p-0" style="border-radius: 8px;float: right">
+                                    <img src="/assets/media/icons/system-icon/outline/Edit Square.svg" alt="" style="float: right;">
+                                </a>
                                 <div class="img-fluid align-item-center mx-auto d-block">
                                     <img src="/img/Mask group.svg" alt="">
                                     <p class="text-center">Trailer Connected</p>
@@ -276,124 +230,13 @@
 
             </div>
 </div>
-
         <!--begin::Layout-->
+<div>
+    @include('modal.modalvehicle')
+</div>
+<div>
+    {{-- @include('modal.modaleditvehicle') --}}
 
-<div class="modal fade" id="modalVehicle" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-    aria-hidden="true">
-    {{-- <div class="modal-dialog modal-dialog-centered modal-md-contact" role="document"> --}}
-    <div class="modal-dialog modal-dialog-centered " role="document">
-        <form action="{{route('vehicles.store')}}" method="post"
-            enctype="multipart/form-data">
-            @csrf
-            <div class="modal-content m-lg-10 p-3 p-3 ">
-                <div class="modal-header">
-                    <h4 class="text-color-dark font-weight-semibold text-transform-none text-5 m-0"
-                        id="exampleModalLongTitle">Add Vehicle</h4>
-                    <button type="button" class="close-share border-0" style="background-color: transparent" data-dismiss="modal" aria-label="Close">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                            class="bi bi-x-lg" viewBox="0 0 16 16">
-                            <path
-                                d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" />
-                        </svg>
-                    </button>
-
-                </div>
-                <div class="modal-body pb-0">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-md-12 mb-3 mb-lg-0 col-lg-12">
-                                <label for="plat_number"
-                                    class="fw-bold text-black mt-4">{{__('Plate Number')}} <span
-                                        class="text-danger">*</span></label>
-                                <div class="field-input">
-                                    <input type="text" id="plat_number" name="plat_number" class="form-control" required
-                                        placeholder="Ex. D 1234 ABC" maxlength="200" value={{old('plat_number')}}>
-                                    @error('plat_number')
-                                    <div class="invalid-feedback d-flex">
-                                        {{ $message }}
-                                    </div>
-                                    @enderror
-                                    {{-- <label for="inputName"
-                                        class="text-color-light">{{__('contact-form.name')}}</label>
-                                    <input type="text" class="form-control" id="inputName"
-                                        placeholder="Ex. Jonathan" name="name"> --}}
-                                    {{-- @error('name')
-                                    <span class="text-danger">{{ $message }}</span>
-                                    @enderror --}}
-                                </div>
-                                <label for="type_vehicle_id"
-                                    class="fw-bold text-black mt-4">{{__('Vehicle Type')}} <span
-                                    class="text-danger">*</span></label>
-                                </label>
-                                <div class="field-input">
-                                    <select class="form-control" aria-label="type_vehicle_id" id="type_vehicle_id"
-                                        name="type_vehicle_id" required>
-                                        <option value="" disabled selected>{{__('Select Vehicle Type')}}</option>
-                                        @foreach ($vehiclesT as $model)
-
-                                        <option value="{{$model->id}}" {{ old('type_vehicle_id')==$model->id ?
-                                            'selected' : '' }}>{{$model->vehicle_type}}</option>
-                                        @endforeach
-
-                                    </select>
-                                </div>
-                                <label for="model_vehicle_id"
-                                    class="fw-bold text-black mt-4">{{__('Vehicle Model')}} <span
-                                    class="text-danger">*</span></label>
-                                </label>
-                                <div class="field-input">
-                                    <select class="form-control" aria-label="model_vehicle_id" id="model_vehicle_id"
-                                        name="model_vehicle_id" required>
-
-                                        <option value="" disabled selected>{{__('Select Vehicle Model')}}</option>
-                                        @foreach ($vehiclesM as $model)
-
-                                        <option value="{{$model->id}}" {{ old('model_vehicle_id')==$model->id ?
-                                            'selected' : '' }}>{{$model->vehicle_model}}</option>
-                                        @endforeach
-                                        </select>
-                                        @error('model_vehicle_id')
-                                        <div class="invalid-feedback d-flex">
-                                            {{ $message }}
-                                        </div>
-                                        @enderror
-                                </div>
-                                <label for="monthly_maintenance"
-                                    class="fw-bold text-black mt-4">{{__('Monthly Maintenance')}} <span
-                                    class="text-danger">*</span></label>
-                                </label>
-                                <div class="input-group date border border-secondary  rounded" data-provide="datepicker">
-                                    <input type="text" id="monthly_maintenance" name="monthly_maintenance" class="datepicker form-control  border-0 rounded" required>
-                                    <div class="input-group-addon border-0" style="background-color: #fff">
-                                        <span><img src="assets/media/icons/system-icon/outline/Calendar.svg" width="23px" alt=""></span>
-                                    </div>
-                                </div>
-
-                        {{-- <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
-                        </div> --}}
-                    </div>
-                </div>
-                <div class="modal-footer border-0 pt-10" style="flex-wrap: nowrap;">
-                    <div class="col-md-6 text-center">
-                        <input class="btn shadow btn-danger text-3 rounded-8 w-100 p-md-3 h-100" type="submit" value="Maintenance">
-                    </div>
-                    <div class="col-md-6 text-center">
-                        <button type="reset" class="btn shadow border border-danger text-danger text-3 rounded-8 w-100 p-md-3 h-100 close-share" data-dismiss="modal"
-                        aria-label="Close">Cancel</button>
-                    </div>
-
-                </div>
-        </form>
-
-
-        {{-- <p class="text-center text-1 px-3">{{__('whitepapers.desc')}} <a
-                href="#">{{__('whitepapers.span1')}}</a>
-        </p> --}}
-        {{-- /upload/whitepaper/{{$value->upload_file_name}} --}}
-    </div>
 </div>
 <style>
         .pvehicle{
@@ -421,7 +264,9 @@
 
 
 <script>
-      $('.date').datepicker({
+
+
+    $('.date').datepicker({
     format: "mm",
     startView: "months",
     minViewMode: "months",
@@ -429,6 +274,25 @@
     changeMonth: true,
     // todayHighlight: true,
   });
+
+  let vehicles = {!!$vehicles!!};
+    changeAddress(vehicles[0].plat_number,vehicles[0].monthly_maintenance,vehicles[0].model_vehicle_id,vehicles[0].type_vehicle_id);
+
+    function changeAddress(plat_number, monthly_maintenance, model_vehicle_id, type_vehicle_id){
+        $('#vehicle-plat_number').html(plat_number);
+        $('#vehicle-model_vehicle_id').html(model_vehicle_id);
+        $('#vehicle-monthly_maintenance').html(monthly_maintenance);
+        $('#vehicle-type_vehicle_id').html(type_vehicle_id);
+
+    }
+
+    $('.btn-address').on('click', function(){
+        $('.btn-address').removeClass('text-danger');
+        $('.btn-address').addClass('text-dark');
+        $(this).removeClass('text-dark');
+        $(this).addClass('text-danger');
+    });
+    changeAddress(vehicles[0].plat_number,vehicles[0].monthly_maintenance,vehicles[0].model_vehicle_id,vehicles[0].type_vehicle_id);
 
 </script>
 

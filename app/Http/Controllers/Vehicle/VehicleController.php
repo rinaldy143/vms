@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Vehicle;
 use App\Http\Controllers\ApiController;
 use App\Http\Requests\Vehicle\StoreVehicleRequest;
 use App\Http\Requests\Vehicle\UpdateVehicleRequest;
+use App\Models\Entity\ModelVehicle;
+use App\Models\Entity\TypeVehicle;
+use App\Models\Entity\Vehicle;
 use App\Services\Vehicle\VehicleService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -31,7 +34,13 @@ class VehicleController extends ApiController
     public function index(Request $request)
     {
         $data = $this->service->dataTable($request);
-        return $this->sendSuccess($data, null, 200);
+        $vehicles = Vehicle::all();
+        $vehiclesT = TypeVehicle::all();
+        $model_vehicle = ModelVehicle::all();
+
+
+        return view('pages.vehicle.vehicle1', compact('vehicles', 'vehiclesT', 'model_vehicle'));
+        // return $this->sendSuccess($data, null, 200);
     }
 
     /**
