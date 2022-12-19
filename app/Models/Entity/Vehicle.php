@@ -6,6 +6,7 @@ use App\Models\AppModel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+
 class Vehicle extends AppModel
 {
     use HasFactory, SoftDeletes;
@@ -32,6 +33,15 @@ class Vehicle extends AppModel
         'model_vehicle_id',
         'type_vehicle_id',
     ];
+
+    public function ModelVehicle()
+    {
+        return $this->belongsTo(ModelVehicle::class, 'model_vehicle_id');
+    }
+    public function TypeVehicle()
+    {
+        return $this->belongsTo(TypeVehicle::class, 'type_vehicle_id');
+    }
 
     /**
      * The attributes that should be hidden for arrays.
