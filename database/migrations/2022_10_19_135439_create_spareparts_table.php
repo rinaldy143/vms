@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('spareparts', function (Blueprint $table) {
             $table->uuid('id')->primary();
+            $table->string('id_sparepart');
             $table->string('photo');
             $table->string('brand');
             $table->string('name');

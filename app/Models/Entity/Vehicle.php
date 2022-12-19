@@ -25,22 +25,13 @@ class Vehicle extends AppModel
     protected $fillable = [
         'plat_number',
         // 'trailer_connected',
-        // 'photo',
+        'photo',
         'monthly_maintenance',
         // 'last_maintenance',
         // 'id_fms',
         'model_vehicle_id',
         'type_vehicle_id',
     ];
-
-    public function ModelVehicle()
-    {
-        return $this->belongsTo(ModelVehicle::class, 'model_vehicle_id');
-    }
-    public function TypeVehicle()
-    {
-        return $this->belongsTo(TypeVehicle::class, 'type_vehicle_id');
-    }
 
     /**
      * The attributes that should be hidden for arrays.
