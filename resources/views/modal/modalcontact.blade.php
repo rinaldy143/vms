@@ -1,7 +1,7 @@
 <div class="modal fade" id="modalContact" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     {{-- <div class="modal-dialog modal-dialog-centered modal-md-contact" role="document"> --}}
     <div class="modal-dialog modal-lg" role="document">
-        <form action="#" method="post"
+        <form action="{{route('spareparts.store')}}" method="post"
             enctype="multipart/form-data">
             @csrf
             <div class="modal-content m-lg-10 p-3 p-3">
@@ -40,13 +40,13 @@
                                     <span class="text-danger">{{ $message }}</span>
                                     @enderror --}}
                                 </div>
-                                <label for="Name_Sparepart"
+                                <label for="name"
                                     class="fw-bold text-black mt-4">Name Sparepart <span
                                     class="text-danger">*</span></label>
                                 <div class="field-input py-5">
-                                    <input type="text" id="Name_Sparepart" name="Name_Sparepart" class="form-control"
-                                        placeholder="Name Sparepart" maxlength="200" value={{old('Name_Sparepart')}}>
-                                    @error('Name_Sparepart')
+                                    <input type="text" id="name" name="name" class="form-control"
+                                        placeholder="Name Sparepart" maxlength="200" value={{old('name')}}>
+                                    @error('name')
                                     <div class="invalid-feedback d-flex">
                                         {{ $message }}
                                     </div>
@@ -56,7 +56,7 @@
                                 <div class="form-group d-flex align-items-center py-5">
                                     <div>
                                         <p class="fw-bold fs-3 text-black">Upload Photo</p>
-                                        <label for="image" id="labelImg"
+                                        <label for="photo" id="labelImg"
                                         class="font-weight-bold text-black m-0 border p-5" style="background-image: url(/assets/media/icons/system-icon/outline/Camera.svg);  background-repeat: no-repeat;
                                         background-size: cover;
                                         width: 100px;
@@ -69,7 +69,7 @@
 
                                         <img class="img-preview img-fluid mb-3 col-sm-5 d-block w-75" src="" alt="">
                                         <input type="file" src="/assets/media/icons/system-icon/outline/Edit Square.svg" class="form-control-file"
-                                        id="image" name="image" style="display: none" multiple onchange="previewImage()" onclick="document.getElementById('labelImg').style.opacity = 0">
+                                        id="photo" name="photo" style="display: none" multiple onchange="previewImage('')" onclick="document.getElementById('labelImg').style.opacity = 0">
                                     </div>
                                      <div class="h-50">
                                         <div class="fw-bolder fs-3" id="list_file"></div>
@@ -84,13 +84,13 @@
                               </div>
                             </div>
                             <div class="sparepart2 col-md-6 mb-3 mb-lg-0 col-lg-6">
-                                <label for="Brand"
+                                <label for="brand"
                                     class="fw-bold text-black mt-4">Brand
                                     <span class="text-danger">*</span></label>
                                 <div class="field-input py-5">
-                                    <input type="text" id="Brand" name="Brand" class="form-control"
-                                        placeholder="Your Brand" maxlength="200" value={{old('Brand')}}>
-                                    @error('Brand')
+                                    <input type="text" id="brand" name="brand" class="form-control"
+                                        placeholder="Your Brand" maxlength="200" value={{old('brand')}}>
+                                    @error('brand')
                                     <div class="invalid-feedback d-flex">
                                         {{ $message }}
                                     </div>
