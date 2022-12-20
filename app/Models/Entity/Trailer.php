@@ -32,6 +32,15 @@ class Trailer extends AppModel
         'type_trailer_id',
     ];
 
+    public function ModelTrailer()
+    {
+        return $this->belongsTo(ModelTrailer::class, 'model_trailer_id');
+    }
+    public function TypeTrailer()
+    {
+        return $this->belongsTo(TypeTrailer::class, 'type_trailer_id');
+    }
+
     /**
      * The attributes that should be hidden for arrays.
      *

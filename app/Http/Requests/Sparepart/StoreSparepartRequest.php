@@ -24,7 +24,6 @@ class StoreSparepartRequest extends FormRequest
     public function rules()
     {
         return [
-            'id_sparepart' => 'required|string|max:255',
             'photo' => 'required|string|max:255',
             'brand' => 'required|string|max:255',
             'name' => 'required|string|max:255',
