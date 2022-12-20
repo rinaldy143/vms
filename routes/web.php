@@ -1,6 +1,7 @@
 <?php
 use App\Models\Entity\model_vehicles;
 use App\Models\Entity\ModelVehicle;
+use App\Models\Entity\Trailer;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
 
@@ -57,7 +58,8 @@ Route::get('/maintenance/workorder', function() {
 Route::get('/trailer', function() {
     $trailerM = DB::table('model_trailers')->get();
     $trailerT = DB::table('type_trailers')->get();
-    return view('/pages/vehicle/trailer', ['trailerM' => $trailerM, 'trailerT' => $trailerT]);
+    $trailers = Trailer::all();
+    return view('/pages/vehicle/trailer', ['trailerM' => $trailerM, 'trailerT' => $trailerT, 'trailers' => $trailers]);
 });
 
 Route::post('/trailer',  [App\Http\Controllers\Trailer\TrailerController::class, 'store'])->name('trailer.store');
