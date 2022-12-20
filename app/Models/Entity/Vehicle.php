@@ -6,6 +6,7 @@ use App\Models\AppModel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+
 class Vehicle extends AppModel
 {
     use HasFactory, SoftDeletes;
