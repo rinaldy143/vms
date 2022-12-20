@@ -54,18 +54,10 @@
                                     <div class="d-flex w-100">
 
                                         <div class="d-flex flex-column w-100">
-                                            <a href="#" class="fs-5 text-dark fw-bolder text-hover-primary border p-3 " style="border-radius: 8px; background-color:#fff;">T-01</a>
-
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <div class="d-flex flex-stack pt-3 ">
-                                    <div class="d-flex w-100">
-
-                                        <div class="d-flex flex-column w-100">
-                                            <a href="#" class="fs-5 text-dark fw-bolder text-hover-primary border p-3 " style="border-radius: 8px; background-color:#fff;">T-02</a>
-
+                                            @foreach ($trailers as $key=>$model)
+                                            <a href="javascript:void(0)" class="fs-5 text-danger btn-address fw-bolder text-hover-danger border p-3 my-1 {{$key==0?'text-danger':'text-dark'}}" style="border-radius: 8px; background-color:#fff;"
+                                            onclick="changeAddress('{{$model->code_trailer}}','{{$model->monthly_maintenance}}','{{$model->ModelTrailer->trailer_model}}','{{$model->TypeTrailer->trailer_type}}', '{{$model->vehicle_connected}}')">{{$model->code_trailer}}</a>
+                                        @endforeach
                                         </div>
                                     </div>
 
@@ -107,19 +99,19 @@
                         <div class="d-flex justify-content-between">
                             <div class="w-100 mt-10">
                                 <p class="pvehicle">Code Trailer</p>
-                                <h3 class="fw-bolder heading-3 fs-1">D 1234 ABC</h3>
+                                <h3 class="fw-bolder heading-3 fs-1" id="vehicle-code_trailer">D 1234 ABC</h3>
                                 <hr class="solid">
                                 <div class="d-flex">
                                     <div class="col-lg-6 px-1">
                                         <p class="pvehicle mb-2 fs-7">Model Trailer</p>
-                                        <h4 class="bvehicle fw-bold pb-5">Grand Max</h4>
+                                        <h4 class="bvehicle fw-bold pb-5" id="vehicle-model_trailer_id">Grand Max</h4>
                                         <p class="pvehicle mb-2 fs-7">Scheduling Maintained</p>
-                                        <h4 class="bvehicle fw-bold">20</h4>
+                                        <h4 class="bvehicle fw-bold" id="vehicle-monthly_maintenance">20</h4>
 
                                     </div>
                                     <div class="col-lg-6 px-1">
                                         <p class="pvehicle mb-2 fs-7">Trailer Type</p>
-                                        <h4 class="bvehicle fw-bold pb-5">Van</h4>
+                                        <h4 class="bvehicle fw-bold pb-5" id="vehicle-type_trailer_id">Van</h4>
                                         <p class="pvehicle mb-2 fs-7">Last Maintained</p>
                                         <h4 class="bvehicle fw-bold">20 May 2022</h4>
                                     </div>
@@ -130,7 +122,7 @@
                                 <div class="img-fluid align-item-center mx-auto d-block">
                                     <img src="/img/Trailer.svg" alt="">
                                     <p class="text-center">Trailer Connected</p>
-                                    <h3 class="text-primary text-center fs-4">T-01, T-02</h3>
+                                    <h3 class="text-primary text-center fs-6" id="vehicle_CONN">T-01, T-02</h3>
                                 </div>
                             </div>
 
@@ -442,6 +434,25 @@
     // todayHighlight: true,
   });
 
+  let trailers = {!!$trailers!!};
+    changeAddress(trailers[0].code_trailer,trailers[0].monthly_maintenance,trailers[0].trailer_model,trailers[0].trailer_type, trailers[0].vehicle_connected);
+
+    function changeAddress(code_trailer, monthly_maintenance, trailer_model, trailer_type, vehicle_connected){
+        $('#vehicle-code_trailer').html(code_trailer);
+        $('#vehicle-model_trailer_id').html(trailer_model);
+        $('#vehicle-monthly_maintenance').html(monthly_maintenance);
+        $('#vehicle-type_trailer_id').html(trailer_type);
+        $('#vehicle_CONN').html(vehicle_connected);
+
+    }
+
+    $('.btn-address').on('click', function(){
+        $('.btn-address').removeClass('text-danger');
+        $('.btn-address').addClass('text-dark');
+        $(this).removeClass('text-dark');
+        $(this).addClass('text-danger');
+    });
+    changeAddress(trailers[0].code_trailer,trailers[0].monthly_maintenance,trailers[0].trailer_model,trailers[0].trailer_type, trailers[0].vehicle_connected);
 </script>
 
 @endsection
