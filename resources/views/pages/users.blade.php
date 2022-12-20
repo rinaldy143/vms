@@ -267,7 +267,7 @@
     aria-hidden="true">
     {{-- <div class="modal-dialog modal-dialog-centered modal-md-contact" role="document"> --}}
     <div class="modal-dialog modal-dialog-centered " role="document">
-        <form action="{{route('users.store')}}" method="post"
+        <form action="#" method="post"
             enctype="multipart/form-data">
             @csrf
             <div class="modal-content m-lg-10 p-3 p-3 ">
@@ -291,9 +291,9 @@
                                     class="fw-bold text-black mt-4">{{__('Name')}} <span
                                         class="text-danger">*</span></label>
                                 <div class="field-input py-5">
-                                    <input type="text" id="name" name="name" class="form-control"
-                                        placeholder="Your Name" maxlength="200" value={{old('name')}}>
-                                    @error('name')
+                                    <input type="text" id="Name" name="Name" class="form-control"
+                                        placeholder="Your Name" maxlength="200" value={{old('Name')}}>
+                                    @error('Name')
                                     <div class="invalid-feedback d-flex">
                                         {{ $message }}
                                     </div>
@@ -308,7 +308,7 @@
                                 </div>
 
                                 <label for="email"
-                                    class="fw-bold text-black mt-4">Email <span
+                                    class="fw-bold text-black mt-4">email <span
                                     class="text-danger">*</span></label>
                                 <div class="field-input py-5">
                                     <input type="email" id="email" name="email" class="form-control"

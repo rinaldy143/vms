@@ -62,7 +62,7 @@
                                     class="text-danger">*</span></label>
                                 </label>
                                 <div class="field-input">
-                                    <select class="form-control" aria-label="ModelVehicle" id="ModelVehicle"
+                                    <select class="form-control" aria-label="ModelVehicle" id="model_vehicle_id"
                                         name="model_vehicle_id" required>
 
                                         <option value="" disabled selected>{{__('Select Vehicle Model')}}</option>
@@ -93,11 +93,8 @@
                                         <span><img src="assets/media/icons/system-icon/outline/Calendar.svg" width="23px" alt=""></span>
                                     </div>
                                 </div>
-
-                        {{-- <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
-                        </div> --}}
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer border-0 pt-10" style="flex-wrap: nowrap;">

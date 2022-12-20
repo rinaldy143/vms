@@ -56,8 +56,9 @@
                                         <div class="d-flex flex-column w-100">
                                         @foreach ($vehicles as $key=>$model)
                                             <a href="javascript:void(0)" class="fs-5 text-danger btn-address fw-bolder text-hover-danger border p-3 my-1 {{$key==0?'text-danger':'text-dark'}}" style="border-radius: 8px; background-color:#fff;"
-                                            onclick="changeAddress('{{$model->plat_number}}','{{$model->monthly_maintenance}}','{{$model->model_vehicle_id}}','{{$model->type_vehicle_id}}')">{{$model->plat_number}}</a>
+                                            onclick="changeAddress('{{$model->plat_number}}','{{$model->monthly_maintenance}}','{{$model->ModelVehicle->vehicle_model}}','{{$model->TypeVehicle->vehicle_type}}')">{{$model->plat_number}}</a>
                                         @endforeach
+
                                         </div>
                                     </div>
 
@@ -235,7 +236,7 @@
     @include('modal.modalvehicle')
 </div>
 <div>
-    {{-- @include('modal.modaleditvehicle') --}}
+    @include('modal.modaleditvehicle')
 
 </div>
 <style>
@@ -276,11 +277,11 @@
   });
 
   let vehicles = {!!$vehicles!!};
-    changeAddress(vehicles[0].plat_number,vehicles[0].monthly_maintenance,vehicles[0].model_vehicle_id,vehicles[0].type_vehicle_id);
+    changeAddress(vehicles[0].plat_number,vehicles[0].monthly_maintenance,vehicles[0].vehicle_model,vehicles[0].TypeVehicle);
 
-    function changeAddress(plat_number, monthly_maintenance, model_vehicle_id, type_vehicle_id){
+    function changeAddress(plat_number, monthly_maintenance, vehicle_model, type_vehicle_id){
         $('#vehicle-plat_number').html(plat_number);
-        $('#vehicle-model_vehicle_id').html(model_vehicle_id);
+        $('#vehicle-model_vehicle_id').html(vehicle_model);
         $('#vehicle-monthly_maintenance').html(monthly_maintenance);
         $('#vehicle-type_vehicle_id').html(type_vehicle_id);
 
@@ -292,7 +293,7 @@
         $(this).removeClass('text-dark');
         $(this).addClass('text-danger');
     });
-    changeAddress(vehicles[0].plat_number,vehicles[0].monthly_maintenance,vehicles[0].model_vehicle_id,vehicles[0].type_vehicle_id);
+    changeAddress(vehicles[0].plat_number,vehicles[0].monthly_maintenance,vehicles[0].vehicle_model,vehicles[0].TypeVehicle);
 
 </script>
 

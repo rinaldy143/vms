@@ -40,6 +40,7 @@ class Trailer extends AppModel
     {
         return $this->belongsTo(TypeTrailer::class, 'type_trailer_id');
     }
+
     /**
      * The attributes that should be hidden for arrays.
      *

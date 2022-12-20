@@ -6,5 +6,5 @@ use App\Models\Entity\Trailer;
 
 class TrailerTable extends Trailer
 {
-
+    //
 }
