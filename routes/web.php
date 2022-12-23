@@ -72,6 +72,8 @@ Route::get('/spareparts', function() {
     return view('/pages/spareparts');
 });
 
+Route::post('/spareparts',  [App\Http\Controllers\Sparepart\SparepartController::class, 'store'])->name('spareparts.store');
+
 Route::get('/users', function() {
     return view('/pages/users');
 });
