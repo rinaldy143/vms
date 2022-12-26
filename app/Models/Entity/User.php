@@ -32,16 +32,13 @@ class User extends AppAuthenticatable
         'email',
         'photo',
         'role',
-        'fcm_token',
-        'email_verified_at',
-        'password',
-        'phone_country_code',
+        // 'fcm_token',
+        // 'email_verified_at',
+        // 'password',
+        // 'phone_country_code',
         'phone_number',
-        'type_role_id',
-        'remember_token',
-        'deleted_at',
-        'created_at',
-        'updated_at'
+        // 'type_role_id',
+        // 'remember_token',
     ];
 
     /**

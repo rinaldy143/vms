@@ -2,6 +2,7 @@
 use App\Models\Entity\model_vehicles;
 use App\Models\Entity\ModelVehicle;
 use App\Models\Entity\Trailer;
+use App\Models\Entity\User;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
 
@@ -63,17 +64,21 @@ Route::get('/trailer', function() {
 });
 
 Route::post('/trailer',  [App\Http\Controllers\Trailer\TrailerController::class, 'store'])->name('trailer.store');
+Route::post('/users',  [App\Http\Controllers\User\UserController::class, 'store'])->name('users.store');
 
 Route::get('/setting', function() {
     return view('/pages/vehicle/vehicle-setting');
 });
 
 Route::get('/spareparts', function() {
+
     return view('/pages/spareparts');
 });
 
 Route::get('/users', function() {
-    return view('/pages/users');
+    $user = User::all();
+
+    return view('/pages/users',  ['user' => $user]);
 });
 
 Route::get('/history', function() {

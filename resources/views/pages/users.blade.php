@@ -111,23 +111,39 @@
         <!--end::Row-->
         <!--begin::Row-->
         <div class="row pt-5 pb-5">
-
+            @foreach ($user as $model)
             <div class="col-lg-4 col-md-6 col-11 pb-5">
                 <div class="card drop-shadow border border-secondary align-items-center">
                     {{-- <img src="/img/img_videos/{{$video->thumbnail}}" alt="" class="card-img-top video-thumb "> --}}
-                    <div class="pt-10 ">
-                        <a class="download round m-lg-3" href="#" title="" >
+                    <div class="pt-10 w-100">
+                        {{-- <a class="download round m-lg-3" href="#" title="" >
                             <img src="img/kebab.png" alt="download" title="download"
                                 style="right: 20px;position: absolute;" />
-                        </a>
-                        <img class="bd-placeholder-img rounded-circle border" width="100px" height="100px" src="img/Frame 1622.svg" alt="">
+                        </a> --}}
+                        <ul class="menu-nav">
+                            <li class="menu-item dropdown" style="right: 20px;position: absolute;">
+                                <a class="nav-link text-dark" href="#" role="button"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <img src="img/kebab.png" style="" alt="">
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="#"> <img src="/assets/media/icons/system-icon/outline/Edit Square.svg" width="25px" alt=""> Update</a>
+                                        <a class="dropdown-item" href="#"> <img src="/assets/media/icons/system-icon/outline/Delete.svg" width="25px" alt=""> Delete</a>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
-                    <div class="card-body">
-                        <h2 class="card-text text-color-dark font-weight-bold text-3 pb-1 mb-4 px-10 text-truncate">Johny yes papa
+                    @if($model->photo == "")
+                    <img class="bd-placeholder-img rounded-circle border"  width="100px" height="100px" src="img/Ellipse 44.png" alt="">
+                    @else
+                    <img class="bd-placeholder-img rounded-circle border"  width="100px" height="100px" src="img/users/{{$model->photo}}" alt="">
+                    @endif
+                    <div class="card-body ">
+                        <h2 class="card-text text-color-dark font-weight-bold text-3 pb-1 mb-4 px-10 text-truncate text-center">{{$model->name}}
                         </h2>
-                        <p class="text-center pb-5" style="line-height: 0%"><a href="">Operation</a></p>
-                        <p class="text-center num m-0"><img src="img/call.png" alt=""> +62897635164518</p>
-                        <p class="text-center email" style="line-height: 0%"><img src="img/Message.png" alt=""> Johnyyespapa@transtrack.id</p>
+                        <p class="text-center pb-5" style="line-height: 0%"><a href="">{{$model->role}}</a></p>
+                        <p class="text-center num m-0"><img src="img/call.png" alt=""> {{$model->phone_number}}</p>
+                        <p class="text-center email" style="line-height: 0%"><img src="img/Message.png" alt=""> {{$model->email}}</p>
                         {{-- <div class="btnset">
                             <button class="btn btn1">Button</button>
                             <button class="btn btn2">button</button>
@@ -136,81 +152,7 @@
 
                 </div>
             </div>
-
-            <div class="col-lg-4 col-md-6 col-11 pb-5">
-                <div class="card drop-shadow border border-secondary align-items-center">
-                    {{-- <img src="/img/img_videos/{{$video->thumbnail}}" alt="" class="card-img-top video-thumb "> --}}
-                    <div class="pt-10 ">
-                        <a class="download round m-lg-3" href="#" title="" >
-                            <img src="img/kebab.png" alt="download" title="download"
-                                style="right: 20px;position: absolute;" />
-                        </a>
-                        <img class="bd-placeholder-img rounded-circle border" width="100px" height="100px" src="img/Frame 1622.svg" alt="">
-                    </div>
-                    <div class="card-body">
-                        <h2 class="card-text text-color-dark font-weight-bold text-3 pb-1 mb-4 px-10 text-truncate">Johny yes papa
-                        </h2>
-                        <p class="text-center pb-5" style="line-height: 0%"><a href="">Operation</a></p>
-                        <p class="text-center num m-0"><img src="img/call.png" alt=""> +62897635164518</p>
-                        <p class="text-center email" style="line-height: 0%"><img src="img/Message.png" alt=""> Johnyyespapa@transtrack.id</p>
-                        {{-- <div class="btnset">
-                            <button class="btn btn1">Button</button>
-                            <button class="btn btn2">button</button>
-                        </div> --}}
-                    </div>
-
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 col-11 pb-5">
-                <div class="card drop-shadow border border-secondary align-items-center">
-                    {{-- <img src="/img/img_videos/{{$video->thumbnail}}" alt="" class="card-img-top video-thumb "> --}}
-                    <div class="pt-10 ">
-                        <a class="download round m-lg-3" href="#" title="" >
-                            <img src="img/kebab.png" alt="download" title="download"
-                                style="right: 20px;position: absolute;" />
-                        </a>
-                        <img class="bd-placeholder-img rounded-circle border" width="100px" height="100px" src="img/Frame 1622.svg" alt="">
-                    </div>
-                    <div class="card-body">
-                        <h2 class="card-text text-color-dark font-weight-bold text-3 pb-1 mb-4 px-10 text-truncate">Johny yes papa
-                        </h2>
-                        <p class="text-center pb-5" style="line-height: 0%"><a href="">Operation</a></p>
-                        <p class="text-center num m-0"><img src="img/call.png" alt=""> +62897635164518</p>
-                        <p class="text-center email" style="line-height: 0%"><img src="img/Message.png" alt=""> Johnyyespapa@transtrack.id</p>
-                        {{-- <div class="btnset">
-                            <button class="btn btn1">Button</button>
-                            <button class="btn btn2">button</button>
-                        </div> --}}
-                    </div>
-
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 col-11 pb-5">
-                <div class="card drop-shadow border border-secondary align-items-center">
-                    {{-- <img src="/img/img_videos/{{$video->thumbnail}}" alt="" class="card-img-top video-thumb "> --}}
-                    <div class="pt-10 ">
-                        <a class="download round m-lg-3" href="#" title="" >
-                            <img src="img/kebab.png" alt="download" title="download"
-                                style="right: 20px;position: absolute;" />
-                        </a>
-                        <img class="bd-placeholder-img rounded-circle border" width="100px" height="100px" src="img/Frame 1622.svg" alt="">
-                    </div>
-                    <div class="card-body">
-                        <h2 class="card-text text-color-dark font-weight-bold text-3 pb-1 mb-4 px-10 text-truncate">Johny yes papa
-                        </h2>
-                        <p class="text-center pb-5" style="line-height: 0%"><a href="">Operation</a></p>
-                        <p class="text-center num"><img src="img/call.png" alt=""> +62897635164518</p>
-                        <p class="text-center email" style="line-height: 0%"><img src="img/Message.png" alt=""> Johnyyespapa@transtrack.id</p>
-                        {{-- <div class="btnset">
-                            <button class="btn btn1">Button</button>
-                            <button class="btn btn2">button</button>
-                        </div> --}}
-                    </div>
-
-                </div>
-            </div>
+            @endforeach
 
             <div class="row mb-12">
                 <div class="col-sm-12 col-md-7 d-flex align-items-center w-100 justify-content-md-end">
@@ -267,7 +209,7 @@
     aria-hidden="true">
     {{-- <div class="modal-dialog modal-dialog-centered modal-md-contact" role="document"> --}}
     <div class="modal-dialog modal-dialog-centered " role="document">
-        <form action="#" method="post"
+        <form action="{{route('users.store')}}" method="post"
             enctype="multipart/form-data">
             @csrf
             <div class="modal-content m-lg-10 p-3 p-3 ">
@@ -287,13 +229,13 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-md-12 mb-3 mb-lg-0 col-lg-12">
-                                <label for="Name"
+                                <label for="name"
                                     class="fw-bold text-black mt-4">{{__('Name')}} <span
                                         class="text-danger">*</span></label>
                                 <div class="field-input py-5">
-                                    <input type="text" id="Name" name="Name" class="form-control"
-                                        placeholder="Your Name" maxlength="200" value={{old('Name')}}>
-                                    @error('Name')
+                                    <input type="text" id="name" name="name" class="form-control"
+                                        placeholder="Your Name" maxlength="200" value={{old('name')}}>
+                                    @error('name')
                                     <div class="invalid-feedback d-flex">
                                         {{ $message }}
                                     </div>
@@ -320,7 +262,7 @@
                                     @enderror
                                 </div>
 
-                                <label for="contact_phone"
+                                <label for="phone_number"
                                 class="fw-bold text-black">{{__('No Handphone')}} <span
                                     class="text-danger">*</span></label>
                             <div class="field-input py-5">
@@ -333,10 +275,10 @@
                                             <option value="+62" selected>+62</option>
                                         </select>
                                     </div>
-                                    <input type="text" class="form-control border-0" id="no_contact"
-                                        placeholder="89xxxxxxx" name="no_contact"
+                                    <input type="text" class="form-control border-0" id="phone_number"
+                                        placeholder="89xxxxxxx" name="phone_number"
                                         aria-label="Text input with dropdown button"
-                                        placeholder="89xx-xxxx-xxxx" maxlength="15" value={{old('no_contact')}}>
+                                        placeholder="89xx-xxxx-xxxx" maxlength="15" value={{old('phone_number')}}>
 
                                 </div>
                                 @error('country_codes')
@@ -345,7 +287,7 @@
                                 </div>
                                 @enderror
 
-                                @error('no_contact')
+                                @error('phone_number')
                                 <div class="invalid-feedback d-flex">
                                     {{ $message }}
                                 </div>
@@ -359,14 +301,14 @@
                                 class="text-danger">*</span></label>
                             </label>
                             <div class="field-input">
-                                <select class="form-control" aria-label="role" id="roles"
-                                    name="roles">
+                                <select class="form-control" aria-label="role" id="role"
+                                    name="role">
 
                                     <option value="" disabled selected>{{__('Select role of user')}}</option>
 
-                                    <option value="Accretia" >Accretia</option>
-                                    <option value="Bellato" >Bellato</option>
-                                    <option value="Cora" >Cora</option>
+                                    <option value="ADMIN" >ADMIN</option>
+                                    <option value="MEMBER" >MEMBER</option>
+
                                     {{-- <select class="form-select " aria-label="select location"
                                         id="inputLocations" name="locations" required>
                                         <option selected>{{__('contact-form.selectLocation')}}</option>
@@ -384,31 +326,29 @@
                                 <div class="form-group d-flex align-items-center py-5">
                                     <div>
                                         <p class="fw-bold fs-3 text-black">Upload Photo</p>
-                                        <label for="image" id="labelImg"
+                                        <label for="photo" id="labelImg"
                                         class="font-weight-bold text-black m-0 border p-5" style="background-image: url(/assets/media/icons/system-icon/outline/Camera.svg);  background-repeat: no-repeat;
                                         background-size: cover;
                                         width: 100px;
                                         height:100px;
                                         position: absolute;">
-                                        {{-- <img class="py-5 px-10" src="/assets/media/icons/system-icon/outline/Camera.svg" width="120px"> --}}
-                                        {{-- <p class="fs-3">Upload Photo</p> --}}
                                         </label>
 
 
                                         <img class="img-preview img-fluid mb-3 col-sm-5 d-block w-75" src="" alt="">
                                         <input type="file" src="/assets/media/icons/system-icon/outline/Edit Square.svg" class="form-control-file"
-                                        id="image" name="image" style="display: none" multiple onchange="previewImage()" onclick="document.getElementById('labelImg').style.opacity = 0">
+                                        id="photo" name="photo" style="display: none" multiple onchange="previewImage()" onclick="document.getElementById('labelImg').style.opacity = 0">
                                     </div>
                                      <div class="h-50">
                                         <div class="fw-bolder fs-3" id="list_file"></div>
                                         <div id="size_file"></div>
                                      </div>
 
-                                    @error('image')
+                                    @error('photo')
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
-                                @enderror
+                                    @enderror
                               </div>
                             </div>
 
@@ -450,7 +390,7 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
 <script>
-        var fileInput = document.getElementById('image');
+        var fileInput = document.getElementById('photo');
         var listFile = document.getElementById('list_file');
         var sizeFile = document.getElementById('size_file');
 
@@ -473,48 +413,24 @@
         sizeFile.innerHTML = sizes.join('<br/>');
 
 
-        const Image= document.querySelector('#image');
+        const photo= document.querySelector('#photo');
         const imgPreview = document.querySelector('.img-preview');
 
         imgPreview.style.display = 'block';
         const oFReader = new FileReader();
-        oFReader.readAsDataURL(image.files[0]);
+        oFReader.readAsDataURL(photo.files[0]);
 
         oFReader.onload = function(oFREvent) {
             imgPreview.src = oFREvent.target.result;
         }
         }
 
-
-
-    //     function previewImage() {
-    //     const Image= document.querySelector('#image');
-    //     const imgPreview = document.querySelector('.img-preview');
-
-    //     imgPreview.style.display = 'block';
-    //     const oFReader = new FileReader();
-    //     oFReader.readAsDataURL(image.files[0]);
-
-    //     oFReader.onload = function(oFREvent) {
-    //         imgPreview.src = oFREvent.target.result;
-    //     }
-    // }
     var buttons = document.querySelectorAll('form button:not([type="submit"])');
     for (i = 0; i < buttons.length; i++) {
     buttons[i].addEventListener('click', function(e) {
         e.preventDefault();
     });
     }
-
-// var fileInput = document.getElementById('image');
-//         var listFile = document.getElementById('size_file');
-
-//         fileInput.onchange = function () {
-//         var files = Array.from(this.files);
-//         files = files.map(file => file.size);
-//         listFile.innerHTML = files.join('<br/>');
-//         }
-
 
 </script>
 @endsection
