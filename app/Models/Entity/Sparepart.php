@@ -47,4 +47,16 @@ class Sparepart extends AppModel
     protected $dates = [
         //
     ];
+
+    protected $appends = [
+        'photo_url',
+    ];
+
+    public function getPhotoUrlAttribute()
+    {
+        if (!blank($this->photo)) {
+            return asset($this->photo);
+        }
+        return null;
+    }
 }
