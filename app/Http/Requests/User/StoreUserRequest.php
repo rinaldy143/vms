@@ -26,9 +26,11 @@ class StoreUserRequest extends FormRequest
         return [
             'name' => 'required|string',
             'email' => 'required|unique:users,email|email',
+            'phone_number' => 'required',
+            'photo' => 'mimes:png,jpg,svg',
             'role' => 'required|string|in:ADMIN,MEMBER',
-            'fcm_token' => 'nullable|string',
-            'password' => 'required|string|min:8',
+            // 'fcm_token' => 'nullable|string',
+            // 'password' => 'required|string|min:8',
         ];
     }
 }
