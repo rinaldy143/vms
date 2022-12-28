@@ -11,7 +11,8 @@
             <!--begin::Wrapper-->
                 <div class="w-lg-400px ms-custom mt-20 me-custom">
                     <!--begin::Form-->
-                        <form class="form w-100" novalidate="novalidate" id="kt_sign_in_form" action="#">
+                        <form class="form w-100" novalidate="novalidate" id="kt_sign_in_form" method="POST" action="{{ route('login.post') }}">
+                            @csrf
                             <!--begin::Heading-->
                             <div class="text-left">
                                 <!--begin::Title-->
@@ -53,7 +54,7 @@
                             <!--begin::Actions-->
                             <div class="w-lg-400px text-center">
                                 <!--begin::Submit button-->
-                                <button type="submit" id="kt_sign_in_submit" class="btn btn-lg btn-danger w-100">
+                                <button type="submit"  class="btn btn-lg btn-danger w-100">
                                     <span class="indicator-label">Login</span>
                                     <span class="indicator-progress">Please wait...
                                         <span class="
