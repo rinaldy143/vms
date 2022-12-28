@@ -34,7 +34,7 @@
         <div class="btn btn-outline-danger" style="width: 326px" data-toggle="modal" href="#modalPassword">Change Password</div>
     </div>
     <div class="d-flex justify-content-center">
-        <div class="btn btn-danger" style="width: 326px">Logout</div>
+        <a class="btn btn-danger" style="width: 326px" href="{{ route('logout') }}">Logout</a>
     </div>
 </div>
 <!--begin::Modal-->
