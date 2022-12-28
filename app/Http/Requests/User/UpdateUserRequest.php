@@ -25,9 +25,10 @@ class UpdateUserRequest extends FormRequest
     {
         return [
             'name' => 'required|string',
-            'email' => 'required|unique:users,email|email',
+            // 'email' => 'required|unique:users,email|email',
             'role' => 'required|string|in:ADMIN,MEMBER',
-            'fcm_token' => 'nullable|string',
+            'phone_number' => 'required',
+            // 'fcm_token' => 'nullable|string',
         ];
     }
 }
