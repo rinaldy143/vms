@@ -49,20 +49,36 @@
                             <!--begin::Items-->
                             <div class="py-2">
                                 <p class="pt-4 fs-4 text-muted">List Vehicle</p>
+                                @if ($vehicles->count())
                                 <!--begin::Item-->
+                                @foreach ($vehicles as $key=>$model)
+
+
                                 <div class="d-flex flex-stack pt-3 ">
                                     <div class="d-flex w-100">
 
                                         <div class="d-flex flex-column w-100">
-                                        @foreach ($vehicles as $key=>$model)
                                             <a href="javascript:void(0)" class="fs-5 text-danger btn-address fw-bolder text-hover-danger border p-3 my-1 {{$key==0?'text-danger':'text-dark'}}" style="border-radius: 8px; background-color:#fff;"
                                             onclick="changeAddress('{{$model->plat_number}}','{{$model->monthly_maintenance}}','{{$model->ModelVehicle->vehicle_model}}','{{$model->TypeVehicle->vehicle_type}}')">{{$model->plat_number}}</a>
-                                        @endforeach
-
                                         </div>
+                                    </div>
+                                </div>
+                                @endforeach
+
+                                @else
+                                <div class="pt-3 ">
+                                    <div class="w-100">
+                                        <div class="text-center w-100 mt-10">
+                                            <h2>Empty Vehicle</h2>
+                                            <p>You do not have a vehicle right now. add vehicle or trailer.</p>
+                                        </div>
+                                    </div>
+                                    <div class="text-center py-8">
+                                        <a href="#modalVehicle" class="btn btn-danger fs-7 px-4 w-75 " data-toggle="modal"><img src="assets/media/icons/system-icon/outline/Plus-3.svg" width="20px" alt="">Add Vehicle/Trailer</a>
                                     </div>
 
                                 </div>
+                                @endif
                                 <!--end::Item-->
 
 
@@ -81,8 +97,6 @@
 
             <!--end::Sidebar-->
             <!--begin::Content-->
-
-
     </div>
         <!--end::Row-->
         <!--begin::Row-->
@@ -93,6 +107,7 @@
 
 
         <!--end::Row-->
+        @if ($vehicles->count())
             <div class="container col-lg-7 col-xl-8" style="background-color: #FFF">
                 <!--begin:::Tabs-->
                 <div class="card my-5">
@@ -107,7 +122,7 @@
                                         <p class="pvehicle mb-2 fs-7" >Model Vehicle</p>
                                         <h4 class="bvehicle fw-bold pb-5" id="vehicle-model_vehicle_id">Grand Max</h4>
                                         <p class="pvehicle mb-2 fs-7">Scheduling Maintained</p>
-                                        <h4 class="bvehicle fw-bold" id="vehicle-monthly_maintenance"></h4>
+                                        <h4 class="bvehicle fw-bold" id="vehicle-monthly_maintenance">1</h4>
 
                                     </div>
                                     <div class="col-lg-6 px-1">
@@ -230,6 +245,10 @@
                 </div>
 
             </div>
+            @else
+            <div class="card w-100 mt-8 border-0">
+            </div>
+            @endif
 </div>
         <!--begin::Layout-->
 <div>
@@ -277,13 +296,15 @@
   });
 
   let vehicles = {!!$vehicles!!};
-    changeAddress(vehicles[0].plat_number,vehicles[0].monthly_maintenance,vehicles[0].vehicle_model,vehicles[0].TypeVehicle);
+  let vehiclesT = {!!$vehiclesT!!};
+  let model_vehicle = {!!$model_vehicle!!};
+    changeAddress(vehicles[0].plat_number,vehicles[0].monthly_maintenance,model_vehicle[0].vehicle_model,vehiclesT[0].vehicle_type);
 
-    function changeAddress(plat_number, monthly_maintenance, vehicle_model, type_vehicle_id){
+    function changeAddress(plat_number, monthly_maintenance, vehicle_model, vehicle_type){
         $('#vehicle-plat_number').html(plat_number);
         $('#vehicle-model_vehicle_id').html(vehicle_model);
         $('#vehicle-monthly_maintenance').html(monthly_maintenance);
-        $('#vehicle-type_vehicle_id').html(type_vehicle_id);
+        $('#vehicle-type_vehicle_id').html(vehicle_type);
 
     }
 
@@ -293,7 +314,7 @@
         $(this).removeClass('text-dark');
         $(this).addClass('text-danger');
     });
-    changeAddress(vehicles[0].plat_number,vehicles[0].monthly_maintenance,vehicles[0].vehicle_model,vehicles[0].TypeVehicle);
+    changeAddress(vehicles[0].plat_number,vehicles[0].monthly_maintenance,model_vehicle[0].vehicle_model,vehiclesT[0].vehicle_type);
 
 </script>
 

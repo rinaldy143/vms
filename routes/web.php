@@ -6,6 +6,8 @@ use App\Models\Entity\model_vehicles;
 use App\Models\Entity\ModelVehicle;
 use App\Models\Entity\Trailer;
 use App\Models\Entity\User;
+use App\Models\Entity\Vehicle;
+use App\Models\Entity\TypeVehicle;
 use Illuminate\Routing\RouteGroup;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -24,7 +26,7 @@ use Illuminate\Support\Facades\DB;
 
 
 Route::group(['prefix' => '/'], function () {
-    Route::get('/', [AuthController::class, 'index'])->name('login');
+    // Route::get('/', [AuthController::class, 'index'])->name('login');
     Route::get('/login', [AuthController::class, 'index'])->name('login');
     Route::post('/auth/login', [AuthController::class, 'login'])->name('login.post');
     Route::group(['middleware' => 'auth:sanctum'], function () {
@@ -81,6 +83,13 @@ Route::group(['prefix' => '/'], function () {
             $user = User::all();
 
             return view('/pages/users',  ['user' => $user]);
+        });
+        Route::get('/vehicles', function() {
+            $vehicles = Vehicle::all();
+            $vehiclesT = TypeVehicle::all();
+            $model_vehicle = ModelVehicle::all();
+
+            return view('/pages/vehicle/vehicle1',  ['vehicles' => $vehicles, 'vehiclesT' => $vehiclesT, 'model_vehicle' => $model_vehicle]);
         });
 
         Route::get('/history', function() {

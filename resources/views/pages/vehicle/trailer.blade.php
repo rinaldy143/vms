@@ -49,6 +49,7 @@
                             <!--begin::Items-->
                             <div class="py-2">
                                 <p class="pt-4 fs-4 text-muted">List Trailer</p>
+                                @if ($trailers->count())
                                 <!--begin::Item-->
                                 <div class="d-flex flex-stack pt-3 ">
                                     <div class="d-flex w-100">
@@ -60,8 +61,21 @@
                                         @endforeach
                                         </div>
                                     </div>
+                                </div>
+                                @else
+                                <div class="pt-3 ">
+                                    <div class="w-100">
+                                        <div class="text-center w-100 mt-10">
+                                            <h2>Empty Trailer</h2>
+                                            <p>You do not have a trailer right now. add vehicle or trailer.</p>
+                                        </div>
+                                    </div>
+                                    <div class="text-center py-8">
+                                        <a href="#modalTrailer" class="btn btn-danger fs-7 px-4 w-75 " data-toggle="modal"><img src="assets/media/icons/system-icon/outline/Plus-3.svg" width="20px" alt="">Add Vehicle/Trailer</a>
+                                    </div>
 
                                 </div>
+                                @endif
                                 <!--end::Item-->
 
 
@@ -92,6 +106,7 @@
 
 
         <!--end::Row-->
+        @if ($trailers->count())
             <div class="container col-lg-7 col-xl-8" style="background-color: #FFF">
                 <!--begin:::Tabs-->
                 <div class="card my-5">
@@ -225,8 +240,12 @@
                         </div>
                     </div>
                 </div>
-
             </div>
+        @else
+        <div class="card w-100 mt-8 border-0">
+
+        </div>
+        @endif
 </div>
 
         <!--begin::Layout-->
@@ -435,7 +454,9 @@
   });
 
   let trailers = {!!$trailers!!};
-    changeAddress(trailers[0].code_trailer,trailers[0].monthly_maintenance,trailers[0].trailer_model,trailers[0].trailer_type, trailers[0].vehicle_connected);
+  let trailerT = {!!$trailerT!!};
+  let trailerM = {!!$trailerM!!};
+    changeAddress(trailers[0].code_trailer,trailers[0].monthly_maintenance,trailerM[0].trailer_model,trailerT[0].trailer_type, trailers[0].vehicle_connected);
 
     function changeAddress(code_trailer, monthly_maintenance, trailer_model, trailer_type, vehicle_connected){
         $('#vehicle-code_trailer').html(code_trailer);

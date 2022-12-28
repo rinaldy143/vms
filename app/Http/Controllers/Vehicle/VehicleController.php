@@ -34,13 +34,7 @@ class VehicleController extends ApiController
     public function index(Request $request)
     {
         $data = $this->service->dataTable($request);
-        $vehicles = Vehicle::all();
-        $vehiclesT = TypeVehicle::all();
-        $model_vehicle = ModelVehicle::all();
-
-
-        return view('pages.vehicle.vehicle1', compact('vehicles', 'vehiclesT', 'model_vehicle'));
-        // return $this->sendSuccess($data, null, 200);
+        return $this->sendSuccess($data, null, 200);
     }
 
     /**
