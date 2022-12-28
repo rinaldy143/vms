@@ -1,7 +1,7 @@
-<div class="modal fade" id="modalContact" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="modalSparepart" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     {{-- <div class="modal-dialog modal-dialog-centered modal-md-contact" role="document"> --}}
-    <div class="modal-dialog modal-lg" role="document">
-        <form action="#" method="post"
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <form action="{{route('spareparts.store')}}" method="post"
             enctype="multipart/form-data">
             @csrf
             <div class="modal-content m-lg-10 p-3 p-3">
@@ -20,14 +20,14 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="sparepart1 col-md-6 mb-3 mb-lg-0 col-lg-6">
-                                <label for="Identity_Sparepart"
+                                <label for="id_sparepart"
                                     class="fw-bold text-black mt-4">{{__('Identity Sparepart')}} <span
                                         class="text-danger">*</span>
                                 </label>
                                 <div class="field-input py-5">
-                                    <input type="text" id="Identity_Sparepart" name="Identity_Sparepart" class="form-control"
-                                        placeholder="Your Name" maxlength="200" value={{old('Identity_Sparepart')}}>
-                                    @error('Identity_Sparepart')
+                                    <input type="text" id="id_sparepart" name="id_sparepart" class="form-control"
+                                        placeholder="Your Name" maxlength="200" value={{old('id_sparepart')}}>
+                                    @error('id_sparepart')
                                     <div class="invalid-feedback d-flex">
                                         {{ $message }}
                                     </div>
@@ -44,15 +44,14 @@
                                     class="fw-bold text-black mt-4">Name Sparepart <span
                                     class="text-danger">*</span></label>
                                 <div class="field-input py-5">
-                                    <input type="text" id="Name_Sparepart" name="Name_Sparepart" class="form-control"
-                                        placeholder="Name Sparepart" maxlength="200" value={{old('Name_Sparepart')}}>
-                                    @error('Name_Sparepart')
+                                    <input type="text" id="name" name="name" class="form-control"
+                                        placeholder="Name Sparepart" maxlength="200" value={{old('name')}}>
+                                    @error('name')
                                     <div class="invalid-feedback d-flex">
                                         {{ $message }}
                                     </div>
                                     @enderror
                                 </div>
-
                                 <div class="form-group d-flex align-items-center py-5">
                                     <div>
                                         <p class="fw-bold fs-3 text-black">Upload Photo</p>
@@ -65,11 +64,9 @@
                                         {{-- <img class="py-5 px-10" src="/assets/media/icons/system-icon/outline/Camera.svg" width="120px"> --}}
                                         {{-- <p class="fs-3">Upload Photo</p> --}}
                                         </label>
-
-
                                         <img class="img-preview img-fluid mb-3 col-sm-5 d-block w-75" src="" alt="">
                                         <input type="file" src="/assets/media/icons/system-icon/outline/Edit Square.svg" class="form-control-file"
-                                        id="image" name="image" style="display: none" multiple onchange="previewImage()" onclick="document.getElementById('labelImg').style.opacity = 0">
+                                        id="image" name="photo" style="display: none" multiple onchange="previewImage()" onclick="document.getElementById('labelImg').style.opacity = 0">
                                     </div>
                                      <div class="h-50">
                                         <div class="fw-bolder fs-3" id="list_file"></div>
@@ -80,30 +77,28 @@
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
-                                @enderror
-                              </div>
+                                    @enderror
+                                </div>
                             </div>
                             <div class="sparepart2 col-md-6 mb-3 mb-lg-0 col-lg-6">
-                                <label for="Brand"
+                                <label for="brand"
                                     class="fw-bold text-black mt-4">Brand
                                     <span class="text-danger">*</span></label>
                                 <div class="field-input py-5">
-                                    <input type="text" id="Brand" name="Brand" class="form-control"
-                                        placeholder="Your Brand" maxlength="200" value={{old('Brand')}}>
-                                    @error('Brand')
+                                    <input type="text" id="brand" name="brand" class="form-control"
+                                        placeholder="Your Brand" maxlength="200" value={{old('brand')}}>
+                                    @error('brand')
                                     <div class="invalid-feedback d-flex">
                                         {{ $message }}
                                     </div>
                                     @enderror
-
                                 </div>
-
                                 <label for="Stock"
                                 class="fw-bold text-black mt-4 pb-5">Stock<span
                                 class="text-danger">*</span></label><br>
                                 <div class="number-input">
                                     <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" ></button>
-                                    <input class="quantity" min="0" name="quantity" value="1" type="number" value={{old('Stock')}}>
+                                    <input class="quantity" min="0" name="count" value="1" type="number" value={{old('Stock')}}>
                                     <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
                                 </div>
                             </div>
@@ -117,12 +112,14 @@
                 </div>
                 <div class="modal-footer border-0 pt-20" style="flex-wrap: nowrap;">
                     <div class="col-md-6 text-center">
-                        <button class="btn btn-danger text-3 rounded-8 w-50 p-md-3 h-100" type="submit"
-                            id="downloadWp" name="downloadWp">Submit</button>
+                        {{-- <button class="btn btn-danger text-3 rounded-8 w-50 p-md-3 h-100" type="submit" id="downloadWp" name="downloadWp">
+                            Submit
+                        </button> --}}
+                        <input class="btn shadow btn-danger text-3 rounded-8 w-100 p-md-3 h-100" type="submit" value="Submit">
                     </div>
                     <div class="col-md-6 text-center">
-                        <button type="reset" class="btn border border-danger text-danger text-3 rounded-8 w-50 p-md-3 h-100 close-share" data-dismiss="modal" aria-label="Close"
-                            id="downloadWp" name="downloadWp">Cancel</button>
+                        <button type="reset" class="btn shadow border border-danger text-danger text-3 rounded-8 w-100 p-md-3 h-100 close-share" data-dismiss="modal"
+                        aria-label="Close">Cancel</button>
                     </div>
                 </div>
         </form>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Sparepart;
 use App\Http\Controllers\ApiController;
 use App\Http\Requests\Sparepart\StoreSparepartRequest;
 use App\Http\Requests\Sparepart\UpdateSparepartRequest;
+use App\Models\Entity\Sparepart;
 use App\Services\Sparepart\SparepartService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -31,7 +32,10 @@ class SparepartController extends ApiController
     public function index(Request $request)
     {
         $data = $this->service->dataTable($request);
-        return $this->sendSuccess($data, null, 200);
+        $sparepats = Sparepart::all();
+
+        return view('pages.spareparts', compact('spareparts'));
+        // return $this->sendSuccess($data, null, 200);
     }
 
     /**

@@ -5,6 +5,7 @@ namespace App\Services\Sparepart;
 use App\Models\Table\SparepartTable;
 use App\Services\AppService;
 use App\Services\AppServiceInterface;
+use Illuminate\Support\Facades\Storage;
 
 class SparepartService extends AppService implements AppServiceInterface
 {
@@ -27,22 +28,31 @@ class SparepartService extends AppService implements AppServiceInterface
 
     public function create($data)
     {
+        $photo = $data['photo']?->store('spareparts');
+
         return SparepartTable::create([
-            'photo' => $data['photo'],
+            'id_sparepart' => $data['id_sparepart'],
             'brand' => $data['brand'],
             'name' => $data['name'],
-            'count' => $data['count']
+            'count' => $data['count'],
+            'photo' => $photo,
         ]);
     }
 
     public function update($id, $data)
     {
         $row = SparepartTable::findOrFail($id);
+        if (!blank($row->photo)) {
+            Storage::delete($row->photo);
+        }
+        $data['photo'] = $data['photo']?->store('spareparts');
+
         $row->update([
-            'photo' => $data['photo'],
+            'id_sparepart' => $data['id_sparepart'],
             'brand' => $data['brand'],
             'name' => $data['name'],
-            'count' => $data['count']
+            'count' => $data['count'],
+            'photo' => $data['photo'],
         ]);
         return $row;
     }

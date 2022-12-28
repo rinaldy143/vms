@@ -23,10 +23,11 @@ class Sparepart extends AppModel
      * @var array<int, string>
      */
     protected $fillable = [
-        'photo',
-        'brand',
+        'id_sparepart',
         'name',
+        'brand',
         'count',
+        'photo',
     ];
 
     /**
@@ -46,4 +47,16 @@ class Sparepart extends AppModel
     protected $dates = [
         //
     ];
+
+    protected $appends = [
+        'photo_url',
+    ];
+
+    public function getPhotoUrlAttribute()
+    {
+        if (!blank($this->photo)) {
+            return asset($this->photo);
+        }
+        return null;
+    }
 }
