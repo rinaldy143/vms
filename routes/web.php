@@ -56,6 +56,7 @@ Route::group(['prefix' => '/'], function () {
 
         // Route::post('/vehicles',  [App\Http\Controllers\Vehicle\VehicleController::class, 'store'])->name('vehicles.store');
             Route::resource('vehicles', App\Http\Controllers\Vehicle\VehicleController::class);
+            Route::resource('users', App\Http\Controllers\User\UserController::class);
 
 
         Route::get('/trailer', function() {
@@ -66,7 +67,7 @@ Route::group(['prefix' => '/'], function () {
         });
 
         Route::post('/trailer',  [App\Http\Controllers\Trailer\TrailerController::class, 'store'])->name('trailer.store');
-        Route::post('/users',  [App\Http\Controllers\User\UserController::class, 'store'])->name('users.store');
+        // Route::post('/users',  [App\Http\Controllers\User\UserController::class, 'store'])->name('users.store');
 
         Route::get('/setting', function() {
             return view('/pages/vehicle/vehicle-setting');
