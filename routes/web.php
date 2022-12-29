@@ -28,7 +28,7 @@ use Illuminate\Support\Facades\DB;
 Route::group(['prefix' => '/'], function () {
     // Route::get('/', [AuthController::class, 'index'])->name('login');
     Route::get('/login', [AuthController::class, 'index'])->name('login');
-    Route::post('/auth/login', [AuthController::class, 'login'])->name('login.post');
+    Route::post('/dashboard', [AuthController::class, 'login'])->name('login.post');
     Route::group(['middleware' => 'auth:sanctum'], function () {
         Route::get('/dashboard', function() {
             return view('/pages/dashboard');
@@ -72,10 +72,7 @@ Route::group(['prefix' => '/'], function () {
             return view('/pages/vehicle/vehicle-setting');
         });
 
-        Route::get('/spareparts', function() {
-
-            return view('/pages/spareparts');
-        });
+        Route::get('/spareparts', [App\Http\Controllers\Sparepart\SparepartController::class, 'index']);
 
         Route::post('/spareparts',  [App\Http\Controllers\Sparepart\SparepartController::class, 'store'])->name('spareparts.store');
 
