@@ -80,123 +80,201 @@
                         </div>
                     </div>
                 </nav>
-                <div class="d-flex flex-row-fluid mt-10">
-                    <div class="col-lg-2 subtitle-1">
-                        No RM
-                    </div>
-                    <div class="col-lg-3 subtitle-1">
-                        Vehicle
-                    </div>
-                    <div class="col-lg-2 subtitle-1">
-                        Mechanice
-                    </div>
-                    <div class="col-lg-3 subtitle-1">
-                        Date
-                    </div>
-
-                </div>
-                <div class="scroll">
-                    <div class="d-flex flex-row-fluid mt-6">
-                        <div class="col-lg-2 subtitle-1 fw-bold">
-                            RM-01
-                        </div>
-                        <div class="col-lg-3 subtitle-1">
-                            <div class="d-flex flex-row-fluid">
-                                <img src="img/image 1.png" alt="">
-                                <div class="" style="margin-left: 15px;">
-                                    <p class="m-0">D 1123 ABC</p>
-                                    <p class="m-0 fw-normal">Grand Max</p>
+                <div class="row pt-5 pb-5">
+                    {{-- @foreach ($user as $model) --}}
+                    <div class="col-lg-4 col-md-6 col-11 pb-5">
+                        <div class="card drop-shadow border border-secondary align-items-center border-dark">
+                            {{-- <img src="/img/img_videos/{{$video->thumbnail}}" alt="" class="card-img-top video-thumb "> --}}
+                            <div class="card-body col-lg-12 row pt-10 w-100">
+                                {{-- <a class="download round m-lg-3" href="#" title="" >
+                                    <img src="img/kebab.png" alt="download" title="download"
+                                        style="right: 20px;position: absolute;" />
+                                </a> --}}
+                                <div class="col-lg-3">
+                                    <img class="" src="img/image 1.png" alt="" style="width:55px">
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="fw-bolder fs-3" id="list_file">D 1123 ABC</div>
+                                    <div id="size_file">Grand Max</div>
+                                </div>
+                                <div class="col-lg-3" style="display: flex; justify-content: flex-end">
+                                    <ul class="menu-nav" >
+                                        <li class="menu-item dropdown">
+                                            <a class="nav-link text-dark"  href="#" role="button"
+                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <img src="img/kebab.png" style="" alt="">
+                                            </a>
+                                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                <form action="#" method="POST">
+                                                    <a class="dropdown-item" data-toggle="modal" href="#"> <img src="/assets/media/icons/system-icon/outline/Edit Square.svg" width="25px" alt=""> Update</a>
+                                                    {{-- @csrf
+                                                    @method('DELETE') --}}
+                                                    <button type="submit" class="dropdown-item"> <img src="/assets/media/icons/system-icon/outline/Delete.svg" width="25px" alt=""> Delete</button>
+                                                </form>
+                                            </div>
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-lg-2 body-1">
-                            <img src="img/Frame 1676.png" alt="">
-                        </div>
-                        <div class="col-lg-3 body-1">
-                            28/08/2022
-                        </div>
-                        <div class=" col-lg-1" >
-                            <a class="fs-4" style="color: #6E6666" href="#">Detail <img src="assets/media/icons/system-icon/outline/Arrow - Right.svg" alt="" >
-                            </a>
+                            <div class="card-body w-100" style="display:flex;flex-direction: column;align-items: flex-start;">
+                                <p class="border fs-7 text-light border-dark p-3" style="line-height: 0%; border-radius: 10px; background-color:rgb(11, 179, 50);">Maintained </p>
+                                <p class="num m-0 "><img src="assets/media/icons/system-icon/outline/Calendar.svg" style="display: inline-block; margin-right:20px;" alt="">Date : 28 / 08 / 2022 </p>
+                                <p class="email" style="line-height: 0%"><img src="assets/media/icons/system-icon/outline/Bookmark.svg" class="my-2" style="display: inline-block; margin-right:20px;" alt="">Type : Monthly </p>
+                                {{-- <div class="btnset">
+                                    <button class="btn btn1">Button</button>
+                                    <button class="btn btn2">button</button>
+                                </div> --}}
+                            </div>
 
                         </div>
                     </div>
-                    <div class="d-flex flex-row-fluid mt-6">
-                        <div class="col-lg-2 subtitle-1 fw-bold">
-                            RM-01
-                        </div>
-                        <div class="col-lg-3 subtitle-1">
-                            <div class="d-flex flex-row-fluid">
-                                <img src="img/image 1.png" alt="">
-                                <div class="" style="margin-left: 15px;">
-                                    <p class="m-0">D 1123 ABC</p>
-                                    <p class="m-0 fw-normal">Grand Max</p>
+                    <div class="col-lg-4 col-md-6 col-11 pb-5">
+                        <div class="card drop-shadow border border-secondary align-items-center border-dark">
+                            {{-- <img src="/img/img_videos/{{$video->thumbnail}}" alt="" class="card-img-top video-thumb "> --}}
+                            <div class="card-body col-lg-12 row pt-10 w-100">
+                                {{-- <a class="download round m-lg-3" href="#" title="" >
+                                    <img src="img/kebab.png" alt="download" title="download"
+                                        style="right: 20px;position: absolute;" />
+                                </a> --}}
+                                <div class="col-lg-3">
+                                    <img class="" src="img/image 1.png" alt="" style="width:55px">
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="fw-bolder fs-3" id="list_file">D 1123 ABC</div>
+                                    <div id="size_file">Grand Max</div>
+                                </div>
+                                <div class="col-lg-3" style="display: flex; justify-content: flex-end">
+                                    <ul class="menu-nav" >
+                                        <li class="menu-item dropdown">
+                                            <a class="nav-link text-dark"  href="#" role="button"
+                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <img src="img/kebab.png" style="" alt="">
+                                            </a>
+                                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                <form action="#" method="POST">
+                                                    <a class="dropdown-item" data-toggle="modal" href="#"> <img src="/assets/media/icons/system-icon/outline/Edit Square.svg" width="25px" alt=""> Update</a>
+                                                    {{-- @csrf
+                                                    @method('DELETE') --}}
+                                                    <button type="submit" class="dropdown-item"> <img src="/assets/media/icons/system-icon/outline/Delete.svg" width="25px" alt=""> Delete</button>
+                                                </form>
+                                            </div>
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-lg-2 body-1">
-                            <img src="img/Frame 1676.png" alt="">
-                        </div>
-                        <div class="col-lg-3 body-1">
-                            28/08/2022
-                        </div>
-                        <div class=" col-lg-1" >
-                            <a class="fs-4" style="color: #6E6666" href="#">Detail <img src="assets/media/icons/system-icon/outline/Arrow - Right.svg" alt="" >
-                            </a>
+                            <div class="card-body w-100" style="display:flex;flex-direction: column;align-items: flex-start;">
+                                <p class="border fs-7 text-light border-dark p-3" style="line-height: 0%; border-radius: 10px; background-color:rgb(11, 179, 50);">Maintained </p>
+                                <p class="num m-0 "><img src="assets/media/icons/system-icon/outline/Calendar.svg" style="display: inline-block; margin-right:20px;" alt="">Date : 28 / 08 / 2022 </p>
+                                <p class="email" style="line-height: 0%"><img src="assets/media/icons/system-icon/outline/Bookmark.svg" class="my-2" style="display: inline-block; margin-right:20px;" alt="">Type : Monthly </p>
+                                {{-- <div class="btnset">
+                                    <button class="btn btn1">Button</button>
+                                    <button class="btn btn2">button</button>
+                                </div> --}}
+                            </div>
 
                         </div>
                     </div>
-                    <div class="d-flex flex-row-fluid mt-6">
-                        <div class="col-lg-2 subtitle-1 fw-bold">
-                            RM-01
-                        </div>
-                        <div class="col-lg-3 subtitle-1">
-                            <div class="d-flex flex-row-fluid">
-                                <img src="img/image 1.png" alt="">
-                                <div class="" style="margin-left: 15px;">
-                                    <p class="m-0">D 1123 ABC</p>
-                                    <p class="m-0 fw-normal">Grand Max</p>
+                    <div class="col-lg-4 col-md-6 col-11 pb-5">
+                        <div class="card drop-shadow border border-secondary align-items-center border-dark">
+                            {{-- <img src="/img/img_videos/{{$video->thumbnail}}" alt="" class="card-img-top video-thumb "> --}}
+                            <div class="card-body col-lg-12 row pt-10 w-100">
+                                {{-- <a class="download round m-lg-3" href="#" title="" >
+                                    <img src="img/kebab.png" alt="download" title="download"
+                                        style="right: 20px;position: absolute;" />
+                                </a> --}}
+                                <div class="col-lg-3">
+                                    <img class="" src="img/image 1.png" alt="" style="width:55px">
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="fw-bolder fs-3" id="list_file">D 1123 ABC</div>
+                                    <div id="size_file">Grand Max</div>
+                                </div>
+                                <div class="col-lg-3" style="display: flex; justify-content: flex-end">
+                                    <ul class="menu-nav" >
+                                        <li class="menu-item dropdown">
+                                            <a class="nav-link text-dark"  href="#" role="button"
+                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <img src="img/kebab.png" style="" alt="">
+                                            </a>
+                                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                <form action="#" method="POST">
+                                                    <a class="dropdown-item" data-toggle="modal" href="#"> <img src="/assets/media/icons/system-icon/outline/Edit Square.svg" width="25px" alt=""> Update</a>
+                                                    {{-- @csrf
+                                                    @method('DELETE') --}}
+                                                    <button type="submit" class="dropdown-item"> <img src="/assets/media/icons/system-icon/outline/Delete.svg" width="25px" alt=""> Delete</button>
+                                                </form>
+                                            </div>
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-lg-2 body-1">
-                            <img src="img/Frame 1676.png" alt="">
-                        </div>
-                        <div class="col-lg-3 body-1">
-                            28/08/2022
-                        </div>
-                        <div class=" col-lg-1" >
-                            <a class="fs-4" style="color: #6E6666" href="#">Detail <img src="assets/media/icons/system-icon/outline/Arrow - Right.svg" alt="" >
-                            </a>
+                            <div class="card-body w-100" style="display:flex;flex-direction: column;align-items: flex-start;">
+                                <p class="border fs-7 text-light border-dark p-3" style="line-height: 0%; border-radius: 10px; background-color:rgb(11, 179, 50);">Maintained </p>
+                                <p class="num m-0 "><img src="assets/media/icons/system-icon/outline/Calendar.svg" style="display: inline-block; margin-right:20px;" alt="">Date : 28 / 08 / 2022 </p>
+                                <p class="email" style="line-height: 0%"><img src="assets/media/icons/system-icon/outline/Bookmark.svg" class="my-2" style="display: inline-block; margin-right:20px;" alt="">Type : Monthly </p>
+                                {{-- <div class="btnset">
+                                    <button class="btn btn1">Button</button>
+                                    <button class="btn btn2">button</button>
+                                </div> --}}
+                            </div>
 
                         </div>
                     </div>
-                    <div class="d-flex flex-row-fluid mt-6">
-                        <div class="col-lg-2 subtitle-1 fw-bold">
-                            RM-01
-                        </div>
-                        <div class="col-lg-3 subtitle-1">
-                            <div class="d-flex flex-row-fluid">
-                                <img src="img/image 1.png" alt="">
-                                <div class="" style="margin-left: 15px;">
-                                    <p class="m-0">D 1123 ABC</p>
-                                    <p class="m-0 fw-normal">Grand Max</p>
+                    <div class="col-lg-4 col-md-6 col-11 pb-5">
+                        <div class="card drop-shadow border border-secondary align-items-center border-dark">
+                            {{-- <img src="/img/img_videos/{{$video->thumbnail}}" alt="" class="card-img-top video-thumb "> --}}
+                            <div class="card-body col-lg-12 row pt-10 w-100">
+                                {{-- <a class="download round m-lg-3" href="#" title="" >
+                                    <img src="img/kebab.png" alt="download" title="download"
+                                        style="right: 20px;position: absolute;" />
+                                </a> --}}
+                                <div class="col-lg-3">
+                                    <img class="" src="img/image 1.png" alt="" style="width:55px">
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="fw-bolder fs-3" id="list_file">D 1123 ABC</div>
+                                    <div id="size_file">Grand Max</div>
+                                </div>
+                                <div class="col-lg-3" style="display: flex; justify-content: flex-end">
+                                    <ul class="menu-nav" >
+                                        <li class="menu-item dropdown">
+                                            <a class="nav-link text-dark"  href="#" role="button"
+                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <img src="img/kebab.png" style="" alt="">
+                                            </a>
+                                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                <form action="#" method="POST">
+                                                    <a class="dropdown-item" data-toggle="modal" href="#"> <img src="/assets/media/icons/system-icon/outline/Edit Square.svg" width="25px" alt=""> Update</a>
+                                                    {{-- @csrf
+                                                    @method('DELETE') --}}
+                                                    <button type="submit" class="dropdown-item"> <img src="/assets/media/icons/system-icon/outline/Delete.svg" width="25px" alt=""> Delete</button>
+                                                </form>
+                                            </div>
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-lg-2 body-1">
-                            <img src="img/Frame 1676.png" alt="">
-                        </div>
-                        <div class="col-lg-3 body-1">
-                            28/08/2022
-                        </div>
-                        <div class=" col-lg-1" >
-                            <a class="fs-4" style="color: #6E6666" href="#">Detail <img src="assets/media/icons/system-icon/outline/Arrow - Right.svg" alt="" >
-                            </a>
+                            <div class="card-body w-100" style="display:flex;flex-direction: column;align-items: flex-start;">
+                                <p class="border fs-7 text-light border-dark p-3" style="line-height: 0%; border-radius: 10px; background-color:rgb(11, 179, 50);">Maintained </p>
+                                <p class="num m-0 "><img src="assets/media/icons/system-icon/outline/Calendar.svg" style="display: inline-block; margin-right:20px;" alt="">Date : 28 / 08 / 2022 </p>
+                                <p class="email" style="line-height: 0%"><img src="assets/media/icons/system-icon/outline/Bookmark.svg" class="my-2" style="display: inline-block; margin-right:20px;" alt="">Type : Monthly </p>
+                                {{-- <div class="btnset">
+                                    <button class="btn btn1">Button</button>
+                                    <button class="btn btn2">button</button>
+                                </div> --}}
+                            </div>
 
                         </div>
                     </div>
+                    {{-- @endforeach --}}
+                    <div class="m-t-15 ">
+                        <div class="pull-right">
+                            <nav aria-label="Page navigation nav-paging">
 
+                            </nav>
+                        </div>
+
+                    </div>
                 </div>
             </div>
         </div>
@@ -206,4 +284,7 @@
         <!--end::Row-->
     </div>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+
 @endsection
