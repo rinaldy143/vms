@@ -34,7 +34,7 @@ class SparepartController extends ApiController
         $data = $this->service->dataTable($request);
         $sparepats = Sparepart::all();
 
-        return view('pages.spareparts', compact('spareparts'));
+        return view('pages.spareparts', compact('sparepats'));
         // return $this->sendSuccess($data, null, 200);
     }
 
