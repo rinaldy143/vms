@@ -26,7 +26,7 @@ class StoreUserRequest extends FormRequest
         return [
             'name' => 'required|string',
             'email' => 'required|unique:users,email|email',
-            'phone_number' => 'required',
+            'phone_number' => 'required|numeric',
             'photo' => 'mimes:png,jpg,svg',
             'role' => 'required|string|in:ADMIN,MEMBER',
             // 'fcm_token' => 'nullable|string',

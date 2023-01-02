@@ -1,9 +1,7 @@
-<div class="modal fade" id="modaleditUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+<div class="modal fade" id="modaleditUser{{$model->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
     aria-hidden="true">
     {{-- <div class="modal-dialog modal-dialog-centered modal-md-contact" role="document"> --}}
     <div class="modal-dialog modal-dialog-centered " role="document">
-
-
         <form action="{{route('users.update', ($model->id))}}" method="POST"
             enctype="multipart/form-data">
             @csrf
