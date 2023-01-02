@@ -4,9 +4,9 @@
         <form action="{{route('spareparts.store')}}" method="post"
             enctype="multipart/form-data">
             @csrf
-            <div class="modal-content m-lg-10 p-3 p-3">
+            <div class="modal-content m-lg-3 p-3">
                 <div class="modal-header">
-                    <h4 class="text-color-dark font-weight-semibold text-transform-none text-5 m-0"
+                    <h4 class="heading-3 m-0 text-color-dark font-weight-semibold text-transform-none text-5 m-0"
                         id="exampleModalLongTitle">Add Sparepart</h4>
                     <button type="button" class="close-share border-0" style="background-color: transparent" data-dismiss="modal" aria-label="Close">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -19,14 +19,14 @@
                 <div class="modal-body">
                     <div class="container-fluid">
                         <div class="row">
-                            <div class="sparepart1 col-md-6 mb-3 mb-lg-0 col-lg-6">
+                        <div class="col-md-6 mb-3 mb-lg-0 col-lg-4">
                                 <label for="id_sparepart"
                                     class="fw-bold text-black mt-4">{{__('Identity Sparepart')}} <span
                                         class="text-danger">*</span>
                                 </label>
                                 <div class="field-input py-5">
                                     <input type="text" id="id_sparepart" name="id_sparepart" class="form-control"
-                                        placeholder="Your Name" maxlength="200" value={{old('id_sparepart')}}>
+                                    placeholder="Ex. ol-01" maxlength="200" value={{old('Identity_Sparepart')}}>
                                     @error('id_sparepart')
                                     <div class="invalid-feedback d-flex">
                                         {{ $message }}
@@ -45,7 +45,7 @@
                                     class="text-danger">*</span></label>
                                 <div class="field-input py-5">
                                     <input type="text" id="name" name="name" class="form-control"
-                                        placeholder="Name Sparepart" maxlength="200" value={{old('name')}}>
+                                      placeholder="Ex. Oli" maxlength="200" value={{old('Name_Sparepart')}}>
                                     @error('name')
                                     <div class="invalid-feedback d-flex">
                                         {{ $message }}
@@ -80,13 +80,13 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="sparepart2 col-md-6 mb-3 mb-lg-0 col-lg-6">
+                            <div class="col-md-6 mb-3 mb-lg-0 col-lg-4">
                                 <label for="brand"
                                     class="fw-bold text-black mt-4">Brand
                                     <span class="text-danger">*</span></label>
                                 <div class="field-input py-5">
                                     <input type="text" id="brand" name="brand" class="form-control"
-                                        placeholder="Your Brand" maxlength="200" value={{old('brand')}}>
+                                       placeholder="Ex. Castrol" maxlength="200" value={{old('Brand')}}>
                                     @error('brand')
                                     <div class="invalid-feedback d-flex">
                                         {{ $message }}
@@ -112,16 +112,12 @@
                 </div>
                 <div class="modal-footer border-0 pt-20" style="flex-wrap: nowrap;">
                     <div class="col-md-6 text-center">
-                        {{-- <button class="btn btn-danger text-3 rounded-8 w-50 p-md-3 h-100" type="submit" id="downloadWp" name="downloadWp">
-                            Submit
-                        </button> --}}
-                        <input class="btn shadow btn-danger text-3 rounded-8 w-100 p-md-3 h-100" type="submit" value="Submit">
+                    <button class="btn btn-danger text-3 rounded-8 w-50 p-md-3 h-100" type="submit"
+                            id="downloadWp" name="downloadWp">Add Sparepart</button>
                     </div>
-                    <div class="col-md-6 text-center">
-                        <button type="reset" class="btn shadow border border-danger text-danger text-3 rounded-8 w-100 p-md-3 h-100 close-share" data-dismiss="modal"
-                        aria-label="Close">Cancel</button>
+                       <button type="reset" class="btn border border-danger text-danger text-3 rounded-8 w-50 p-md-3 h-100 close-share" data-dismiss="modal" aria-label="Close"
+                            id="downloadWp" name="downloadWp">Cancel</button>
                     </div>
-                </div>
         </form>
         {{-- <p class="text-center text-1 px-3">{{__('whitepapers.desc')}} <a
                 href="#">{{__('whitepapers.span1')}}</a>
