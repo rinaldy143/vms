@@ -128,11 +128,14 @@
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <form action="{{route('users.destroy', ($model->id))}}" method="POST">
-                                        <a class="dropdown-item" data-toggle="modal" href="#modaleditUser"> <img src="/assets/media/icons/system-icon/outline/Edit Square.svg" width="25px" alt=""> Update</a>
+                                        <a class="dropdown-item" data-toggle="modal" id="btn1" href="#modaleditUser{{$model->id}}"> <img src="/assets/media/icons/system-icon/outline/Edit Square.svg" width="25px" alt=""> Update</a>
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="dropdown-item"> <img src="/assets/media/icons/system-icon/outline/Delete.svg" width="25px" alt=""> Delete</button>
                                     </form>
+                                </div>
+                                <div>
+                                    @include('modal.modaleditUser')
                                 </div>
                             </li>
                         </ul>
@@ -209,9 +212,7 @@
     <!--end::Container-->
 </div>
 <!-- Modal contact-->
-<div>
-    @include('modal.modaleditUser')
-</div>
+
 <div>
     @include('modal.modalUser')
 </div>
@@ -219,6 +220,10 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
 <script>
+$("#btn1").click(function(){
+    $("#myModal1").modal();
+});
+
         var fileInput = document.getElementById('photo');
         var listFile = document.getElementById('list_file');
         var sizeFile = document.getElementById('size_file');
