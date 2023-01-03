@@ -43,7 +43,7 @@ class AuthController extends ApiController
     {
         try {
             $user = $this->service->login($request);
-            // return $this->sendSuccess($user, null, 200);
+            return $this->sendSuccess($user, null, 200);
             return view('pages.dashboard');
         } catch (Exception $e) {
             return $this->sendError(null, $e->getMessage(), $e->getCode());
