@@ -57,6 +57,7 @@ Route::group(['prefix' => '/'], function () {
         // Route::post('/vehicles',  [App\Http\Controllers\Vehicle\VehicleController::class, 'store'])->name('vehicles.store');
             Route::resource('vehicles', App\Http\Controllers\Vehicle\VehicleController::class);
             Route::resource('users', App\Http\Controllers\User\UserController::class);
+            Route::resource('trailer', App\Http\Controllers\Trailer\TrailerController::class);
 
 
         Route::get('/trailer', function() {
