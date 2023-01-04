@@ -58,11 +58,13 @@
                                     <div class="d-flex w-100">
 
                                         <div class="d-flex flex-column w-100">
-                                            <a href="javascript:void(0)" class="fs-5 text-danger btn-address fw-bolder text-hover-danger border p-3 my-1 {{$key==0?'text-danger':'text-dark'}}" style="border-radius: 8px; background-color:#fff;"
-                                            onclick="changeAddress('{{$model->plat_number}}','{{$model->monthly_maintenance}}','{{$model->ModelVehicle->vehicle_model}}','{{$model->TypeVehicle->vehicle_type}}')">{{$model->plat_number}}</a>
+                                            <a href="javascript:void(0)" id="changeLink" class="fs-5 text-danger btn-address fw-bolder text-hover-danger border p-3 my-1 {{$key==0?'text-danger':'text-dark'}}" style="border-radius: 8px; background-color:#fff;"
+                                            onclick="changeAddress('{{$model->plat_number}}','{{$model->monthly_maintenance}}','{{$model->ModelVehicle->vehicle_model}}','{{$model->TypeVehicle->vehicle_type}}', '{{$model->id}}');">{{$model->plat_number}}</a>
                                         </div>
                                     </div>
                                 </div>
+                                @include('modal.modaleditvehicle')
+
                                 @endforeach
 
                                 @else
@@ -134,7 +136,7 @@
                                 </div>
                             </div>
                             <div>
-                                <a href="#modaleditvehicle" data-toggle="modal" class="btn border-0 p-0" style="border-radius: 8px;float: right">
+                                <a href="" data-toggle="modal" id="edit" class="btn border-0 p-0" style="border-radius: 8px;float: right">
                                     <img src="/assets/media/icons/system-icon/outline/Edit Square.svg" alt="" style="float: right;">
                                 </a>
                                 <div class="img-fluid align-item-center mx-auto d-block">
@@ -255,8 +257,6 @@
     @include('modal.modalvehicle')
 </div>
 <div>
-    @include('modal.modaleditvehicle')
-
 </div>
 <style>
         .pvehicle{
@@ -298,14 +298,19 @@
   let vehicles = {!!$vehicles!!};
   let vehiclesT = {!!$vehiclesT!!};
   let model_vehicle = {!!$model_vehicle!!};
-    changeAddress(vehicles[0].plat_number,vehicles[0].monthly_maintenance,model_vehicle[0].vehicle_model,vehiclesT[0].vehicle_type);
+//   let t = document.getElementById("edit").href;
+    changeAddress(vehicles[0].plat_number,vehicles[0].monthly_maintenance,model_vehicle[0].vehicle_model,vehiclesT[0].vehicle_type,vehicles[0].id);
 
-    function changeAddress(plat_number, monthly_maintenance, vehicle_model, vehicle_type){
+    function changeAddress(plat_number, monthly_maintenance, vehicle_model, vehicle_type, id){
         $('#vehicle-plat_number').html(plat_number);
         $('#vehicle-model_vehicle_id').html(vehicle_model);
         $('#vehicle-monthly_maintenance').html(monthly_maintenance);
         $('#vehicle-type_vehicle_id').html(vehicle_type);
+        // $('#edit').html(id);
+        // $('#edit').attr('href', "#modaleditvehicle");
+        // var href = $(this).attr('href');
 
+        $("#edit").attr("href", "#modaleditvehicle" + id);
     }
 
     $('.btn-address').on('click', function(){
@@ -314,7 +319,13 @@
         $(this).removeClass('text-dark');
         $(this).addClass('text-danger');
     });
-    changeAddress(vehicles[0].plat_number,vehicles[0].monthly_maintenance,model_vehicle[0].vehicle_model,vehiclesT[0].vehicle_type);
+    changeAddress(vehicles[0].plat_number,vehicles[0].monthly_maintenance,model_vehicle[0].vehicle_model,vehiclesT[0].vehicle_type,vehicles[0].id);
+
+
+    // document.getElementById("changeLink").onclick = function() {
+    // document.getElementById("edit").href="xyz.php";
+    // return false;
+    // };
 
 </script>
 
