@@ -24,12 +24,15 @@ use Illuminate\Support\Facades\DB;
 |
 */
 
+Auth::routes();
+
+Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home');
 
 Route::group(['prefix' => '/'], function () {
     // Route::get('/', [AuthController::class, 'index'])->name('login');
     Route::get('/login', [AuthController::class, 'index'])->name('login');
     Route::post('/dashboard', [AuthController::class, 'login'])->name('login.post');
-    Route::group(['middleware' => 'auth:sanctum'], function () {
+    Route::group(['middleware' => 'auth'], function () {
         Route::get('/dashboard', function() {
             return view('/pages/dashboard');
         });
@@ -58,6 +61,7 @@ Route::group(['prefix' => '/'], function () {
             Route::resource('vehicles', App\Http\Controllers\Vehicle\VehicleController::class);
             Route::resource('users', App\Http\Controllers\User\UserController::class);
             Route::resource('trailer', App\Http\Controllers\Trailer\TrailerController::class);
+            Route::resource('spareparts', App\Http\Controllers\Sparepart\SparepartController::class);
 
 
         Route::get('/trailer', function() {
@@ -73,10 +77,6 @@ Route::group(['prefix' => '/'], function () {
         Route::get('/setting', function() {
             return view('/pages/vehicle/vehicle-setting');
         });
-
-        Route::get('/spareparts', [App\Http\Controllers\Sparepart\SparepartController::class, 'index']);
-
-        Route::post('/spareparts',  [App\Http\Controllers\Sparepart\SparepartController::class, 'store'])->name('spareparts.store');
 
         Route::get('/users', function() {
             $user = User::all();
