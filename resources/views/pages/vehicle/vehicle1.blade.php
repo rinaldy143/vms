@@ -136,9 +136,18 @@
                                 </div>
                             </div>
                             <div>
-                                <a href="" data-toggle="modal" id="edit" class="btn border-0 p-0" style="border-radius: 8px;float: right">
-                                    <img src="/assets/media/icons/system-icon/outline/Edit Square.svg" alt="" style="float: right;">
-                                </a>
+                                <div >
+                                    <form id="delete" style="padding-left: 40px;margin-left: 40px;" action="#" method="POST">
+                                        {{-- <a class="dropdown-item" data-toggle="modal" id="btn1" href="#modaleditUser{{$model->id}}"> <img src="/assets/media/icons/system-icon/outline/Edit Square.svg" width="25px" alt=""> Update</a> --}}
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="border-0 btn-primary-outline btn-link" style="background-color: transparent"> <img src="/assets/media/icons/system-icon/outline/Delete.svg" width="25px" alt=""></button>
+                                        <a href="" data-toggle="modal" id="edit" class="btn border-0 p-0" style="border-radius: 8px;float: right">
+                                            <img src="/assets/media/icons/system-icon/outline/Edit Square.svg" alt="" style="float: right;">
+                                        </a>
+                                    </form>
+                                </div>
+                                {{-- <button type="submit" class="border-0 btn-white">  <img src="/assets/media/icons/system-icon/outline/Delete.svg" width="25px" alt=""></button> --}}
                                 <div class="img-fluid align-item-center mx-auto d-block">
                                     <img src="/img/Mask group.svg" alt="">
                                     <p class="text-center">Trailer Connected</p>
@@ -298,6 +307,7 @@
   let vehicles = {!!$vehicles!!};
   let vehiclesT = {!!$vehiclesT!!};
   let model_vehicle = {!!$model_vehicle!!};
+
 //   let t = document.getElementById("edit").href;
     changeAddress(vehicles[0].plat_number,vehicles[0].monthly_maintenance,model_vehicle[0].vehicle_model,vehiclesT[0].vehicle_type,vehicles[0].id);
 
@@ -310,6 +320,8 @@
         // $('#edit').attr('href', "#modaleditvehicle");
         // var href = $(this).attr('href');
 
+        var url = "{{ route('vehicles.destroy', '') }}";
+        $("#delete").attr("action", url + '/' + id);
         $("#edit").attr("href", "#modaleditvehicle" + id);
     }
 
