@@ -1,6 +1,5 @@
-<div class="modal fade " id="modaleditvehicle" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+<div class="modal fade " id="modaleditvehicle{{$model->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
     aria-hidden="true">
-
     <div class="modal-dialog modal-dialog-centered " role="document">
         <form action="{{route('vehicles.update', ($model->id))}}" method="post"
             enctype="multipart/form-data">
@@ -61,15 +60,15 @@
                                 </label>
                                 <div class="field-input">
                                     <select class="form-control" aria-label="ModelVehicle" id="model_vehicle_id"
-                                        name="model_vehicle_id" required >
-
+                                        name="model_vehicle_id" required>
                                         <option value="" disabled selected>{{__('Select Vehicle Model')}}</option>
-                                        @foreach ($model_vehicle as $model2)
 
+                                        @foreach ($model_vehicle as $model2)
                                         <option value="{{$model2->id}}" {{ old('ModelVehicle')==$model2->id ?
                                             'selected' : '' }}>{{$model2->vehicle_model}}</option>
                                         @endforeach
                                     </select>
+
                                         @error('ModelVehicle')
                                         <div class="invalid-feedback d-flex">
                                             {{ $message }}
@@ -85,7 +84,7 @@
                                 <input type="text" id="monthly_maintenance" name="monthly_maintenance" class="datepicker form-control  border-0 rounded"  required value='{{$model->monthly_maintenance}}'
                                 @isset($value)
                                 value="{{old($monthly_maintenance) ? old($monthly_maintenance) : $value}}"
-                                @else value="{{old($model->monthly_maintenance)}}" @endisset>>
+                                @else value="{{old($model->monthly_maintenance)}}" @endisset>
                                 @error('monthly_maintenance')
                                 <div class="invalid-feedback d-flex">
                                     {{ $message }}
@@ -108,8 +107,8 @@
                         <button type="reset" class="btn shadow border border-danger text-danger text-3 rounded-8 w-100 p-md-3 h-100 close-share" data-dismiss="modal"
                         aria-label="Close">Cancel</button>
                     </div>
-
                 </div>
+            </div>
         </form>
     </div>
 </div>
