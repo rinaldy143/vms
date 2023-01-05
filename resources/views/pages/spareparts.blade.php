@@ -80,159 +80,50 @@
         <!--end::Row-->
         <!--begin::Row-->
         <div class="row pt-5 pb-5">
-
-            <div class="col-lg-4 col-md-6 col-11 pb-5">
-                <div class="card drop-shadow align-items-start" style="border-radius: 8px;" >
-                    {{-- <img src="/img/img_videos/{{$video->thumbnail}}" alt="" class="card-img-top video-thumb "> --}}
-                    <div class="pt-10 d-flex justify-content-between align-items-center m-0 w-100" style="padding-left: 2.5rem">
-                        <p class="fw-bolder fs-4" style="display: contents">OLI</p>
-                        <ul class="menu-nav">
-                            <li class="menu-item dropdown ">
-                                <a class="nav-link text-dark" href="#" role="button"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <img src="img/kebab.png" style="padding-right: 2rem" alt="">
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="#"> <img src="/assets/media/icons/system-icon/outline/Edit Square.svg" width="25px" alt=""> Update</a>
-                                        <a class="dropdown-item" href="#"> <img src="/assets/media/icons/system-icon/outline/Delete.svg" width="25px" alt=""> Delete</a>
-                                </div>
-                            </li>
-                        </ul>
-                        {{-- <a class="m-lg-3" style="padding-right: 2rem" href="#" title="" >
-                            <img src="img/kebab.png" alt="" title=""
-                                />
-                        </a> --}}
-                    </div>
-
-                        <div class="d-flex align-items-center" style="padding-left: 2.5rem">
-                                <img src="img/Mask group.png" alt="" title=""
-                                style="" />
-                                <ul class="m-0" style="list-style: none;">
-                                    <li class="py-1">Identity : <strong>OL123</strong></li>
-                                    <li class="py-1">Brand : <strong>TOP1</strong></li>
-                                    <li class="py-1">Stock : <strong class="text-danger">7 PCS</strong></li>
-                                </ul>
+            @foreach ($spareparts as $item)
+                <div class="col-lg-4 col-md-6 col-11 pb-5">
+                    <!--begin::Card-->
+                    <div class="card drop-shadow align-items-start pb-15" style="border-radius: 8px;">
+                        <div class="pt-10 d-flex justify-content-between align-items-center m-0 w-100" style="padding-left: 2.5rem">
+                            <p class="fw-bolder fs-4" style="display: contents">{{$item->name}}</p>
+                            <ul class="menu-nav">
+                                <li class="menu-item dropdown">
+                                    <a href="#" class="nav-link text-dark" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <img src="img/kebab.png" style="padding-right: 2rem" alt="">
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <form action="{{route('spareparts.destroy', ($item->id))}}" method="POST">
+                                            <a href="" class="dropdown-item">
+                                                <img src="/assets/media/icons/system-icon/outline/Edit Square.svg" alt="" width="25px">
+                                                Update
+                                            </a>
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="dropdown-item">
+                                                <img src="/assets/media/icons/system-icon/outline/Delete.svg" alt="" width="25px">
+                                                Delete
+                                            </button>
+                                        </form>
+                                    </div>
+                                </li>
+                            </ul>
                         </div>
-                    <div class="card-body">
-                        {{-- <div class="btnset">
-                            <button class="btn btn1">Button</button>
-                            <button class="btn btn2">button</button>
-                        </div> --}}
-                    </div>
-
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-11 pb-5">
-                <div class="card drop-shadow align-items-start" style="border-radius: 8px;">
-                    {{-- <img src="/img/img_videos/{{$video->thumbnail}}" alt="" class="card-img-top video-thumb "> --}}
-                    <div class="pt-10 d-flex justify-content-between align-items-center m-0 w-100" style="padding-left: 2.5rem">
-                        <p class="fw-bolder fs-4" style="display: contents">OLI</p>
-                        <ul class="menu-nav">
-                            <li class="menu-item dropdown ">
-                                <a class="nav-link text-dark" href="#" role="button"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <img src="img/kebab.png" style="padding-right: 2rem" alt="">
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="#"> <img src="/assets/media/icons/system-icon/outline/Edit Square.svg" width="25px" alt=""> Update</a>
-                                        <a class="dropdown-item" href="#"> <img src="/assets/media/icons/system-icon/outline/Delete.svg" width="25px" alt=""> Delete</a>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-
                         <div class="d-flex align-items-center" style="padding-left: 2.5rem">
-                                <img src="img/Mask group.png" alt="" title=""
-                                style="" />
-                                <ul class="m-0" style="list-style: none;">
-                                    <li class="py-1">Identity : <strong>OL123</strong></li>
-                                    <li class="py-1">Brand : <strong>TOP1</strong></li>
-                                    <li class="py-1">Stock : <strong class="text-success">70 PCS</strong></li>
-                                </ul>
+                            @if ($item->photo == null)
+                                <img src="img/Mask group.png" alt="" title="" width="50px" height="50px">
+                            @else
+                                <img src="storage/{{$item->photo}}" alt="" width="50px" height="50px">
+                            @endif
+                            <ul class="m-0" style="list-style: none">
+                                <li class="py-1">Identity : <strong>{{$item->id_sparepart}}</strong></li>
+                                <li class="py-1">Brand : <strong>{{$item->brand}}</strong></li>
+                                <li class="py-1">Stock : <strong class="text-danger">{{$item->count}}</strong></li>
+                            </ul>
                         </div>
-                    <div class="card-body">
-                        {{-- <div class="btnset">
-                            <button class="btn btn1">Button</button>
-                            <button class="btn btn2">button</button>
-                        </div> --}}
                     </div>
-
+                            <!--end::Card-->
                 </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-11 pb-5">
-                <div class="card drop-shadow align-items-start" style="border-radius: 8px;">
-                    {{-- <img src="/img/img_videos/{{$video->thumbnail}}" alt="" class="card-img-top video-thumb "> --}}
-                    <div class="pt-10 d-flex justify-content-between align-items-center m-0 w-100" style="padding-left: 2.5rem">
-                        <p class="fw-bolder fs-4" style="display: contents">OLI</p>
-                        <ul class="menu-nav">
-                            <li class="menu-item dropdown ">
-                                <a class="nav-link text-dark" href="#" role="button"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <img src="img/kebab.png" style="padding-right: 2rem" alt="">
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="#"> <img src="/assets/media/icons/system-icon/outline/Edit Square.svg" width="25px" alt=""> Update</a>
-                                        <a class="dropdown-item" href="#"> <img src="/assets/media/icons/system-icon/outline/Delete.svg" width="25px" alt=""> Delete</a>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-
-                        <div class="d-flex align-items-center" style="padding-left: 2.5rem">
-                                <img src="img/Mask group.png" alt="" title=""
-                                style="" />
-                                <ul class="m-0" style="list-style: none;">
-                                    <li class="py-1">Identity : <strong>OL123</strong></li>
-                                    <li class="py-1">Brand : <strong>TOP1</strong></li>
-                                    <li class="py-1">Stock : <strong class="text-danger">7 PCS</strong></li>
-                                </ul>
-                        </div>
-                    <div class="card-body">
-                        {{-- <div class="btnset">
-                            <button class="btn btn1">Button</button>
-                            <button class="btn btn2">button</button>
-                        </div> --}}
-                    </div>
-
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-11 pb-5">
-                <div class="card drop-shadow align-items-start" style="border-radius: 8px;">
-                    {{-- <img src="/img/img_videos/{{$video->thumbnail}}" alt="" class="card-img-top video-thumb "> --}}
-                    <div class="pt-10 d-flex justify-content-between align-items-center m-0 w-100" style="padding-left: 2.5rem">
-                        <p class="fw-bolder fs-4" style="display: contents">OLI</p>
-                        <ul class="menu-nav">
-                            <li class="menu-item dropdown ">
-                                <a class="nav-link text-dark" href="#" role="button"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <img src="img/kebab.png" style="padding-right: 2rem" alt="">
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="#"> <img src="/assets/media/icons/system-icon/outline/Edit Square.svg" width="25px" alt=""> Update</a>
-                                        <a class="dropdown-item" href="#"> <img src="/assets/media/icons/system-icon/outline/Delete.svg" width="25px" alt=""> Delete</a>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-
-                        <div class="d-flex align-items-center" style="padding-left: 2.5rem">
-                                <img src="img/Mask group.png" alt="" title=""
-                                style="" />
-                                <ul class="m-0" style="list-style: none;">
-                                    <li class="py-1">Identity : <strong>OL123</strong></li>
-                                    <li class="py-1">Brand : <strong>TOP1</strong></li>
-                                    <li class="py-1">Stock : <strong class="text-danger">7 PCS</strong></li>
-                                </ul>
-                        </div>
-                    <div class="card-body">
-                        {{-- <div class="btnset">
-                            <button class="btn btn1">Button</button>
-                            <button class="btn btn2">button</button>
-                        </div> --}}
-                    </div>
-
-                </div>
-            </div>
+            @endforeach
             <div class="row mb-12">
                 <div class="col-sm-12 col-md-7 d-flex align-items-center w-100 justify-content-md-end">
                     <div class="dataTables_paginate paging_simple_numbers" id="kt_customers_table_paginate">
@@ -267,9 +158,6 @@
                 </div>
             </div>
         </div>
-        <!--begin::Card-->
-        <!--end::Card-->
-
         <!--end::Row-->
     </div>
     <div>

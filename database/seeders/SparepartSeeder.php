@@ -16,20 +16,20 @@ class SparepartSeeder extends Seeder
     {
         SparepartTable::create([
             'id' => '00000001-0000-0000-0000-000000000001',
-            'id_sparepart' => 'AO-01',
-            'name' => 'Gear',
-            'brand' => 'Astra',
-            'count' => '10',
-            'photo' => '/path'
+            'id_sparepart' => 'OL123',
+            'name' => 'Oli',
+            'brand' => 'TOP_1',
+            'count' => '70',
+            'photo' => 'spareparts/Mask group.png'
         ]);
 
         SparepartTable::create([
             'id' => '00000001-0000-0000-0000-000000000002',
-            'id_sparepart' => 'AO-02',
-            'name' => 'Roller',
-            'brand' => 'SNSV',
-            'count' => '101',
-            'photo' => '/path'
+            'id_sparepart' => 'OL124',
+            'name' => 'Oli',
+            'brand' => 'TOP_2',
+            'count' => '75',
+            'photo' => 'spareparts/Mask group.png'
         ]);
     }
 }

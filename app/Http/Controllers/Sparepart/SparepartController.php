@@ -32,9 +32,8 @@ class SparepartController extends ApiController
     public function index(Request $request)
     {
         $data = $this->service->dataTable($request);
-        $sparepats = Sparepart::all();
-
-        return view('pages.spareparts', compact('sparepats'));
+        $spareparts = Sparepart::all();
+        return view('pages.spareparts', compact('spareparts'));
         // return $this->sendSuccess($data, null, 200);
     }
 
