@@ -26,13 +26,13 @@ use Illuminate\Support\Facades\DB;
 
 Auth::routes();
 
-Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home');
-
 Route::group(['prefix' => '/'], function () {
-    // Route::get('/', [AuthController::class, 'index'])->name('login');
     Route::get('/login', [AuthController::class, 'index'])->name('login');
     Route::post('/dashboard', [AuthController::class, 'login'])->name('login.post');
     Route::group(['middleware' => 'auth'], function () {
+        Route::get('/', function() {
+            return view('/pages/dashboard');
+        });
         Route::get('/dashboard', function() {
             return view('/pages/dashboard');
         });
