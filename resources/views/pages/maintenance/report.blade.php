@@ -2,238 +2,230 @@
 
 @section('content')
 <div class="content">
-    <div class="heading-3 position-absolute">Maintenances</div>
-    <div class="d-flex justify-content-end">
-        <div class="d-flex align-items-center position-relative my-1">
-            <!--begin::Svg Icon | path: icons/duotune/general/gen021.svg-->
-            <span class="position-absolute ms-6">
-                <img src="/img/Search.png" alt="">
-            </span>
-            <!--end::Svg Icon-->
-            <input type="text" data-kt-customer-table-filter="search"
-                class="form-control form-control-lg w-325px h-50px ps-15" placeholder="Search...">
+    <div class="container">
+        <div class="heading-3 position-absolute">Maintenances</div>
+        <div class="d-flex justify-content-end">
+            <div class="d-flex align-items-center position-relative my-1">
+                <!--begin::Svg Icon | path: icons/duotune/general/gen021.svg-->
+                <span class="position-absolute ms-6">
+                    <img src="/img/Search.png" alt="">
+                </span>
+                <!--end::Svg Icon-->
+                <input type="text" data-kt-customer-table-filter="search"
+                    class="form-control form-control-lg w-325px h-50px ps-15" placeholder="Search...">
 
-            <div class="px-10 btn btn-icon btn-active-light-primary w-30px h-30px w-md-40px h-md-40px">
-                <img src="/img/Frame 1637.png" alt="">
-            </div>
-        </div>
-    </div>
-    <div class="nav" style="margin-top: 46px">
-        <a href="/maintenance/report">
-            <div class="subtitle-1 me-10">Report</div>
-        </a>
-        <a href="/maintenance/maintenance">
-            <div class="subtitle-1 me-10">Maintenance</div>
-        </a>
-        <a href="/maintenance/workorder">
-            <div class="subtitle-1 me-10">Work Order</div>
-        </a>
-    </div>
-    <div class="card w-1000px mt-8">
-        <div class="card-body">
-            <div class="heading-4">
-                <span class="rounded me-4"><img src="/img/Ellipse 47.png" alt=""></span>
-                Request Maintenance
-            </div>
-            <div class="position-relative" style="transform: rotate(90deg);top: -85px ">
-                <div style="border: 1px solid #000000;position: relative;top: 480px;width: 46px;left: 650px"></div>
-                <div style="border: 1px solid #CFCCCC;position: relative;top: 478px;width: 180px;left: 696px"></div>
-            </div>
-            <table class="table mt-10 align-middle">
-                <thead>
-                    <tr>
-                        <th scope="col" class="fw-bold" style="font-size: 16px;">No</th>
-                        <th scope="col" class="fw-bold" style="font-size: 16px;">Vehicle</th>
-                        <th scope="col" class="fw-bold" style="font-size: 16px;">Type</th>
-                        <th scope="col" class="fw-bold" style="font-size: 16px;">Date</th>
-                        <th scope="col" class="fw-bold" style="font-size: 16px;">Problem</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                    <th scope="row" style="font-size: 16px;">1</th>
-                    <td>
-                        <div class="d-flex align-items-center">
-                            <img src="/img/image 1.png" alt="">
-                            <div class="ms-5">
-                                <h1 style="font-size: 16px;margin-bottom: 0;">D 1123 ABC</h1>
-                                <p style="text-muted font-size: 14px;margin-bottom: 0;">Grand Max</p>
-                            </div>
-                        </div>
-                    </td>
-                    <td style="font-size: 16px;">Monthly</td>
-                    <td style="font-size: 16px;">28/08/2020</td>
-                    <td>
-                        <div class="d-flex justify-content-between w-75" style="background-color: #F5F5F5;height: 64px;">
-                            <h1 style="font-size: 16px;font-weight: 400;padding: 8px;border-radius: 8px;">Rem truck bunyi</h1>
-                            <div style="position: absolute;right: 30px; top: 190px;">
-                                <img src="/assets/media/icons/system-icon/outline/Kebab.svg" alt="">
-                            </div>
-                        </div>
-                    </td>
-                    </tr>
-                    <tr>
-                    <th scope="row" style="font-size: 16px;">2</th>
-                    <td>
-                        <div class="d-flex align-items-center">
-                            <img src="/img/image 1.png" alt="">
-                            <div class="ms-5">
-                                <h1 style="font-size: 16px;margin-bottom: 0;">D 1123 ABC</h1>
-                                <p style="text-muted font-size: 14px;margin-bottom: 0;">Grand Max</p>
-                            </div>
-                        </div>
-                    </td>
-                    <td style="font-size: 16px;">Monthly</td>
-                    <td style="font-size: 16px;">28/08/2020</td>
-                    <td>
-                        <div class="d-flex justify-content-between w-75" style="background-color: #F5F5F5;height: 64px;">
-                            <h1 style="font-size: 16px;font-weight: 400;padding: 8px;border-radius: 8px;">Rem truck bunyi</h1>
-                            <div style="position: absolute;right: 30px; top: 275px;">
-                                <img src="/assets/media/icons/system-icon/outline/Kebab.svg" alt="">
-                            </div>
-                        </div>
-                    </td>
-                    </tr>
-                    <tr>
-                    <th scope="row" style="font-size: 16px;">3</th>
-                    <td>
-                        <div class="d-flex align-items-center">
-                            <img src="/img/image 1.png" alt="">
-                            <div class="ms-5">
-                                <h1 style="font-size: 16px;margin-bottom: 0;">D 1123 ABC</h1>
-                                <p style="text-muted font-size: 14px;margin-bottom: 0;">Grand Max</p>
-                            </div>
-                        </div>
-                    </td>
-                    <td style="font-size: 16px;">Monthly</td>
-                    <td style="font-size: 16px;">28/08/2020</td>
-                    <td>
-                        <div class="d-flex justify-content-between w-75" style="background-color: #F5F5F5;height: 64px;">
-                            <h1 style="font-size: 16px;font-weight: 400;padding: 8px;border-radius: 8px;">Rem truck bunyi</h1>
-                            <div style="position: absolute;right: 30px; top: 360px;">
-                                <img src="/assets/media/icons/system-icon/outline/Kebab.svg" alt="">
-                            </div>
-                        </div>
-                    </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-    <div class="d-flex flex-row mt-10 mb-10">
-        <div class="flex-column">
-            <div class="card" style="width: 450px; height: 300px; margin-right: 40px">
-                <div class="card-body">
-                    <div class="heading-4">
-                        <span class="rounded me-4"><img src="/img/Ellipse 47.png" alt=""></span>
-                        On Progress
-                    </div>
-                    <table class="table mt-10 align-middle">
-                        <thead>
-                            <tr>
-                                <th scope="col" class="fw-bold" style="font-size: 16px;">No</th>
-                                <th scope="col" class="fw-bold" style="font-size: 16px;">Vehicle</th>
-                                <th scope="col" class="fw-bold" style="font-size: 16px;">Mechanice</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                            <th scope="row" style="font-size: 16px;">1</th>
-                            <td>
-                                <div class="d-flex align-items-center">
-                                    <img src="/img/image 1.png" alt="">
-                                    <div class="ms-5">
-                                        <h1 style="font-size: 16px;margin-bottom: 0;">D 1123 ABC</h1>
-                                        <p style="text-muted font-size: 14px;margin-bottom: 0;">Grand Max</p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="d-flex justify-content-between">
-                                    <img src="/img/Frame 1676.png" alt="">
-                                    <img src="/assets/media/icons/system-icon/outline/Arrow - Right.svg" alt="">
-                                </div>
-                            </td>
-                            </tr>
-                            <tr>
-                            <th scope="row" style="font-size: 16px;">2</th>
-                            <td>
-                                <div class="d-flex align-items-center">
-                                    <img src="/img/image 1.png" alt="">
-                                    <div class="ms-5">
-                                        <h1 style="font-size: 16px;margin-bottom: 0;">D 1123 ABC</h1>
-                                        <p style="text-muted font-size: 14px;margin-bottom: 0;">Grand Max</p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="d-flex justify-content-between">
-                                    <img src="/img/Frame 1676.png" alt="">
-                                    <img src="/assets/media/icons/system-icon/outline/Arrow - Right.svg" alt="">
-                                </div>
-                            </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <div class="px-10 btn btn-icon btn-active-light-primary w-30px h-30px w-md-40px h-md-40px">
+                    <img src="/img/Frame 1637.png" alt="">
                 </div>
             </div>
         </div>
-        <div class="flex-column">
-            <div class="card" style="width: 500px; height: 300px">
-                <div class="card-body">
-                    <div class="heading-4">
-                        <span class="rounded me-4"><img src="/img/Ellipse 47.png" alt=""></span>
-                        Maintained
+        <div class="d-flex" style="justify-content: space-between">
+            <div class="nav" style="margin-top: 46px">
+                <a href="/maintenance/report">
+                    <div class="subtitle-1 me-10 text-danger" style="border-bottom: 1px solid #FF0000">Report</div>
+                </a>
+                <a href="/maintenance/maintenance">
+                    <div class="subtitle-1 me-10">Maintenance</div>
+                </a>
+                <a href="/maintenance/workorder">
+                    <div class="subtitle-1 me-10">Work Order</div>
+                </a>
+            </div>
+            <div style="margin-top: 46px">
+                <button type="button" class="btn me-3 p-0 border" style="border-radius: 8px">
+                    <ul class="menu-nav p-0 m-0">
+                        <li class="menu-item dropdown ">
+                            <a class="nav-link text-dark"  href="#" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <img src="img/Filter 2.png" alt=""><strong> Filter</strong>
+                            </a>
+                            <div class="dropdown-menu mt-5" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item text-muted" href="#" style="margin-left: 20px"> All Process</a>
+                                    <a class="dropdown-item fw-bold" href="#"> <img src="/img/Ellipse 188.svg" width="16px" alt=""> Waiting</a>
+                                    <a class="dropdown-item fw-bold" href="#"> <img src="/img/Ellipse 189.svg" width="16px" alt=""> On Progress</a>
+                                    <a class="dropdown-item fw-bold" href="#"> <img src="/img/Ellipse 190.svg" width="16px" alt=""> Maintained</a>
+                            </div>
+                        </li>
+                    </ul>
+                </button>
+            </div>
+
+        </div>
+
+        <div class="card w-100 mt-8">
+            <div class="card-body">
+                <nav class="navbar navbar-expand-md navbar-light">
+                    <div class="container px-0 py-5">
+                        <div class="navbar-collapse" style="justify-content: space-between">
+                            <!-- Left Side Of Navbar -->
+                            <div class="card-title">
+                                <!--begin::Search-->
+                                <h2>All Process</h2>
+                                <!--end::Search-->
+                            </div>
+
+
+                        </div>
                     </div>
-                    <table class="table mt-10 align-middle">
-                        <thead>
-                            <tr>
-                                <th scope="col" class="fw-bold" style="font-size: 16px;">No</th>
-                                <th scope="col" class="fw-bold" style="font-size: 16px;">Vehicle</th>
-                                <th scope="col" class="fw-bold" style="font-size: 16px;">Mechanice</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                            <th scope="row" style="font-size: 16px;">1</th>
-                            <td>
-                                <div class="d-flex align-items-center">
+                </nav>
+                <div class="row pt-5 pb-5">
+                    {{-- @foreach ($user as $model) --}}
+                    <div class="col-lg-4 col-md-6 col-11 pb-5">
+                        <div class="card drop-shadow border border-secondary align-items-center border-dark">
+                            {{-- <img src="/img/img_videos/{{$video->thumbnail}}" alt="" class="card-img-top video-thumb "> --}}
+                            <div class="card-body col-lg-12 row pt-10 w-100">
+                                {{-- <a class="download round m-lg-3" href="#" title="" >
+                                    <img src="img/kebab.png" alt="download" title="download"
+                                        style="right: 20px;position: absolute;" />
+                                </a> --}}
+                                <div class="col-lg-3">
                                     <img src="/img/image 1.png" alt="">
-                                    <div class="ms-5">
-                                        <h1 style="font-size: 16px;margin-bottom: 0;">D 1123 ABC</h1>
-                                        <p style="text-muted font-size: 14px;margin-bottom: 0;">Grand Max</p>
-                                    </div>
+
                                 </div>
-                            </td>
-                            <td>
-                                <div class="d-flex justify-content-between">
-                                    <img src="/img/Frame 1676.png" alt="">
-                                    <img src="/assets/media/icons/system-icon/outline/Arrow - Right.svg" alt="">
+                                <div class="col-lg-6">
+                                    <div class="fw-bolder fs-3" id="list_file">D 1123 ABC</div>
+                                    <div id="size_file">Grand Max</div>
                                 </div>
-                            </td>
-                            </tr>
-                            <tr>
-                            <th scope="row" style="font-size: 16px;">2</th>
-                            <td>
-                                <div class="d-flex align-items-center">
+                                <div class="col-lg-3" style="display: flex; justify-content: flex-end">
+                                    <ul class="menu-nav" >
+                                        <li class="menu-item dropdown">
+                                            <a class="nav-link text-dark"  href="#" role="button"
+                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <img src="/img/kebab.png" style="" alt="">
+                                            </a>
+                                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                <form action="#" method="POST">
+                                                    <a class="dropdown-item" data-toggle="modal" href="#"> <img src="/assets/media/icons/system-icon/outline/Edit Square.svg" width="25px" alt=""> Update</a>
+                                                    {{-- @csrf
+                                                    @method('DELETE') --}}
+                                                    <button type="submit" class="dropdown-item"> <img src="/assets/media/icons/system-icon/outline/Delete.svg" width="25px" alt=""> Delete</button>
+                                                </form>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card-body w-100" style="display:flex;flex-direction: column;align-items: flex-start;">
+                                <p class="border fs-7 text-danger fw-bolder border-dark p-3" style="line-height: 0%; border-radius: 10px; background-color:rgb(255,160,122);">Waiting </p>
+                                <p class="num m-0 "><img src="/assets/media/icons/system-icon/outline/Calendar.svg" style="display: inline-block; margin-right:20px;" alt="">Date : 28 / 08 / 2022 </p>
+                                <p class="email" style="line-height: 0%"><img src="/assets/media/icons/system-icon/outline/Bookmark.svg" class="my-2" style="display: inline-block; margin-right:20px;" alt="">Type : Monthly </p>
+                                {{-- <div class="btnset">
+                                    <button class="btn btn1">Button</button>
+                                    <button class="btn btn2">button</button>
+                                </div> --}}
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-11 pb-5">
+                        <div class="card drop-shadow border border-secondary align-items-center border-dark">
+                            {{-- <img src="/img/img_videos/{{$video->thumbnail}}" alt="" class="card-img-top video-thumb "> --}}
+                            <div class="card-body col-lg-12 row pt-10 w-100">
+                                {{-- <a class="download round m-lg-3" href="#" title="" >
+                                    <img src="img/kebab.png" alt="download" title="download"
+                                        style="right: 20px;position: absolute;" />
+                                </a> --}}
+                                <div class="col-lg-3">
                                     <img src="/img/image 1.png" alt="">
-                                    <div class="ms-5">
-                                        <h1 style="font-size: 16px;margin-bottom: 0;">D 1123 ABC</h1>
-                                        <p style="text-muted font-size: 14px;margin-bottom: 0;">Grand Max</p>
-                                    </div>
+
                                 </div>
-                            </td>
-                            <td>
-                                <div class="d-flex justify-content-between">
-                                    <img src="/img/Frame 1676.png" alt="">
-                                    <img src="/assets/media/icons/system-icon/outline/Arrow - Right.svg" alt="">
+                                <div class="col-lg-6">
+                                    <div class="fw-bolder fs-3" id="list_file">D 1123 ABC</div>
+                                    <div id="size_file">Grand Max</div>
                                 </div>
-                            </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                                <div class="col-lg-3" style="display: flex; justify-content: flex-end">
+                                    <ul class="menu-nav" >
+                                        <li class="menu-item dropdown">
+                                            <a class="nav-link text-dark"  href="#" role="button"
+                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <img src="/img/kebab.png" style="" alt="">
+                                            </a>
+                                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                <form action="#" method="POST">
+                                                    <a class="dropdown-item" data-toggle="modal" href="#"> <img src="/assets/media/icons/system-icon/outline/Edit Square.svg" width="25px" alt=""> Update</a>
+                                                    {{-- @csrf
+                                                    @method('DELETE') --}}
+                                                    <button type="submit" class="dropdown-item"> <img src="/assets/media/icons/system-icon/outline/Delete.svg" width="25px" alt=""> Delete</button>
+                                                </form>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card-body w-100" style="display:flex;flex-direction: column;align-items: flex-start;">
+                                <p class="border fs-7 text-primary fw-bolder border-dark p-3" style="line-height: 0%; border-radius: 10px; background-color:#87CEFA;">On Progress </p>
+                                <p class="num m-0 "><img src="/assets/media/icons/system-icon/outline/Calendar.svg" style="display: inline-block; margin-right:20px;" alt="">Date : 28 / 08 / 2022 </p>
+                                <p class="email" style="line-height: 0%"><img src="/assets/media/icons/system-icon/outline/Bookmark.svg" class="my-2" style="display: inline-block; margin-right:20px;" alt="">Type : Monthly </p>
+                                {{-- <div class="btnset">
+                                    <button class="btn btn1">Button</button>
+                                    <button class="btn btn2">button</button>
+                                </div> --}}
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-11 pb-5">
+                        <div class="card drop-shadow border border-secondary align-items-center border-dark">
+                            {{-- <img src="/img/img_videos/{{$video->thumbnail}}" alt="" class="card-img-top video-thumb "> --}}
+                            <div class="card-body col-lg-12 row pt-10 w-100">
+                                {{-- <a class="download round m-lg-3" href="#" title="" >
+                                    <img src="img/kebab.png" alt="download" title="download"
+                                        style="right: 20px;position: absolute;" />
+                                </a> --}}
+                                <div class="col-lg-3">
+                                    <img src="/img/image 1.png" alt="">
+
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="fw-bolder fs-3" id="list_file">D 1123 ABC</div>
+                                    <div id="size_file">Grand Max</div>
+                                </div>
+                                <div class="col-lg-3" style="display: flex; justify-content: flex-end">
+                                    <ul class="menu-nav" >
+                                        <li class="menu-item dropdown">
+                                            <a class="nav-link text-dark"  href="#" role="button"
+                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <img src="/img/kebab.png" style="" alt="">
+                                            </a>
+                                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                <form action="#" method="POST">
+                                                    <a class="dropdown-item" data-toggle="modal" href="#"> <img src="/assets/media/icons/system-icon/outline/Edit Square.svg" width="25px" alt=""> Update</a>
+                                                    {{-- @csrf
+                                                    @method('DELETE') --}}
+                                                    <button type="submit" class="dropdown-item"> <img src="/assets/media/icons/system-icon/outline/Delete.svg" width="25px" alt=""> Delete</button>
+                                                </form>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card-body w-100" style="display:flex;flex-direction: column;align-items: flex-start;">
+                                <p class="border fs-7 text-success border-dark p-3" style="line-height: 0%; border-radius: 10px; background-color:rgb(152,251,152);">Maintained </p>
+                                <p class="num m-0 "><img src="/assets/media/icons/system-icon/outline/Calendar.svg" style="display: inline-block; margin-right:20px;" alt="">Date : 28 / 08 / 2022 </p>
+                                <p class="email" style="line-height: 0%"><img src="/assets/media/icons/system-icon/outline/Bookmark.svg" class="my-2" style="display: inline-block; margin-right:20px;" alt="">Type : Monthly </p>
+                                {{-- <div class="btnset">
+                                    <button class="btn btn1">Button</button>
+                                    <button class="btn btn2">button</button>
+                                </div> --}}
+                            </div>
+
+                        </div>
+                    </div>
+                    {{-- @endforeach --}}
+                    <div class="m-t-15 ">
+                        <div class="pull-right">
+                            <nav aria-label="Page navigation nav-paging">
+
+                            </nav>
+                        </div>
+
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+
 @endsection
