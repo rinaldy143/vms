@@ -59,14 +59,13 @@
                             <label for="role" class="subtitle-1">Select Vehicle<span class="text-danger">*</span></label>
                             <select name="" id="" class="form-select mt-2">
                                 <option value="" disabled selected class="fw-bolder" >{{__('Vehicle')}}</option>
-
-                                    <option value="" disabled >{{__('Grand max')}}</option>
-                                    <option value="">D 1123 ABC</option>
-                                    <option value="">D 2130 BAC</option>
+                                    <option class="fs-8" value="" disabled >&#160;&#160;&#160;&#160;{{__('Grand max')}}</option>
+                                    <option value="">&#160;&#160;&#160;&#160;D 1123 ABC</option>
+                                    <option value="">&#160;&#160;&#160;&#160;D 2130 BAC</option>
                                 <option value="" disabled class="fw-bolder" >{{__('Trailer')}}</option>
-                                <option value="" disabled >{{__('Tridem Axle 40FT')}}</option>
-                                <option value="">T-01</option>
-                                <option value="">T-02</option>
+                                <option class="fs-8" value="" disabled >&#160;&#160;&#160;&#160;{{__('Tridem Axle 40FT')}}</option>
+                                <option value="">&#160;&#160;&#160;&#160;T-01</option>
+                                <option value="">&#160;&#160;&#160;&#160;T-02</option>
                             </select>
                         </div>
                         <div class="form-group mt-4 w-400px">
@@ -106,7 +105,7 @@
                                 <option value="">Consectetur adipiscing elit</option>
                                 <option value="">Nullam hendrerit purus ut faucibus commodo </option>
                                 <option value="">Pellentesque consectetur imperdiet nibh</option>
-                                <option class="text-danger" value="modalProblem">Add other problems..</option>
+                                <option class="text-danger" value="modalProblem">+&#160;&#160;&#160;&#160;Add other problems..</option>
                             </select>
                         </div>
                     </div>
