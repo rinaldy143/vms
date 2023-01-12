@@ -29,8 +29,8 @@
                                     <option value="" disabled selected>{{__('Search Sparepart or brand')}}</option>
 
                                     <option value="Oli" >Oli</option>
-                                    <option value="Bellato" >Bellato</option>
-                                    <option value="Cora" >Cora</option>
+                                    {{-- <option value="Bellato" >Bellato</option>
+                                    <option value="Cora" >Cora</option> --}}
                                     {{-- <select class="form-select " aria-label="select location"
                                         id="inputLocations" name="locations" required>
                                         <option selected>{{__('contact-form.selectLocation')}}</option>
@@ -93,18 +93,18 @@
           $('#list_file1').text("Oli Castrol");
           $('#text_file1').text("Castrol");
       }
-      if (restock == 'Bellato') {
-          $('#my_imgS').attr("src","img/Mask group.png");
-          $('#list_file1').text("Oli Castrol");
-          $('#text_file1').text("Castrol");
+    //   if (restock == 'Bellato') {
+    //       $('#my_imgS').attr("src","img/Mask group.png");
+    //       $('#list_file1').text("Oli Castrol");
+    //       $('#text_file1').text("Castrol");
 
-      }
-      if (restock == 'Cora') {
-          $('#my_imgS').attr("src","img/Mask group.png");
-          $('#list_file1').text("Oli Castrol");
-          $('#text_file1').text("Castrol");
+    //   }
+    //   if (restock == 'Cora') {
+    //       $('#my_imgS').attr("src","img/Mask group.png");
+    //       $('#list_file1').text("Oli Castrol");
+    //       $('#text_file1').text("Castrol");
 
-      }
+    //   }
       var input1 = document.getElementById('input1');
       input1.style.display = 'inline-flex';
 

@@ -1,12 +1,14 @@
 <?php
 
 namespace App\Services\User;
-
+use App\Models\Entity\User;
 use App\Models\Table\TypeRoleTable;
 use App\Models\Table\UserTable;
 use App\Services\AppService;
 use App\Services\AppServiceInterface;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Http\Request;
+
 
 class UserService extends AppService implements AppServiceInterface
 {
@@ -59,6 +61,20 @@ class UserService extends AppService implements AppServiceInterface
             // 'fcm_token' => $data->fcm_token,
         ]);
         return $user;
+    }
+
+    public function search($data){
+        // Get the search value from the request
+        $search = $data->input('search');
+
+        // Search in the title and body columns from the posts table
+        $users = User::query()
+            ->where('name', 'LIKE', "%{$search}%")
+            ->orWhere('role', 'LIKE', "%{$search}%")
+            ->get();
+
+        // Return the search view with the resluts compacted
+        return $users;
     }
 
     public function delete($id)
