@@ -6,6 +6,7 @@ use App\Http\Controllers\ApiController;
 use App\Http\Requests\Auth\RegisterRequest;
 use App\Http\Requests\User\StoreUserRequest;
 use App\Http\Requests\User\UpdateUserRequest;
+use App\Models\Entity\User;
 use App\Services\User\UserService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -32,7 +33,10 @@ class UserController extends ApiController
     public function index(Request $request)
     {
         $users = $this->service->dataTable($request);
-        return $this->sendSuccess($users, null, 200);
+        $user = User::all();
+        return view('pages.users', compact('user'));
+
+        // return $this->sendSuccess($users, null, 200);
     }
 
     /**
@@ -70,6 +74,12 @@ class UserController extends ApiController
     {
         $user = $this->service->update($id, $request);
         return $this->sendSuccess($user, null, 200);
+    }
+
+    public function search(Request $request)
+    {
+        $user = $this->service->search($request);
+        return view('pages.users', compact('user'));
     }
 
     /**

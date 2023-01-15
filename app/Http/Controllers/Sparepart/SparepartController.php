@@ -80,6 +80,12 @@ class SparepartController extends ApiController
      * @param String $id
      * @return JsonResponse
      */
+
+     public function search(Request $request)
+     {
+         $spareparts = $this->service->search($request);
+         return view('pages.spareparts', compact('spareparts'));
+     }
     public function destroy(string $id)
     {
         $datum = $this->service->delete($id);

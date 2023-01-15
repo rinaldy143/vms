@@ -9,14 +9,15 @@
                 <div class="d-flex align-items-center position-relative my-1">
                     <!--begin::Svg Icon | path: icons/duotune/general/gen021.svg-->
                     <span class="position-absolute ms-6">
-                        <img src="img/Search.png" alt="">
+                        <img src="/img/Search.png" alt="">
                     </span>
                     <!--end::Svg Icon-->
-                    <input type="text" data-kt-customer-table-filter="search"
-                        class="form-control form-control-lg w-350px ps-15" placeholder="Search...">
-
+                    <form action="{{route('spareparts.search')}}" method="GET">
+                        <input type="text" name="search" data-kt-customer-table-filter="search"
+                            class="form-control form-control-lg w-350px ps-15" placeholder="Search...">
+                    </form>
                     <div class="px-10 btn btn-icon btn-active-light-primary w-30px h-30px w-md-40px h-md-40px">
-                        <img src="img/Frame 1637.png" alt="">
+                        <img src="/img/Frame 1637.png" alt="">
                     </div>
                 </div>
         </div>
@@ -34,12 +35,12 @@
                         </button> --}}
                         <a class="btn btn-danger me-3 font-weight-bolder py-2" style="border-radius: 8px;" data-toggle="modal"
                         href="#modalRestock" title="Restock">
-                        <img class="pt-2" src="img/Plus.png" alt="">
+                        <img class="pt-2" src="/img/Plus.png" alt="">
                         Restock
                         </a>
                         <a class="btn me-3 text-danger font-weight-bolder py-2" style="border: 1px solid red; border-radius: 8px;" data-toggle="modal"
                         href="#modalSparepart" title="Add Sparepart">
-                        <img class="pt-2" src="img/Plus 1.png" alt="">
+                        <img class="pt-2" src="/img/Plus 1.png" alt="">
                         Add Sparepart
                         </a>
                         <!--end::Search-->
@@ -53,7 +54,7 @@
                                 <li class="menu-item dropdown ">
                                     <a class="nav-link text-dark" style="padding: 11px 11px;" href="#" role="button"
                                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <img src="img/Filter 2.png" alt=""><strong> Filter</strong>
+                                        <img src="/img/Filter 2.png" alt=""><strong> Filter</strong>
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                             <a class="dropdown-item" href="#"> <img src="/assets/media/icons/system-icon/outline/Arrow - Up-1.svg" width="25px" alt=""> Ascending</a>
@@ -67,7 +68,7 @@
 
                         <button type="button" class="btn me-3 border" style="border-radius: 8px">
                             <!--begin::Svg Icon | path: icons/duotune/arrows/arr078.svg-->
-                            <img src="img/Download.png" alt="">
+                            <img src="/img/Download.png" alt="">
                             <!--end::Svg Icon--> <strong>Export</strong>
                         </button>
 
@@ -110,9 +111,9 @@
                         </div>
                         <div class="d-flex align-items-center" style="padding-left: 2.5rem">
                             @if ($item->photo == null)
-                                <img src="img/Mask group.png" alt="" title="" width="50px" height="50px">
+                                <img src="/img/Mask group.png" alt="" title="" width="50px" height="50px">
                             @else
-                                <img src="storage/{{$item->photo}}" alt="" width="50px" height="50px">
+                                <img src="/img/sparepart/{{$item->photo}}" alt="" width="50px" height="50px">
                             @endif
                             <ul class="m-0" style="list-style: none">
                                 <li class="py-1">Identity : <strong>{{$item->id_sparepart}}</strong></li>

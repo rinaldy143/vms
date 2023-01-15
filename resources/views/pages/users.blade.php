@@ -8,15 +8,17 @@
             <div class="text-black fw-bolder heading-3 fs-2 mb-2 mt-5">Users </div>
                 <div class="d-flex align-items-center position-relative my-1">
                     <!--begin::Svg Icon | path: icons/duotune/general/gen021.svg-->
-                    <span class="position-absolute ms-6">
-                        <img src="img/Search.png" alt="">
-                    </span>
-                    <!--end::Svg Icon-->
-                    <input type="text" data-kt-customer-table-filter="search"
-                        class="form-control form-control-lg w-350px ps-15" placeholder="Search...">
 
+                    <span class="position-absolute ms-6">
+                        <img src="/img/Search.png" alt="">
+                    </span type="submit">
+                    <!--end::Svg Icon-->
+                    <form action="{{route('users.search')}}" method="GET">
+                        <input type="text" name="search" data-kt-customer-table-filter="search"
+                            class="form-control form-control-lg w-350px ps-15" placeholder="Search...">
+                    </form>
                     <div class="px-10 btn btn-icon btn-active-light-primary w-30px h-30px w-md-40px h-md-40px">
-                        <img src="img/Frame 1637.png" alt="">
+                        <img src="/img/Frame 1637.png" alt="">
                     </div>
                 </div>
         </div>
@@ -141,9 +143,9 @@
                         </ul>
                     </div>
                     @if($model->photo == "")
-                    <img class="bd-placeholder-img rounded-circle border"  width="100px" height="100px" src="img/Ellipse 44.png" alt="">
+                    <img class="bd-placeholder-img rounded-circle border"  width="100px" height="100px" src="/img/Ellipse 44.png" alt="">
                     @else
-                    <img class="bd-placeholder-img rounded-circle border"  width="100px" height="100px" src="img/users/{{$model->photo}}" alt="">
+                    <img class="bd-placeholder-img rounded-circle border"  width="100px" height="100px" src="/img/users/{{$model->photo}}" alt="">
                     @endif
                     <div class="card-body ">
                         <h2 class="card-text text-color-dark font-weight-bold text-3 pb-1 mb-4 px-10 text-truncate text-center">{{$model->name}}

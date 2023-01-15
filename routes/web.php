@@ -63,6 +63,8 @@ Route::group(['prefix' => '/'], function () {
             Route::resource('trailer', App\Http\Controllers\Trailer\TrailerController::class);
             Route::resource('spareparts', App\Http\Controllers\Sparepart\SparepartController::class);
 
+            Route::get('/user/search', [App\Http\Controllers\User\UserController::class, 'search'])->name('users.search');
+            Route::get('/sparepart/search', [App\Http\Controllers\Sparepart\SparepartController::class, 'search'])->name('spareparts.search');
 
         Route::get('/trailer', function() {
             $trailerM = DB::table('model_trailers')->get();
@@ -78,11 +80,6 @@ Route::group(['prefix' => '/'], function () {
             return view('/pages/vehicle/vehicle-setting');
         });
 
-        Route::get('/users', function() {
-            $user = User::all();
-
-            return view('/pages/users',  ['user' => $user]);
-        });
         Route::get('/vehicles', function() {
             $vehicles = Vehicle::all();
             $vehiclesT = TypeVehicle::all();
