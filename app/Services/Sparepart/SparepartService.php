@@ -29,13 +29,8 @@ class SparepartService extends AppService implements AppServiceInterface
 
     public function create($data)
     {
-        // $photo = $data['photo']?->store('spareparts');
-        $photo = null;
-
-        if ($data->photo) {
-            $photo = $data->photo->getClientOriginalName() . '-' . time() . '.' . $data->photo->extension();
-            $data->photo->move(public_path('/img/sparepart'), $photo);
-        }
+        $photo = $data['photo']?->store('spareparts');
+        
         return SparepartTable::create([
             'id_sparepart' => $data['id_sparepart'],
             'brand' => $data['brand'],
