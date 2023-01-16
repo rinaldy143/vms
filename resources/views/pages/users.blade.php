@@ -145,7 +145,7 @@
                     @if($model->photo == "")
                     <img class="bd-placeholder-img rounded-circle border"  width="100px" height="100px" src="/img/Ellipse 44.png" alt="">
                     @else
-                    <img class="bd-placeholder-img rounded-circle border"  width="100px" height="100px" src="/img/users/{{$model->photo}}" alt="">
+                    <img class="bd-placeholder-img rounded-circle border"  width="100px" height="100px" src="/storage/{{$model->photo}}" alt="">
                     @endif
                     <div class="card-body ">
                         <h2 class="card-text text-color-dark font-weight-bold text-3 pb-1 mb-4 px-10 text-truncate text-center">{{$model->name}}

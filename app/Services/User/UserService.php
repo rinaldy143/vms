@@ -31,18 +31,20 @@ class UserService extends AppService implements AppServiceInterface
 
     public function create($data)
     {
-        $imgName = null;
+        // $imgName = null;
 
-        if ($data->photo) {
-            $imgName = $data->photo->getClientOriginalName() . '-' . time() . '.' . $data->photo->extension();
-            $data->photo->move(public_path('/img/users'), $imgName);
-        }
+        // if ($data->photo) {
+        //     $imgName = $data->photo->getClientOriginalName() . '-' . time() . '.' . $data->photo->extension();
+        //     $data->photo->move(public_path('/img/users'), $imgName);
+        // }
+        $photo = $data['photo']?->store('users');
+
         return UserTable::create([
             'name' => $data->name,
             'email' => $data->email,
             'role' => $data->role,
             'phone_number' => $data->phone_number,
-            'photo' => $imgName,
+            'photo' => $photo,
             // 'fcm_token' => $data->fcm_token,
             // 'password' => Hash::make($data->password),
         ]);
