@@ -129,7 +129,7 @@
                                 <div class="input-group date border border-secondary" data-provide="datepicker">
                                     <input type="text" id="monthly_maintenance" name="monthly_maintenance" class="datepicker form-control border-0 " >
                                     <div class="input-group-addon border-0" style="background-color: #fff">
-                                        <span><img src="assets/media/icons/system-icon/outline/Calendar.svg" width="23px" alt=""></span>
+                                        <span><img src="/assets/media/icons/system-icon/outline/Calendar.svg" width="23px" alt=""></span>
                                     </div>
                                 </div>
 

@@ -2,6 +2,7 @@
 
 namespace App\Services\Vehicle;
 
+use App\Models\Entity\Vehicle;
 use App\Models\Table\VehicleTable;
 use App\Services\AppService;
 use App\Services\AppServiceInterface;
@@ -52,6 +53,19 @@ class VehicleService extends AppService implements AppServiceInterface
             'type_vehicle_id' => $data['type_vehicle_id'],
         ]);
         return $row;
+    }
+
+    public function search($data){
+        // Get the search value from the request
+        $search = $data->input('search');
+
+        // Search in the title and body columns from the posts table
+        $vehicles = Vehicle::query()
+            ->where('plat_number', 'LIKE', "%{$search}%")
+            ->get();
+
+        // Return the search view with the resluts compacted
+        return $vehicles;
     }
 
     public function delete($id)
