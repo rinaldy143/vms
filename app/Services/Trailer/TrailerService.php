@@ -2,6 +2,7 @@
 
 namespace App\Services\Trailer;
 
+use App\Models\Entity\Trailer;
 use App\Models\Table\TrailerTable;
 use App\Services\AppService;
 use App\Services\AppServiceInterface;
@@ -51,6 +52,19 @@ class TrailerService extends AppService implements AppServiceInterface
             'type_trailer_id' => $data['type_trailer_id'],
         ]);
         return $row;
+    }
+
+    public function search($data){
+        // Get the search value from the request
+        $search = $data->input('search');
+
+        // Search in the title and body columns from the posts table
+        $trailer = Trailer::query()
+            ->where('code_trailer', 'LIKE', "%{$search}%")
+            ->get();
+
+        // Return the search view with the resluts compacted
+        return $trailer;
     }
 
     public function delete($id)

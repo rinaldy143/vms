@@ -22,12 +22,12 @@
                         <!--begin::Card body-->
                         <div class="pt-2 ">
                             <div class="d-flex align-items-center py-8">
-                                <a href="#modalTrailer" class="btn btn-danger fs-7 px-4 w-100 " data-toggle="modal"><img src="assets/media/icons/system-icon/outline/Plus-3.svg" width="20px" alt="">Add Vehicle/Trailer</a>
+                                <a href="#modalTrailer" class="btn btn-danger fs-7 px-4 w-100 " data-toggle="modal"><img src="/assets/media/icons/system-icon/outline/Plus-3.svg" width="20px" alt="">Add Vehicle/Trailer</a>
 
                             </div>
                             <div class="d-flex justify-content-between align-items-center">
-                                <a href="#" class="btn border fs-7 w-75" style="background-color: #fff"><img src="assets/media/icons/system-icon/outline/Swap-1.svg" width="20px" alt=""> Syncronize Vehicles</a>
-                                <a href="/setting" class="btn border px-4" style="background-color: #fff"><img src="assets/media/icons/system-icon/outline/Setting.svg" alt=""></a>
+                                <a href="#" class="btn border fs-7 w-75" style="background-color: #fff"><img src="/assets/media/icons/system-icon/outline/Swap-1.svg" width="20px" alt=""> Syncronize Vehicles</a>
+                                <a href="/vehicle/setting" class="btn border px-4" style="background-color: #fff"><img src="/assets/media/icons/system-icon/outline/Setting.svg" alt=""></a>
                             </div>
 
                             <div class="separator separator-dashed my-5"></div>
@@ -35,11 +35,13 @@
                             <div class="d-flex align-items-center position-relative my-1 pt-6">
                                 <!--begin::Svg Icon | path: icons/duotune/general/gen021.svg-->
                                 <span class="position-absolute ms-6">
-                                    <img src="img/Search.png" alt="">
+                                    <img src="/img/Search.png" alt="">
                                 </span>
                                 <!--end::Svg Icon-->
-                                <input type="text" data-kt-customer-table-filter="search"
+                                <form action="{{route('trailer.search')}}" method="GET" class="w-100">
+                                    <input type="text" name="search" data-kt-customer-table-filter="search"
                                     class="form-control form-control-lg ps-15" placeholder="Search...">
+                                </form>
                             </div>
                             <div class="d-flex justify-content-between align-items-center pt-8">
                                 <a href="/vehicles" class="btn w-50"style="background-color: #fff">Vehicle </a>
@@ -72,7 +74,7 @@
                                         </div>
                                     </div>
                                     <div class="text-center py-8">
-                                        <a href="#modalTrailer" class="btn btn-danger fs-7 px-4 w-75 " data-toggle="modal"><img src="assets/media/icons/system-icon/outline/Plus-3.svg" width="20px" alt="">Add Vehicle/Trailer</a>
+                                        <a href="#modalTrailer" class="btn btn-danger fs-7 px-4 w-75 " data-toggle="modal"><img src="/assets/media/icons/system-icon/outline/Plus-3.svg" width="20px" alt="">Add Vehicle/Trailer</a>
                                     </div>
 
                                 </div>
@@ -172,7 +174,7 @@
                                         <div class="d-flex align-items-center position-relative my-1">
                                             <!--begin::Svg Icon | path: icons/duotune/general/gen021.svg-->
                                             <span class="position-absolute ms-6">
-                                                <img src="img/Search.png" alt="">
+                                                <img src="/img/Search.png" alt="">
                                             </span>
                                             <!--end::Svg Icon-->
                                             <input type="text" data-kt-customer-table-filter="search"
@@ -180,7 +182,7 @@
 
                                                 <button type="button" class="btn border mx-2" style="border-radius: 8px">
                                                     <!--begin::Svg Icon | path: icons/duotune/arrows/arr078.svg-->
-                                                    <img src="img/Download.png" alt="">
+                                                    <img src="/img/Download.png" alt="">
                                                     <!--end::Svg Icon-->
                                                 </button>
                                         </div>
@@ -210,7 +212,7 @@
                                     Maintenance
                                 </div>
                                 <div class=" col-lg-4 col-md-4" style="text-align: right" >
-                                    <a class="fs-4" style="color: #6E6666" href="#">Detail <img src="assets/media/icons/system-icon/outline/Arrow - Right.svg" alt="" >
+                                    <a class="fs-4" style="color: #6E6666" href="#">Detail <img src="/assets/media/icons/system-icon/outline/Arrow - Right.svg" alt="" >
                                     </a>
                                 </div>
                             </div>
@@ -222,7 +224,7 @@
                                     Accident
                                 </div>
                                 <div class=" col-lg-4 col-md-4" style="text-align: right" >
-                                    <a class="fs-4" style="color: #6E6666" href="#">Detail <img src="assets/media/icons/system-icon/outline/Arrow - Right.svg" alt="" >
+                                    <a class="fs-4" style="color: #6E6666" href="#">Detail <img src="/assets/media/icons/system-icon/outline/Arrow - Right.svg" alt="" >
                                     </a>
                                 </div>
                             </div>
@@ -234,7 +236,7 @@
                                     Maintenance
                                 </div>
                                 <div class=" col-lg-4 col-md-4" style="text-align: right" >
-                                    <a class="fs-4" style="color: #6E6666" href="#">Detail <img src="assets/media/icons/system-icon/outline/Arrow - Right.svg" alt="" >
+                                    <a class="fs-4" style="color: #6E6666" href="#">Detail <img src="/assets/media/icons/system-icon/outline/Arrow - Right.svg" alt="" >
                                     </a>
                                 </div>
                             </div>
