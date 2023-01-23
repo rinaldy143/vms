@@ -33,7 +33,7 @@ class TrailerController extends ApiController
 
         $data = $this->service->dataTable($request);
 
-        $this->authorize(ability: 'view', arguments: $data);
+        // $this->authorize(ability: 'view', arguments: $data);
         return $this->sendSuccess($data, null, 200);
     }
 
