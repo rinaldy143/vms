@@ -83,6 +83,10 @@
                                     name="role">
                                     <option value="" disabled selected>{{__('Select role of user')}}</option>
                                     <option value="ADMIN" >ADMIN</option>
+                                    <option value="Operation" >Operation</option>
+                                    <option value="Lead Mechanices / Departement Mechanices" >Lead Mechanices / Departement Mechanices</option>
+                                    <option value="Mechanices" >Mechanices</option>
+                                    <option value="Logistic" >Logistic</option>
                                     <option value="MEMBER" >MEMBER</option>
                                     </select>
                                     @error('role')

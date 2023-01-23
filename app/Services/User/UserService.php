@@ -46,7 +46,7 @@ class UserService extends AppService implements AppServiceInterface
             'phone_number' => $data->phone_number,
             'photo' => $photo,
             // 'fcm_token' => $data->fcm_token,
-            // 'password' => Hash::make($data->password),
+            'password' => Hash::make($data->password),
         ]);
 
 
