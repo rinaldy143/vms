@@ -43,7 +43,7 @@ class TrailerPolicy
      */
     public function create(User $user): Response|bool
     {
-        return $user->role == 'ADMIN' || 'Operation';
+        return $user->role == 'ADMIN' || $user->role == 'Operation';
         // return true;
     }
 
