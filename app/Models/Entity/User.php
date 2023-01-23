@@ -34,7 +34,7 @@ class User extends AppAuthenticatable
         'role',
         // 'fcm_token',
         // 'email_verified_at',
-        // 'password',
+        'password',
         // 'phone_country_code',
         'phone_number',
         // 'type_role_id',

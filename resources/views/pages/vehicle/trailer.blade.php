@@ -21,10 +21,12 @@
                         <!--end::Card header-->
                         <!--begin::Card body-->
                         <div class="pt-2 ">
+                            @can('create', App\Models\Entity\Trailer::class)
                             <div class="d-flex align-items-center py-8">
                                 <a href="#modalTrailer" class="btn btn-danger fs-7 px-4 w-100 " data-toggle="modal"><img src="/assets/media/icons/system-icon/outline/Plus-3.svg" width="20px" alt="">Add Vehicle/Trailer</a>
 
                             </div>
+                            @endcan
                             <div class="d-flex justify-content-between align-items-center">
                                 <a href="#" class="btn border fs-7 w-75" style="background-color: #fff"><img src="/assets/media/icons/system-icon/outline/Swap-1.svg" width="20px" alt=""> Syncronize Vehicles</a>
                                 <a href="/vehicle/setting" class="btn border px-4" style="background-color: #fff"><img src="/assets/media/icons/system-icon/outline/Setting.svg" alt=""></a>
@@ -136,9 +138,11 @@
                                 </div>
                             </div>
                             <div>
-                                <a href="" data-toggle="modal" id="edit" class="btn border-0 p-0" style="border-radius: 8px;float: right">
-                                    <img src="/assets/media/icons/system-icon/outline/Edit Square.svg" alt="" style="float: right;">
-                                </a>
+                                @can('create', App\Models\Entity\Trailer::class)
+                                    <a href="" data-toggle="modal" id="edit" class="btn border-0 p-0" style="border-radius: 8px;float: right">
+                                        <img src="/assets/media/icons/system-icon/outline/Edit Square.svg" alt="" style="float: right;">
+                                    </a>
+                                @endcan
                                 <div class="img-fluid align-item-center mx-auto d-block">
                                     <img src="/img/Trailer.svg" alt="">
                                     <p class="text-center">Trailer Connected</p>
@@ -254,8 +258,9 @@
 </div>
 
         <!--begin::Layout-->
-
-@include('modal.modaltrailer')
+{{-- @can('create', App\Models\Entity\Trailer::class) --}}
+    @include('modal.modaltrailer')
+{{-- @endcan --}}
 <style>
         .ptrailer{
         font-size: 16px
@@ -303,8 +308,6 @@
         $('#vehicle-type_trailer_id').html(trailer_type);
         $('#vehicle_CONN').html(vehicle_connected);
         $("#edit").attr("href", "#modaleditTrailer" + id);
-
-
     }
 
     $('.btn-address').on('click', function(){

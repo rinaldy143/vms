@@ -43,7 +43,8 @@ class TrailerPolicy
      */
     public function create(User $user): Response|bool
     {
-        return true;
+        return $user->role == 'ADMIN' || 'Operation';
+        // return true;
     }
 
     /**
@@ -55,6 +56,7 @@ class TrailerPolicy
      */
     public function update(User $user, Trailer $data): Response|bool
     {
+        // return  $user->role == 'ADMIN';
         return true;
     }
 
