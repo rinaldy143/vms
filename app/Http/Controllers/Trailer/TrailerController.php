@@ -34,10 +34,14 @@ class TrailerController extends ApiController
     public function index(Request $request)
     {
 
-        $data = $this->service->dataTable($request);
+        // $data = $this->service->dataTable($request);
 
         // $this->authorize(ability: 'view', arguments: $data);
-        return $this->sendSuccess($data, null, 200);
+        // return $this->sendSuccess($data, null, 200);
+        $trailers = Trailer::all();
+        $trailerT = TypeTrailer::all();
+        $trailerM = ModelTrailer::all();
+        return view('pages.vehicle.trailer', compact('trailers', 'trailerT','trailerM'));
     }
 
     /**
