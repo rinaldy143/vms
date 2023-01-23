@@ -31,7 +31,7 @@ class TrailerPolicy
      */
     public function view(User $user, Trailer $data): Response|bool
     {
-        return true;
+        return $user->role == 'Admin';
     }
 
     /**

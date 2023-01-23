@@ -21,11 +21,11 @@
                     <img class="d-flex bd-placeholder-img rounded-circle border justify-content-center" width="80px" height="80px" src="img/Ellipse 44.svg" alt="">
                 </div>
                 <div class="card-body">
-                    <h2 class="card-text text-color-dark font-weight-bold text-3 pb-1 mb-4 px-10 text-truncate">Johny yes papa
+                    <h2 class="card-text text-color-dark font-weight-bold text-3 pb-1 mb-4 px-10 text-truncate text-center">{{auth()->user()->name}}
                     </h2>
-                    <p class="text-center pb-5" style="line-height: 0%"><a href="">Operation</a></p>
-                    <p class="text-center m-0"><img src="img/call.png" alt=""> +62897635164518</p>
-                    <p class="text-center" style="line-height: 0%; margin-bottom: 48px"><img src="img/Message.png" alt=""> Johnyyespapa@transtrack.id</p>
+                    <p class="text-center pb-5" style="line-height: 0%"><a href="">{{auth()->user()->role}}</a></p>
+                    <p class="text-center m-0"><img src="img/call.png" alt="">{{auth()->user()->phone_number}}</p>
+                    <p class="text-center" style="line-height: 0%; margin-bottom: 48px"><img src="img/Message.png" alt=""> {{auth()->user()->email}}</p>
                 </div>
             </div>
         </div>

@@ -30,7 +30,10 @@ class TrailerController extends ApiController
      */
     public function index(Request $request)
     {
+
         $data = $this->service->dataTable($request);
+
+        $this->authorize(ability: 'view', arguments: $data);
         return $this->sendSuccess($data, null, 200);
     }
 
