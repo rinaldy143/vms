@@ -90,7 +90,7 @@
                                     </div>
                                     @enderror
                                     <div class="input-group-addon border-0" style="background-color: #fff">
-                                        <span><img src="assets/media/icons/system-icon/outline/Calendar.svg" width="23px" alt=""></span>
+                                        <span><img src="/assets/media/icons/system-icon/outline/Calendar.svg" width="23px" alt=""></span>
                                     </div>
                                 </div>
                             </div>

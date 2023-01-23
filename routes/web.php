@@ -65,27 +65,13 @@ Route::group(['prefix' => '/'], function () {
 
             Route::get('/user/search', [App\Http\Controllers\User\UserController::class, 'search'])->name('users.search');
             Route::get('/sparepart/search', [App\Http\Controllers\Sparepart\SparepartController::class, 'search'])->name('spareparts.search');
-
-        Route::get('/trailer', function() {
-            $trailerM = DB::table('model_trailers')->get();
-            $trailerT = DB::table('type_trailers')->get();
-            $trailers = Trailer::all();
-            return view('/pages/vehicle/trailer', ['trailerM' => $trailerM, 'trailerT' => $trailerT, 'trailers' => $trailers]);
-        });
-
-        Route::post('/trailer',  [App\Http\Controllers\Trailer\TrailerController::class, 'store'])->name('trailer.store');
+            Route::get('/vehicle/search', [App\Http\Controllers\Vehicle\VehicleController::class, 'search'])->name('vehicles.search');
+            Route::get('/trailers/search', [App\Http\Controllers\Trailer\TrailerController::class, 'search'])->name('trailer.search');
+        // Route::post('/trailer',  [App\Http\Controllers\Trailer\TrailerController::class, 'store'])->name('trailer.store');
         // Route::post('/users',  [App\Http\Controllers\User\UserController::class, 'store'])->name('users.store');
 
-        Route::get('/setting', function() {
+        Route::get('/vehicle/setting', function() {
             return view('/pages/vehicle/vehicle-setting');
-        });
-
-        Route::get('/vehicles', function() {
-            $vehicles = Vehicle::all();
-            $vehiclesT = TypeVehicle::all();
-            $model_vehicle = ModelVehicle::all();
-
-            return view('/pages/vehicle/vehicle1',  ['vehicles' => $vehicles, 'vehiclesT' => $vehiclesT, 'model_vehicle' => $model_vehicle]);
         });
 
         Route::get('/history', function() {
