@@ -28,11 +28,11 @@
                 <div class="d-flex align-items-center mx-1">
                     <div class="mx-2">
                         <div class="row m-0 p-0">
-                            <div class="m-0 p-0 figure-caption">admin</div>
+                            <div class="m-0 p-0 figure-caption">{{auth()->user()->role}}</div>
                         </div>
                         <div class="row m-0 p-0">
                             <div class="m-0 p-0 subtitle-1">
-                                Asep Taulany
+                                {{auth()->user()->name}}
                             </div>
                         </div>
                     </div>

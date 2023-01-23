@@ -85,7 +85,7 @@ Route::group(['prefix' => '/'], function () {
         Route::get('/account-setting', function() {
             return view('/pages/account/setting');
         });
-        // Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+        Route::get('logout', [AuthController::class, 'logout']);
     });
 });
 
