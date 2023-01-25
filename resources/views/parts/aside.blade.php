@@ -100,6 +100,9 @@
             </div>
             <!--end::Menu-->
         </div>
+        <div class="d-flex justify-content-center">
+            <hr style="width: 220px; margin-top: 20px">
+        </div>
     </div>
     <!--end::Aside menu-->
 </div>

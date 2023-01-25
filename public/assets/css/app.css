@@ -49626,3 +49626,17 @@ body {
         width: 12.5%;
     }
 }
+.icon-inside {
+    position: absolute;
+    padding-top: 10px;
+    padding-left: 12.5px;
+    z-index: 2;
+}
+
+.field-icon {
+    float: right;
+    margin-top: -25px;
+    right: 15px;
+    position: relative;
+    z-index: 2;
+}

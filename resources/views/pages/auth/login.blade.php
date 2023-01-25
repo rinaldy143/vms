@@ -1,6 +1,9 @@
 @extends('layouts.auth')
 <!--begin::Body-->
 @section('styles')
+<style>
+
+</style>
 @endsection
 @section('content')
 <body id="kt_body" class="content bg_body">
@@ -34,7 +37,8 @@
                                 <!--end::Label-->
                                 <!--begin::Input-->
                                 <div class="input-icon mt-2">
-                                    <input type="email" class="form-control" name="email" id="email" placeholder="Email">
+                                    <span class="icon-inside"><img src="\assets\media\icons\system-icon\outline\Message.svg" alt="envelope"></span>
+                                    <input type="email" class="form-control ps-14" name="email" id="email" placeholder="Email">
                                 </div>
                                 <!--end::Input-->
                             </div>
@@ -46,7 +50,9 @@
                                 <!--end::Label-->
                                 <!--begin::Input-->
                                 <div class="input-icon mt-2">
-                                    <input type="password" class="form-control" name="password" id="password" placeholder="Password">
+                                    <span class="icon-inside"><img src="\assets\media\icons\system-icon\outline\Lock.svg" alt="envelope"></span>
+                                    <input type="password" class="form-control ps-14" name="password" id="password-field" placeholder="Password">
+                                    <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
                                 </div>
                                 <!--end::Input-->
                             </div>
@@ -83,12 +89,13 @@
                     <!--end::Form-->
                 </div>
                 <div class="align-self-center" data-aos="fade-left">
-                    <img class="w-543px h-577px" src="/img/car-maintenance 1.svg" alt="">
+                    <img class="w-543px h-577px" src="/img/Frame 1707478190.svg" alt="">
                 </div>
             <!--end::Wrapper-->
         </div>
     <!--end::Content-->
     </div>
+    <!--end::Main-->
     <script>
         var hostUrl = "assets/";
     </script>
@@ -100,6 +107,17 @@
     <!--begin::Page Custom Javascript(used by this page)-->
     <script src="assets/js/custom/authentication/sign-in/general.js"></script>
     <!--end::Page Custom Javascript-->
+    <script>
+        $(".toggle-password").click(function() {
+            $(this).toggleClass("fa-eye fa-eye-slash");
+            var input = $($(this).attr("toggle"));
+            if (input.attr("type") == "password") {
+                input.attr("type", "text");
+            } else {
+                input.attr("type", "password");
+            }
+        });
+    </script>
     <!--end::Javascript-->
 </body>
 @endsection
