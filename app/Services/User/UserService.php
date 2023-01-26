@@ -43,9 +43,10 @@ class UserService extends AppService implements AppServiceInterface
             'name' => $data->name,
             'email' => $data->email,
             'role' => $data->role,
+            'phone_country_code' => $data->phone_country_code,
             'phone_number' => $data->phone_number,
             'photo' => $photo,
-            // 'fcm_token' => $data->fcm_token,
+            'fcm_token' => $data->fcm_token,
             'password' => Hash::make($data->password),
         ]);
 
@@ -60,7 +61,7 @@ class UserService extends AppService implements AppServiceInterface
             'email' => $data->email,
             'role' => $data->role,
             'phone_number' => $data->phone_number,
-            // 'fcm_token' => $data->fcm_token,
+            'fcm_token' => $data->fcm_token,
         ]);
         return $user;
     }

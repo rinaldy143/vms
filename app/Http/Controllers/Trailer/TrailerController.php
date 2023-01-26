@@ -24,6 +24,10 @@ class TrailerController extends ApiController
     {
         $this->service = $service;
         parent::__construct($request);
+        $this->middleware('can:create,App\Models\Entity\Trailer')->only('store');
+        $this->middleware('can:create,App\Models\Entity\Trailer')->only('index');
+        $this->middleware('can:create,App\Models\Entity\Trailer')->only('update');
+        $this->middleware('can:create,App\Models\Entity\Trailer')->only('destroy');
     }
 
     /**

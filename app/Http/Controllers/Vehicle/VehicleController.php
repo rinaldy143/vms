@@ -24,6 +24,11 @@ class VehicleController extends ApiController
     {
         $this->service = $service;
         parent::__construct($request);
+        $this->middleware('can:create,App\Models\Entity\Vehicle')->only('store');
+        $this->middleware('can:create,App\Models\Entity\Vehicle')->only('index');
+        $this->middleware('can:create,App\Models\Entity\Vehicle')->only('update');
+        $this->middleware('can:create,App\Models\Entity\Vehicle')->only('destroy');
+
     }
 
     /**
@@ -76,6 +81,7 @@ class VehicleController extends ApiController
     public function update(UpdateVehicleRequest $request, string $id)
     {
         $datum = $this->service->update($id, $request);
+
         return $this->sendSuccess($datum, null, 200);
     }
 

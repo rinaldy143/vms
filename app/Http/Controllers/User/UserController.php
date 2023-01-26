@@ -6,6 +6,7 @@ use App\Http\Controllers\ApiController;
 use App\Http\Requests\Auth\RegisterRequest;
 use App\Http\Requests\User\StoreUserRequest;
 use App\Http\Requests\User\UpdateUserRequest;
+use App\Models\Entity\TypeRole;
 use App\Models\Entity\User;
 use App\Services\User\UserService;
 use Illuminate\Http\JsonResponse;
@@ -23,6 +24,12 @@ class UserController extends ApiController
     {
         $this->service = $service;
         parent::__construct($request);
+        $this->middleware('can:create, App\Models\Entity\User')->only('store');
+        $this->middleware('can:create, App\Models\Entity\User')->only('destroy');
+        $this->middleware('can:create, App\Models\Entity\User')->only('update');
+        $this->middleware('can:create, App\Models\Entity\User')->only('index');
+
+
     }
 
     /**
@@ -32,9 +39,12 @@ class UserController extends ApiController
      */
     public function index(Request $request)
     {
+
         $users = $this->service->dataTable($request);
         $user = User::all();
-        return view('pages.users', compact('user'));
+        $type_role = TypeRole::all();
+        // $this->authorize('view', $users);
+        return view('pages.users', compact('user', 'type_role'));
 
         // return $this->sendSuccess($users, null, 200);
     }
@@ -47,6 +57,7 @@ class UserController extends ApiController
      */
     public function store(StoreUserRequest $request)
     {
+
         $user = $this->service->create($request);
         return $this->sendSuccess($user, null, 201);
     }
@@ -73,6 +84,8 @@ class UserController extends ApiController
     public function update(UpdateUserRequest $request, string $id)
     {
         $user = $this->service->update($id, $request);
+        // $this->authorize('update', User::class);
+
         return $this->sendSuccess($user, null, 200);
     }
 
@@ -90,7 +103,11 @@ class UserController extends ApiController
      */
     public function destroy(string $id)
     {
+        // $this->authorize('delete', User::class);
+
         $user = $this->service->delete($id);
+
+
         return $this->sendSuccess($user, null, 200);
     }
 }

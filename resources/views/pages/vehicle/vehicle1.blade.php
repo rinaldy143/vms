@@ -22,7 +22,9 @@
                         <!--begin::Card body-->
                         <div class="pt-2 ">
                             <div class="d-flex align-items-center py-8">
-                                <a href="#modalVehicle" class="btn btn-danger fs-7 px-4 w-100 " data-toggle="modal"><img src="/assets/media/icons/system-icon/outline/Plus-3.svg" width="20px" alt="">Add Vehicle/Trailer</a>
+                                @can('create', App\Models\Entity\Trailer::class)
+                                    <a href="#modalVehicle" class="btn btn-danger fs-7 px-4 w-100 " data-toggle="modal"><img src="/assets/media/icons/system-icon/outline/Plus-3.svg" width="20px" alt="">Add Vehicle/Trailer</a>
+                                @endcan
 
                             </div>
                             <div class="d-flex justify-content-between align-items-center">
@@ -77,9 +79,11 @@
                                             <p>You do not have a vehicle right now. add vehicle or trailer.</p>
                                         </div>
                                     </div>
-                                    <div class="text-center py-8">
-                                        <a href="#modalVehicle" class="btn btn-danger fs-7 px-4 w-75 " data-toggle="modal"><img src="/assets/media/icons/system-icon/outline/Plus-3.svg" width="20px" alt="">Add Vehicle/Trailer</a>
-                                    </div>
+                                    @can('create', App\Models\Entity\Trailer::class)
+                                        <div class="text-center py-8">
+                                            <a href="#modalVehicle" class="btn btn-danger fs-7 px-4 w-75 " data-toggle="modal"><img src="/assets/media/icons/system-icon/outline/Plus-3.svg" width="20px" alt="">Add Vehicle/Trailer</a>
+                                        </div>
+                                    @endcan
 
                                 </div>
                                 @endif
@@ -139,15 +143,17 @@
                             </div>
                             <div>
                                 <div >
-                                    <form id="delete" style="padding-left: 40px;margin-left: 40px;" action="#" method="POST">
-                                        {{-- <a class="dropdown-item" data-toggle="modal" id="btn1" href="#modaleditUser{{$model->id}}"> <img src="/assets/media/icons/system-icon/outline/Edit Square.svg" width="25px" alt=""> Update</a> --}}
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="border-0 btn-primary-outline btn-link" style="background-color: transparent"> <img src="/assets/media/icons/system-icon/outline/Delete.svg" width="25px" alt=""></button>
-                                        <a href="" data-toggle="modal" id="edit" class="btn border-0 p-0" style="border-radius: 8px;float: right">
-                                            <img src="/assets/media/icons/system-icon/outline/Edit Square.svg" alt="" style="float: right;">
-                                        </a>
-                                    </form>
+                                    @can('create', App\Models\Entity\Trailer::class)
+                                        <form id="delete" style="padding-left: 40px;margin-left: 40px;" action="#" method="POST">
+                                            {{-- <a class="dropdown-item" data-toggle="modal" id="btn1" href="#modaleditUser{{$model->id}}"> <img src="/assets/media/icons/system-icon/outline/Edit Square.svg" width="25px" alt=""> Update</a> --}}
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="border-0 btn-primary-outline btn-link" style="background-color: transparent"> <img src="/assets/media/icons/system-icon/outline/Delete.svg" width="25px" alt=""></button>
+                                            <a href="" data-toggle="modal" id="edit" class="btn border-0 p-0" style="border-radius: 8px;float: right">
+                                                <img src="/assets/media/icons/system-icon/outline/Edit Square.svg" alt="" style="float: right;">
+                                            </a>
+                                        </form>
+                                    @endcan
                                 </div>
                                 {{-- <button type="submit" class="border-0 btn-white">  <img src="/assets/media/icons/system-icon/outline/Delete.svg" width="25px" alt=""></button> --}}
                                 <div class="img-fluid align-item-center mx-auto d-block">

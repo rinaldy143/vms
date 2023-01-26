@@ -75,10 +75,11 @@
                                             <p>You do not have a trailer right now. add vehicle or trailer.</p>
                                         </div>
                                     </div>
-                                    <div class="text-center py-8">
-                                        <a href="#modalTrailer" class="btn btn-danger fs-7 px-4 w-75 " data-toggle="modal"><img src="/assets/media/icons/system-icon/outline/Plus-3.svg" width="20px" alt="">Add Vehicle/Trailer</a>
-                                    </div>
-
+                                    @can('create', App\Models\Entity\Trailer::class)
+                                        <div class="text-center py-8">
+                                            <a href="#modalTrailer" class="btn btn-danger fs-7 px-4 w-75 " data-toggle="modal"><img src="/assets/media/icons/system-icon/outline/Plus-3.svg" width="20px" alt="">Add Vehicle/Trailer</a>
+                                        </div>
+                                    @endcan
                                 </div>
                                 @endif
                                 <!--end::Item-->

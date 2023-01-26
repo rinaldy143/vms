@@ -32,14 +32,15 @@ class User extends AppAuthenticatable
         'email',
         'photo',
         'role',
-        // 'fcm_token',
+        'fcm_token',
         // 'email_verified_at',
         'password',
-        // 'phone_country_code',
+        'phone_country_code',
         'phone_number',
         // 'type_role_id',
         // 'remember_token',
     ];
+
 
     /**
      * The attributes that should be hidden for serialization.

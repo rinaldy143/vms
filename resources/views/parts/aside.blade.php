@@ -67,24 +67,28 @@
                         <span class="subtitle-1">Maintenances</span>
                     </a>
                 </div>
+                @can('create', App\Models\Entity\Vehicle::class)
                 <div class="menu-item py-3" style="margin-left: 57px">
                     <a class="menu-link" href="/vehicles">
                         <span><img src="/assets/media/icons/system-icon/material-style/2871481021571183084 1.svg" alt=""></span>
                         <span class="subtitle-1">Vehicles</span>
                     </a>
                 </div>
+                @endcan
                 <div class="menu-item py-3" style="margin-left: 57px">
                     <a class="menu-link" href="/spareparts">
                         <span><img src="/assets/media/icons/system-icon/outline/Setting.svg" alt=""></span>
                         <span class="subtitle-1">Spareparts</span>
                     </a>
                 </div>
+                @can('create', App\Models\Entity\User::class)
                 <div class="menu-item py-3" style="margin-left: 57px">
                     <a class="menu-link" href="/users">
                         <span><img src="/assets/media/icons/system-icon/outline/person.svg" alt=""></span>
                         <span class="subtitle-1">Users</span>
                     </a>
                 </div>
+                @endcan
                 <div class="menu-item py-3" style="margin-left: 57px">
                     <a class="menu-link" href="/history">
                         <span><img src="/assets/media/icons/system-icon/outline/Time Circle.svg" alt=""></span>
