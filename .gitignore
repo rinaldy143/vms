@@ -3,6 +3,7 @@
 /public/hot
 /public/storage
 /public/spareparts
+/public/users
 /storage/*.key
 /vendor
 .env

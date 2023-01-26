@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Sparepart;
 
+use App\Helpers\PaginationHelper;
 use App\Http\Controllers\ApiController;
 use App\Http\Requests\Sparepart\StoreSparepartRequest;
 use App\Http\Requests\Sparepart\UpdateSparepartRequest;
@@ -32,9 +33,9 @@ class SparepartController extends ApiController
     public function index(Request $request)
     {
         $data = $this->service->dataTable($request);
-        $spareparts = Sparepart::all();
+        $sparepart = Sparepart::all();
+        $spareparts = PaginationHelper::paginate($sparepart, 12);
         return view('pages.spareparts', compact('spareparts'));
-        // return $this->sendSuccess($data, null, 200);
     }
 
     /**
@@ -83,7 +84,8 @@ class SparepartController extends ApiController
 
      public function search(Request $request)
      {
-         $spareparts = $this->service->search($request);
+         $sparepart = $this->service->search($request);
+         $spareparts = PaginationHelper::paginate($sparepart, 12);
          return view('pages.spareparts', compact('spareparts'));
      }
     public function destroy(string $id)

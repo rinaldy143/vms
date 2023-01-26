@@ -171,31 +171,7 @@
                 <div class="col-sm-12 col-md-7 d-flex align-items-center w-100 justify-content-md-end">
                     <div class="dataTables_paginate paging_simple_numbers" id="kt_customers_table_paginate">
                         <ul class="pagination">
-                            <li class="paginate_button page-item previous disabled"
-                                id="kt_customers_table_previous"><a href="#"
-                                    aria-controls="kt_customers_table" data-dt-idx="0" tabindex="0"
-                                    class="page-link fw-bolder"><img src="img/Frame 1778.png" height="20px" alt=""></a></li>
-                            <li class="paginate_button page-item active"><a href="#"
-                                    aria-controls="kt_customers_table" data-dt-idx="1" tabindex="0"
-                                    class="page-link fw-bolder" style="background-color: red">1</a></li>
-                            <li class="paginate_button page-item "><a href="#"
-                                    aria-controls="kt_customers_table" data-dt-idx="2" tabindex="0"
-                                    class="page-link fw-bolder">2</a></li>
-                            <li class="paginate_button page-item "><a href="#"
-                                    aria-controls="kt_customers_table" data-dt-idx="3" tabindex="0"
-                                    class="page-link fw-bolder">3</a></li>
-                            <li class="paginate_button page-item "><a href="#"
-                                    aria-controls="kt_customers_table" data-dt-idx="4" tabindex="0"
-                                    class="page-link fw-bolder">4</a></li>
-                            <li class="paginate_button page-item "><a href="#"
-                                    aria-controls="kt_customers_table" data-dt-idx="5" tabindex="0"
-                                    class="page-link fw-bolder">...</a></li>
-                            <li class="paginate_button page-item "><a href="#"
-                                    aria-controls="kt_customers_table" data-dt-idx="6" tabindex="0"
-                                    class="page-link fw-bolder">10</a></li>
-                            <li class="paginate_button page-item next" id="kt_customers_table_next"><a
-                                    href="#" aria-controls="kt_customers_table" data-dt-idx="7" tabindex="0"
-                                    class="page-link fw-bolder" style="background-color: transparent"><img src="img/next.png" height="20px" alt=""></a></li>
+                            {!! $user->links() !!}
                         </ul>
                     </div>
                 </div>

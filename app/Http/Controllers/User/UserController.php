@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Helpers\PaginationHelper;
 use App\Http\Controllers\ApiController;
 use App\Http\Requests\Auth\RegisterRequest;
 use App\Http\Requests\User\StoreUserRequest;
@@ -41,7 +42,8 @@ class UserController extends ApiController
     {
 
         $users = $this->service->dataTable($request);
-        $user = User::all();
+        $collect = User::all();
+        $user = PaginationHelper::paginate($collect, 12);
         $type_role = TypeRole::all();
         // $this->authorize('view', $users);
         return view('pages.users', compact('user', 'type_role'));
@@ -57,7 +59,6 @@ class UserController extends ApiController
      */
     public function store(StoreUserRequest $request)
     {
-
         $user = $this->service->create($request);
         return $this->sendSuccess($user, null, 201);
     }
@@ -91,7 +92,8 @@ class UserController extends ApiController
 
     public function search(Request $request)
     {
-        $user = $this->service->search($request);
+        $users = $this->service->search($request);
+        $user = PaginationHelper::paginate($users, 12);
         return view('pages.users', compact('user'));
     }
 
