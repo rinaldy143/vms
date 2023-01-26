@@ -26,9 +26,12 @@ class UpdateUserRequest extends FormRequest
         return [
             'name' => 'required|string',
             // 'email' => 'required|unique:users,email|email',
-            'role' => 'required|string|in:ADMIN,MEMBER',
+            // 'role' => 'required|string|in:ADMIN,MEMBER',
+            'role' => 'required|string',
             'phone_number' => 'required|numeric',
-            // 'fcm_token' => 'nullable|string',
+            'fcm_token' => 'nullable|string',
+            // 'type_role_id' => 'nullable|string',
+
         ];
     }
 }

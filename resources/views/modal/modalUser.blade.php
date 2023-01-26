@@ -53,8 +53,8 @@
                                     <div class="input-group-prepend">
                                         <select class="btn dropdown-toggle" type="button"
                                              data-toggle="dropdown"
-                                            aria-haspopup="true" aria-expanded="false" id="country_codes"
-                                            name="country_codes">
+                                            aria-haspopup="true" aria-expanded="false" id="phone_country_code"
+                                            name="phone_country_code">
                                             <option value="+62" selected>+62</option>
                                         </select>
                                     </div>
@@ -63,7 +63,7 @@
                                         aria-label="Text input with dropdown button"
                                         placeholder="89xx-xxxx-xxxx" maxlength="15" value={{old('phone_number')}}>
                                 </div>
-                                @error('country_codes')
+                                @error('phone_country_code')
                                 <div class="invalid-feedback d-flex">
                                     {{ $message }}
                                 </div>
@@ -82,12 +82,17 @@
                                 <select class="form-control" aria-label="role" id="role"
                                     name="role">
                                     <option value="" disabled selected>{{__('Select role of user')}}</option>
-                                    <option value="ADMIN" >ADMIN</option>
+                                    @foreach ($type_role as $model)
+
+                                    <option value="{{$model->role}}" {{ old('ModelVehicle')==$model->role ?
+                                        'selected' : '' }}>{{$model->role}}</option>
+                                    @endforeach
+                                    {{-- <option value="ADMIN" >ADMIN</option>
                                     <option value="Operation" >Operation</option>
                                     <option value="Lead Mechanices / Departement Mechanices" >Lead Mechanices / Departement Mechanices</option>
                                     <option value="Mechanices" >Mechanices</option>
                                     <option value="Logistic" >Logistic</option>
-                                    <option value="MEMBER" >MEMBER</option>
+                                    <option value="MEMBER" >MEMBER</option> --}}
                                     </select>
                                     @error('role')
                                     <div class="invalid-feedback d-flex">

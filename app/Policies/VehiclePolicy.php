@@ -42,7 +42,7 @@ class VehiclePolicy
      */
     public function create(User $user): Response|bool
     {
-        return true;
+        return $user->role == 'ADMIN' || $user->role == 'Operation';
     }
 
     /**

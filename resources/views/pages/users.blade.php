@@ -93,20 +93,22 @@
                     </div>
 
                     <!-- Right Side Of Navbar -->
-                    <div class="card-title">
-                        <!--begin::Search-->
-                        <button type="button" class="btn me-3" style="border: 1px solid">
-                            <!--begin::Svg Icon | path: icons/duotune/arrows/arr078.svg-->
-                            <img src="img/Download.png" alt="">
-                            <!--end::Svg Icon-->Export
-                        </button>
-                        <a class="btn btn-danger me-3 fw-bold py-3"  data-toggle="modal"
-                        href="#modalUser" title="Download">
-                        <img class src="img/Add User.png" alt="">
-                        Add User
-                        </a>
-                        <!--end::Search-->
-                    </div>
+                    @can('create', App\Models\Entity\User::class)
+                        <div class="card-title">
+                            <!--begin::Search-->
+                            <button type="button" class="btn me-3" style="border: 1px solid">
+                                <!--begin::Svg Icon | path: icons/duotune/arrows/arr078.svg-->
+                                <img src="img/Download.png" alt="">
+                                <!--end::Svg Icon-->Export
+                            </button>
+                            <a class="btn btn-danger me-3 fw-bold py-3"  data-toggle="modal"
+                            href="#modalUser" title="Download">
+                            <img class src="img/Add User.png" alt="">
+                            Add User
+                            </a>
+                            <!--end::Search-->
+                        </div>
+                    @endcan
                 </div>
             </div>
         </nav>
@@ -117,35 +119,37 @@
             <div class="col-lg-4 col-md-6 col-11 pb-5">
                 <div class="card drop-shadow border border-secondary align-items-center">
                     {{-- <img src="/img/img_videos/{{$video->thumbnail}}" alt="" class="card-img-top video-thumb "> --}}
-                    <div class="pt-10 w-100">
-                        {{-- <a class="download round m-lg-3" href="#" title="" >
-                            <img src="img/kebab.png" alt="download" title="download"
-                                style="right: 20px;position: absolute;" />
-                        </a> --}}
-                        <ul class="menu-nav">
-                            <li class="menu-item dropdown" style="right: 20px;position: absolute;">
-                                <a class="nav-link text-dark" href="#" role="button"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <img src="img/kebab.png" style="" alt="">
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <form action="{{route('users.destroy', ($model->id))}}" method="POST">
-                                        <a class="dropdown-item" data-toggle="modal" id="btn1" href="#modaleditUser{{$model->id}}"> <img src="/assets/media/icons/system-icon/outline/Edit Square.svg" width="25px" alt=""> Update</a>
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="dropdown-item"> <img src="/assets/media/icons/system-icon/outline/Delete.svg" width="25px" alt=""> Delete</button>
-                                    </form>
-                                </div>
-                                <div>
-                                    @include('modal.modaleditUser')
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
+                    @can('create', App\Models\Entity\User::class)
+                        <div class="pt-10 w-100">
+                            {{-- <a class="download round m-lg-3" href="#" title="" >
+                                <img src="img/kebab.png" alt="download" title="download"
+                                    style="right: 20px;position: absolute;" />
+                            </a> --}}
+                            <ul class="menu-nav">
+                                <li class="menu-item dropdown" style="right: 20px;position: absolute;">
+                                    <a class="nav-link text-dark" href="#" role="button"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <img src="img/kebab.png" style="" alt="">
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <form action="{{route('users.destroy', ($model->id))}}" method="POST">
+                                            <a class="dropdown-item" data-toggle="modal" id="btn1" href="#modaleditUser{{$model->id}}"> <img src="/assets/media/icons/system-icon/outline/Edit Square.svg" width="25px" alt=""> Update</a>
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="dropdown-item"> <img src="/assets/media/icons/system-icon/outline/Delete.svg" width="25px" alt=""> Delete</button>
+                                        </form>
+                                    </div>
+                                    <div>
+                                        @include('modal.modaleditUser')
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    @endcan
                     @if($model->photo == "")
-                    <img class="bd-placeholder-img rounded-circle border"  width="100px" height="100px" src="/img/Ellipse 44.png" alt="">
+                    <img class="bd-placeholder-img rounded-circle border mt-5"  width="100px" height="100px" src="/img/Ellipse 44.png" alt="">
                     @else
-                    <img class="bd-placeholder-img rounded-circle border"  width="100px" height="100px" src="/storage/{{$model->photo}}" alt="">
+                    <img class="bd-placeholder-img rounded-circle border mt-5"  width="100px" height="100px" src="/storage/{{$model->photo}}" alt="">
                     @endif
                     <div class="card-body ">
                         <h2 class="card-text text-color-dark font-weight-bold text-3 pb-1 mb-4 px-10 text-truncate text-center">{{$model->name}}
