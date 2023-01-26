@@ -8,7 +8,7 @@ use App\Services\AppService;
 use App\Services\AppServiceInterface;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Storage;
 
 class UserService extends AppService implements AppServiceInterface
 {
@@ -31,12 +31,6 @@ class UserService extends AppService implements AppServiceInterface
 
     public function create($data)
     {
-        // $imgName = null;
-
-        // if ($data->photo) {
-        //     $imgName = $data->photo->getClientOriginalName() . '-' . time() . '.' . $data->photo->extension();
-        //     $data->photo->move(public_path('/img/users'), $imgName);
-        // }
         $photo = $data['photo']?->store('users');
 
         return UserTable::create([
@@ -56,6 +50,11 @@ class UserService extends AppService implements AppServiceInterface
     public function update($id, $data)
     {
         $user = UserTable::findOrFail($id);
+        if (!blank($user->photo)) {
+            Storage::delete($user->photo);
+        }
+        // $data['photo'] = $data['photo']?->store('users');
+
         $user->update([
             'name' => $data->name,
             'email' => $data->email,
