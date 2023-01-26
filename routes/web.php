@@ -28,6 +28,9 @@ Auth::routes();
 
 Route::group(['prefix' => '/'], function () {
     Route::get('/login', [AuthController::class, 'index'])->name('login');
+    Route::get('/reset', function() {
+        return view('/pages/auth/reset');
+    });
     Route::post('/dashboard', [AuthController::class, 'login'])->name('login.post');
     Route::group(['middleware' => 'auth'], function () {
         Route::get('/', function() {
@@ -42,9 +45,7 @@ Route::group(['prefix' => '/'], function () {
         Route::get('/maintenance/report', function() {
             return view('/pages/maintenance/report');
         });
-        Route::get('/reset', function() {
-            return view('/pages/auth/reset');
-        });
+
 
         Route::get('/maintenance/workorder', function() {
             return view('/pages/maintenance/workorder');
