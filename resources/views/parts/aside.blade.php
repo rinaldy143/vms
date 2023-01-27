@@ -75,12 +75,14 @@
                     </a>
                 </div>
                 @endcan
+                @can('viewAny', App\Models\Entity\Sparepart::class)
                 <div class="menu-item py-3" style="margin-left: 57px">
                     <a class="menu-link" href="/spareparts">
                         <span><img src="/assets/media/icons/system-icon/outline/Setting.svg" alt=""></span>
                         <span class="subtitle-1">Spareparts</span>
                     </a>
                 </div>
+                @endcan
                 @can('create', App\Models\Entity\User::class)
                 <div class="menu-item py-3" style="margin-left: 57px">
                     <a class="menu-link" href="/users">

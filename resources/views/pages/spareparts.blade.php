@@ -33,16 +33,18 @@
                             <img class="pt-2" src="img/Plus.png" alt="">
                             <!--end::Svg Icon-->Restock
                         </button> --}}
-                        <a class="btn btn-danger me-3 font-weight-bolder py-2" style="border-radius: 8px;" data-toggle="modal"
-                        href="#modalRestock" title="Restock">
-                        <img class="pt-2" src="/img/Plus.png" alt="">
-                        Restock
-                        </a>
-                        <a class="btn me-3 text-danger font-weight-bolder py-2" style="border: 1px solid red; border-radius: 8px;" data-toggle="modal"
-                        href="#modalSparepart" title="Add Sparepart">
-                        <img class="pt-2" src="/img/Plus 1.png" alt="">
-                        Add Sparepart
-                        </a>
+                        @can('create', App\Models\Entity\Sparepart::class)
+                            <a class="btn btn-danger me-3 font-weight-bolder py-2" style="border-radius: 8px;" data-toggle="modal"
+                            href="#modalRestock" title="Restock">
+                            <img class="pt-2" src="/img/Plus.png" alt="">
+                            Restock
+                            </a>
+                            <a class="btn me-3 text-danger font-weight-bolder py-2" style="border: 1px solid red; border-radius: 8px;" data-toggle="modal"
+                            href="#modalSparepart" title="Add Sparepart">
+                            <img class="pt-2" src="/img/Plus 1.png" alt="">
+                            Add Sparepart
+                            </a>
+                        @endcan
                         <!--end::Search-->
                     </div>
 
@@ -87,27 +89,29 @@
                     <div class="card drop-shadow align-items-start pb-15" style="border-radius: 8px;">
                         <div class="pt-10 d-flex justify-content-between align-items-center m-0 w-100" style="padding-left: 2.5rem">
                             <p class="fw-bolder fs-4" style="display: contents">{{$item->name}}</p>
-                            <ul class="menu-nav">
-                                <li class="menu-item dropdown">
-                                    <a href="#" class="nav-link text-dark" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <img src="img/kebab.png" style="padding-right: 2rem" alt="">
-                                    </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <form action="{{route('spareparts.destroy', ($item->id))}}" method="POST">
-                                            <a href="" class="dropdown-item">
-                                                <img src="/assets/media/icons/system-icon/outline/Edit Square.svg" alt="" width="25px">
-                                                Update
-                                            </a>
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="dropdown-item">
-                                                <img src="/assets/media/icons/system-icon/outline/Delete.svg" alt="" width="25px">
-                                                Delete
-                                            </button>
-                                        </form>
-                                    </div>
-                                </li>
-                            </ul>
+                            @can('create', App\Models\Entity\Sparepart::class)
+                                <ul class="menu-nav">
+                                    <li class="menu-item dropdown">
+                                        <a href="#" class="nav-link text-dark" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <img src="img/kebab.png" style="padding-right: 2rem" alt="">
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                            <form action="{{route('spareparts.destroy', ($item->id))}}" method="POST">
+                                                <a href="" class="dropdown-item">
+                                                    <img src="/assets/media/icons/system-icon/outline/Edit Square.svg" alt="" width="25px">
+                                                    Update
+                                                </a>
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="dropdown-item">
+                                                    <img src="/assets/media/icons/system-icon/outline/Delete.svg" alt="" width="25px">
+                                                    Delete
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </li>
+                                </ul>
+                            @endcan
                         </div>
                         <div class="d-flex align-items-center" style="padding-left: 2.5rem">
                             @if ($item->photo == null)

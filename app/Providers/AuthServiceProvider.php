@@ -19,6 +19,8 @@ class AuthServiceProvider extends ServiceProvider
         'App\Models\Entity\Trailer' => 'App\Policies\TrailerPolicy',
         'App\Models\Entity\Vehicle' => 'App\Policies\VehiclePolicy',
         'App\Models\Entity\User' => 'App\Policies\UserPolicy',
+        'App\Models\Entity\Sparepart' => 'App\Policies\SparepartPolicy',
+        // 'App\Models\Entity\RequestMaintenance' => 'App\Policies\RequestMaintenancePolicy',
     ];
 
     /**
