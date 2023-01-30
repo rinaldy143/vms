@@ -19,7 +19,7 @@ class SparepartPolicy
      */
     public function viewAny(User $user): Response|bool
     {
-        return true;
+        return $user->role == 'ADMIN' || $user->role == 'Logistic';
     }
 
     /**
@@ -42,7 +42,7 @@ class SparepartPolicy
      */
     public function create(User $user): Response|bool
     {
-        return true;
+        return $user->role == 'ADMIN';
     }
 
     /**

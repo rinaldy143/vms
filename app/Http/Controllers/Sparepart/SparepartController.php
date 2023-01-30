@@ -23,6 +23,10 @@ class SparepartController extends ApiController
     {
         $this->service = $service;
         parent::__construct($request);
+        $this->middleware('can:create,App\Models\Entity\Sparepart')->only('store');
+        $this->middleware('can:viewAny,App\Models\Entity\Sparepart')->only('index');
+        $this->middleware('can:create,App\Models\Entity\Sparepart')->only('update');
+        $this->middleware('can:create,App\Models\Entity\Sparepart')->only('destroy');
     }
 
     /**
