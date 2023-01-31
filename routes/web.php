@@ -58,18 +58,22 @@ Route::group(['prefix' => '/'], function () {
         //     return view('/pages/vehicle/vehicle1', ['model_vehicle' => $model_vehicle, 'vehiclesT' => $vehiclesT, 'vehicles' => $vehicles]);
         // });
 
-        // Route::post('/vehicles',  [App\Http\Controllers\Vehicle\VehicleController::class, 'store'])->name('vehicles.store');
+        Route::group(['prefix' => 'spareparts', 'as' => 'spareparts.'], function () {
+
+            Route::resource('/', App\Http\Controllers\Sparepart\SparepartController::class);
+            Route::get('/search', [App\Http\Controllers\Sparepart\SparepartController::class, 'search'])->name('spareparts.search');
+            Route::get('/ascending', [App\Http\Controllers\Sparepart\SparepartController::class, 'ascending'])->name('spareparts.ascending');
+            Route::get('/descending', [App\Http\Controllers\Sparepart\SparepartController::class, 'descending'])->name('spareparts.descending');
+            Route::get('/highStock', [App\Http\Controllers\Sparepart\SparepartController::class, 'highStock'])->name('spareparts.highStock');
+            Route::get('/lowStock', [App\Http\Controllers\Sparepart\SparepartController::class, 'lowStock'])->name('spareparts.lowStock');
+
+        });
             Route::resource('vehicles', App\Http\Controllers\Vehicle\VehicleController::class);
             Route::resource('users', App\Http\Controllers\User\UserController::class);
             Route::resource('trailer', App\Http\Controllers\Trailer\TrailerController::class);
-            Route::resource('spareparts', App\Http\Controllers\Sparepart\SparepartController::class);
-
             Route::get('/user/search', [App\Http\Controllers\User\UserController::class, 'search'])->name('users.search');
-            Route::get('/sparepart/search', [App\Http\Controllers\Sparepart\SparepartController::class, 'search'])->name('spareparts.search');
             Route::get('/vehicle/search', [App\Http\Controllers\Vehicle\VehicleController::class, 'search'])->name('vehicles.search');
             Route::get('/trailers/search', [App\Http\Controllers\Trailer\TrailerController::class, 'search'])->name('trailer.search');
-        // Route::post('/trailer',  [App\Http\Controllers\Trailer\TrailerController::class, 'store'])->name('trailer.store');
-        // Route::post('/users',  [App\Http\Controllers\User\UserController::class, 'store'])->name('users.store');
 
         Route::get('/vehicle/setting', function() {
             return view('/pages/vehicle/vehicle-setting');

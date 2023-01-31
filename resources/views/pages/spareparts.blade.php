@@ -12,7 +12,7 @@
                         <img src="/img/Search.png" alt="">
                     </span>
                     <!--end::Svg Icon-->
-                    <form action="{{route('spareparts.search')}}" method="GET">
+                    <form action="/spareparts/search" method="GET">
                         <input type="text" name="search" data-kt-customer-table-filter="search"
                             class="form-control form-control-lg w-350px ps-15" placeholder="Search...">
                     </form>
@@ -59,10 +59,10 @@
                                         <img src="/img/Filter 2.png" alt=""><strong> Filter</strong>
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                            <a class="dropdown-item" href="#"> <img src="/assets/media/icons/system-icon/outline/Arrow - Up-1.svg" width="25px" alt=""> Ascending</a>
-                                            <a class="dropdown-item" href="#"> <img src="/assets/media/icons/system-icon/outline/Arrow - Down-1.svg" width="25px" alt=""> Descending</a>
-                                            <a class="dropdown-item" href="#"> <img src="/assets/media/icons/system-icon/outline/Delete.svg" width="25px" alt=""> High Stock</a>
-                                            <a class="dropdown-item" href="#"> <img src="/assets/media/icons/system-icon/outline/Delete.svg" width="25px" alt=""> Low Stock</a>
+                                            <a class="dropdown-item" href="/spareparts/ascending"> <img src="/assets/media/icons/system-icon/outline/Arrow - Up-1.svg" width="25px" alt=""> Ascending</a>
+                                            <a class="dropdown-item" href="/spareparts/descending"> <img src="/assets/media/icons/system-icon/outline/Arrow - Down-1.svg" width="25px" alt=""> Descending</a>
+                                            <a class="dropdown-item" href="/spareparts/highStock"> <img src="/assets/media/icons/system-icon/outline/Delete.svg" width="25px" alt=""> High Stock</a>
+                                            <a class="dropdown-item" href="/spareparts/lowStock"> <img src="/assets/media/icons/system-icon/outline/Delete.svg" width="25px" alt=""> Low Stock</a>
                                     </div>
                                 </li>
                             </ul>

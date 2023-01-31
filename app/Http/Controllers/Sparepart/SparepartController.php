@@ -92,6 +92,31 @@ class SparepartController extends ApiController
          $spareparts = PaginationHelper::paginate($sparepart, 12);
          return view('pages.spareparts', compact('spareparts'));
      }
+
+     public function ascending(Request $request)
+     {
+         $sparepart = $this->service->ascending($request);
+         $spareparts = PaginationHelper::paginate($sparepart, 12);
+         return view('pages.spareparts', compact('spareparts'));
+     }
+     public function descending(Request $request)
+     {
+         $sparepart = $this->service->descending($request);
+         $spareparts = PaginationHelper::paginate($sparepart, 12);
+         return view('pages.spareparts', compact('spareparts'));
+     }
+     public function highStock(Request $request)
+     {
+         $sparepart = $this->service->highStock($request);
+         $spareparts = PaginationHelper::paginate($sparepart, 12);
+         return view('pages.spareparts', compact('spareparts'));
+     }
+     public function lowStock(Request $request)
+     {
+         $sparepart = $this->service->lowStock($request);
+         $spareparts = PaginationHelper::paginate($sparepart, 12);
+         return view('pages.spareparts', compact('spareparts'));
+     }
     public function destroy(string $id)
     {
         $datum = $this->service->delete($id);
