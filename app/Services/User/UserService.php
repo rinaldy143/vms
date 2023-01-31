@@ -79,6 +79,31 @@ class UserService extends AppService implements AppServiceInterface
         return $users;
     }
 
+    public function operation(){
+        $users = User::query()
+        ->where('role', '=', 'Operation')->get();
+        // Return the search view with the resluts compacted
+        return $users;
+    }
+    public function lead_mechanice(){
+        $users = User::query()
+        ->where('role', '=', 'Lead Mechanices')->get();
+        // Return the search view with the resluts compacted
+        return $users;
+    }
+    public function mechanice(){
+        $users = User::query()
+        ->where('role', '=', 'Mechanices')->get();
+        // Return the search view with the resluts compacted
+        return $users;
+    }
+    public function logistic(){
+        $users = User::query()
+        ->where('role', '=', 'Logistic')->get();
+        // Return the search view with the resluts compacted
+        return $users;
+    }
+
     public function delete($id)
     {
         $user = UserTable::findOrFail($id);
