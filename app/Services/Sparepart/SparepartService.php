@@ -73,6 +73,27 @@ class SparepartService extends AppService implements AppServiceInterface
         return $spareparts;
     }
 
+    public function ascending(){
+        $spareparts = Sparepart::orderBy('name', 'DESC')->get();
+        // Return the search view with the resluts compacted
+        return $spareparts;
+    }
+    public function descending(){
+        $spareparts = Sparepart::orderBy('name', 'ASC')->get();
+        // Return the search view with the resluts compacted
+        return $spareparts;
+    }
+    public function highStock(){
+        $spareparts = Sparepart::orderBy('count', 'DESC')->get();
+        // Return the search view with the resluts compacted
+        return $spareparts;
+    }
+    public function lowStock(){
+        $spareparts = Sparepart::orderBy('count', 'ASC')->get();
+        // Return the search view with the resluts compacted
+        return $spareparts;
+    }
+
     public function delete($id)
     {
         $row = SparepartTable::findOrFail($id);
