@@ -77,8 +77,7 @@
                                     name="role" >
                                     <option value="" disabled selected>{{__('Select role of user')}}</option>
                                     @foreach ($type_role as $model)
-
-                                    <option value="{{$model->role}}" {{ old('role')==$model->role ?
+                                        <option value="{{$model->role}}" {{ old('role')==$model->role ?
                                         'selected' : '' }}>{{$model->role}}</option>
                                     @endforeach
                                     {{-- <option value="ADMIN" >ADMIN</option>

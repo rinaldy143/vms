@@ -70,22 +70,23 @@
                     <!-- Left Side Of Navbar -->
                     <div class="card-title">
                         <!--begin::Search-->
-                        <a  class=" text-danger fw-bolder me-3 py-3 font-weight-bolder " href="#" style="border-bottom: 1px solid red; padding-bottom: 3px">
+                        <a  class="role text-dark me-3 py-3 font-weight-bolder {{ Route::is('users.index') ? 'active':'' }}" href="{{route('users.index')}}">
                             <!--begin::Svg Icon | path: icons/duotune/arrows/arr078.svg-->
                             <!--end::Svg Icon-->All
                         </a>
-                        <a  class=" text-dark me-6 py-3 font-weight-bolder " style="">
+
+                        <a  class="role text-dark me-6 py-3 font-weight-bolder {{ Route::is('users.operation') ? 'active':'' }}" href="{{route('users.operation')}}" style="">
                             <!--begin::Svg Icon | path: icons/duotune/arrows/arr078.svg-->
                             <!--end::Svg Icon-->Operation
                         </a>
-                        <a  class=" text-dark me-6 py-3 font-weight-bolder " style="">
+                        <a  class="role text-dark me-6 py-3 font-weight-bolder {{Route::is('users.lead_mechanice') ? 'active':'' }} " href="{{route('users.lead_mechanice')}}" style="">
                             <!--begin::Svg Icon | path: icons/duotune/arrows/arr078.svg-->
                             <!--end::Svg Icon-->Lead Mechanice
                         </a>
-                        <a  class=" text-dark me-6 py-3 font-weight-bolder " style="">
+                        <a  class="role text-dark me-6 py-3 font-weight-bolder {{Route::is('users.mechanice') ? 'active':'' }}" href="{{route('users.mechanice')}}" style="">
                             <!--begin::Svg Icon | path: icons/duotune/arrows/arr078.svg-->
                             <!--end::Svg Icon-->Mechanice
-                        <a  class=" text-dark me-6 py-3 font-weight-bolder " style="">
+                        <a  class="role text-dark me-6 py-3 font-weight-bolder {{Route::is('users.logistic') ? 'active':'' }}" href="{{route('users.logistic')}}" style="">
                             <!--begin::Svg Icon | path: icons/duotune/arrows/arr078.svg-->
                             <!--end::Svg Icon-->Logistic
                         </a>
@@ -98,12 +99,12 @@
                             <!--begin::Search-->
                             <button type="button" class="btn me-3" style="border: 1px solid">
                                 <!--begin::Svg Icon | path: icons/duotune/arrows/arr078.svg-->
-                                <img src="img/Download.png" alt="">
+                                <img src="/img/Download.png" alt="">
                                 <!--end::Svg Icon-->Export
                             </button>
                             <a class="btn btn-danger me-3 fw-bold py-3"  data-toggle="modal"
                             href="#modalUser" title="Download">
-                            <img class src="img/Add User.png" alt="">
+                            <img class src="/img/Add User.png" alt="">
                             Add User
                             </a>
                             <!--end::Search-->
@@ -129,7 +130,7 @@
                                 <li class="menu-item dropdown" style="right: 20px;position: absolute;">
                                     <a class="nav-link text-dark" href="#" role="button"
                                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <img src="img/kebab.png" style="" alt="">
+                                        <img src="/img/kebab.png" style="" alt="">
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                         <form action="{{route('users.destroy', ($model->id))}}" method="POST">
@@ -154,9 +155,9 @@
                     <div class="card-body ">
                         <h2 class="card-text text-color-dark font-weight-bold text-3 pb-1 mb-4 px-10 text-truncate text-center">{{$model->name}}
                         </h2>
-                        <p class="text-center pb-5" style="line-height: 0%"><a href="">{{$model->role}}</a></p>
-                        <p class="text-center num m-0"><img src="img/call.png" alt=""> {{$model->phone_number}}</p>
-                        <p class="text-center email" style="line-height: 0%"><img src="img/Message.png" alt=""> {{$model->email}}</p>
+                        <p class="text-center pb-5" style="line-height: 0%"><a href="/users/{{$model->role}}">{{$model->role}}</a></p>
+                        <p class="text-center num m-0"><img src="/img/call.png" alt=""> {{$model->phone_number}}</p>
+                        <p class="text-center email" style="line-height: 0%"><img src="/img/Message.png" alt=""> {{$model->email}}</p>
                         {{-- <div class="btnset">
                             <button class="btn btn1">Button</button>
                             <button class="btn btn2">button</button>
@@ -198,6 +199,14 @@
 <div>
     @include('modal.modalUser')
 </div>
+<style>
+        a.role.active{
+        color: red !important;
+        font-weight: 500;
+        border-bottom: 1px solid red;
+        padding-bottom: 3px;
+    }
+</style>
 
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>

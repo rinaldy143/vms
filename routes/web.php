@@ -58,20 +58,24 @@ Route::group(['prefix' => '/'], function () {
         //     return view('/pages/vehicle/vehicle1', ['model_vehicle' => $model_vehicle, 'vehiclesT' => $vehiclesT, 'vehicles' => $vehicles]);
         // });
 
-        Route::group(['prefix' => 'spareparts', 'as' => 'spareparts.'], function () {
-
-            Route::resource('/', App\Http\Controllers\Sparepart\SparepartController::class);
-            Route::get('/search', [App\Http\Controllers\Sparepart\SparepartController::class, 'search'])->name('spareparts.search');
-            Route::get('/ascending', [App\Http\Controllers\Sparepart\SparepartController::class, 'ascending'])->name('spareparts.ascending');
-            Route::get('/descending', [App\Http\Controllers\Sparepart\SparepartController::class, 'descending'])->name('spareparts.descending');
-            Route::get('/highStock', [App\Http\Controllers\Sparepart\SparepartController::class, 'highStock'])->name('spareparts.highStock');
-            Route::get('/lowStock', [App\Http\Controllers\Sparepart\SparepartController::class, 'lowStock'])->name('spareparts.lowStock');
-
+        Route::resource('spareparts', App\Http\Controllers\Sparepart\SparepartController::class);
+        Route::group(['prefix' => 'sparepart', 'as' => 'spareparts.'], function () {
+            Route::get('/search', [App\Http\Controllers\Sparepart\SparepartController::class, 'search'])->name('search');
+            Route::get('/ascending', [App\Http\Controllers\Sparepart\SparepartController::class, 'ascending'])->name('ascending');
+            Route::get('/descending', [App\Http\Controllers\Sparepart\SparepartController::class, 'descending'])->name('descending');
+            Route::get('/highStock', [App\Http\Controllers\Sparepart\SparepartController::class, 'highStock'])->name('highStock');
+            Route::get('/lowStock', [App\Http\Controllers\Sparepart\SparepartController::class, 'lowStock'])->name('lowStock');
+        });
+        Route::resource('users', App\Http\Controllers\User\UserController::class);
+        Route::group(['prefix' => 'user', 'as' => 'users.'], function () {
+            Route::get('/search', [App\Http\Controllers\User\UserController::class, 'search'])->name('search');
+            Route::get('/Operation', [App\Http\Controllers\User\UserController::class, 'operation'])->name('operation');
+            Route::get('/Lead Mechanices', [App\Http\Controllers\User\UserController::class, 'lead_mechanice'])->name('lead_mechanice');
+            Route::get('/Mechanices', [App\Http\Controllers\User\UserController::class, 'mechanice'])->name('mechanice');
+            Route::get('/Logistic', [App\Http\Controllers\User\UserController::class, 'logistic'])->name('logistic');
         });
             Route::resource('vehicles', App\Http\Controllers\Vehicle\VehicleController::class);
-            Route::resource('users', App\Http\Controllers\User\UserController::class);
             Route::resource('trailer', App\Http\Controllers\Trailer\TrailerController::class);
-            Route::get('/user/search', [App\Http\Controllers\User\UserController::class, 'search'])->name('users.search');
             Route::get('/vehicle/search', [App\Http\Controllers\Vehicle\VehicleController::class, 'search'])->name('vehicles.search');
             Route::get('/trailers/search', [App\Http\Controllers\Trailer\TrailerController::class, 'search'])->name('trailer.search');
 

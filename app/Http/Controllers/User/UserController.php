@@ -94,7 +94,43 @@ class UserController extends ApiController
     {
         $users = $this->service->search($request);
         $user = PaginationHelper::paginate($users, 12);
-        return view('pages.users', compact('user'));
+        $type_role = TypeRole::all();
+
+        return view('pages.users', compact('user', 'type_role'));
+    }
+
+    public function operation(Request $request)
+    {
+        $users = $this->service->operation($request);
+        $user = PaginationHelper::paginate($users, 12);
+        $type_role = TypeRole::all();
+
+        return view('pages.users', compact('user', 'type_role'));
+    }
+
+    public function lead_mechanice(Request $request)
+    {
+        $users = $this->service->lead_mechanice($request);
+        $user = PaginationHelper::paginate($users, 12);
+        $type_role = TypeRole::all();
+
+        return view('pages.users', compact('user', 'type_role'));
+    }
+    public function mechanice(Request $request)
+    {
+        $users = $this->service->mechanice($request);
+        $user = PaginationHelper::paginate($users, 12);
+        $type_role = TypeRole::all();
+
+        return view('pages.users', compact('user', 'type_role'));
+    }
+    public function logistic(Request $request)
+    {
+        $users = $this->service->logistic($request);
+        $user = PaginationHelper::paginate($users, 12);
+        $type_role = TypeRole::all();
+
+        return view('pages.users', compact('user', 'type_role'));
     }
 
     /**
