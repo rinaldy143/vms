@@ -132,6 +132,22 @@ class UserController extends ApiController
 
         return view('pages.users', compact('user', 'type_role'));
     }
+    public function admin(Request $request)
+    {
+        $users = $this->service->admin($request);
+        $user = PaginationHelper::paginate($users, 12);
+        $type_role = TypeRole::all();
+
+        return view('pages.users', compact('user', 'type_role'));
+    }
+    public function member(Request $request)
+    {
+        $users = $this->service->member($request);
+        $user = PaginationHelper::paginate($users, 12);
+        $type_role = TypeRole::all();
+
+        return view('pages.users', compact('user', 'type_role'));
+    }
 
     /**
      * Remove the specified resource from storage.

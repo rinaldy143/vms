@@ -73,6 +73,8 @@ Route::group(['prefix' => '/'], function () {
             Route::get('/Lead Mechanices', [App\Http\Controllers\User\UserController::class, 'lead_mechanice'])->name('lead_mechanice');
             Route::get('/Mechanices', [App\Http\Controllers\User\UserController::class, 'mechanice'])->name('mechanice');
             Route::get('/Logistic', [App\Http\Controllers\User\UserController::class, 'logistic'])->name('logistic');
+            Route::get('/ADMIN', [App\Http\Controllers\User\UserController::class, 'admin'])->name('admin');
+            Route::get('/MEMBER', [App\Http\Controllers\User\UserController::class, 'member'])->name('member');
         });
             Route::resource('vehicles', App\Http\Controllers\Vehicle\VehicleController::class);
             Route::resource('trailer', App\Http\Controllers\Trailer\TrailerController::class);

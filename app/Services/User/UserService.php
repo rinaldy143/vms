@@ -103,6 +103,18 @@ class UserService extends AppService implements AppServiceInterface
         // Return the search view with the resluts compacted
         return $users;
     }
+    public function admin(){
+        $users = User::query()
+        ->where('role', '=', 'ADMIN')->get();
+        // Return the search view with the resluts compacted
+        return $users;
+    }
+    public function member(){
+        $users = User::query()
+        ->where('role', '=', 'MEMBER')->get();
+        // Return the search view with the resluts compacted
+        return $users;
+    }
 
     public function delete($id)
     {
