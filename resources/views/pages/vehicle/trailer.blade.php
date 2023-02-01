@@ -117,42 +117,49 @@
                 <!--begin:::Tabs-->
                 <div class="card my-5">
                     <div class="card-body pt-2">
+                        <div class="d-flex justify-content-end">
+                            @can('create', App\Models\Entity\Trailer::class)
+                            <form id="delete" action="{{route('trailer.destroy', ($trailers[0]->id))}}" method="POST">
+                                {{-- <a class="dropdown-item" data-toggle="modal" id="btn1" href="#modaleditUser{{$model->id}}"> <img src="/assets/media/icons/system-icon/outline/Edit Square.svg" width="25px" alt=""> Update</a> --}}
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="border-0 btn-primary-outline btn-link" style="background-color: transparent"> <img src="/assets/media/icons/system-icon/outline/Delete.svg" width="25px" alt=""></button>
+                                <a href="#modaleditTrailer{{$trailers[0]->id}}" data-toggle="modal" id="edit" class="btn border-0 p-0" style="border-radius: 8px;float: right">
+                                    <img src="/assets/media/icons/system-icon/outline/Edit Square.svg" alt="" style="float: right;">
+                                </a>
+                            </form>
+                            @endcan
+                        </div>
                         <div class="d-flex justify-content-between">
                             <div class="w-100 mt-10">
                                 <p class="ptrailer">Code Trailer</p>
-                                <h3 class="fw-bolder heading-3 fs-1" id="vehicle-code_trailer">D 1234 ABC</h3>
+                                <h3 class="fw-bolder heading-3 fs-1" id="vehicle-code_trailer">{{$trailers[0]->code_trailer}}</h3>
                                 <hr class="solid">
                                 <div class="d-flex">
                                     <div class="col-lg-6 px-1">
                                         <p class="ptrailer mb-2 fs-7">Model Trailer</p>
-                                        <h4 class="btrailer fw-bold pb-5" id="vehicle-model_trailer_id">Grand Max</h4>
+                                        <h4 class="btrailer fw-bold pb-5" id="vehicle-model_trailer_id">{{$trailers[0]->ModelTrailer->trailer_model}}</h4>
                                         <p class="ptrailer mb-2 fs-7">Scheduling Maintained</p>
-                                        <h4 class="btrailer fw-bold" id="vehicle-monthly_maintenance">20</h4>
+                                        <h4 class="btrailer fw-bold" id="vehicle-monthly_maintenance">{{$trailers[0]->monthly_maintenance}}</h4>
 
                                     </div>
                                     <div class="col-lg-6 px-1">
                                         <p class="ptrailer mb-2 fs-7">Trailer Type</p>
-                                        <h4 class="btrailer fw-bold pb-5" id="vehicle-type_trailer_id">Van</h4>
+                                        <h4 class="btrailer fw-bold pb-5" id="vehicle-type_trailer_id">{{$trailers[0]->TypeTrailer->trailer_type}}</h4>
                                         <p class="ptrailer mb-2 fs-7">Last Maintained</p>
                                         <h4 class="btrailer fw-bold">20 May 2022</h4>
                                     </div>
                                 </div>
                             </div>
                             <div>
-                                @can('create', App\Models\Entity\Trailer::class)
-                                    <a href="" data-toggle="modal" id="edit" class="btn border-0 p-0" style="border-radius: 8px;float: right">
-                                        <img src="/assets/media/icons/system-icon/outline/Edit Square.svg" alt="" style="float: right;">
-                                    </a>
-                                @endcan
                                 <div class="img-fluid align-item-center mx-auto d-block">
                                     <img src="/img/Trailer.svg" alt="">
                                     <p class="text-center">Trailer Connected</p>
-                                    <h3 class="text-primary text-center fs-6" id="vehicle_CONN">T-01, T-02</h3>
+                                    <h3 class="text-primary text-center fs-6" id="vehicle_CONN">{{$trailers[0]->vehicle_connected}}</h3>
                                 </div>
                             </div>
 
                         </div>
-
                     </div>
 
 
@@ -300,7 +307,7 @@
   let trailers = {!!$trailers!!};
   let trailerT = {!!$trailerT!!};
   let trailerM = {!!$trailerM!!};
-    changeAddress(trailers[0].code_trailer,trailers[0].monthly_maintenance,trailerM[0].trailer_model,trailerT[0].trailer_type, trailers[0].vehicle_connected, trailers[0].id);
+    // changeAddress(trailers[0].code_trailer,trailers[0].monthly_maintenance,trailerM[0].trailer_model,trailerT[0].trailer_type, trailers[0].vehicle_connected, trailers[0].id);
 
     function changeAddress(code_trailer, monthly_maintenance, trailer_model, trailer_type, vehicle_connected, id){
         $('#vehicle-code_trailer').html(code_trailer);
@@ -308,6 +315,8 @@
         $('#vehicle-monthly_maintenance').html(monthly_maintenance);
         $('#vehicle-type_trailer_id').html(trailer_type);
         $('#vehicle_CONN').html(vehicle_connected);
+        var url = "{{ route('trailer.destroy', '') }}";
+        $("#delete").attr("action", url + '/' + id);
         $("#edit").attr("href", "#modaleditTrailer" + id);
     }
 
@@ -317,7 +326,7 @@
         $(this).removeClass('text-dark');
         $(this).addClass('text-danger');
     });
-    changeAddress(trailers[0].code_trailer,trailers[0].monthly_maintenance,trailers[0].trailer_model,trailers[0].trailer_type, trailers[0].vehicle_connected, trailers[0].id);
+    // changeAddress(trailers[0].code_trailer,trailers[0].monthly_maintenance,trailers[0].trailer_model,trailers[0].trailer_type, trailers[0].vehicle_connected, trailers[0].id);
 </script>
 
 @endsection

@@ -122,7 +122,11 @@
                             <ul class="m-0" style="list-style: none">
                                 <li class="py-1">Identity : <strong>{{$item->id_sparepart}}</strong></li>
                                 <li class="py-1">Brand : <strong>{{$item->brand}}</strong></li>
+                                @if ($item->count >= 50)
+                                <li class="py-1">Stock : <strong class="text-success">{{$item->count}}</strong></li>
+                                @else
                                 <li class="py-1">Stock : <strong class="text-danger">{{$item->count}}</strong></li>
+                                @endif
                             </ul>
                         </div>
                     </div>

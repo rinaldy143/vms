@@ -155,7 +155,7 @@
                     <div class="card-body ">
                         <h2 class="card-text text-color-dark font-weight-bold text-3 pb-1 mb-4 px-10 text-truncate text-center">{{$model->name}}
                         </h2>
-                        <p class="text-center pb-5" style="line-height: 0%"><a href="/users/{{$model->role}}">{{$model->role}}</a></p>
+                        <p class="text-center pb-5" style="line-height: 0%"><a href="/user/{{$model->role}}">{{$model->role}}</a></p>
                         <p class="text-center num m-0"><img src="/img/call.png" alt=""> {{$model->phone_number}}</p>
                         <p class="text-center email" style="line-height: 0%"><img src="/img/Message.png" alt=""> {{$model->email}}</p>
                         {{-- <div class="btnset">
