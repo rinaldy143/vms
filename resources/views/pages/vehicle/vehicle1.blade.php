@@ -120,41 +120,40 @@
                 <!--begin:::Tabs-->
                 <div class="card my-5">
                     <div class="card-body pt-2">
+                        <div class="d-flex justify-content-end">
+                            @can('create', App\Models\Entity\Trailer::class)
+                                <form id="delete" style="padding-left: 40px;margin-left: 40px;" action="{{route('vehicles.destroy', ($vehicles[0]->id))}}" method="POST">
+                                    {{-- <a class="dropdown-item" data-toggle="modal" id="btn1" href="#modaleditUser{{$model->id}}"> <img src="/assets/media/icons/system-icon/outline/Edit Square.svg" width="25px" alt=""> Update</a> --}}
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="border-0 btn-primary-outline btn-link" style="background-color: transparent"> <img src="/assets/media/icons/system-icon/outline/Delete.svg" width="25px" alt=""></button>
+                                    <a href="#modaleditvehicle{{$vehicles[0]->id}}" data-toggle="modal" id="edit" class="btn border-0 p-0" style="border-radius: 8px;float: right">
+                                        <img src="/assets/media/icons/system-icon/outline/Edit Square.svg" alt="" style="float: right;">
+                                    </a>
+                                </form>
+                            @endcan
+                        </div>
                         <div class="d-flex justify-content-between">
                             <div class="w-100 mt-10">
                                 <p class="pvehicle">Plate Number</p>
-                                <h3 class="fw-bolder heading-3 fs-1" id="vehicle-plat_number"></h3>
+                                <h3 class="fw-bolder heading-3 fs-1" id="vehicle-plat_number">{{$vehicles[0]->plat_number}}</h3>
                                 <hr class="solid">
                                 <div class="d-flex">
                                     <div class="col-lg-6 px-1">
                                         <p class="pvehicle mb-2 fs-7" >Model Vehicle</p>
-                                        <h4 class="bvehicle fw-bold pb-5" id="vehicle-model_vehicle_id">Grand Max</h4>
+                                        <h4 class="bvehicle fw-bold pb-5" id="vehicle-model_vehicle_id"> {{$vehicles[0]->ModelVehicle->vehicle_model}}</h4>
                                         <p class="pvehicle mb-2 fs-7">Scheduling Maintained</p>
-                                        <h4 class="bvehicle fw-bold" id="vehicle-monthly_maintenance">1</h4>
-
+                                        <h4 class="bvehicle fw-bold" id="vehicle-monthly_maintenance">{{$vehicles[0]->monthly_maintenance}}</h4>
                                     </div>
                                     <div class="col-lg-6 px-1">
                                         <p class="pvehicle mb-2 fs-7">Vehicle Type</p>
-                                        <h4 class="bvehicle fw-bold pb-5" id="vehicle-type_vehicle_id">Van</h4>
+                                        <h4 class="bvehicle fw-bold pb-5" id="vehicle-type_vehicle_id">{{$vehicles[0]->TypeVehicle->vehicle_type}}</h4>
                                         <p class="pvehicle mb-2 fs-7">Last Maintained</p>
                                         <h4 class="bvehicle fw-bold">20 May 2022</h4>
                                     </div>
                                 </div>
                             </div>
                             <div>
-                                <div >
-                                    @can('create', App\Models\Entity\Trailer::class)
-                                        <form id="delete" style="padding-left: 40px;margin-left: 40px;" action="#" method="POST">
-                                            {{-- <a class="dropdown-item" data-toggle="modal" id="btn1" href="#modaleditUser{{$model->id}}"> <img src="/assets/media/icons/system-icon/outline/Edit Square.svg" width="25px" alt=""> Update</a> --}}
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="border-0 btn-primary-outline btn-link" style="background-color: transparent"> <img src="/assets/media/icons/system-icon/outline/Delete.svg" width="25px" alt=""></button>
-                                            <a href="" data-toggle="modal" id="edit" class="btn border-0 p-0" style="border-radius: 8px;float: right">
-                                                <img src="/assets/media/icons/system-icon/outline/Edit Square.svg" alt="" style="float: right;">
-                                            </a>
-                                        </form>
-                                    @endcan
-                                </div>
                                 {{-- <button type="submit" class="border-0 btn-white">  <img src="/assets/media/icons/system-icon/outline/Delete.svg" width="25px" alt=""></button> --}}
                                 <div class="img-fluid align-item-center mx-auto d-block">
                                     <img src="/img/Mask group.svg" alt="">
@@ -317,7 +316,7 @@
   let model_vehicle = {!!$model_vehicle!!};
 
 //   let t = document.getElementById("edit").href;
-    changeAddress(vehicles[0].plat_number,vehicles[0].monthly_maintenance,model_vehicle[0].vehicle_model,vehiclesT[0].vehicle_type,vehicles[0].id);
+    // changeAddress(vehicles[0].plat_number,vehicles[0].monthly_maintenance,model_vehicle[0].vehicle_model,vehiclesT[0].vehicle_type,vehicles[0].id);
 
     function changeAddress(plat_number, monthly_maintenance, vehicle_model, vehicle_type, id){
         $('#vehicle-plat_number').html(plat_number);
@@ -339,7 +338,7 @@
         $(this).removeClass('text-dark');
         $(this).addClass('text-danger');
     });
-    changeAddress(vehicles[0].plat_number,vehicles[0].monthly_maintenance,model_vehicle[0].vehicle_model,vehiclesT[0].vehicle_type,vehicles[0].id);
+    // changeAddress(vehicles[0].plat_number,vehicles[0].monthly_maintenance,model_vehicle[0].vehicle_model,vehiclesT[0].vehicle_type,vehicles[0].id);
 
 
     // document.getElementById("changeLink").onclick = function() {
