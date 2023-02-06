@@ -28,7 +28,7 @@ class TypeRoleService extends AppService implements AppServiceInterface
     public function create($data)
     {
         return TypeRoleTable::create([
-            'name' => $data['name'],
+            'role' => $data['role'],
         ]);
     }
 
@@ -36,7 +36,7 @@ class TypeRoleService extends AppService implements AppServiceInterface
     {
         $row = TypeRoleTable::findOrFail($id);
         $row->update([
-            'name' => $data['name'],
+            'role' => $data['role'],
         ]);
         return $row;
     }

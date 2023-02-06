@@ -28,7 +28,7 @@ class TypeTrailerService extends AppService implements AppServiceInterface
     public function create($data)
     {
         return TypeTrailerTable::create([
-            'name' => $data['name'],
+            'trailer_type' => $data['trailer_type'],
         ]);
     }
 
@@ -36,7 +36,7 @@ class TypeTrailerService extends AppService implements AppServiceInterface
     {
         $row = TypeTrailerTable::findOrFail($id);
         $row->update([
-            'name' => $data['name'],
+            'trailer_type' => $data['trailer_type'],
         ]);
         return $row;
     }
