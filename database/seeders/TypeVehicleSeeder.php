@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Table\TypeVehicleTable;
+use App\Models\Table\VehicleTypeTable;
 use Illuminate\Database\Seeder;
 
 class TypeVehicleSeeder extends Seeder
@@ -14,19 +14,19 @@ class TypeVehicleSeeder extends Seeder
      */
     public function run()
     {
-        TypeVehicleTable::create(
+        VehicleTypeTable::create(
             [
                 'id' => '00000001-0000-0000-0000-000000000001',
                 'vehicle_type' => 'Colt Diesel Double (CDD) Bak'
             ]
         );
-        TypeVehicleTable::create(
+        VehicleTypeTable::create(
             [
                 'id' => '00000001-0000-0000-0000-000000000002',
                 'vehicle_type' => 'Colt Diesel Double (CDD) Bak'
             ]
         );
-        TypeVehicleTable::create(
+        VehicleTypeTable::create(
             [
                 'id' => '00000001-0000-0000-0000-000000000003',
                 'vehicle_type' => 'Colt Diesel Double (CDD) Long Box'

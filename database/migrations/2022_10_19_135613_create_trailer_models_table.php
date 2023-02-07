@@ -13,9 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('type_trailers', function (Blueprint $table) {
+        Schema::create('trailer_models', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->string('trailer_type')->nullable();
+            $table->string('name')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('type_trailers');
+        Schema::dropIfExists('trailer_models');
     }
 };

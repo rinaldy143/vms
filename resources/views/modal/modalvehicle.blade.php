@@ -68,11 +68,11 @@
                                         <option value="" disabled selected>{{__('Select Vehicle Model')}}</option>
                                         @foreach ($model_vehicle as $model)
 
-                                        <option value="{{$model->id}}" {{ old('ModelVehicle')==$model->id ?
+                                        <option value="{{$model->id}}" {{ old('VehicleModel')==$model->id ?
                                             'selected' : '' }}>{{$model->vehicle_model}}</option>
                                         @endforeach
                                         </select>
-                                        @error('ModelVehicle')
+                                        @error('VehicleModel')
                                         <div class="invalid-feedback d-flex">
                                             {{ $message }}
                                         </div>

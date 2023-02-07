@@ -15,16 +15,16 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->uuid('id')->primary();
+            $table->char('role_id')->index()->nullable();
+            $table->foreign('role_id')->references('id')->on('roles');
             $table->string('name')->nullable();
             $table->string('email')->nullable()->unique();
-            $table->string('photo')->nullable();
-            $table->string('role')->default('MEMBER');
+            $table->string('password');
             $table->string('fcm_token')->nullable();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password')->nullable();
             $table->string('phone_country_code')->nullable();
-            $table->string('phone_number')->nullable();
-            $table->foreignUuid('type_role_id')->nullable()->references('id')->on('type_roles');
+            $table->unsignedSmallInteger('phone_number', 13)->nullable();
+            $table->string('photo')->nullable();
+            $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->softDeletes();
             $table->timestamps();

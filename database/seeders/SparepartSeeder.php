@@ -16,7 +16,7 @@ class SparepartSeeder extends Seeder
     {
         SparepartTable::create([
             'id' => '00000001-0000-0000-0000-000000000001',
-            'id_sparepart' => 'OL123',
+            'identity' => 'OL123',
             'name' => 'Oli',
             'brand' => 'TOP_1',
             'count' => '70',
@@ -25,7 +25,7 @@ class SparepartSeeder extends Seeder
 
         SparepartTable::create([
             'id' => '00000001-0000-0000-0000-000000000002',
-            'id_sparepart' => 'OL124',
+            'identity' => 'OL124',
             'name' => 'Oli',
             'brand' => 'TOP_2',
             'count' => '75',

@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Table\TypeMaintenanceTable;
+use App\Models\Table\MaintenanceTypeTable;
 use Illuminate\Database\Seeder;
 
 class TypeMaintenanceSeeder extends Seeder
@@ -14,11 +14,11 @@ class TypeMaintenanceSeeder extends Seeder
      */
     public function run()
     {
-        TypeMaintenanceTable::create([
+        MaintenanceTypeTable::create([
             'id' => '00000001-0000-0000-0000-000000000001',
             'maintenance_type' => 'Services'
         ]);
-        TypeMaintenanceTable::create([
+        MaintenanceTypeTable::create([
             'id' => '00000001-0000-0000-0000-000000000002',
             'maintenance_type' => 'Repair'
         ]);

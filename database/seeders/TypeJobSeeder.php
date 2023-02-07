@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Table\TypeJobTable;
+use App\Models\Table\JobTypeTable;
 use Illuminate\Database\Seeder;
 
 class TypeJobSeeder extends Seeder
@@ -14,13 +14,13 @@ class TypeJobSeeder extends Seeder
      */
     public function run()
     {
-        TypeJobTable::create(
+        JobTypeTable::create(
             [
                 'id' => '00000001-0000-0000-0000-000000000001',
                 'job_type' => 'Maintenance'
             ]
         );
-        TypeJobTable::create(
+        JobTypeTable::create(
             [
                 'id' => '00000001-0000-0000-0000-000000000002',
                 'job_type' => 'Repair'

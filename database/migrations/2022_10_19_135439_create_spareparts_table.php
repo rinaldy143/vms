@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('spareparts', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->string('id_sparepart');
+            $table->string('identity');
             $table->string('name');
             $table->string('brand')->nullable();
-            $table->integer('count')->nullable();
+            $table->integer('amount')->nullable();
             $table->string('photo')->nullable();
             $table->softDeletes();
             $table->timestamps();

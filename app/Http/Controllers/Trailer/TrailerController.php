@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Trailer;
 use App\Http\Controllers\ApiController;
 use App\Http\Requests\Trailer\StoreTrailerRequest;
 use App\Http\Requests\Trailer\UpdateTrailerRequest;
-use App\Models\Entity\ModelTrailer;
-use App\Models\Entity\TypeTrailer;
+use App\Models\Entity\TrailerModel;
+use App\Models\Entity\TrailerType;
 use App\Models\Entity\Trailer;
 use App\Services\Trailer\TrailerService;
 use Illuminate\Http\JsonResponse;
@@ -43,8 +43,8 @@ class TrailerController extends ApiController
         // $this->authorize(ability: 'view', arguments: $data);
         // return $this->sendSuccess($data, null, 200);
         $trailers = Trailer::all();
-        $trailerT = TypeTrailer::all();
-        $trailerM = ModelTrailer::all();
+        $trailerT = TrailerType::all();
+        $trailerM = TrailerModel::all();
         return view('pages.vehicle.trailer', compact('trailers', 'trailerT','trailerM'));
     }
 
@@ -88,8 +88,8 @@ class TrailerController extends ApiController
     public function search(Request $request)
     {
         $trailers = $this->service->search($request);
-        $trailerT = TypeTrailer::all();
-        $trailerM = ModelTrailer::all();
+        $trailerT = TrailerType::all();
+        $trailerM = TrailerModel::all();
         return view('pages.vehicle.trailer', compact('trailers','trailerT', 'trailerM'));
     }
 

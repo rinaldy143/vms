@@ -4,8 +4,8 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-use App\Models\Table\ModelTrailerTable;
-use App\Models\Table\TypeRoleTable;
+use App\Models\Table\TrailerModelTable;
+use App\Models\Table\RoleTable;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder

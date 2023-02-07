@@ -13,9 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('type_jobs', function (Blueprint $table) {
+        Schema::create('maintenance_types', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->string('job_type')->nullable();
+            $table->string('name')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('type_jobs');
+        Schema::dropIfExists('maintenance_types');
     }
 };

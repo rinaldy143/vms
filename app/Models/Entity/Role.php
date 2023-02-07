@@ -6,7 +6,7 @@ use App\Models\AppModel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class TypeMaintenance extends AppModel
+class Role extends AppModel
 {
     use HasFactory, SoftDeletes;
 
@@ -15,7 +15,7 @@ class TypeMaintenance extends AppModel
      *
      * @var string
      */
-    protected $table = 'type_maintenances';
+    protected $table = 'roles';
 
     /**
      * The attributes that are mass assignable.
@@ -23,7 +23,7 @@ class TypeMaintenance extends AppModel
      * @var array<int, string>
      */
     protected $fillable = [
-        'maintenance_type',
+        'role',
     ];
 
     /**

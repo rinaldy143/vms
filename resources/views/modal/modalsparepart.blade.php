@@ -17,13 +17,13 @@
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-md-6 mb-3 mb-lg-0 col-lg-6">
-                            <label for="id_sparepart" class="subtitle-1">
+                            <label for="identity" class="subtitle-1">
                                 {{__('Identity Sparepart')}}
                                 <span class="text-danger">*</span>
                             </label>
                             <div class="field-input pt-2 pb-6">
-                                <input type="text" id="id_sparepart" name="id_sparepart" class="form-control" placeholder="Ex. ol-01" maxlength="200" value={{old('Identity_Sparepart')}}>
-                                @error('id_sparepart')
+                                <input type="text" id="identity" name="identity" class="form-control" placeholder="Ex. ol-01" maxlength="200" value={{old('Identity_Sparepart')}}>
+                                @error('identity')
                                 <div class="invalid-feedback d-flex">
                                     {{ $message }}
                                 </div>

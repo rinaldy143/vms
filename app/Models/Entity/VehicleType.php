@@ -6,7 +6,7 @@ use App\Models\AppModel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class ModelTrailer extends AppModel
+class VehicleType extends AppModel
 {
     use HasFactory, SoftDeletes;
 
@@ -15,7 +15,7 @@ class ModelTrailer extends AppModel
      *
      * @var string
      */
-    protected $table = 'model_trailers';
+    protected $table = 'vehicle_types';
 
     /**
      * The attributes that are mass assignable.
@@ -23,7 +23,7 @@ class ModelTrailer extends AppModel
      * @var array<int, string>
      */
     protected $fillable = [
-        'trailer_model',
+        'name',
     ];
 
     /**

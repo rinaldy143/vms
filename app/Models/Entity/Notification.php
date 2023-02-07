@@ -25,12 +25,12 @@ class Notification extends AppModel
     protected $fillable = [
         'title',
         'body',
-        'read_at',
         'receiver_id',
         'fcm_multicast_id',
         'fcm_success',
         'fcm_canonical_ids',
         'fcm_results',
+        'read_at',
     ];
 
     /**

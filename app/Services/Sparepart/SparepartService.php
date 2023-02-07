@@ -32,7 +32,7 @@ class SparepartService extends AppService implements AppServiceInterface
         $photo = $data['photo']?->store('spareparts');
 
         return SparepartTable::create([
-            'id_sparepart' => $data['id_sparepart'],
+            'identity' => $data['identity'],
             'brand' => $data['brand'],
             'name' => $data['name'],
             'count' => $data['count'],

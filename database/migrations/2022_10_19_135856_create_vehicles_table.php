@@ -15,14 +15,18 @@ return new class extends Migration
     {
         Schema::create('vehicles', function (Blueprint $table) {
             $table->uuid('id')->primary();
+            $table->char('vehicle_type_id')->index();
+            $table->foreign('vehicle_type_id')->references('id')->on('vehicle_types');
+            $table->char('vehicle_model_id')->index();
+            $table->foreign('vehicle_model_id')->references('id')->on('vehicle_models');
+            $table->char('trailer_id')->index()->nullable();
+            $table->foreign('trailer_id')->references('id')->on('trailers');
+            $table->integer('fms_id')->nullable();
             $table->string('plat_number')->nullable();
             $table->boolean('trailer_connected')->nullable();
             $table->string('photo')->nullable();
             $table->integer('monthly_maintenance')->nullable();
             $table->integer('last_maintenance')->nullable();
-            $table->integer('id_fms')->nullable();
-            $table->foreignUuid('model_vehicle_id')->nullable()->references('id')->on('model_vehicles');
-            $table->foreignUuid('type_vehicle_id')->nullable()->references('id')->on('type_vehicles');
             $table->softDeletes();
             $table->timestamps();
         });

@@ -2,14 +2,14 @@
 
 namespace App\Services\TypeRole;
 
-use App\Models\Table\TypeRoleTable;
+use App\Models\Table\RoleTable;
 use App\Services\AppService;
 use App\Services\AppServiceInterface;
 
 class TypeRoleService extends AppService implements AppServiceInterface
 {
 
-    public function __construct(TypeRoleTable $model)
+    public function __construct(RoleTable $model)
     {
         parent::__construct($model);
     }
@@ -17,24 +17,24 @@ class TypeRoleService extends AppService implements AppServiceInterface
 
     public function dataTable($filter)
     {
-        return TypeRoleTable::datatable($filter)->paginate($filter->entries ?? 15);
+        return RoleTable::datatable($filter)->paginate($filter->entries ?? 15);
     }
 
     public function getById($id)
     {
-        return TypeRoleTable::findOrFail($id);
+        return RoleTable::findOrFail($id);
     }
 
     public function create($data)
     {
-        return TypeRoleTable::create([
+        return RoleTable::create([
             'role' => $data['role'],
         ]);
     }
 
     public function update($id, $data)
     {
-        $row = TypeRoleTable::findOrFail($id);
+        $row = RoleTable::findOrFail($id);
         $row->update([
             'role' => $data['role'],
         ]);
@@ -43,7 +43,7 @@ class TypeRoleService extends AppService implements AppServiceInterface
 
     public function delete($id)
     {
-        $row = TypeRoleTable::findOrFail($id);
+        $row = RoleTable::findOrFail($id);
         $row->delete();
         return $row;
     }

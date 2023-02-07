@@ -2,8 +2,8 @@
 /public/build
 /public/hot
 /public/storage
-/public/spareparts
-/public/users
+/public/storage/spareparts
+/public/storage/users
 /storage/*.key
 /vendor
 .env

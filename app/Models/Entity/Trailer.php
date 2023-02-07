@@ -34,11 +34,11 @@ class Trailer extends AppModel
 
     public function ModelTrailer()
     {
-        return $this->belongsTo(ModelTrailer::class, 'model_trailer_id');
+        return $this->belongsTo(TrailerModel::class, 'model_trailer_id');
     }
     public function TypeTrailer()
     {
-        return $this->belongsTo(TypeTrailer::class, 'type_trailer_id');
+        return $this->belongsTo(TrailerType::class, 'type_trailer_id');
     }
 
     /**
