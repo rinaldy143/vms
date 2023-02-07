@@ -193,14 +193,14 @@
                                     {{__('Last Password')}}
                                     <span class="text-danger">*</span>
                                 </label>
-                                <div class="field-input py-5 relative">
+                                <div class="field-input py-5 relative" id="show_hide_password">
                                      <div style="position: absolute; top: 85px;padding-left: 15px">
                                         <img src="img/locked.svg" alt="">
                                     </div>
                                     <div style="position: absolute; top: 85px;right:75px;">
-                                        <img src="img/showhide.svg" alt="">
+                                        <a href=""><i class="fa fa-eye-slash" aria-hidden="true"></i></a>
                                     </div>
-                                    <input type="text" id="Name" name="Name" class="form-control" style="padding-left: 55px;" placeholder="********" maxlength="200" value={{old('Identity_Sparepart')}}>
+                                    <input type="password" id="Name" name="Name" class="form-control" style="padding-left: 55px;" placeholder="********" maxlength="200" value={{old('Identity_Sparepart')}}>
                                     @error('Identity_Sparepart')
                                     <div class="invalid-feedback d-flex">
                                         {{ $message }}
@@ -215,14 +215,14 @@
                                     {{__('New Password')}}
                                     <span class="text-danger">*</span>
                                 </label>
-                                <div class="field-input py-5">
+                                <div class="field-input py-5" id="show_hide_password">
                                     <div style="position: absolute; top: 197px;padding-left: 15px">
                                         <img src="img/locked.svg" alt="">
                                     </div>
                                     <div style="position: absolute; top: 197px;right:75px;">
-                                        <img src="img/showhide.svg" alt="">
+                                        <a href=""><i class="fa fa-eye-slash" aria-hidden="true"></i></a>
                                     </div>
-                                    <input type="text" id="Email" name="Email" class="form-control" placeholder="********" style="padding-left: 55px;" maxlength="200" value={{old('Email')}}>
+                                    <input type="password" id="Email" name="Email" class="form-control" placeholder="********" style="padding-left: 55px;" maxlength="200" value={{old('Email')}}>
                                     @error('Email')
                                     <div class="invalid-feedback d-flex">
                                         {{ $message }}
@@ -237,14 +237,14 @@
                                     {{__('Confirm New Password')}}
                                     <span class="text-danger">*</span>
                                 </label>
-                                <div class="field-input py-5">
+                                <div class="field-input py-5" id="show_hide_password">
                                     <div style="position: absolute; top: 309px;padding-left: 15px">
                                         <img src="img/locked.svg" alt="">
                                     </div>
                                     <div style="position: absolute; top: 309px;right:75px;">
-                                        <img src="img/showhide.svg" alt="">
+                                        <a href=""><i class="fa fa-eye-slash" aria-hidden="true"></i></a>
                                     </div>
-                                    <input type="text" id="No_Handphone" name="No_Handphone" class="form-control" placeholder="********" style="padding-left: 55px;" maxlength="200" value={{old('No_Handphone')}}>
+                                    <input type="password" id="No_Handphone" name="No_Handphone" class="form-control" placeholder="********" style="padding-left: 55px;" maxlength="200" value={{old('No_Handphone')}}>
                                     @error('No_Handphone')
                                     <div class="invalid-feedback d-flex">
                                         {{ $message }}
@@ -275,4 +275,21 @@
 <!--end::Modal-->
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+
+<script>
+$(document).ready(function() {
+    $("#show_hide_password a").on('click', function(event) {
+        event.preventDefault();
+        if($('#show_hide_password input').attr("type") == "text"){
+            $('#show_hide_password input').attr('type', 'password');
+            $('#show_hide_password i').addClass( "fa-eye-slash" );
+            $('#show_hide_password i').removeClass( "fa-eye" );
+        }else if($('#show_hide_password input').attr("type") == "password"){
+            $('#show_hide_password input').attr('type', 'text');
+            $('#show_hide_password i').removeClass( "fa-eye-slash" );
+            $('#show_hide_password i').addClass( "fa-eye" );
+        }
+    });
+});
+</script>
 @endsection
