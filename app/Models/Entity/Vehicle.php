@@ -24,23 +24,23 @@ class Vehicle extends AppModel
      * @var array<int, string>
      */
     protected $fillable = [
+        'vehicle_type_id',
+        'vehicle_model_id',
+        'trailer_id',
+        'fms_id',
         'plat_number',
-        // 'trailer_connected',
-        // 'photo',
+        'photo',
         'monthly_maintenance',
-        // 'last_maintenance',
-        // 'id_fms',
-        'model_vehicle_id',
-        'type_vehicle_id',
+        'last_maintenance',
     ];
 
     public function ModelVehicle()
     {
-        return $this->belongsTo(ModelVehicle::class, 'model_vehicle_id');
+        return $this->belongsTo(VehicleModel::class, 'model_vehicle_id');
     }
     public function TypeVehicle()
     {
-        return $this->belongsTo(TypeVehicle::class, 'type_vehicle_id');
+        return $this->belongsTo(VehicleType::class, 'type_vehicle_id');
     }
 
     /**

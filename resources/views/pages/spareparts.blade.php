@@ -120,7 +120,7 @@
                                 <img src="/storage/{{$item->photo}}" alt="" width="50px" height="50px">
                             @endif
                             <ul class="m-0" style="list-style: none">
-                                <li class="py-1">Identity : <strong>{{$item->id_sparepart}}</strong></li>
+                                <li class="py-1">Identity : <strong>{{$item->identity}}</strong></li>
                                 <li class="py-1">Brand : <strong>{{$item->brand}}</strong></li>
                                 @if ($item->count >= 50)
                                 <li class="py-1">Stock : <strong class="text-success">{{$item->count}}</strong></li>

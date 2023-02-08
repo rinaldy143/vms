@@ -3,11 +3,11 @@
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Models\Entity\model_vehicles;
-use App\Models\Entity\ModelVehicle;
+use App\Models\Entity\VehicleModel;
 use App\Models\Entity\Trailer;
 use App\Models\Entity\User;
 use App\Models\Entity\Vehicle;
-use App\Models\Entity\TypeVehicle;
+use App\Models\Entity\VehicleType;
 use Illuminate\Routing\RouteGroup;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -52,7 +52,7 @@ Route::group(['prefix' => '/'], function () {
         });
 
         // Route::get('/vehicles', function() {
-        //     $model_vehicle = ModelVehicle::all();
+        //     $model_vehicle = VehicleModel::all();
         //     $vehiclesT = DB::table('type_vehicles')->get();
         //     $vehicles = DB::table('vehicles')->get();
         //     return view('/pages/vehicle/vehicle1', ['model_vehicle' => $model_vehicle, 'vehiclesT' => $vehiclesT, 'vehicles' => $vehicles]);

@@ -2,14 +2,14 @@
 
 namespace App\Services\ModelTrailer;
 
-use App\Models\Table\ModelTrailerTable;
+use App\Models\Table\TrailerModelTable;
 use App\Services\AppService;
 use App\Services\AppServiceInterface;
 
 class ModelTrailerService extends AppService implements AppServiceInterface
 {
 
-    public function __construct(ModelTrailerTable $model)
+    public function __construct(TrailerModelTable $model)
     {
         parent::__construct($model);
     }
@@ -17,24 +17,24 @@ class ModelTrailerService extends AppService implements AppServiceInterface
 
     public function dataTable($filter)
     {
-        return ModelTrailerTable::datatable($filter)->paginate($filter->entries ?? 15);
+        return TrailerModelTable::datatable($filter)->paginate($filter->entries ?? 15);
     }
 
     public function getById($id)
     {
-        return ModelTrailerTable::findOrFail($id);
+        return TrailerModelTable::findOrFail($id);
     }
 
     public function create($data)
     {
-        return ModelTrailerTable::create([
+        return TrailerModelTable::create([
             'trailer_model' => $data['trailer_model'],
         ]);
     }
 
     public function update($id, $data)
     {
-        $row = ModelTrailerTable::findOrFail($id);
+        $row = TrailerModelTable::findOrFail($id);
         $row->update([
             'trailer_model' => $data['trailer_model'],
         ]);
@@ -43,7 +43,7 @@ class ModelTrailerService extends AppService implements AppServiceInterface
 
     public function delete($id)
     {
-        $row = ModelTrailerTable::findOrFail($id);
+        $row = TrailerModelTable::findOrFail($id);
         $row->delete();
         return $row;
     }

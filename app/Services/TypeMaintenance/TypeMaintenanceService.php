@@ -2,14 +2,14 @@
 
 namespace App\Services\TypeMaintenance;
 
-use App\Models\Table\TypeMaintenanceTable;
+use App\Models\Table\MaintenanceTypeTable;
 use App\Services\AppService;
 use App\Services\AppServiceInterface;
 
 class TypeMaintenanceService extends AppService implements AppServiceInterface
 {
 
-    public function __construct(TypeMaintenanceTable $model)
+    public function __construct(MaintenanceTypeTable $model)
     {
         parent::__construct($model);
     }
@@ -17,24 +17,24 @@ class TypeMaintenanceService extends AppService implements AppServiceInterface
 
     public function dataTable($filter)
     {
-        return TypeMaintenanceTable::datatable($filter)->paginate($filter->entries ?? 15);
+        return MaintenanceTypeTable::datatable($filter)->paginate($filter->entries ?? 15);
     }
 
     public function getById($id)
     {
-        return TypeMaintenanceTable::findOrFail($id);
+        return MaintenanceTypeTable::findOrFail($id);
     }
 
     public function create($data)
     {
-        return TypeMaintenanceTable::create([
+        return MaintenanceTypeTable::create([
             'maintenance_type' => $data['maintenance_type'],
         ]);
     }
 
     public function update($id, $data)
     {
-        $row = TypeMaintenanceTable::findOrFail($id);
+        $row = MaintenanceTypeTable::findOrFail($id);
         $row->update([
             'maintenance_type' => $data['maintenance_type'],
         ]);
@@ -43,7 +43,7 @@ class TypeMaintenanceService extends AppService implements AppServiceInterface
 
     public function delete($id)
     {
-        $row = TypeMaintenanceTable::findOrFail($id);
+        $row = MaintenanceTypeTable::findOrFail($id);
         $row->delete();
         return $row;
     }

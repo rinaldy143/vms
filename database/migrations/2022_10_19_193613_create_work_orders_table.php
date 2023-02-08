@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('work_orders', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->boolean('req_sparepart')->nullable();
-            $table->foreignUuid('rm_id')->nullable()->references('id')->on('request_maintenances');
+            $table->boolean('request_sparepart')->nullable();
+            $table->foreignUuid('request_maintenance_id')->nullable()->references('id')->on('request_maintenances');
             $table->foreignUuid('user_id')->nullable()->references('id')->on('users');
             $table->foreignUuid('type_job_id')->nullable()->references('id')->on('type_jobs');
             $table->softDeletes();

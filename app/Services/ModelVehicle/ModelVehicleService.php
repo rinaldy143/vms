@@ -2,14 +2,14 @@
 
 namespace App\Services\ModelVehicle;
 
-use App\Models\Table\ModelVehicleTable;
+use App\Models\Table\VehicleModelTable;
 use App\Services\AppService;
 use App\Services\AppServiceInterface;
 
 class ModelVehicleService extends AppService implements AppServiceInterface
 {
 
-    public function __construct(ModelVehicleTable $model)
+    public function __construct(VehicleModelTable $model)
     {
         parent::__construct($model);
     }
@@ -17,24 +17,24 @@ class ModelVehicleService extends AppService implements AppServiceInterface
 
     public function dataTable($filter)
     {
-        return ModelVehicleTable::datatable($filter)->paginate($filter->entries ?? 15);
+        return VehicleModelTable::datatable($filter)->paginate($filter->entries ?? 15);
     }
 
     public function getById($id)
     {
-        return ModelVehicleTable::findOrFail($id);
+        return VehicleModelTable::findOrFail($id);
     }
 
     public function create($data)
     {
-        return ModelVehicleTable::create([
+        return VehicleModelTable::create([
             'vehicle_model' => $data['vehicle_model'],
         ]);
     }
 
     public function update($id, $data)
     {
-        $row = ModelVehicleTable::findOrFail($id);
+        $row = VehicleModelTable::findOrFail($id);
         $row->update([
             'vehicle_model' => $data['vehicle_model'],
         ]);
@@ -43,7 +43,7 @@ class ModelVehicleService extends AppService implements AppServiceInterface
 
     public function delete($id)
     {
-        $row = ModelVehicleTable::findOrFail($id);
+        $row = VehicleModelTable::findOrFail($id);
         $row->delete();
         return $row;
     }

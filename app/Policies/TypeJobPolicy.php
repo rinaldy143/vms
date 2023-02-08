@@ -3,7 +3,7 @@
 namespace App\Policies;
 
 use App\Models\Entity\User;
-use App\Models\Entity\TypeJob;
+use App\Models\Entity\JobType;
 use Illuminate\Auth\Access\HandlesAuthorization;
 use Illuminate\Auth\Access\Response;
 
@@ -26,10 +26,10 @@ class TypeJobPolicy
      * Determine whether the user can view the model.
      *
      * @param User $user
-     * @param TypeJob $data
+     * @param JobType $data
      * @return Response|bool
      */
-    public function view(User $user, TypeJob $data): Response|bool
+    public function view(User $user, JobType $data): Response|bool
     {
         return true;
     }
@@ -49,10 +49,10 @@ class TypeJobPolicy
      * Determine whether the user can update the model.
      *
      * @param User $user
-     * @param TypeJob $data
+     * @param JobType $data
      * @return Response|bool
      */
-    public function update(User $user, TypeJob $data): Response|bool
+    public function update(User $user, JobType $data): Response|bool
     {
         return true;
     }
@@ -61,10 +61,10 @@ class TypeJobPolicy
      * Determine whether the user can delete the model.
      *
      * @param User $user
-     * @param TypeJob $data
+     * @param JobType $data
      * @return Response|bool
      */
-    public function delete(User $user, TypeJob $data): Response|bool
+    public function delete(User $user, JobType $data): Response|bool
     {
         return true;
     }
@@ -73,10 +73,10 @@ class TypeJobPolicy
      * Determine whether the user can restore the model.
      *
      * @param User $user
-     * @param TypeJob $data
+     * @param JobType $data
      * @return Response|bool
      */
-    public function restore(User $user, TypeJob $data): Response|bool
+    public function restore(User $user, JobType $data): Response|bool
     {
         return true;
     }
@@ -85,10 +85,10 @@ class TypeJobPolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param User $user
-     * @param TypeJob $data
+     * @param JobType $data
      * @return Response|bool
      */
-    public function forceDelete(User $user, TypeJob $data): Response|bool
+    public function forceDelete(User $user, JobType $data): Response|bool
     {
         return true;
     }

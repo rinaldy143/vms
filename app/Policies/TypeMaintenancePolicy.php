@@ -3,7 +3,7 @@
 namespace App\Policies;
 
 use App\Models\Entity\User;
-use App\Models\Entity\TypeMaintenance;
+use App\Models\Entity\MaintenanceType;
 use Illuminate\Auth\Access\HandlesAuthorization;
 use Illuminate\Auth\Access\Response;
 
@@ -26,10 +26,10 @@ class TypeMaintenancePolicy
      * Determine whether the user can view the model.
      *
      * @param User $user
-     * @param TypeMaintenance $data
+     * @param MaintenanceType $data
      * @return Response|bool
      */
-    public function view(User $user, TypeMaintenance $data): Response|bool
+    public function view(User $user, MaintenanceType $data): Response|bool
     {
         return true;
     }
@@ -49,10 +49,10 @@ class TypeMaintenancePolicy
      * Determine whether the user can update the model.
      *
      * @param User $user
-     * @param TypeMaintenance $data
+     * @param MaintenanceType $data
      * @return Response|bool
      */
-    public function update(User $user, TypeMaintenance $data): Response|bool
+    public function update(User $user, MaintenanceType $data): Response|bool
     {
         return true;
     }
@@ -61,10 +61,10 @@ class TypeMaintenancePolicy
      * Determine whether the user can delete the model.
      *
      * @param User $user
-     * @param TypeMaintenance $data
+     * @param MaintenanceType $data
      * @return Response|bool
      */
-    public function delete(User $user, TypeMaintenance $data): Response|bool
+    public function delete(User $user, MaintenanceType $data): Response|bool
     {
         return true;
     }
@@ -73,10 +73,10 @@ class TypeMaintenancePolicy
      * Determine whether the user can restore the model.
      *
      * @param User $user
-     * @param TypeMaintenance $data
+     * @param MaintenanceType $data
      * @return Response|bool
      */
-    public function restore(User $user, TypeMaintenance $data): Response|bool
+    public function restore(User $user, MaintenanceType $data): Response|bool
     {
         return true;
     }
@@ -85,10 +85,10 @@ class TypeMaintenancePolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param User $user
-     * @param TypeMaintenance $data
+     * @param MaintenanceType $data
      * @return Response|bool
      */
-    public function forceDelete(User $user, TypeMaintenance $data): Response|bool
+    public function forceDelete(User $user, MaintenanceType $data): Response|bool
     {
         return true;
     }

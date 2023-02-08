@@ -3,7 +3,7 @@
 namespace App\Policies;
 
 use App\Models\Entity\User;
-use App\Models\Entity\ModelTrailer;
+use App\Models\Entity\TrailerModel;
 use Illuminate\Auth\Access\HandlesAuthorization;
 use Illuminate\Auth\Access\Response;
 
@@ -26,10 +26,10 @@ class ModelTrailerPolicy
      * Determine whether the user can view the model.
      *
      * @param User $user
-     * @param ModelTrailer $data
+     * @param TrailerModel $data
      * @return Response|bool
      */
-    public function view(User $user, ModelTrailer $data): Response|bool
+    public function view(User $user, TrailerModel $data): Response|bool
     {
         return true;
     }
@@ -49,10 +49,10 @@ class ModelTrailerPolicy
      * Determine whether the user can update the model.
      *
      * @param User $user
-     * @param ModelTrailer $data
+     * @param TrailerModel $data
      * @return Response|bool
      */
-    public function update(User $user, ModelTrailer $data): Response|bool
+    public function update(User $user, TrailerModel $data): Response|bool
     {
         return true;
     }
@@ -61,10 +61,10 @@ class ModelTrailerPolicy
      * Determine whether the user can delete the model.
      *
      * @param User $user
-     * @param ModelTrailer $data
+     * @param TrailerModel $data
      * @return Response|bool
      */
-    public function delete(User $user, ModelTrailer $data): Response|bool
+    public function delete(User $user, TrailerModel $data): Response|bool
     {
         return true;
     }
@@ -73,10 +73,10 @@ class ModelTrailerPolicy
      * Determine whether the user can restore the model.
      *
      * @param User $user
-     * @param ModelTrailer $data
+     * @param TrailerModel $data
      * @return Response|bool
      */
-    public function restore(User $user, ModelTrailer $data): Response|bool
+    public function restore(User $user, TrailerModel $data): Response|bool
     {
         return true;
     }
@@ -85,10 +85,10 @@ class ModelTrailerPolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param User $user
-     * @param ModelTrailer $data
+     * @param TrailerModel $data
      * @return Response|bool
      */
-    public function forceDelete(User $user, ModelTrailer $data): Response|bool
+    public function forceDelete(User $user, TrailerModel $data): Response|bool
     {
         return true;
     }
