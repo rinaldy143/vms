@@ -15,8 +15,11 @@ return new class extends Migration
     {
         Schema::create('vehicle_trailers', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->string('name')->nullable();
-            // $table->foreignUuid('user_id')->nullable()->references('id')->on('users');
+            $table->char('vehicle_id')->index();
+            $table->foreign('vehicle_id')->references('id')->on('vehicles');
+            $table->char('trailer_id')->index();
+            $table->foreign('trailer_id')->references('id')->on('trailers');
+            $table->string('status');
             $table->softDeletes();
             $table->timestamps();
         });

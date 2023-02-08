@@ -25,8 +25,8 @@ class WorkOrder extends AppModel
      * @var array<int, string>
      */
     protected $fillable = [
-        'req_sparepart',
-        'rm_id',
+        'request_sparepart',
+        'request_maintenance_id',
         'user_id',
         'type_job_id',
     ];

@@ -21,9 +21,13 @@ return new class extends Migration
             $table->foreign('trailer_id')->references('id')->on('trailers');
             $table->char('maintenance_type_id')->index()->nullable();
             $table->foreign('maintenance_type_id')->references('id')->on('maintenance_types');
-            $table->string('report_by')->nullable();
-            $table->string('report_problem')->nullable();
-            $table->dateTime('maintenance_date')->nullable();
+            $table->char('breakdown_id')->index()->nullable();
+            $table->foreign('breakdown_id')->references('id')->on('breakdowns');
+            $table->char('unit_condition_id')->index()->nullable();
+            $table->foreign('unit_condition_id')->references('id')->on('unit_conditions');
+            $table->char('priority_id')->index()->nullable();
+            $table->foreign('priority_id')->references('id')->on('priorities');
+            $table->text('problem_description');
             $table->softDeletes();
             $table->timestamps();
         });

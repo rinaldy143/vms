@@ -19,8 +19,6 @@ return new class extends Migration
             $table->foreign('vehicle_type_id')->references('id')->on('vehicle_types');
             $table->char('vehicle_model_id')->index();
             $table->foreign('vehicle_model_id')->references('id')->on('vehicle_models');
-            $table->char('trailer_id')->index()->nullable();
-            $table->foreign('trailer_id')->references('id')->on('trailers');
             $table->integer('fms_id')->nullable();
             $table->string('plat_number')->nullable();
             $table->boolean('trailer_connected')->nullable();
