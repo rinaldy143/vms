@@ -9,49 +9,105 @@
     <!--begin::Brand-->
     <div class="aside-logo py-8" id="kt_aside_logo">
         <!--begin::Logo-->
-        <a href="#" class="d-flex align-items-center" style="padding-top: 60px;">
-            <img src="assets/media/logos/VMS Logo.svg" alt="Logo" class="h-55.69px logo me-2">
-            <div style="width: 116px; font-size: 16px; font-weight:600; color: #0D0000; line-height:24px; letter-spacing: 0.005em;">
+        <a href="/dashboard" class="d-flex align-items-center" style="padding-top: 60px;">
+            <img src="/assets/media/logos/VMS Logo.svg" alt="Logo" class="h-55.69px logo me-2">
+            <div style="width: 116px" class="subtitle-1">
                 Vehicle Management System
             </div>
         </a>
         <!--end::Logo-->
     </div>
     <!--end::Brand-->
-    <hr style="width: 220px; align-self:center; margin-top: 40px">
+    <div class="d-flex justify-content-center">
+        <hr style="width: 220px; margin-top: 40px">
+    </div>
     <div class="w-lg-220px">
-        <div class="d-flex justify-content-center">
-            <img src="img/Ellipse 44.svg" alt="" style="width: 48px">
-            <div class="d-flex justify-self-center">
-                <div class="mx-2">
-                    <div class="row m-0 p-0">
-                        <p class="m-0 p-0">Admin</p>
+        <a href="/account-setting">
+            <div class="d-flex justify-content-center">
+                <img src="/img/Ellipse 44.svg" alt="" style="width: 48px">
+                <div class="d-flex align-items-center mx-1">
+                    <div class="mx-2">
+                        <div class="row m-0 p-0">
+                            <div class="m-0 p-0 figure-caption">{{auth()->user()->role}}</div>
+                        </div>
+                        <div class="row m-0 p-0">
+                            <div class="m-0 p-0 subtitle-1">
+                                {{auth()->user()->name}}
+                            </div>
+                        </div>
                     </div>
-                    <div class="row m-0 p-0">
-                        <h1 class="m-0 p-0" style="font-size: 16px; font-weight:600; color: #0D0000">
-                            Asep Taulany
-                        </h1>
+                    <div class="d-flex align-items-center mx-1">
+                        <span><img src="/assets/media/icons/system-icon/outline/Arrow - Down.svg" alt=""></span>
                     </div>
                 </div>
             </div>
-        </div>
+        </a>
     </div>
-    <hr style="width: 220px; align-self:center; margin-top: 20px">
+    <div class="d-flex justify-content-center">
+        <hr style="width: 220px; margin-top: 20px">
+    </div>
     <!--begin::Aside menu-->
-    <div class="aside-menu flex-column-fluid" id="kt_aside_menu">
-        <div class="hover-scroll-overlay-y my-2 my-lg-5 pe-lg-n1" id="kt_aside_menu_wrapper"
+    <div class="side-menu flex-column-fluid" id="kt_aside_menu">
+        <div class="hover-scroll-overlay-y my-2 my-lg-5 pe-lg-n1 h-350px" id="kt_aside_menu_wrapper"
             data-kt-scroll="true"
             data-kt-scroll-height="auto" data-kt-scroll-dependencies="#kt_aside_logo, #kt_aside_footer"
-            data-kt-scroll-wrappers="#kt_aside, #kt_aside_menu" data-kt-scroll-offset="5px">
+            data-kt-scroll-wrappers="#kt_aside, #kt_aside_menu" data-kt-scroll-offset="50px">
             <!--begin::Menu-->
-            <div class="menu menu-column menu-title-gray-700 menu-state-title-primary menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-500 fw-bold">
-                <div class="menu-item py-2">
-                    <a class="menu-link menu-center" href="">
-                        <span class="menu-title">Dashboard</span>
+            <div class="menu menu-column">
+                <div class="menu-item body-1" style="margin-left: 40px">Navigation</div>
+                <div class="menu-item py-3" style="margin-left: 57px">
+                    <a class="menu-link" href="/dashboard">
+                        <span><img src="/assets/media/icons/system-icon/outline/Chart.svg" alt=""></span>
+                        <span class="subtitle-1">Dashboard</span>
+                    </a>
+                </div>
+                <div class="menu-item py-3" style="margin-left: 57px">
+                    <a class="menu-link" href="/maintenance/report">
+                        <span><img src="/assets/media/icons/system-icon/material-style/codicon_tools.svg" alt=""></span>
+                        <span class="subtitle-1">Maintenances</span>
+                    </a>
+                </div>
+                @can('create', App\Models\Entity\Vehicle::class)
+                <div class="menu-item py-3" style="margin-left: 57px">
+                    <a class="menu-link" href="/vehicles">
+                        <span><img src="/assets/media/icons/system-icon/material-style/2871481021571183084 1.svg" alt=""></span>
+                        <span class="subtitle-1">Vehicles</span>
+                    </a>
+                </div>
+                @endcan
+                @can('viewAny', App\Models\Entity\Sparepart::class)
+                <div class="menu-item py-3" style="margin-left: 57px">
+                    <a class="menu-link" href="/spareparts">
+                        <span><img src="/assets/media/icons/system-icon/outline/Setting.svg" alt=""></span>
+                        <span class="subtitle-1">Spareparts</span>
+                    </a>
+                </div>
+                @endcan
+                @can('create', App\Models\Entity\User::class)
+                <div class="menu-item py-3" style="margin-left: 57px">
+                    <a class="menu-link" href="/users">
+                        <span><img src="/assets/media/icons/system-icon/outline/person.svg" alt=""></span>
+                        <span class="subtitle-1">Users</span>
+                    </a>
+                </div>
+                @endcan
+                <div class="menu-item py-3" style="margin-left: 57px">
+                    <a class="menu-link" href="/history">
+                        <span><img src="/assets/media/icons/system-icon/outline/Time Circle.svg" alt=""></span>
+                        <span class="subtitle-1">History</span>
+                    </a>
+                </div>
+                <div class="menu-item py-3" style="margin-left: 57px">
+                    <a class="menu-link" href="/access-features">
+                        <span><img src="/assets/media/icons/system-icon/outline/Key.svg" alt=""></span>
+                        <span class="subtitle-1">Access Features</span>
                     </a>
                 </div>
             </div>
             <!--end::Menu-->
+        </div>
+        <div class="d-flex justify-content-center">
+            <hr style="width: 220px; margin-top: 20px">
         </div>
     </div>
     <!--end::Aside menu-->

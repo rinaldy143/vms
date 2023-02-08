@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Sparepart;
 
+use App\Helpers\PaginationHelper;
 use App\Http\Controllers\ApiController;
 use App\Http\Requests\Sparepart\StoreSparepartRequest;
 use App\Http\Requests\Sparepart\UpdateSparepartRequest;
+use App\Models\Entity\Sparepart;
 use App\Services\Sparepart\SparepartService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -21,6 +23,10 @@ class SparepartController extends ApiController
     {
         $this->service = $service;
         parent::__construct($request);
+        $this->middleware('can:create,App\Models\Entity\Sparepart')->only('store');
+        $this->middleware('can:viewAny,App\Models\Entity\Sparepart')->only('index');
+        $this->middleware('can:create,App\Models\Entity\Sparepart')->only('update');
+        $this->middleware('can:create,App\Models\Entity\Sparepart')->only('destroy');
     }
 
     /**
@@ -31,7 +37,9 @@ class SparepartController extends ApiController
     public function index(Request $request)
     {
         $data = $this->service->dataTable($request);
-        return $this->sendSuccess($data, null, 200);
+        $sparepart = Sparepart::all();
+        $spareparts = PaginationHelper::paginate($sparepart, 12);
+        return view('pages.spareparts', compact('spareparts'));
     }
 
     /**
@@ -77,6 +85,38 @@ class SparepartController extends ApiController
      * @param String $id
      * @return JsonResponse
      */
+
+     public function search(Request $request)
+     {
+         $sparepart = $this->service->search($request);
+         $spareparts = PaginationHelper::paginate($sparepart, 12);
+         return view('pages.spareparts', compact('spareparts'));
+     }
+
+     public function ascending(Request $request)
+     {
+         $sparepart = $this->service->ascending($request);
+         $spareparts = PaginationHelper::paginate($sparepart, 12);
+         return view('pages.spareparts', compact('spareparts'));
+     }
+     public function descending(Request $request)
+     {
+         $sparepart = $this->service->descending($request);
+         $spareparts = PaginationHelper::paginate($sparepart, 12);
+         return view('pages.spareparts', compact('spareparts'));
+     }
+     public function highStock(Request $request)
+     {
+         $sparepart = $this->service->highStock($request);
+         $spareparts = PaginationHelper::paginate($sparepart, 12);
+         return view('pages.spareparts', compact('spareparts'));
+     }
+     public function lowStock(Request $request)
+     {
+         $sparepart = $this->service->lowStock($request);
+         $spareparts = PaginationHelper::paginate($sparepart, 12);
+         return view('pages.spareparts', compact('spareparts'));
+     }
     public function destroy(string $id)
     {
         $datum = $this->service->delete($id);

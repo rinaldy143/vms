@@ -24,7 +24,11 @@ class UpdateSparepartRequest extends FormRequest
     public function rules()
     {
         return [
+            'id_sparepart' => 'required',
             'name' => 'required|string|max:255',
+            'brand' => 'required|string|max:255',
+            'count' => 'required|integer',
+            'photo' => 'mimes:png,jpg,jpeg,gif,svg',
         ];
     }
 }

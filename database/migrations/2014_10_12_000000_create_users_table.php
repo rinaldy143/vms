@@ -23,7 +23,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->nullable();
             $table->string('phone_country_code')->nullable();
-            $table->integer('phone_number')->nullable();
+            $table->string('phone_number')->nullable();
             $table->foreignUuid('type_role_id')->nullable()->references('id')->on('type_roles');
             $table->rememberToken();
             $table->softDeletes();

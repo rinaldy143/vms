@@ -23,7 +23,7 @@ class ModelTrailer extends AppModel
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'trailer_model',
     ];
 
     /**

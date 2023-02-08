@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Table\SparepartTable;
 use Illuminate\Database\Seeder;
 
 class SparepartSeeder extends Seeder
@@ -13,6 +14,22 @@ class SparepartSeeder extends Seeder
      */
     public function run()
     {
-        //
+        SparepartTable::create([
+            'id' => '00000001-0000-0000-0000-000000000001',
+            'id_sparepart' => 'OL123',
+            'name' => 'Oli',
+            'brand' => 'TOP_1',
+            'count' => '70',
+            'photo' => 'spareparts/Mask group.png'
+        ]);
+
+        SparepartTable::create([
+            'id' => '00000001-0000-0000-0000-000000000002',
+            'id_sparepart' => 'OL124',
+            'name' => 'Oli',
+            'brand' => 'TOP_2',
+            'count' => '75',
+            'photo' => 'spareparts/Mask group.png'
+        ]);
     }
 }

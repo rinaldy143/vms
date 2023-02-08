@@ -28,7 +28,7 @@ class ModelTrailerService extends AppService implements AppServiceInterface
     public function create($data)
     {
         return ModelTrailerTable::create([
-            'name' => $data['name'],
+            'trailer_model' => $data['trailer_model'],
         ]);
     }
 
@@ -36,7 +36,7 @@ class ModelTrailerService extends AppService implements AppServiceInterface
     {
         $row = ModelTrailerTable::findOrFail($id);
         $row->update([
-            'name' => $data['name'],
+            'trailer_model' => $data['trailer_model'],
         ]);
         return $row;
     }

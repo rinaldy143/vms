@@ -8,8 +8,11 @@ use App\Http\Requests\Auth\RegisterRequest;
 use App\Http\Requests\User\UpdateFcmUserRequest;
 use App\Services\Auth\AuthService;
 use Exception;
+use Session;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Auth\RequestGuard;
 
 class AuthController extends ApiController
 {
@@ -25,6 +28,11 @@ class AuthController extends ApiController
         parent::__construct($request);
     }
 
+    public function index()
+    {
+        return view('pages.auth.login');
+    }
+
     /**
      * Login user with username and password.
      *
@@ -36,6 +44,7 @@ class AuthController extends ApiController
         try {
             $user = $this->service->login($request);
             return $this->sendSuccess($user, null, 200);
+            return view('pages.dashboard');
         } catch (Exception $e) {
             return $this->sendError(null, $e->getMessage(), $e->getCode());
         }
@@ -74,5 +83,11 @@ class AuthController extends ApiController
     {
         $user = $this->service->updateFcm($request);
         return $this->sendSuccess($user, null, 200);
+    }
+
+    public function logout()
+    {
+        Auth::guard('web')->logout();
+        return redirect('/');
     }
 }

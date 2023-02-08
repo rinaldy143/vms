@@ -23,7 +23,7 @@ class TypeVehicle extends AppModel
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'vehicle_type',
     ];
 
     /**

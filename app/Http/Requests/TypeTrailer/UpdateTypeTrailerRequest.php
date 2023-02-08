@@ -24,7 +24,7 @@ class UpdateTypeTrailerRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string|max:255',
+            'trailer_type' => 'required|string|max:255',
         ];
     }
 }

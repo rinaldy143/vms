@@ -2,6 +2,7 @@
 
 namespace App\Services\Vehicle;
 
+use App\Models\Entity\Vehicle;
 use App\Models\Table\VehicleTable;
 use App\Services\AppService;
 use App\Services\AppServiceInterface;
@@ -25,20 +26,46 @@ class VehicleService extends AppService implements AppServiceInterface
         return VehicleTable::findOrFail($id);
     }
 
+    // public function index()
+    // {
+    //     return view("pages.vehicle.vehicle1");
+    // }
+
+
     public function create($data)
     {
         return VehicleTable::create([
-            'name' => $data['name'],
+            'plat_number' => $data['plat_number'],
+            'monthly_maintenance' => $data['monthly_maintenance'],
+            'model_vehicle_id' => $data['model_vehicle_id'],
+            'type_vehicle_id' => $data['type_vehicle_id'],
         ]);
+        dd($data);
     }
 
     public function update($id, $data)
     {
         $row = VehicleTable::findOrFail($id);
         $row->update([
-            'name' => $data['name'],
+            'plat_number' => $data['plat_number'],
+            'monthly_maintenance' => $data['monthly_maintenance'],
+            'model_vehicle_id' => $data['model_vehicle_id'],
+            'type_vehicle_id' => $data['type_vehicle_id'],
         ]);
         return $row;
+    }
+
+    public function search($data){
+        // Get the search value from the request
+        $search = $data->input('search');
+
+        // Search in the title and body columns from the posts table
+        $vehicles = Vehicle::query()
+            ->where('plat_number', 'LIKE', "%{$search}%")
+            ->get();
+
+        // Return the search view with the resluts compacted
+        return $vehicles;
     }
 
     public function delete($id)
