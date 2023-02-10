@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('request_spareparts', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('description')->nullable();
-            $table->foreignUuid('wo_id')->nullable()->references('id')->on('work_orders');
-            $table->foreignUuid('sparepart_id')->nullable()->references('id')->on('spareparts');
+            $table->foreignUuid('work_order_id')->references('id')->on('work_orders');
+            $table->foreignUuid('sparepart_id')->references('id')->on('spareparts');
             $table->softDeletes();
             $table->timestamps();
         });
