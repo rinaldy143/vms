@@ -215,7 +215,7 @@
                                     {{__('New Password')}}
                                     <span class="text-danger">*</span>
                                 </label>
-                                <div class="field-input py-5" id="show_hide_password">
+                                <div class="field-input py-5" id="show_hide_password_new">
                                     <div style="position: absolute; top: 197px;padding-left: 15px">
                                         <img src="img/locked.svg" alt="">
                                     </div>
@@ -237,7 +237,7 @@
                                     {{__('Confirm New Password')}}
                                     <span class="text-danger">*</span>
                                 </label>
-                                <div class="field-input py-5" id="show_hide_password">
+                                <div class="field-input py-5" id="show_hide_password_confirm">
                                     <div style="position: absolute; top: 309px;padding-left: 15px">
                                         <img src="img/locked.svg" alt="">
                                     </div>
@@ -288,6 +288,40 @@ $(document).ready(function() {
             $('#show_hide_password input').attr('type', 'text');
             $('#show_hide_password i').removeClass( "fa-eye-slash" );
             $('#show_hide_password i').addClass( "fa-eye" );
+        }
+    });
+});
+</script>
+
+<script>
+$(document).ready(function() {
+    $("#show_hide_password_new a").on('click', function(event) {
+        event.preventDefault();
+        if($('#show_hide_password_new input').attr("type") == "text"){
+            $('#show_hide_password_new input').attr('type', 'password');
+            $('#show_hide_password_new i').addClass( "fa-eye-slash" );
+            $('#show_hide_password_new i').removeClass( "fa-eye" );
+        }else if($('#show_hide_password_new input').attr("type") == "password"){
+            $('#show_hide_password_new input').attr('type', 'text');
+            $('#show_hide_password_new i').removeClass( "fa-eye-slash" );
+            $('#show_hide_password_new i').addClass( "fa-eye" );
+        }
+    });
+});
+</script>
+
+<script>
+$(document).ready(function() {
+    $("#show_hide_password_confirm a").on('click', function(event) {
+        event.preventDefault();
+        if($('#show_hide_password_confirm input').attr("type") == "text"){
+            $('#show_hide_password_confirm input').attr('type', 'password');
+            $('#show_hide_password_confirm i').addClass( "fa-eye-slash" );
+            $('#show_hide_password_confirm i').removeClass( "fa-eye" );
+        }else if($('#show_hide_password_confirm input').attr("type") == "password"){
+            $('#show_hide_password_confirm input').attr('type', 'text');
+            $('#show_hide_password_confirm i').removeClass( "fa-eye-slash" );
+            $('#show_hide_password_confirm i').addClass( "fa-eye" );
         }
     });
 });
