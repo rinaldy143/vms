@@ -47,7 +47,7 @@
                                 </label>
                                 <div class="field-input">
                                     <select class="form-control" aria-label="type_vehicle_id" id="type_vehicle_id"
-                                        name="type_vehicle_id" required>
+                                        name="type_vehicle_id" onfocus='this.size=5;' onblur='this.size=1;' onchange='this.size=1; this.blur();' required>
                                         <option value="" disabled selected>{{__('Select Vehicle Type')}}</option>
                                         @foreach ($vehiclesT as $model)
 
@@ -63,7 +63,7 @@
                                 </label>
                                 <div class="field-input">
                                     <select class="form-control" aria-label="ModelVehicle" id="model_vehicle_id"
-                                        name="model_vehicle_id" required>
+                                        name="model_vehicle_id" onfocus='this.size=5;' onblur='this.size=1;' onchange='this.size=1; this.blur();' required>
 
                                         <option value="" disabled selected>{{__('Select Vehicle Model')}}</option>
                                         @foreach ($model_vehicle as $model)

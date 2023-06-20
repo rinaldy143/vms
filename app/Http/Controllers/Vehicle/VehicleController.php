@@ -56,7 +56,10 @@ class VehicleController extends ApiController
     public function store(StoreVehicleRequest $request)
     {
         $data = $this->service->create($request);
-        return $this->sendSuccess($data, null, 201);
+        $vehicles = Vehicle::all();
+        $vehiclesT = TypeVehicle::all();
+        $model_vehicle = ModelVehicle::all();
+        return view('pages.vehicle.vehicle1', compact('vehicles', 'vehiclesT','model_vehicle'));
     }
 
     /**

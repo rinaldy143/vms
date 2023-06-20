@@ -25,12 +25,35 @@ class RequestMaintenance extends AppModel
     protected $fillable = [
         'report_by',
         'report_problem',
-        'maintenance_date',
+        // 'maintenance_date',
         'vehicle_id',
-        'trailer_id',
-        'type_maintenance_id',
+        // 'trailer_id',
+        'km_Unit',
+        'hm_Unit',
+        'wo_id',
+        'unit_condition',
+        'priority',
+        'activity_maintenance',
+        'analysist',
+        'aprove_by'
     ];
 
+    public function Vehicle()
+    {
+        return $this->belongsTo(Vehicle::class, 'vehicle_id');
+    }
+    public function Trailer()
+    {
+        return $this->belongsTo(Trailer::class, 'trailer_id');
+    }
+    public function User()
+    {
+        return $this->belongsTo(User::class, 'report_by');
+    }
+    public function WorkOrder()
+    {
+        return $this->belongsTo(WorkOrder::class, 'wo_id');
+    }
     /**
      * The attributes that should be hidden for arrays.
      *

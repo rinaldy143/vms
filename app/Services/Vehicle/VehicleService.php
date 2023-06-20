@@ -40,7 +40,7 @@ class VehicleService extends AppService implements AppServiceInterface
             'model_vehicle_id' => $data['model_vehicle_id'],
             'type_vehicle_id' => $data['type_vehicle_id'],
         ]);
-        dd($data);
+        // dd($data);
     }
 
     public function update($id, $data)

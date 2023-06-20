@@ -28,8 +28,21 @@ class WorkOrder extends AppModel
         'req_sparepart',
         'rm_id',
         'user_id',
-        'type_job_id',
+        'damage_component',
+        'damaged_level',
+        'jobsite_location',
+        'analysist',
+        'assign_by',
     ];
+
+    public function Maintenance()
+    {
+        return $this->belongsTo(RequestMaintenance::class, 'rm_id');
+    }
+    public function User()
+    {
+        return $this->belongsToMany(User::class, 'user_id');
+    }
 
     /**
      * The attributes that should be hidden for arrays.

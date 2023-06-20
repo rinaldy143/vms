@@ -18,7 +18,7 @@
                         <img src="img/kebab.png" alt="download" title="download"
                             style="right: 20px;position: absolute;" />
                     </a>
-                    <img class="d-flex bd-placeholder-img rounded-circle border justify-content-center" width="80px" height="80px" src="img/Ellipse 44.svg" alt="">
+                    <img class="d-flex bd-placeholder-img rounded-circle border justify-content-center" width="80px" height="80px" src="/img/users/{{auth()->user()->photo}}" alt="">
                 </div>
                 <div class="card-body">
                     <h2 class="card-text text-color-dark font-weight-bold text-3 pb-1 mb-4 px-10 text-truncate text-center">{{auth()->user()->name}}

@@ -24,7 +24,7 @@
     <div class="w-lg-220px">
         <a href="/account-setting">
             <div class="d-flex justify-content-center">
-                <img src="/img/Ellipse 44.svg" alt="" style="width: 48px">
+                <img src="/img/users/{{auth()->user()->photo}}" alt="" style="width: 48px; border-radius: 20px">
                 <div class="d-flex align-items-center mx-1">
                     <div class="mx-2">
                         <div class="row m-0 p-0">

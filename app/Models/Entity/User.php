@@ -41,6 +41,11 @@ class User extends AppAuthenticatable
         // 'remember_token',
     ];
 
+    public function WorkOrder()
+    {
+        return $this->belongsToMany(WorkOrder::class, 'user_id');
+    }
+
 
     /**
      * The attributes that should be hidden for serialization.

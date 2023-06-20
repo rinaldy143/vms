@@ -6,8 +6,14 @@ use App\Http\Controllers\ApiController;
 use App\Http\Requests\WorkOrder\StoreWorkOrderRequest;
 use App\Http\Requests\WorkOrder\UpdateWorkOrderRequest;
 use App\Services\WorkOrder\WorkOrderService;
+use App\Models\Entity\RequestMaintenance;
+use App\Models\Entity\Trailer;
+use App\Models\Entity\User;
+use App\Models\Entity\Vehicle;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 
 class WorkOrderController extends ApiController
 {
@@ -31,7 +37,18 @@ class WorkOrderController extends ApiController
     public function index(Request $request)
     {
         $data = $this->service->dataTable($request);
-        return $this->sendSuccess($data, null, 200);
+        // $maintenance = RequestMaintenance::whereNotNull('analysist')->get();
+        $maintenance = RequestMaintenance::whereNotNull('analysist')
+        ->whereNotExists(function ($query) {
+            $query->select(DB::raw(1))
+                ->from('work_orders')
+                ->whereRaw('work_orders.rm_id = request_maintenances.id')
+                ->whereNotNull('analysist');
+        })
+        ->get();
+        return view('pages.work-order.workorder', compact('maintenance'));
+
+        // return $this->sendSuccess($data, null, 200);
     }
 
     /**
@@ -43,6 +60,12 @@ class WorkOrderController extends ApiController
     public function store(StoreWorkOrderRequest $request)
     {
         $data = $this->service->create($request);
+        // dd($data);
+
+        DB::table('request_maintenances')
+        ->whereNull('wo_id')
+        ->join('work_orders', 'request_maintenances.id', '=', 'work_orders.rm_id')
+        ->update(['request_maintenances.wo_id' => DB::raw('work_orders.id')]);
         return $this->sendSuccess($data, null, 201);
     }
 
@@ -54,8 +77,21 @@ class WorkOrderController extends ApiController
      */
     public function show(string $id)
     {
-        $datum = $this->service->getById($id);
-        return $this->sendSuccess($datum, null, 200);
+        // $datum = $this->service->getById($id);
+        // $datum = $this->service->getById($id);
+        $vehicle = Vehicle::all();
+        $user = User::all();
+        $trailer = Trailer::all();
+        $maintenance = RequestMaintenance::where('id', $id)->first();
+        // $maintenances = RequestMaintenance::all();
+
+
+        if ($maintenance == null) {
+            abort(404);
+        };
+
+        return view('pages.work-order.detail-workorder', compact('user','maintenance','vehicle', 'trailer'));
+        // return $this->sendSuccess($datum, null, 200);
     }
 
     /**

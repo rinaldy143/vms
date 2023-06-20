@@ -24,7 +24,14 @@ class StoreWorkOrderRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string|max:255',
+            // 'req_sparepart'  => 'string|max:255',
+            'rm_id'  => 'string|max:255',
+            'user_id'  => '',
+            'assign_by'  => 'string|max:255',
+            // 'jobsite_location'  => 'string|max:255',
+            // 'damage_component'  => 'string|max:255',
+            // 'damaged_level'  => 'string|max:255',
+            // 'analysist'  => 'string|max:255',
         ];
     }
 }

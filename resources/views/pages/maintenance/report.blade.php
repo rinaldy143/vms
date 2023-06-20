@@ -24,10 +24,10 @@
                 <a href="/maintenance/report">
                     <div class="subtitle-1 me-10 text-danger" style="border-bottom: 1px solid #FF0000">Report</div>
                 </a>
-                <a href="/maintenance/maintenance">
+                <a href="/maintenance">
                     <div class="subtitle-1 me-10">Maintenance</div>
                 </a>
-                <a href="/maintenance/workorder">
+                <a href="/workorder">
                     <div class="subtitle-1 me-10">Work Order</div>
                 </a>
             </div>

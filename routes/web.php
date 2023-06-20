@@ -39,17 +39,23 @@ Route::group(['prefix' => '/'], function () {
         Route::get('/dashboard', function() {
             return view('/pages/dashboard');
         });
-        Route::get('/maintenance/maintenance', function() {
-            return view('/pages/maintenance/maintenance');
-        });
+        // Route::get('/maintenance/maintenance', function() {
+        //     return view('/pages/maintenance/maintenance');
+        // });
+        // Route::get('/maintenance/list-maintenance', function() {
+        //     return view('/pages/maintenance/list-maintenance');
+        // });
+        // Route::get('/maintenance/list-maintenance/detail-maintenance', function() {
+        //     return view('/pages/maintenance/detail-maintenance');
+        // });
         Route::get('/maintenance/report', function() {
             return view('/pages/maintenance/report');
         });
 
 
-        Route::get('/maintenance/workorder', function() {
-            return view('/pages/maintenance/workorder');
-        });
+        // Route::get('/maintenance/workorder', function() {
+        //     return view('/pages/work-order/workorder');
+        // });
 
         // Route::get('/vehicles', function() {
         //     $model_vehicle = ModelVehicle::all();
@@ -67,6 +73,10 @@ Route::group(['prefix' => '/'], function () {
             Route::get('/lowStock', [App\Http\Controllers\Sparepart\SparepartController::class, 'lowStock'])->name('lowStock');
         });
         Route::resource('users', App\Http\Controllers\User\UserController::class);
+        Route::resource('maintenance', App\Http\Controllers\RequestMaintenance\RequestMaintenanceController::class);
+        Route::resource('workorder', App\Http\Controllers\WorkOrder\WorkOrderController::class);
+        Route::get('/list-maintenance', [App\Http\Controllers\RequestMaintenance\RequestMaintenanceController::class, 'list']);
+
         Route::group(['prefix' => 'user', 'as' => 'users.'], function () {
             Route::get('/search', [App\Http\Controllers\User\UserController::class, 'search'])->name('search');
             Route::get('/Operation', [App\Http\Controllers\User\UserController::class, 'operation'])->name('operation');

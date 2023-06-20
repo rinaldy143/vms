@@ -24,7 +24,9 @@ class UpdateRequestMaintenanceRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string|max:255',
+            'analysist'  => 'required|string|max:255',
+            'aprove_by'  => 'string|max:255',
+            // 'wo_id'  => 'string|max:255',
         ];
     }
 }

@@ -5,9 +5,14 @@ namespace App\Http\Controllers\RequestMaintenance;
 use App\Http\Controllers\ApiController;
 use App\Http\Requests\RequestMaintenance\StoreRequestMaintenanceRequest;
 use App\Http\Requests\RequestMaintenance\UpdateRequestMaintenanceRequest;
+use App\Models\Entity\RequestMaintenance;
+use App\Models\Entity\Trailer;
+use App\Models\Entity\Vehicle;
 use App\Services\RequestMaintenance\RequestMaintenanceService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 
 class RequestMaintenanceController extends ApiController
 {
@@ -30,8 +35,30 @@ class RequestMaintenanceController extends ApiController
      */
     public function index(Request $request)
     {
-        $data = $this->service->dataTable($request);
-        return $this->sendSuccess($data, null, 200);
+        // $data = $this->service->dataTable($request);
+        $maintenance = RequestMaintenance::all();
+        $vehicle = Vehicle::all();
+        $trailer = Trailer::all();
+        return view('pages.maintenance.maintenance', compact('maintenance', 'vehicle','trailer'));
+
+        // return $this->sendSuccess($data, null, 200);
+    }
+    /**
+     * Display a listing of the resource.
+     *
+     * @return JsonResponse
+     */
+    public function list(Request $request)
+    {
+        // $data = $this->service->list($request);
+        // $maintenance = RequestMaintenance::all();
+
+        $maintenance = RequestMaintenance::whereNull('analysist')->get();
+        // $vehicle = Vehicle::all();
+        // $trailer = Trailer::all();
+        return view('pages.maintenance.list-maintenance', compact('maintenance'));
+
+        // return $this->sendSuccess($data, null, 200);
     }
 
     /**
@@ -42,8 +69,16 @@ class RequestMaintenanceController extends ApiController
      */
     public function store(StoreRequestMaintenanceRequest $request)
     {
-        $data = $this->service->create($request);
-        return $this->sendSuccess($data, null, 201);
+        // $user = Auth::user(); // Mendapatkan user yang sedang login
+
+        // $reportdata = $request->validated(); // Validasi data request
+        // $reportdata['report_by'] = $user->id;
+
+            $data = $this->service->create($request);
+            $maintenance = RequestMaintenance::whereNull('analysist')->get();
+
+            // return $this->sendSuccess($data, null, 201);
+        return view('pages.maintenance.list-maintenance', compact('maintenance'));
     }
 
     /**
@@ -52,10 +87,21 @@ class RequestMaintenanceController extends ApiController
      * @param String $id
      * @return JsonResponse
      */
-    public function show(string $id)
+    public function show($id)
     {
         $datum = $this->service->getById($id);
-        return $this->sendSuccess($datum, null, 200);
+        $vehicle = Vehicle::all();
+        $trailer = Trailer::all();
+        $maintenance = RequestMaintenance::where('id', $id)->first();
+        // $maintenances = RequestMaintenance::all();
+
+
+        if ($maintenance == null) {
+            abort(404);
+        };
+
+        return view('pages.maintenance.detail-maintenance', compact('datum','maintenance','vehicle', 'trailer'));
+        // return $this->sendSuccess($datum, null, 200);
     }
 
     /**
@@ -68,7 +114,12 @@ class RequestMaintenanceController extends ApiController
     public function update(UpdateRequestMaintenanceRequest $request, string $id)
     {
         $datum = $this->service->update($id, $request);
-        return $this->sendSuccess($datum, null, 200);
+        // return $this->sendSuccess($datum, null, 200);
+
+        $maintenance = RequestMaintenance::whereNull('analysist')->get();
+        $vehicle = Vehicle::all();
+        $trailer = Trailer::all();
+        return view('pages.maintenance.list-maintenance', compact('maintenance', 'vehicle','trailer'));
     }
 
     /**
