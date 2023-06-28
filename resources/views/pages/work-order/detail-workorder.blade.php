@@ -10,7 +10,7 @@
             <div class=" py-20">
                 <h1 class="">Detail Maintenance</h1>
             </div>
-            <div class="card w-100 mt-8">
+            <div class="card w-100 my-4">
                 {{-- @foreach ($maintenance as $item) --}}
 
                 <div class="card-body">
@@ -29,13 +29,13 @@
                                     <div class="d-flex row">
                                         <div class="col-lg-6">
                                             <p>Start BD Date</p>
-                                            <p>Breakdown Type</p>
+                                            {{-- <p>Breakdown Type</p> --}}
                                             <p>Unit Condition</p>
                                             <p>Created by</p>
                                         </div>
                                         <div class="col-lg-6">
                                             <p>: {{$maintenance->created_at}}</p>
-                                            <p>: {{$maintenance->breakdown_type}}</p>
+                                            {{-- <p>: {{$maintenance->breakdown_type}}</p> --}}
                                             <p>: {{$maintenance->unit_condition}}</p>
                                             <p>: {{$maintenance->report_by}}</p>
                                         </div>
@@ -94,24 +94,27 @@
                                 </div>
                                 <div class="form-group d-flex align-items-center py-5">
                                     @if ($maintenance->workorder !== null)
-
-                                    <div>
-                                        <img class="pt-3" src="/img/users/{{$maintenance->workorder->user->photo}}" alt="dawda">
+                                    @foreach ($maintenance->WorkOrder->User as $user)
+                                    <div class="px-5">
+                                        <img class="pt-3" width="50px" src="/img/users/{{ $user->photo }}" alt="dawda">
                                     </div>
-                                     <div class="h-50">
-                                        <h2>{{$maintenance->workorder->user->name}}</h2>
-                                        <span class="fw-lighter">{{$maintenance->workorder->user->phone_number}}</span>
-                                     </div>
+                                    <div class="h-50">
+                                        <h2>{{ $user->name }}</h2>
+
+                                        {{-- <h2>{{ $maintenance->WorkOrder()->latest()->first()->User()->name }}</h2> --}}
+                                        <span class="fw-lighter">{{ $user->name }}</span>
+                                    </div>
+                                    @endforeach
                                      @else
                                      @endif
                                 </div>
                                 <div class="row pt-5 pb-5">
                                     @if ($maintenance->workorder !== null)
-                                    <span class="disabled-link btn btn-danger me-3 font-weight-bolder py-2 w-25" style="border-radius: 8px;" data-toggle="modal"
+                                    {{-- <span class="disabled-link btn btn-danger me-3 font-weight-bolder py-2 w-25" style="border-radius: 8px;" data-toggle="modal"
                                     href="javascript:void(0)" title="Maintainer">
                                     <img class="pt-2" src="/img/Plus.png" alt="">
                                     Add Maintain
-                                </span>
+                                </span> --}}
                                     @else
                                         <a class="btn btn-danger me-3 font-weight-bolder py-2 w-25" style="border-radius: 8px;" data-toggle="modal"
                                         href="#modalMaintain" title="Maintainer">
@@ -127,9 +130,13 @@
                                 {{-- <input class="btn shadow btn-danger text-3 rounded-8 w-200px p-md-3 h-100" type="submit" value="Start Breakdown"> --}}
                             {{-- </form> --}}
 
+                            {{-- @if ($maintenance->workorder->analysist == null) --}}
+                            @if (isset($maintenance->workorder) && $maintenance->workorder->analysist == null)
 
-                            <form action="#" method="post"enctype="multipart/form-data">
+                            <form action="{{route('workorder.update', ($maintenance->workorder->id))}}" method="POST"
+                                enctype="multipart/form-data">
                                 @csrf
+                                @method('PUT')
                                 <div class="pt-5">
                                     <h2>Breakdown Doc</h2>
                                     <div class="form-group mt-4 w-100 me-10">
@@ -186,44 +193,114 @@
                                     {{-- <button class="btn border border-danger text-danger text-3 rounded-8 w-200px p-md-3 h-100">Cancel</button> --}}
                                 </div>
                             </form>
+                            @elseif (isset($maintenance->workorder) && $maintenance->workorder->analysist !== null)
+                            <div class="col-lg-6">
+                                <div class="d-flex row">
+                                    <div class="col-lg-6">
+                                        <p>Jobsite Location</p>
+                                        <p>Damaged Component</p>
+                                        <p>Damage Level</p>
+                                        <p>Analysis</p>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <p>: {{$maintenance->workorder->jobsite_location}}</p>
+                                        <p>: {{$maintenance->workorder->damage_component}}</p>
+                                        <p>: {{$maintenance->workorder->damaged_level}}</p>
+                                        <p>: {{$maintenance->workorder->analysist}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            @else
+
+                            @endif
                         </div>
 
                     </div>
-                </div>
+                    @if (isset($maintenance->workorder) && $maintenance->workorder->analysist !== null)
+                        <div class="my-4">
+                            <h2 class="pt-3">Maintenance Proof</h2>
+                            <form action="{{route('workorder.update', ($maintenance->workorder->id))}}" method="POST"
+                                enctype="multipart/form-data">
+                                @csrf
+                                @method('PUT')
+                                <div class="form-group d-flex align-items-center py-5">
+                                    <div>
+                                        <p class="fw-bold fs-3 text-black">Upload Photo</p>
+                                        <input type="hidden" name="jobsite_location" value="{{ $maintenance->workorder->jobsite_location }}">
+                                        <input type="hidden" name="damage_component" value="{{ $maintenance->workorder->damage_component }}">
+                                        <input type="hidden" name="damaged_level" value="{{ $maintenance->workorder->damaged_level }}">
+                                        <input type="hidden" name="analysist" value="{{ $maintenance->workorder->analysist }}">
+                                        <label for="photo" id="labelImg"
+                                        class="font-weight-bold text-black m-0 border p-5" style="background-image: url(/assets/media/icons/system-icon/outline/Camera.svg);  background-repeat: no-repeat;
+                                        background-size: cover;
+                                        width: 100px;
+                                        height:100px;
+                                        position: absolute;">
+                                        </label>
+                                        <img class="img-preview img-fluid mb-3 col-sm-5 d-block w-50" src="" alt="">
+                                        <input type="file" src="/assets/media/icons/system-icon/outline/Edit Square.svg" class="form-control-file"
+                                        id="photo" name="photo" style="display: none" multiple onchange="previewImage()" onclick="document.getElementById('labelImg').style.opacity = 0">
+                                    </div>
+                                    {{-- <div class="h-50">
+                                        <div class="fw-bolder fs-3" id="list_file"></div>
+                                        <div id="size_file"></div>
+                                    </div> --}}
 
+                                    @error('photo')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                    @enderror
+                                </div>
+                                <div class="border-0 pt-20 mt-10 row">
+                                    <div class="col-md-3 text-right">
+                                        <input class="btn shadow btn-danger text-3 rounded-8 w-200px p-md-3 h-100" type="submit" value="Finish">
+
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    @endif
+
+
+                </div>
             </div>
     </div>
 </div>
+@if ($maintenance->workorder !== null)
+
+@else
 @include('modal.modalMaintain')
+@endif
 
 <style>
-.preview-item {
-  display: flex;
-  align-items: center;
-  margin-right: 10px;
-  margin-bottom: 10px;
-}
+    .preview-item {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    }
 
-.preview-item img {
-  width: 50px;
-  height: 50px;
-  object-fit: cover;
-  margin-right: 10px;
-}
+    .preview-item img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    margin-right: 10px;
+    }
 
-.preview-item .preview-content {
-  display: flex;
-  flex-direction: column;
-}
+    .preview-item .preview-content {
+    display: flex;
+    flex-direction: column;
+    }
 
-.preview-item .preview-content p {
-  margin: 0;
-}
+    .preview-item .preview-content p {
+    margin: 0;
+    }
 
-.disabled-link {
-  color: gray;
-  cursor: not-allowed;
-}
+    .disabled-link {
+    color: gray;
+    cursor: not-allowed;
+    }
 
 </style>
 
@@ -231,6 +308,40 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
 <script>
 
+var fileInput = document.getElementById('photo');
+        var listFile = document.getElementById('list_file');
+        var sizeFile = document.getElementById('size_file');
+
+        function formatBytes(bytes,decimals) {
+            if(bytes == 0) return '0 Bytes';
+            var k = 1024,
+                dm = decimals || 0,
+                sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'],
+                i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
+        }
+
+
+        fileInput.onchange = function () {
+        // var files = Array.from(this.files);
+        // files = files.map(file => file.name);
+        // listFile.innerHTML = files.join('<br/>');
+        // var sizes = Array.from(this.files);
+        // sizes = sizes.map(file => formatBytes(file.size));
+        // sizeFile.innerHTML = sizes.join('<br/>');
+
+
+        const photo= document.querySelector('#photo');
+        const imgPreview = document.querySelector('.img-preview');
+
+        imgPreview.style.display = 'block';
+        const oFReader = new FileReader();
+        oFReader.readAsDataURL(photo.files[0]);
+
+        oFReader.onload = function(oFREvent) {
+            imgPreview.src = oFREvent.target.result;
+        }
+        }
 </script>
 
 @endsection

@@ -26,7 +26,7 @@ class StoreWorkOrderRequest extends FormRequest
         return [
             // 'req_sparepart'  => 'string|max:255',
             'rm_id'  => 'string|max:255',
-            'user_id'  => '',
+            // 'user_id'  => '',
             'assign_by'  => 'string|max:255',
             // 'jobsite_location'  => 'string|max:255',
             // 'damage_component'  => 'string|max:255',

@@ -33,6 +33,7 @@ class WorkOrder extends AppModel
         'jobsite_location',
         'analysist',
         'assign_by',
+        'photo',
     ];
 
     public function Maintenance()
@@ -41,7 +42,7 @@ class WorkOrder extends AppModel
     }
     public function User()
     {
-        return $this->belongsToMany(User::class, 'user_id');
+        return $this->belongsToMany(User::class,  'users_work_order', 'work_order_table_id', 'user_id');
     }
 
     /**

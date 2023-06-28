@@ -43,7 +43,7 @@ class User extends AppAuthenticatable
 
     public function WorkOrder()
     {
-        return $this->belongsToMany(WorkOrder::class, 'user_id');
+        return $this->belongsToMany(WorkOrder::class, 'users_work_order', 'work_order_table_id', 'user_id');
     }
 
 

@@ -7,6 +7,7 @@ use App\Http\Requests\WorkOrder\StoreWorkOrderRequest;
 use App\Http\Requests\WorkOrder\UpdateWorkOrderRequest;
 use App\Services\WorkOrder\WorkOrderService;
 use App\Models\Entity\RequestMaintenance;
+use App\Models\Entity\WorkOrder;
 use App\Models\Entity\Trailer;
 use App\Models\Entity\User;
 use App\Models\Entity\Vehicle;
@@ -38,14 +39,25 @@ class WorkOrderController extends ApiController
     {
         $data = $this->service->dataTable($request);
         // $maintenance = RequestMaintenance::whereNotNull('analysist')->get();
-        $maintenance = RequestMaintenance::whereNotNull('analysist')
-        ->whereNotExists(function ($query) {
-            $query->select(DB::raw(1))
-                ->from('work_orders')
-                ->whereRaw('work_orders.rm_id = request_maintenances.id')
-                ->whereNotNull('analysist');
-        })
-        ->get();
+        $maintenance = RequestMaintenance::where(function ($query) {
+            $query->whereNull('analysist')
+            ->orWhereNotNull('analysist')
+                ->orWhereExists(function ($subquery) {
+                    $subquery->select(DB::raw(1))
+                        ->from('work_orders')
+                        ->whereRaw('work_orders.rm_id = request_maintenances.id');
+                        // ->whereNull('analysist');
+                });
+        })->get();
+
+        // $maintenance = RequestMaintenance::whereNotNull('analysist')
+        // ->whereNotExists(function ($query) {
+        //     $query->select(DB::raw(1))
+        //         ->from('work_orders')
+        //         ->whereRaw('work_orders.rm_id = request_maintenances.id')
+        //         ->whereNotNull('analysist');
+        // })
+        // ->get();
         return view('pages.work-order.workorder', compact('maintenance'));
 
         // return $this->sendSuccess($data, null, 200);
@@ -83,6 +95,8 @@ class WorkOrderController extends ApiController
         $user = User::all();
         $trailer = Trailer::all();
         $maintenance = RequestMaintenance::where('id', $id)->first();
+        $workorder = WorkOrder::where('id', $id)->first();
+
         // $maintenances = RequestMaintenance::all();
 
 
@@ -90,7 +104,7 @@ class WorkOrderController extends ApiController
             abort(404);
         };
 
-        return view('pages.work-order.detail-workorder', compact('user','maintenance','vehicle', 'trailer'));
+        return view('pages.work-order.detail-workorder', compact('user','maintenance','vehicle', 'trailer','workorder'));
         // return $this->sendSuccess($datum, null, 200);
     }
 
@@ -104,7 +118,17 @@ class WorkOrderController extends ApiController
     public function update(UpdateWorkOrderRequest $request, string $id)
     {
         $datum = $this->service->update($id, $request);
-        return $this->sendSuccess($datum, null, 200);
+        // return $this->sendSuccess($datum, null, 200);
+        $maintenance = RequestMaintenance::where(function ($query) {
+            $query->whereNull('analysist')
+                ->orWhereExists(function ($subquery) {
+                    $subquery->select(DB::raw(1))
+                        ->from('work_orders')
+                        ->whereRaw('work_orders.rm_id = request_maintenances.id');
+                        // ->whereNull('analysist');
+                });
+        })->get();
+        return view('pages.work-order.workorder', compact('maintenance'));
     }
 
     /**

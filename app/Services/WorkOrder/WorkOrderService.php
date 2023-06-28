@@ -24,7 +24,8 @@ class WorkOrderService extends AppService implements AppServiceInterface
 
     public function getById($id)
     {
-        return WorkOrderTable::findOrFail($id);
+        $workOrder = WorkOrderTable::with('users')->findOrFail($id);
+        return $workOrder;
     }
 
     public function create($data)
@@ -43,13 +44,32 @@ class WorkOrderService extends AppService implements AppServiceInterface
     public function update($id, $data)
     {
         $row = WorkOrderTable::findOrFail($id);
-        $row->update([
 
+        // Update foto jika ada perubahan
+        if ($data->hasFile('photo')) {
+            if ($data->file('photo')->isValid()) {
+                $imgName = $data->photo->getClientOriginalName();
+                $data->photo->move(public_path('/img/workorder'), $imgName);
+                $row->photo = $imgName;
+            }
+        } elseif (!$data->hasFile('photo') && !$row->photo) {
+            unset($row->photo);
+        }
+
+        // Update data lainnya dari form pertama
+        $row->fill([
+            'jobsite_location' => $data['jobsite_location'],
             'damage_component' => $data['damage_component'],
             'damaged_level' => $data['damaged_level'],
-            'analysist' => $data['analysist'],        ]);
+            'analysist' => $data['analysist']
+        ]);
+
+        $row->save();
+
         return $row;
+
     }
+
 
     public function delete($id)
     {

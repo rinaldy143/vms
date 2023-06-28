@@ -17,12 +17,13 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->boolean('req_sparepart')->nullable();
             $table->foreignUuid('rm_id')->nullable()->references('id')->on('request_maintenances');
-            $table->foreignUuid('user_id')->nullable()->references('id')->on('users');
+            // $table->foreignUuid('user_id')->nullable()->references('id')->on('users');
             $table->string('jobsite_location')->nullable();
             $table->string('damage_component')->nullable();
             $table->string('damaged_level')->nullable();
             $table->string('analysist')->nullable();
             $table->string('assign_by')->nullable();
+            $table->string('photo')->nullable();
             // $table->foreignUuid('type_job_id')->nullable()->references('id')->on('type_jobs');
             $table->softDeletes();
             $table->timestamps();

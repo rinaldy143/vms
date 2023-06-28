@@ -35,7 +35,7 @@
         </div>
             <h2 class="my-5">Maintenance</h2>
             <a class="btn btn-danger text-3 rounded-8 w-200px p-md-3 h-100 " href="/workorder">list work order</a>
-            <a class="btn border border-dark text-dark text-3 rounded-8 w-200px p-md-3 h-100 me-4" href="#">onprocess work order</a>
+            {{-- <a class="btn border border-dark text-dark text-3 rounded-8 w-200px p-md-3 h-100 me-4" href="#">onprocess work order</a> --}}
             <div class="d-flex align-items-center position-relative my-5">
                 <!--begin::Svg Icon | path: icons/duotune/general/gen021.svg-->
                 <span class="position-absolute ms-6">
@@ -67,56 +67,63 @@
                     </button>
                 </div>
             </div>
-            @foreach ($maintenance as $item)
-            <div class="card w-100 mt-6">
-                <div class="card-body">
-                    <table class="table align-middle">
-                        <thead>
-                            <tr>
-                                <th scope="col" class="fw-bold" style="font-size: 16px;">CN Unit Vehicle</th>
-                                <th scope="col" class="fw-bold" style="font-size: 16px;">Priority</th>
-                                <th scope="col" class="fw-bold" style="font-size: 16px;">Start BD Date</th>
-                                <th scope="col" class="fw-bold" style="font-size: 16px;">Status</th>
-                                <th scope="col" class="fw-bold" style="font-size: 16px;">Activity Maintenance</th>
-                                <th scope="col" class="fw-bold" style="font-size: 16px;">Detail</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                            <th scope="row" style="font-size: 16px;">
-                                <div class="d-flex align-items-center">
-                                    <img src="/img/image 1.png" alt="">
-                                    <div class="ms-5">
-                                        <h1 style="font-size: 16px;margin-bottom: 0;">{{$item->vehicle->plat_number}}</h1>
-                                        <p class="text-primary" style="font-size: 14px;margin-bottom: 0;">T-01, T-02</p>
+                @foreach ($maintenance as $item)
+
+                @if (isset($item->workorder) && $item->workorder->photo !== null)
+                @else
+                <div class="card w-100 mt-6">
+                    <div class="card-body">
+                        <table class="table align-middle">
+                            <thead>
+                                <tr>
+                                    <th scope="col" class="fw-bold" style="font-size: 16px;">CN Unit Vehicle</th>
+                                    <th scope="col" class="fw-bold" style="font-size: 16px;">Priority</th>
+                                    <th scope="col" class="fw-bold" style="font-size: 16px;">Start BD Date</th>
+                                    <th scope="col" class="fw-bold" style="font-size: 16px;">Status</th>
+                                    <th scope="col" class="fw-bold" style="font-size: 16px;">Activity Maintenance</th>
+                                    <th scope="col" class="fw-bold" style="font-size: 16px;">Detail</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                <th scope="row" style="font-size: 16px;">
+                                    <div class="d-flex align-items-center">
+                                        <img src="/img/image 1.png" alt="">
+                                        <div class="ms-5">
+                                            <h1 style="font-size: 16px;margin-bottom: 0;">{{$item->vehicle->plat_number}}</h1>
+                                            <p class="text-primary" style="font-size: 14px;margin-bottom: 0;">T-01, T-02</p>
+                                        </div>
                                     </div>
-                                </div>
-                            </th>
-                                <td class="col-2" style="font-size: 16px;">
-                                    {{$item->priority}}
-                                </td>
-                                <td style="font-size: 16px;">
-                                    {{$item->created_at}}
-                                </td>
-                                <td style="font-size: 16px;">
-                                    @if(empty($item->workorder->assign_by))
-                                    Waiting Start Breakdown
-                                    @else
-                                    Waiting End Breakdown
-                                    @endif
-                                </td>
-                                <td style="font-size: 16px;">
-                                    {{$item->activity_maintenance}}
-                                </td>
-                                <td>
-                                    <a class="btn btn-danger text-3 rounded-8 w-100 p-md-3 h-100 me-4" href="{{route('workorder.show', $item->id)}}">Choose</a>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                                </th>
+                                    <td class="col-2" style="font-size: 16px;">
+                                        {{$item->priority}}
+                                    </td>
+                                    <td style="font-size: 16px;">
+                                        {{$item->created_at}}
+                                    </td>
+                                    <td style="font-size: 16px;">
+                                        @if(empty($item->workorder->assign_by))
+                                        Waiting Start Breakdown
+                                        @elseif($item->workorder->analysist !== null)
+                                        On Maintenance
+                                        @else
+                                        Waiting End Breakdown
+                                        @endif
+                                    </td>
+                                    <td style="font-size: 16px;">
+                                        {{$item->activity_maintenance}}
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-danger text-3 rounded-8 w-100 p-md-3 h-100 me-4" href="{{route('workorder.show', $item->id)}}">Choose</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-            </div>
-            @endforeach
+                @endif
+                @endforeach
+
     </div>
 </div>
 
