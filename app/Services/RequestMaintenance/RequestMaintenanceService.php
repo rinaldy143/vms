@@ -79,4 +79,10 @@ class RequestMaintenanceService extends AppService implements AppServiceInterfac
         // Return the search view with the resluts compacted
         return $maintenance;
     }
+    public function WP(){
+        $filter = RequestMaintenance::query()
+        ->where('role', '=', 'Operation')->get();
+        // Return the search view with the resluts compacted
+        return $filter;
+    }
 }

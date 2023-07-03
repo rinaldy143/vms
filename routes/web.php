@@ -65,6 +65,7 @@ Route::group(['prefix' => '/'], function () {
         // });
 
         Route::resource('spareparts', App\Http\Controllers\Sparepart\SparepartController::class);
+        Route::resource('weightproduct', App\Http\Controllers\WeightProduct\WeightProductController::class);
         Route::group(['prefix' => 'sparepart', 'as' => 'spareparts.'], function () {
             Route::get('/search', [App\Http\Controllers\Sparepart\SparepartController::class, 'search'])->name('search');
             Route::get('/ascending', [App\Http\Controllers\Sparepart\SparepartController::class, 'ascending'])->name('ascending');
@@ -107,6 +108,10 @@ Route::group(['prefix' => '/'], function () {
             return view('/pages/account/setting');
         });
         Route::get('logout', [AuthController::class, 'logout']);
+        Route::put('/weightproduct', [App\Http\Controllers\WeightProduct\WeightProductController::class, 'updatePrioritas'])->name('weightproduct.updatePrioritas');
+        // Route::put('/weightproduct/updatePrioritas', [WeightProductController::class, 'updatePrioritas'])->name('weightproduct.updatePrioritas');
+
+
     });
 });
 

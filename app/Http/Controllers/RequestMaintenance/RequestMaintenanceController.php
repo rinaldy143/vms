@@ -12,6 +12,8 @@ use App\Services\RequestMaintenance\RequestMaintenanceService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Helpers\PaginationHelper;
+
 
 
 class RequestMaintenanceController extends ApiController
@@ -132,5 +134,14 @@ class RequestMaintenanceController extends ApiController
     {
         $datum = $this->service->delete($id);
         return $this->sendSuccess($datum, null, 200);
+    }
+
+    public function WP(Request $request)
+    {
+        $filter = $this->service->WP($request);
+        $weight = PaginationHelper::paginate($filter, 12);
+        $maintenance = RequestMaintenance::whereNull('analysist')->get();
+
+        return view('pages.maintenance.list-maintenance', compact('maintenance','filter'));
     }
 }
