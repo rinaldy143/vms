@@ -18,6 +18,13 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->string('report_by')->nullable();
             $table->string('report_problem')->nullable();
+            $table->string('dampak')->nullable();
+            $table->float('C1')->nullable();
+            $table->float('C2')->nullable();
+            $table->float('C3')->nullable();
+            $table->float('C4')->nullable();
+            $table->float('preferensi')->nullable();
+            $table->float('vektor')->nullable();
             // $table->integer('maintenance_date')->nullable();
             $table->foreignUuid('vehicle_id')->nullable()->references('id')->on('vehicles');
             // $table->foreignUuid('trailer_id')->nullable()->references('id')->on('trailers');

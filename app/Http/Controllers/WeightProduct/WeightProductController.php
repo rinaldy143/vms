@@ -50,7 +50,10 @@ class WeightProductController extends ApiController
     public function store(StoreWeightProductRequest $request)
     {
         $data = $this->service->create($request);
-        return $this->sendSuccess($data, null, 201);
+        // return $this->sendSuccess($data, null, 201);
+        $weight_product = WeightProduct::all();
+
+        return view('pages.weight-product', compact('data','weight_product'));
     }
 
     /**

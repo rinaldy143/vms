@@ -78,6 +78,7 @@ class RequestMaintenanceController extends ApiController
 
             $data = $this->service->create($request);
             $maintenance = RequestMaintenance::whereNull('analysist')->get();
+            // dd($data);
 
             // return $this->sendSuccess($data, null, 201);
         return view('pages.maintenance.list-maintenance', compact('maintenance'));

@@ -23,14 +23,14 @@
             <a href="/maintenance/report">
                 <div class="subtitle-1 me-10">Report</div>
             </a>
-            <a href="/maintenance">
+            <a href="/list-maintenance">
                 <div class="subtitle-1 me-10 text-danger" style="border-bottom: 1px solid #FF0000">Maintenance</div>
             </a>
             <a href="/workorder">
                 <div class="subtitle-1 me-10">Work Order</div>
             </a>
-            <a href="/maintenance/Sparepart">
-                <div class="subtitle-1 me-10">Sparepart</div>
+            <a href="/weightproduct">
+                <div class="subtitle-1 me-10">Weight Product</div>
             </a>
         </div>
         <h2 class="my-5">Maintenance</h2>
@@ -57,7 +57,17 @@
                                             'selected' : '' }}>{{$model->plat_number}}</option>
                                         @endforeach
                                 </select>
+
+                                @error('vehicle_id')
+                                <div class="invalid-feedback d-flex">
+                                    {{ $message }}
+                                </div>
+                                @enderror
                             </div>
+                            {{-- @foreach ($maintenance as $item)
+
+                            <input type="hidden" name="C2" value="{{$item->vehicle->selected_value1 }}">
+                            @endforeach --}}
                             {{-- <div class="form-group mt-4 w-400px me-10">
                                 <label for="trailer_id" class="subtitle-1">Trailer<span class="text-danger">*</span></label>
                                 <div id="list1" class="dropdown-check-list form-select" tabindex="100">
@@ -88,8 +98,7 @@
                             </div>
                             <div class="form-group mt-4 w-400px me-10">
                                 <label for="hm_Unit"
-                                class="fw-bold text-black subtitle-1">{{__('HM Unit')}} <span
-                                    class="text-danger">*</span></label>
+                                class="fw-bold text-black subtitle-1">{{__('HM Unit')}}
                                 <input type="text" id="hm_Unit" name="hm_Unit" class="form-control mt-2"
                                     placeholder="100 HM" maxlength="200" value={{old('hm_Unit')}}>
                                 @error('hm_Unit')
@@ -148,37 +157,64 @@
                                 </div>
                                 @enderror
                             </div>
+                            <div class="form-group mt-4 col-lg-3 me-10">
+                                <label for="dampak" class="subtitle-1">Dampak Kerusakan<span class="text-danger">*</span></label>
+                                <div class="form-select radio-btn my-5">
+                                    <input type="radio" id="dampak1" name="dampak" value="Kecil" {{ old('dampak') == 'Kecil' ? 'checked' : '' }}>
+                                    <label for="dampak1">Kecil</label><br>
+                                </div>
+                                <div class="form-select radio-btn my-5">
+                                    <input type="radio" id="dampak2" name="dampak" value="Sedang" {{ old('dampak') == 'Sedang' ? 'checked' : '' }}>
+                                    <label for="dampak2">Sedang</label><br>
+                                </div>
+                                <div class="form-select radio-btn my-5">
+                                    <input type="radio" id="dampak3" name="dampak" value="Besar" {{ old('dampak') == 'besar' ? 'checked' : '' }}>
+                                    <label for="dampak3">besar</label><br>
+                                </div>
+                                @error('dampak')
+                                <div class="invalid-feedback d-flex">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
                         </div>
                         <div class="row col-lg-12">
                             <div class="form-group mt-4 col-lg-4 me-10">
                                 <label for="CN" class="subtitle-1">Activity Maintenance<span class="text-danger">*</span></label>
                                 <div class="form-select radio-btn my-5">
-                                    <input type="radio" id="activity_maintenance1" name="activity_maintenance" value="Tune Up" {{ old('activity_maintenance') == 'Periodal Service' ? 'checked' : '' }}>
+                                    <input type="radio" id="activity_maintenance1" name="activity_maintenance" value="Tune Up" {{ old('activity_maintenance') == 'Tune Up' ? 'checked' : '' }}>
                                     <label for="activity_maintenance1">Tune Up</label><br>
                                 </div>
                                 <div class="form-select radio-btn my-5">
-                                    <input type="radio" id="activity_maintenance2" name="activity_maintenance" value="Service Kecil" {{ old('activity_maintenance') == 'Backlog' ? 'checked' : '' }}>
+                                    <input type="radio" id="activity_maintenance2" name="activity_maintenance" value="Service Kecil" {{ old('activity_maintenance') == 'Service Kecil' ? 'checked' : '' }}>
                                     <label for="activity_maintenance2">Service Kecil</label><br>
                                 </div>
                                 <div class="form-select radio-btn my-5">
-                                    <input type="radio" id="activity_maintenance3" name="activity_maintenance" value="Service Menengah" {{ old('activity_maintenance') == 'Repair' ? 'checked' : '' }}>
+                                    <input type="radio" id="activity_maintenance3" name="activity_maintenance" value="Service Menengah" {{ old('activity_maintenance') == 'Service Menengah' ? 'checked' : '' }}>
                                     <label for="activity_maintenance3">Service Menengah</label><br>
                                 </div>
                             </div>
                             <div class="form-group mt-4 col-lg-4 me-10">
                                 <label for="CN" class="subtitle-1"></label>
                                 <div class="form-select radio-btn my-5">
-                                    <input type="radio" id="activity_maintenance4" name="activity_maintenance" value="Service Besar" {{ old('activity_maintenance') == 'Daily Check' ? 'checked' : '' }}>
+                                    <input type="radio" id="activity_maintenance4" name="activity_maintenance" value="Service Besar" {{ old('activity_maintenance') == 'Service Besar' ? 'checked' : '' }}>
                                     <label for="activity_maintenance4">Service Besar</label><br>
                                 </div>
                                 <div class="form-select radio-btn my-5">
-                                    <input type="radio" id="activity_maintenance5" name="activity_maintenance" value="Service Keseluruhan" {{ old('activity_maintenance') == 'Midlife' ? 'checked' : '' }}>
+                                    <input type="radio" id="activity_maintenance5" name="activity_maintenance" value="Service Keseluruhan" {{ old('activity_maintenance') == 'Service Keseluruhan' ? 'checked' : '' }}>
                                     <label for="activity_maintenance5">Service Keseluruhan</label><br>
                                 </div>
                             </div>
+                            @error('activity_maintenance')
+                            <div class="invalid-feedback d-flex">
+                                {{ $message }}
+                            </div>
+                            @enderror
                         </div>
-                        <input class="btn shadow btn-danger text-3 rounded-8 w-200px p-md-3 h-100" type="submit" value="Create Maintenance">
 
+
+
+                        <input class="btn shadow btn-danger text-3 rounded-8 w-200px p-md-3 h-100" type="submit" value="Create Maintenance">
                         <button class="btn border border-danger text-danger text-3 rounded-8 w-200px p-md-3 h-100">Cancel</button>
                     </div>
                 </form>
@@ -187,101 +223,47 @@
     </div>
 </div>
 
-<div class="modal fade" id="modalProblem" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <form action="#" method="post" enctype="multipart/form-data">
-            @csrf
-            <div class="modal-content m-lg-10 p-3 p-3">
-                <div class="modal-header">
-                    <h4 class="text-color-dark font-weight-semibold text-transform-none text-5 m-0"
-                        id="exampleModalLongTitle">Add Maintenance Problem</h4>
-                    <button type="button" class="close-share cancel border-0" style="background-color: transparent" data-dismiss="modal" aria-label="Close">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                            class="bi bi-x-lg" viewBox="0 0 16 16">
-                            <path
-                                d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" />
-                        </svg>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-md-12 mb-3 mb-lg-0 col-lg-12">
-                                <label for="name"
-                                class="fw-bold text-black subtitle-1">{{__('Problem')}} <span class="text-danger">*</span></label>
-                                <input type="text" id="otherProblem" name="otherProblem" class="form-control mt-2" placeholder="Write your problem here." maxlength="200" value="{{ old('otherProblem') }}">
-
-                                {{-- <input type="text" id="name" name="name" class="form-control mt-2"
-                                    placeholder="Write your problem here." maxlength="200" value={{old('name')}}> --}}
-                                <textarea name="name" id="name" class="form-control mt-2" placeholder="Write your problem here." maxlength="200" value={{old('name')}} cols="55" rows="4"></textarea>
-                                @error('name')
-                                <div class="invalid-feedback d-flex">
-                                    {{ $message }}
-                                </div>
-                                @enderror
-                            </div>
-                        </div>
-
-                        {{-- <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
-                        </div> --}}
-                    </div>
-                </div>
-                <div class="modal-footer border-0" style="flex-wrap: nowrap;">
-                    <div class="col-md-6 text-center">
-                        <button class="btn btn-danger text-3 rounded-8 w-75 p-md-3 h-100" type="submit"
-                            id="downloadWp" name="downloadWp">Submit</button>
-                    </div>
-                    <div class="col-md-6 text-center">
-                        <button type="reset" class="btn cancel border border-danger text-danger text-3 rounded-8 w-75 p-md-3 h-100 close-share" data-dismiss="modal" aria-label="Close"
-                            id="cancel" name="cancel">Cancel</button>
-                    </div>
-                </div>
-        </form>
-    </div>
-</div>
 <style>
-    .dropdown-check-list {
-  display: inline-block;
-}
+        .dropdown-check-list {
+    display: inline-block;
+    }
 
-.dropdown-check-list .anchor {
-  position: relative;
-  cursor: pointer;
-  display: inline-block;
-  padding: 5px 50px 5px 10px;
-  border: 1px solid #ccc;
-}
+    .dropdown-check-list .anchor {
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+    padding: 5px 50px 5px 10px;
+    border: 1px solid #ccc;
+    }
 
 
-.dropdown-check-list .anchor:active:after {
-  right: 8px;
-  top: 21%;
-}
+    .dropdown-check-list .anchor:active:after {
+    right: 8px;
+    top: 21%;
+    }
 
-.dropdown-check-list ul.items {
-  padding: 2px;
-  display: none;
-  margin: 0;
-  border-top: none;
-}
+    .dropdown-check-list ul.items {
+    padding: 2px;
+    display: none;
+    margin: 0;
+    border-top: none;
+    }
 
-.dropdown-check-list ul.items li {
-  list-style: none;
-}
+    .dropdown-check-list ul.items li {
+    list-style: none;
+    }
 
-.dropdown-check-list.visible .anchor {
-  color: #000;
-}
+    .dropdown-check-list.visible .anchor {
+    color: #000;
+    }
 
-.dropdown-check-list.visible .items {
-  display: block;
-}
+    .dropdown-check-list.visible .items {
+    display: block;
+    }
 
-.form-select.radio-btn{
-    background-image: none;
-}
+    .form-select.radio-btn{
+        background-image: none;
+    }
 </style>
 
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
@@ -309,6 +291,7 @@ $(".cancel").click(function(){
         else
             checkList.classList.add('visible');
         }
+
 </script>
 
 @endsection

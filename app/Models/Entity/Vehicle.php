@@ -32,6 +32,8 @@ class Vehicle extends AppModel
         // 'id_fms',
         'model_vehicle_id',
         'type_vehicle_id',
+        'selected_value1',
+        'selected_value2',
     ];
 
     public function ModelVehicle()

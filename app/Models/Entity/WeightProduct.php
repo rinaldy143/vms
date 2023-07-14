@@ -29,6 +29,7 @@ class WeightProduct extends AppModel
         'nilai_bobot',
         'prioritas',
         'bobot',
+        'status',
     ];
 
     /**

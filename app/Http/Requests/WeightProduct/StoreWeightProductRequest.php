@@ -27,6 +27,7 @@ class StoreWeightProductRequest extends FormRequest
             'kriteria' => 'required|string|max:255',
             'nilai_bobot' => 'required',
             'prioritas' => 'nullable',
+            'status' => 'required|in:cost,benefit',
             'bobot' => 'nullable',
         ];
     }

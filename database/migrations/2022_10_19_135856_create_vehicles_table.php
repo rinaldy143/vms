@@ -23,6 +23,8 @@ return new class extends Migration
             $table->integer('id_fms')->nullable();
             $table->foreignUuid('model_vehicle_id')->nullable()->references('id')->on('model_vehicles');
             $table->foreignUuid('type_vehicle_id')->nullable()->references('id')->on('type_vehicles');
+            $table->float('selected_value1')->nullable();
+            $table->float('selected_value2')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

@@ -28,6 +28,8 @@ class StoreVehicleRequest extends FormRequest
             'monthly_maintenance' => 'required',
             'model_vehicle_id' => 'required',
             'type_vehicle_id' => 'required',
+            'selected_value1' => 'nullable',
+            'selected_value2' => 'nullable',
         ];
     }
 }

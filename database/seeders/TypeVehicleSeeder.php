@@ -17,15 +17,16 @@ class TypeVehicleSeeder extends Seeder
         TypeVehicleTable::create(
             [
                 'id' => '00000001-0000-0000-0000-000000000001',
-                'vehicle_type' => 'Van'
+                'vehicle_type' => 'Colt Diesel Double'
             ]
         );
         TypeVehicleTable::create(
             [
                 'id' => '00000001-0000-0000-0000-000000000002',
-                'vehicle_type' => 'Colt Diesel Engkel'
+                'vehicle_type' => 'Van'
             ]
         );
+
         TypeVehicleTable::create(
             [
                 'id' => '00000001-0000-0000-0000-000000000003',
@@ -42,18 +43,6 @@ class TypeVehicleSeeder extends Seeder
             [
                 'id' => '00000001-0000-0000-0000-000000000005',
                 'vehicle_type' => 'Wingbox'
-            ]
-        );
-        TypeVehicleTable::create(
-            [
-                'id' => '00000001-0000-0000-0000-000000000006',
-                'vehicle_type' => 'Fuso'
-            ]
-        );
-        TypeVehicleTable::create(
-            [
-                'id' => '00000001-0000-0000-0000-000000000007',
-                'vehicle_type' => 'Colt Diesel Double'
             ]
         );
     }

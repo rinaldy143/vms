@@ -7,6 +7,20 @@
         <div class="d-flex justify-content-between align-items-center">
             <div class="text-black fw-bolder heading-3 fs-1 me-3">Weight Product </div>
         </div>
+        <div class="nav my-10">
+            <a href="/maintenance/report">
+                <div class="subtitle-1 me-10">Report</div>
+            </a>
+            <a href="/list-maintenance">
+                <div class="subtitle-1 me-10">Maintenance</div>
+            </a>
+            <a href="/workorder">
+                <div class="subtitle-1 me-10 " >Work Order</div>
+            </a>
+            <a href="/weightproduct">
+                <div class="subtitle-1 me-10 text-danger" style="border-bottom: 1px solid #FF0000">Weight Product</div>
+            </a>
+        </div>
         <!--begin::Row-->
         <nav class="navbar navbar-expand-md navbar-light">
             <div class="container px-0 py-5">
@@ -41,15 +55,6 @@
                                         @method('PUT')
                                         <button type="submit" class="btn btn-outline-danger">Update Prioritas</button>
                                     </form>
-
-
-
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                            <a class="dropdown-item" href="{{route('spareparts.ascending')}}"> <img src="/assets/media/icons/system-icon/outline/Arrow - Up-1.svg" width="25px" alt=""> Ascending</a>
-                                            <a class="dropdown-item" href="{{route('spareparts.descending')}}"> <img src="/assets/media/icons/system-icon/outline/Arrow - Down-1.svg" width="25px" alt=""> Descending</a>
-                                            <a class="dropdown-item" href="{{route('spareparts.highStock')}}"> <img src="/assets/media/icons/system-icon/outline/Delete.svg" width="25px" alt=""> High Stock</a>
-                                            <a class="dropdown-item" href="{{route('spareparts.lowStock')}}"> <img src="/assets/media/icons/system-icon/outline/Delete.svg" width="25px" alt=""> Low Stock</a>
-                                    </div>
                                 </li>
                             </ul>
                         </button>
@@ -60,10 +65,23 @@
                 </div>
             </div>
         </nav>
+
+
         <!--end::Row-->
         <!--begin::Row-->
         <div class="row pt-5 pb-5">
                 <div class="col-lg-12 col-md-6 col-11 pb-5">
+                    @if (session('error'))
+                    <div class="alert alert-danger">
+                        {{ session('error') }}
+                        <button type="button" class="close btn text-danger rounded-8 close-share" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                @endif
+
+
+
                     <!--begin::Card-->
                     @foreach ($weight_product as $item)
 
@@ -74,6 +92,7 @@
                                     <tr>
                                         <th scope="col" class="fw-bold" style="font-size: 16px;">Kriteria</th>
                                         <th scope="col" class="fw-bold" style="font-size: 16px;">Nilai Bobot</th>
+                                        <th scope="col" class="fw-bold" style="font-size: 16px;">Status</th>
                                         <th scope="col" class="fw-bold" style="font-size: 16px;">Prioritas</th>
                                         <th scope="col" class="fw-bold" style="font-size: 16px;">Bobot</th>
                                         {{-- <th scope="col" class="fw-bold" style="font-size: 16px;">Activity Maintenance</th>
@@ -83,7 +102,7 @@
                                 <tbody>
                                     <tr>
                                     <th scope="row" style="font-size: 16px;">
-                                        <div class="d-flex align-items-center">
+                                        <div class="d-flex col-2 align-items-center">
                                             {{-- <img src="/img/image 1.png" alt=""> --}}
                                             <div class="ms-5">
                                                 <h1 style="font-size: 16px;margin-bottom: 0;">{{$item->kriteria}}</h1>
@@ -91,15 +110,17 @@
                                             </div>
                                         </div>
                                     </th>
-                                        <td class="col-3" style="font-size: 16px;">
+                                        <td class="col-2" style="font-size: 16px;">
                                             {{$item->nilai_bobot}}
                                         </td>
-                                        <td class="col-3" style="font-size: 16px;">
+                                        <td class="col-2" style="font-size: 16px;">
+                                            {{$item->status}}
+                                        </td>
+                                        <td class="col-2" style="font-size: 16px;">
                                             {{$item->prioritas}}
                                         </td>
-                                        <td class="col-3" style="font-size: 16px;">
+                                        <td class="col-2" style="font-size: 16px;">
                                             {{$item->bobot}}
-
                                         </td>
                                         {{-- <td style="font-size: 16px;">
                                             {{$item->activity_maintenance}}

@@ -25,6 +25,7 @@ class UpdateWeightProductRequest extends FormRequest
     {
         return [
             'prioritas' => 'nullable',
+            'status' => 'nullable',
             'bobot' => 'nullable',
             'prioritas' => 'nullable',
             'nilai_bobot' => 'nullable',

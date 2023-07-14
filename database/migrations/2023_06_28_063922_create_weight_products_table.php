@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('kriteria')->nullable();
             $table->integer('nilai_bobot')->nullable();
             $table->float('prioritas')->nullable();
+            $table->string('status')->nullable();
             $table->float('bobot')->nullable();
             $table->softDeletes();
             $table->timestamps();

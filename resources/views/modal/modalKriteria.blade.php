@@ -22,8 +22,21 @@
                                 <span class="text-danger">*</span>
                             </label>
                             <div class="field-input pt-2 pb-6">
-                                <input type="text" id="kriteria" name="kriteria" class="form-control" placeholder="Ex. ol-01" maxlength="200" value={{old('Identity_Sparepart')}}>
+                                <input type="text" id="kriteria" name="kriteria" class="form-control" placeholder="Ex. ol-01" maxlength="200" value={{old('kriteria')}}>
                                 @error('kriteria')
+                                <div class="invalid-feedback d-flex">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
+
+                            <label for="status" class="subtitle-1">
+                                {{__('status')}}
+                                <span class="text-danger">*</span>
+                            </label>
+                            <div class="field-input pt-2 pb-6">
+                                <input type="text" id="status" name="status" class="form-control" placeholder="Ex. ol-01" maxlength="200" value={{old('status')}}>
+                                @error('status')
                                 <div class="invalid-feedback d-flex">
                                     {{ $message }}
                                 </div>

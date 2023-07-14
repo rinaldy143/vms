@@ -30,12 +30,23 @@ class WeightProductService extends AppService implements AppServiceInterface
 
     public function create($data)
     {
+        // Mengambil jumlah baris yang sudah ada
+        $rowCount = WeightProductTable::count();
+
+        // Memeriksa apakah jumlah baris sudah mencapai batas maksimum (4)
+        if ($rowCount >= 4) {
+            // Jika sudah mencapai batas, tampilkan pesan error dan kembali ke halaman sebelumnya
+            return redirect()->back()->with('error', 'Batas jumlah baris sudah tercapai.');
+        }
+
+        // Jika belum mencapai batas, lakukan penyimpanan data
         return WeightProductTable::create([
             'kriteria' => $data['kriteria'],
             'nilai_bobot' => $data['nilai_bobot'],
-
+            'status' => $data['status'],
         ]);
     }
+
 
     public function update($id, $data)
     {
@@ -49,15 +60,20 @@ class WeightProductService extends AppService implements AppServiceInterface
 
     public function updatePrioritas()
     {
-        $jumlahBobot = WeightProductTable::sum('nilai_bobot');
+        $jumlahBobot = WeightProduct::sum('nilai_bobot');
 
-        $data = WeightProductTable::all();
+        $data = WeightProduct::all();
 
         foreach ($data as $row) {
             $nilaiBobot = $row->nilai_bobot;
             $prioritas = $nilaiBobot / $jumlahBobot;
 
-            $row->prioritas = $prioritas;
+            $bobot = $prioritas;
+            if ($row->status === 'cost') {
+                $bobot *= -1;
+            }
+
+            $row->bobot = $bobot;
             $row->save();
         }
 

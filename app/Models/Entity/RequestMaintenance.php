@@ -25,6 +25,7 @@ class RequestMaintenance extends AppModel
     protected $fillable = [
         'report_by',
         'report_problem',
+        'dampak',
         // 'maintenance_date',
         'vehicle_id',
         // 'trailer_id',
@@ -35,7 +36,11 @@ class RequestMaintenance extends AppModel
         'priority',
         'activity_maintenance',
         'analysist',
-        'aprove_by'
+        'aprove_by',
+        'C1',
+        'C2',
+        'C3',
+        'C4',
     ];
 
     public function Vehicle()
@@ -53,6 +58,10 @@ class RequestMaintenance extends AppModel
     public function WorkOrder()
     {
         return $this->belongsTo(WorkOrder::class, 'wo_id');
+    }
+    public function WeightProduct()
+    {
+        return $this->hasMany(WeightProduct::class);
     }
     /**
      * The attributes that should be hidden for arrays.

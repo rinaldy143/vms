@@ -23,14 +23,14 @@
             <a href="/maintenance/report">
                 <div class="subtitle-1 me-10">Report</div>
             </a>
-            <a href="/maintenance">
+            <a href="/list-maintenance">
                 <div class="subtitle-1 me-10 text-danger" style="border-bottom: 1px solid #FF0000">Maintenance</div>
             </a>
             <a href="/workorder">
                 <div class="subtitle-1 me-10">Work Order</div>
             </a>
-            <a href="/maintenance/Sparepart">
-                <div class="subtitle-1 me-10">Sparepart</div>
+            <a href="/weightproduct">
+                <div class="subtitle-1 me-10">Weight Product</div>
             </a>
         </div>
             <h2 class="my-5">Maintenance</h2>
