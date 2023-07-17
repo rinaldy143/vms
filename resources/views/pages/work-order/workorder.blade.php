@@ -4,6 +4,11 @@
 <div class="content">
     <div class="container">
         <div class="heading-3 position-absolute">Work Order</div>
+        @if(session('error'))
+        <script>
+            alert('{{ session('error') }}');
+        </script>
+     @endif
         <div class="d-flex justify-content-end">
             <div class="d-flex align-items-center position-relative my-1">
                 <!--begin::Svg Icon | path: icons/duotune/general/gen021.svg-->
@@ -34,7 +39,7 @@
             </a>
         </div>
             <h2 class="my-5">Maintenance</h2>
-            <a class="btn btn-danger text-3 rounded-8 w-200px p-md-3 h-100 " href="/workorder">list work order</a>
+            <a class="btn btn-danger text-3 rounded-8 w-200px p-md-3 " href="/workorder">list work order</a>
             {{-- <a class="btn border border-dark text-dark text-3 rounded-8 w-200px p-md-3 h-100 me-4" href="#">onprocess work order</a> --}}
             <div class="d-flex align-items-center position-relative my-5">
                 <!--begin::Svg Icon | path: icons/duotune/general/gen021.svg-->
@@ -123,6 +128,7 @@
                 </div>
                 @endif
                 @endforeach
+                {{ $maintenance->links() }}
 
     </div>
 </div>

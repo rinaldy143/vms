@@ -2,7 +2,10 @@
 
 @section('content')
 <div class="content">
+
     <div class="container">
+
+
             <div class="heading-4 position-absolute">
                 <a class="text-dark" href="/workorder">< Back</a>
             </div>
@@ -133,7 +136,7 @@
                             {{-- @if ($maintenance->workorder->analysist == null) --}}
                             @if (isset($maintenance->workorder) && $maintenance->workorder->analysist == null)
 
-                            <form action="{{route('workorder.update', ($maintenance->workorder->id))}}" method="POST"
+                            <form id="maintenance" action="{{route('workorder.update', ($maintenance->workorder->id))}}" method="POST"
                                 enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
@@ -187,9 +190,41 @@
                                             @enderror
                                         </div>
                                     </div>
+                                    <button id="addSparepartButton" type="button" class="my-3 btn btn-outline-danger text-3 rounded-8 w-200px p-md-3 h-100">Request Sparepart</button>
+                                    <div class="row py-3" id="form-container" style="display: none">
+                                        <h2>Request Sparepart</h2>
+                                        <div class="col-md-4">
+                                            <select class="form-control" name="sparepart_id[]">
+                                                <option value="" disabled selected>{{__('Pilih Sparepart')}}</option>
+                                                @foreach ($sparepart as $index => $item)
+                                                <option value="{{ $item->id }}" data-count="{{ $item->count }}" {{ old('sparepart_id.' . $index) == $item->id ? 'selected' : '' }}>{{ $item->name }}</option>
+                                                @endforeach
+                                                </select>
+                                                @error('sparepart_id.*')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                                @enderror
+                                            </div>
+                                            <div class="col-md-2">
+                                                <input type="number" class="form-control" name="jumlah[]" max="" placeholder="Jumlah">
+                                                @error('jumlah.*')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                                @enderror
+                                            </div>
+                                        <div class="col-md-2">
+                                            <button id="deleteSparepartButton" type="reset" class="btn btn-danger remove-first">Hapus</button>
+                                        </div>
+                                    </div>
 
-                                    <input class="btn shadow btn-danger text-3 rounded-8 w-200px p-md-3 h-100" type="submit" value="End Breakdown">
-
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <button type="button" class="btn  btn-outline-danger text-3 rounded-8 w-200px p-md-3 h-100" id="add-field" style="display: none;">Tambah Sparepart</button>
+                                            <input  class="btn shadow btn-danger text-3 rounded-8 w-200px p-md-3 h-100" type="submit" value="End Breakdown">
+                                        </div>
+                                    </div>
                                     {{-- <button class="btn border border-danger text-danger text-3 rounded-8 w-200px p-md-3 h-100">Cancel</button> --}}
                                 </div>
                             </form>
@@ -210,12 +245,14 @@
                                     </div>
                                 </div>
                             </div>
+
                             @else
 
                             @endif
                         </div>
-
                     </div>
+
+
                     @if (isset($maintenance->workorder) && $maintenance->workorder->analysist !== null)
                         <div class="my-4">
                             <h2 class="pt-3">Maintenance Proof</h2>
@@ -241,16 +278,12 @@
                                         <input type="file" src="/assets/media/icons/system-icon/outline/Edit Square.svg" class="form-control-file"
                                         id="photo" name="photo" style="display: none" multiple onchange="previewImage()" onclick="document.getElementById('labelImg').style.opacity = 0">
                                     </div>
-                                    {{-- <div class="h-50">
-                                        <div class="fw-bolder fs-3" id="list_file"></div>
-                                        <div id="size_file"></div>
-                                    </div> --}}
-
                                     @error('photo')
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                     @enderror
+
                                 </div>
                                 <div class="border-0 pt-20 mt-10 row">
                                     <div class="col-md-3 text-right">
@@ -323,13 +356,6 @@ var fileInput = document.getElementById('photo');
 
 
         fileInput.onchange = function () {
-        // var files = Array.from(this.files);
-        // files = files.map(file => file.name);
-        // listFile.innerHTML = files.join('<br/>');
-        // var sizes = Array.from(this.files);
-        // sizes = sizes.map(file => formatBytes(file.size));
-        // sizeFile.innerHTML = sizes.join('<br/>');
-
 
         const photo= document.querySelector('#photo');
         const imgPreview = document.querySelector('.img-preview');
@@ -342,6 +368,126 @@ var fileInput = document.getElementById('photo');
             imgPreview.src = oFREvent.target.result;
         }
         }
+</script>
+<script>
+    // Tambahkan event listener ke tombol "Request Sparepart"
+    document.getElementById('addSparepartButton').addEventListener('click', function() {
+        // Tampilkan kolom form
+        document.getElementById('form-container').style.display = 'flex';
+        document.getElementById('add-field').style.display = 'initial';
+    });
+    document.getElementById('deleteSparepartButton').addEventListener('click', function() {
+    // Mengubah tampilan elemen form-container dan addSparepartButton menjadi none
+    document.getElementById('form-container').style.display = 'none';
+    document.getElementById('add-field').style.display = 'none';
+});
+
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var selectElement = document.querySelector('select[name="sparepart_id[]"]');
+        var inputElement = document.querySelector('input[name="jumlah[]"]');
+
+        selectElement.addEventListener('change', function() {
+            var selectedOption = selectElement.options[selectElement.selectedIndex];
+            var maxCount = selectedOption.getAttribute('data-count');
+            inputElement.max = maxCount;
+        });
+    });
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const addFieldButton = document.getElementById('add-field');
+  const formContainer = document.getElementById('form-container');
+
+  addFieldButton.addEventListener('click', function() {
+    const fieldRow = document.createElement('div');
+    fieldRow.classList.add('row', 'py-3');
+
+    const sparepartSelect = document.createElement('select');
+    sparepartSelect.classList.add('form-control');
+    sparepartSelect.setAttribute('name', 'sparepart_id[]');
+    sparepartSelect.setAttribute('required', '');
+
+    const defaultOption = document.createElement('option');
+    defaultOption.setAttribute('value', '');
+    defaultOption.setAttribute('disabled', '');
+    defaultOption.setAttribute('selected', '');
+    // sparepartSelect.appendChild(defaultOption);
+
+// Membuat objek Set untuk menyimpan opsi yang sudah ada
+const existingOptions = new Set();
+
+// Mengklon opsi dari elemen select yang ada dan menambahkannya ke sparepartSelect
+    const allOptions = formContainer.querySelectorAll('select[name="sparepart_id[]"] option');
+    allOptions.forEach(function(option) {
+    const optionValue = option.getAttribute('value');
+    if (!existingOptions.has(optionValue)) {
+        existingOptions.add(optionValue);
+        const clonedOption = option.cloneNode(true);
+        sparepartSelect.appendChild(clonedOption);
+    }
+    });
+
+    const jumlahInput = document.createElement('input');
+    jumlahInput.setAttribute('type', 'number');
+    jumlahInput.setAttribute('class', 'form-control');
+    jumlahInput.setAttribute('name', 'jumlah[]');
+    jumlahInput.setAttribute('placeholder', 'Jumlah');
+    jumlahInput.setAttribute('required', '');
+
+    sparepartSelect.addEventListener('change', function() {
+    var selectedOption = sparepartSelect.options[sparepartSelect.selectedIndex];
+    var maxCount = selectedOption.getAttribute('data-count');
+    jumlahInput.setAttribute('max', maxCount);
+    });
+        // Append sparepartSelect and jumlahInput to the form container
+    formContainer.appendChild(sparepartSelect);
+    formContainer.appendChild(jumlahInput);
+
+    const removeButton = document.createElement('button');
+    removeButton.classList.add('btn', 'btn-danger', 'remove-field');
+    removeButton.textContent = 'Hapus';
+
+    fieldRow.appendChild(createColumnDiv(sparepartSelect, 'col-md-4'));
+    fieldRow.appendChild(createColumnDiv(jumlahInput, 'col-md-2'));
+    fieldRow.appendChild(createColumnDiv(removeButton, 'col-md-2'));
+
+    formContainer.appendChild(fieldRow);
+
+    addFieldButton.disabled = formContainer.children.length >= 11; // Disable add field button if maximum limit is reached
+  });
+
+  formContainer.addEventListener('click', function(event) {
+    if (event.target.classList.contains('remove-field')) {
+      event.target.closest('.row.py-3').remove();
+      addFieldButton.disabled = false; // Enable add field button after removing a field
+    }
+  });
+
+  function createColumnDiv(content, className) {
+    const colDiv = document.createElement('div');
+    colDiv.classList.add(className);
+    colDiv.appendChild(content);
+    return colDiv;
+  }
+
+  document.getElementById('maintenance').addEventListener('submit', function(event) {
+    const selectElements = formContainer.querySelectorAll('select[name="sparepart_id[]"]');
+    const selectedOptions = Array.from(selectElements).map(select => select.value);
+    const jumlahElements = formContainer.querySelectorAll('input[name="jumlah[]"]');
+
+    if (hasDuplicates(selectedOptions)) {
+      event.preventDefault(); // Prevent form submission
+      alert('Tidak boleh memilih sparepart yang sama pada setiap opsi.'); // Display error message
+    }
+  });
+
+  function hasDuplicates(array) {
+    return (new Set(array)).size !== array.length;
+  }
+});
 </script>
 
 @endsection

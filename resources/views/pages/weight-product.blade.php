@@ -93,7 +93,6 @@
                                         <th scope="col" class="fw-bold" style="font-size: 16px;">Kriteria</th>
                                         <th scope="col" class="fw-bold" style="font-size: 16px;">Nilai Bobot</th>
                                         <th scope="col" class="fw-bold" style="font-size: 16px;">Status</th>
-                                        <th scope="col" class="fw-bold" style="font-size: 16px;">Prioritas</th>
                                         <th scope="col" class="fw-bold" style="font-size: 16px;">Bobot</th>
                                         {{-- <th scope="col" class="fw-bold" style="font-size: 16px;">Activity Maintenance</th>
                                         <th scope="col" class="fw-bold" style="font-size: 16px;">Detail</th> --}}
@@ -115,9 +114,6 @@
                                         </td>
                                         <td class="col-2" style="font-size: 16px;">
                                             {{$item->status}}
-                                        </td>
-                                        <td class="col-2" style="font-size: 16px;">
-                                            {{$item->prioritas}}
                                         </td>
                                         <td class="col-2" style="font-size: 16px;">
                                             {{$item->bobot}}

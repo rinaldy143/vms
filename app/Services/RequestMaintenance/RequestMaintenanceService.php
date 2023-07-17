@@ -39,7 +39,7 @@ class RequestMaintenanceService extends AppService implements AppServiceInterfac
         $C4 = $this->getValueForSelectedActivity($activity_maintenance);
         $weightProduct = WeightProduct::get();
         $preferensi = 1;
-        $vektor = 1;
+        // $vektor = 1;
 
         $newRequestMaintenance = new RequestMaintenanceTable([
             'report_by' => $user->name,

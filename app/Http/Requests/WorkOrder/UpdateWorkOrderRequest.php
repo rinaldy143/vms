@@ -27,6 +27,8 @@ class UpdateWorkOrderRequest extends FormRequest
             'jobsite_location'  => 'string|max:255',
             'damage_component'  => 'string|max:255',
             'damaged_level'  => 'string|max:255',
+            // 'sparepart_id'  => 'string|max:255',
+            // 'jumlah.*' => 'integer',
             'analysist'  => 'string|max:255',
             'photo'  => 'mimes:png,jpg,svg',
             ];

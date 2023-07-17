@@ -82,17 +82,17 @@
                                 <select class="form-control" aria-label="role" id="role"
                                     name="role">
                                     <option value="" disabled selected>{{__('Select role of user')}}</option>
-                                    @foreach ($type_role as $model)
+                                    {{-- @foreach ($type_role as $model)
 
                                     <option value="{{$model->role}}" {{ old('ModelVehicle')==$model->role ?
                                         'selected' : '' }}>{{$model->role}}</option>
-                                    @endforeach
-                                    {{-- <option value="ADMIN" >ADMIN</option>
+                                    @endforeach --}}
+                                    <option value="ADMIN" >ADMIN</option>
                                     <option value="Operation" >Operation</option>
-                                    <option value="Lead Mechanices / Departement Mechanices" >Lead Mechanices / Departement Mechanices</option>
+                                    <option value="Lead Mechanices / Departement Mechanices" >Lead Mechanices</option>
                                     <option value="Mechanices" >Mechanices</option>
                                     <option value="Logistic" >Logistic</option>
-                                    <option value="MEMBER" >MEMBER</option> --}}
+                                    {{-- <option value="MEMBER" >MEMBER</option> --}}
                                     </select>
                                     @error('role')
                                     <div class="invalid-feedback d-flex">

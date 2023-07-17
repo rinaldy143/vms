@@ -44,6 +44,10 @@ class WorkOrder extends AppModel
     {
         return $this->belongsToMany(User::class,  'users_work_order', 'work_order_table_id', 'user_id');
     }
+    public function spareparts()
+    {
+        return $this->belongsToMany(Sparepart::class,   'request_spareparts', 'wo_id', 'sparepart_id')->withPivot('jumlah');
+    }
 
     /**
      * The attributes that should be hidden for arrays.

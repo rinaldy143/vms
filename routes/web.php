@@ -51,6 +51,8 @@ Route::group(['prefix' => '/'], function () {
         Route::get('/maintenance/report', function() {
             return view('/pages/maintenance/report');
         });
+        Route::post('/workorder/{rm_id}/request-sparepart', [App\Http\Controllers\WorkOrder\WorkOrderController::class, 'requestSparepart'])->name('workorder.requestSparepart');
+
 
 
         // Route::get('/maintenance/workorder', function() {
@@ -110,8 +112,6 @@ Route::group(['prefix' => '/'], function () {
         Route::get('logout', [AuthController::class, 'logout']);
         Route::put('/weightproduct', [App\Http\Controllers\WeightProduct\WeightProductController::class, 'updatePrioritas'])->name('weightproduct.updatePrioritas');
         // Route::put('/weightproduct/updatePrioritas', [WeightProductController::class, 'updatePrioritas'])->name('weightproduct.updatePrioritas');
-
-
     });
 });
 
