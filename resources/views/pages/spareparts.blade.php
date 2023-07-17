@@ -29,7 +29,7 @@
                     <div class="card-title">
                         <!--begin::Search-->
                         {{-- <button type="button" class="btn btn-danger me-3 py-2 font-weight-bolder " style="border-radius: 8px;">
-                            <!--begin::Svg Icon | path: icons/duotune/arrows/arr078.svg-->
+                            <!--begin::Svg Icon | path: icons/duotune/arrows/arr078.svg- >
                             <img class="pt-2" src="img/Plus.png" alt="">
                             <!--end::Svg Icon-->Restock
                         </button> --}}
@@ -117,7 +117,7 @@
                             @if ($item->photo == null)
                                 <img src="/img/Mask group.png" alt="" title="" width="50px" height="50px">
                             @else
-                                <img src="/storage/{{$item->photo}}" alt="" width="50px" height="50px">
+                                <img src="/img/{{$item->photo}}" alt="" width="50px" height="50px">
                             @endif
                             <ul class="m-0" style="list-style: none">
                                 <li class="py-1">Identity : <strong>{{$item->id_sparepart}}</strong></li>

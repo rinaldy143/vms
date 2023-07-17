@@ -95,8 +95,14 @@
                             href="#" title="Restock">
                             Accept
                             </a> --}}
-                            <button class="btn border border-danger text-danger text-3 rounded-8 w-200px p-md-3 h-100">reject</button>
-                            <input class="btn shadow btn-danger text-3 rounded-8 w-200px p-md-3 h-100" type="submit" value="Accept">
+                            <div class="row">
+                                <form action="{{route('users.destroy', ($maintenance->id))}}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="btn border mx-3 border-danger text-danger text-3 rounded-8 w-200px p-md-3 h-100">reject</button>
+                                </form>
+                                <input class="btn shadow btn-danger text-3 rounded-8 w-200px p-md-3 h-100" type="submit" value="Accept">
+                            </div>
 
                         </form>
                     </div>

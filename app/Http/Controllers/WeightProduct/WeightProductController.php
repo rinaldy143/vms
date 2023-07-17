@@ -23,6 +23,11 @@ class WeightProductController extends ApiController
     {
         $this->service = $service;
         parent::__construct($request);
+        $this->middleware('can:create, App\Models\Entity\WeightProduct')->only('store');
+        $this->middleware('can:delete, App\Models\Entity\WeightProduct')->only('destroy');
+        $this->middleware('can:update, App\Models\Entity\WeightProduct')->only('update');
+        $this->middleware('can:viewAny, App\Models\Entity\WeightProduct')->only('index');
+
     }
 
     /**

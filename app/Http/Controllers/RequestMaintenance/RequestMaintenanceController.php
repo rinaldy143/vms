@@ -28,6 +28,10 @@ class RequestMaintenanceController extends ApiController
     {
         $this->service = $service;
         parent::__construct($request);
+        $this->middleware('can:create, App\Models\Entity\RequestMaintenance')->only('store');
+        // $this->middleware('can:delete, App\Models\Entity\RequestMaintenance')->only('destroy');
+        // $this->middleware('can:update, App\Models\Entity\RequestMaintenance')->only('update');
+        $this->middleware('can:viewAny, App\Models\Entity\RequestMaintenance')->only('index');
     }
 
     /**
@@ -55,8 +59,11 @@ class RequestMaintenanceController extends ApiController
         // $data = $this->service->list($request);
         // $maintenance = RequestMaintenance::all();
 
-        $maintenance = RequestMaintenance::whereNull('analysist')->get();
-        // $vehicle = Vehicle::all();
+        $maintenance = RequestMaintenance::whereNull('analysist')
+        ->orderByRaw("CASE WHEN priority = 'normal' THEN vektor ELSE priority END ASC")
+        ->get();
+
+            // $vehicle = Vehicle::all();
         // $trailer = Trailer::all();
         return view('pages.maintenance.list-maintenance', compact('maintenance'));
 

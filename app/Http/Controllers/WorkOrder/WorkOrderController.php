@@ -55,6 +55,17 @@ class WorkOrderController extends ApiController
         // return $this->sendSuccess($data, null, 200);
     }
 
+    public function history(Request $request)
+    {
+        $data = $this->service->dataTable($request);
+        // $maintenance = RequestMaintenance::whereNotNull('analysist')->get();
+        $maintenance = WorkOrder::whereNotNull('photo')->paginate(15);
+
+        return view('pages.history.history', compact('maintenance', 'data'));
+
+        // return $this->sendSuccess($data, null, 200);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -79,6 +90,29 @@ class WorkOrderController extends ApiController
      * @param String $id
      * @return JsonResponse
      */
+    public function detailhistory(string $id)
+    {
+        // $datum = $this->service->getById($id);
+        // $datum = $this->service->getById($id);
+        $vehicle = Vehicle::all();
+        $user = User::all();
+        $sparepart = Sparepart::all();
+        $trailer = Trailer::all();
+        $maintenance = RequestMaintenance::where('id', $id)->first();
+        $workorder = WorkOrder::where('id', $id)->first();
+
+
+        // $maintenances = RequestMaintenance::all();
+
+
+        if ($maintenance == null) {
+            abort(404);
+        };
+
+        return view('pages.history.detail-history', compact('user','sparepart','maintenance','vehicle', 'trailer','workorder'));
+        // return $this->sendSuccess($datum, null, 200);
+    }
+
     public function show(string $id)
     {
         // $datum = $this->service->getById($id);

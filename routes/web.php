@@ -48,9 +48,9 @@ Route::group(['prefix' => '/'], function () {
         // Route::get('/maintenance/list-maintenance/detail-maintenance', function() {
         //     return view('/pages/maintenance/detail-maintenance');
         // });
-        Route::get('/maintenance/report', function() {
-            return view('/pages/maintenance/report');
-        });
+        // Route::get('/maintenance/report', function() {
+        //     return view('/pages/maintenance/report');
+        // });
         Route::post('/workorder/{rm_id}/request-sparepart', [App\Http\Controllers\WorkOrder\WorkOrderController::class, 'requestSparepart'])->name('workorder.requestSparepart');
 
 
@@ -79,6 +79,8 @@ Route::group(['prefix' => '/'], function () {
         Route::resource('maintenance', App\Http\Controllers\RequestMaintenance\RequestMaintenanceController::class);
         Route::resource('workorder', App\Http\Controllers\WorkOrder\WorkOrderController::class);
         Route::get('/list-maintenance', [App\Http\Controllers\RequestMaintenance\RequestMaintenanceController::class, 'list']);
+        Route::get('/history', [App\Http\Controllers\WorkOrder\WorkOrderController::class, 'history']);
+        Route::get('/history/{id}', [App\Http\Controllers\WorkOrder\WorkOrderController::class, 'detailhistory'])->name('detailhistory');;
 
         Route::group(['prefix' => 'user', 'as' => 'users.'], function () {
             Route::get('/search', [App\Http\Controllers\User\UserController::class, 'search'])->name('search');
@@ -98,9 +100,9 @@ Route::group(['prefix' => '/'], function () {
             return view('/pages/vehicle/vehicle-setting');
         });
 
-        Route::get('/history', function() {
-            return view('/pages/history');
-        });
+        // Route::get('/history', function() {
+        //     return view('/pages/history');
+        // });
 
         Route::get('/access-features', function() {
             return view('/pages/access-features');

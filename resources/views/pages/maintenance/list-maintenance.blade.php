@@ -20,21 +20,19 @@
             </div>
         </div>
         <div class="nav my-10">
-            <a href="/maintenance/report">
-                <div class="subtitle-1 me-10">Report</div>
-            </a>
             <a href="/list-maintenance">
                 <div class="subtitle-1 me-10 text-danger" style="border-bottom: 1px solid #FF0000">Maintenance</div>
             </a>
+            @can('viewAny', App\Models\Entity\WorkOrder::class)
             <a href="/workorder">
-                <div class="subtitle-1 me-10">Work Order</div>
+                <div class="subtitle-1 me-10 " >Work Order</div>
             </a>
-            <a href="/weightproduct">
-                <div class="subtitle-1 me-10">Weight Product</div>
-            </a>
+            @endcan
         </div>
             <h2 class="my-5">Maintenance</h2>
+            @can('tes', App\Models\Entity\RequestMaintenance::class)
             <a class="btn border border-dark text-dark text-3 rounded-8 w-200px p-md-3 h-100 me-4" href="/maintenance">Create Maintenance</a>
+            @endcan
             <a class="btn btn-danger text-3 rounded-8 w-200px p-md-3 h-100 " href="/list-maintenance">List Maintenance</a>
             <div class="d-flex align-items-center position-relative my-5">
                 <!--begin::Svg Icon | path: icons/duotune/general/gen021.svg-->
@@ -78,7 +76,9 @@
                                 <th scope="col" class="fw-bold" style="font-size: 16px;">Start BD Date</th>
                                 <th scope="col" class="fw-bold" style="font-size: 16px;">Status</th>
                                 <th scope="col" class="fw-bold" style="font-size: 16px;">Activity Maintenance</th>
+                                @can('view', App\Models\Entity\RequestMaintenance::class)
                                 <th scope="col" class="fw-bold" style="font-size: 16px;">Detail</th>
+                                @endcan
                             </tr>
                         </thead>
                         <tbody>
@@ -106,9 +106,11 @@
                                 <td style="font-size: 16px;">
                                     {{$item->activity_maintenance}}
                                 </td>
+                                @can('view', App\Models\Entity\RequestMaintenance::class)
                                 <td>
                                     <a class="btn btn-danger text-3 rounded-8 w-100 p-md-3 h-100 me-4" href="{{route('maintenance.show', $item->id)}}">Approval</a>
                                 </td>
+                                @endcan
                             </tr>
                         </tbody>
                     </table>

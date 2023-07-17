@@ -20,7 +20,7 @@ class WeightProductPolicy
      */
     public function viewAny(User $user)
     {
-        //
+        return $user->role == 'ADMIN';
     }
 
     /**

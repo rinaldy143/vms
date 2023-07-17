@@ -36,7 +36,9 @@
                                     <select class="form-control" aria-label="maintain" id="maintain" name="user_id[]" multiple="multiple" size="4">
                                         <option value="" disabled selected>{{__('add maintainer')}}</option>
                                         @foreach ($user as $item)
+                                        @if ($item->role == 'Mechanices')
                                           <option value="{{ $item->id }}" data-phone="{{ $item->phone_number }}" data-image="{{ $item->photo }}">{{ $item->name }}</option>
+                                          @endif
                                         @endforeach
                                       </select>
 

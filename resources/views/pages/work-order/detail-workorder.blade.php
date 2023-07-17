@@ -135,7 +135,7 @@
 
                             {{-- @if ($maintenance->workorder->analysist == null) --}}
                             @if (isset($maintenance->workorder) && $maintenance->workorder->analysist == null)
-
+                            @can('view', App\Models\Entity\WorkOrder::class)
                             <form id="maintenance" action="{{route('workorder.update', ($maintenance->workorder->id))}}" method="POST"
                                 enctype="multipart/form-data">
                                 @csrf
@@ -228,6 +228,7 @@
                                     {{-- <button class="btn border border-danger text-danger text-3 rounded-8 w-200px p-md-3 h-100">Cancel</button> --}}
                                 </div>
                             </form>
+                            @endcan
                             @elseif (isset($maintenance->workorder) && $maintenance->workorder->analysist !== null)
                             <div class="col-lg-6">
                                 <div class="d-flex row">
@@ -254,6 +255,7 @@
 
 
                     @if (isset($maintenance->workorder) && $maintenance->workorder->analysist !== null)
+                    @can('view', App\Models\Entity\WorkOrder::class)
                         <div class="my-4">
                             <h2 class="pt-3">Maintenance Proof</h2>
                             <form action="{{route('workorder.update', ($maintenance->workorder->id))}}" method="POST"
@@ -293,6 +295,7 @@
                                 </div>
                             </form>
                         </div>
+                        @endcan
                     @endif
 
 

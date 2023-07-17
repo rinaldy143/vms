@@ -19,7 +19,7 @@ class RequestMaintenancePolicy
      */
     public function viewAny(User $user): Response|bool
     {
-        return true;
+        return $user->role == 'ADMIN' || $user->role == 'Operation' || $user->role == 'Lead Mechanices' || $user->role == 'Mechanices';
     }
 
     /**
@@ -29,9 +29,16 @@ class RequestMaintenancePolicy
      * @param RequestMaintenance $data
      * @return Response|bool
      */
-    public function view(User $user, RequestMaintenance $data): Response|bool
+    public function view(User $user): Response|bool
     {
-        return true;
+        // return true;
+        return $user->role == 'ADMIN' || $user->role == 'Lead Mechanices';
+    }
+
+    public function tes(User $user): Response|bool
+    {
+        // return true;
+        return $user->role == 'ADMIN' || $user->role == 'Operation';
     }
 
     /**
@@ -42,7 +49,7 @@ class RequestMaintenancePolicy
      */
     public function create(User $user): Response|bool
     {
-        return true;
+        return $user->role == 'ADMIN' || $user->role == 'Operation' || $user->role == 'Lead Mechanices';
     }
 
     /**

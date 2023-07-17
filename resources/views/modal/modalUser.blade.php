@@ -89,7 +89,7 @@
                                     @endforeach --}}
                                     <option value="ADMIN" >ADMIN</option>
                                     <option value="Operation" >Operation</option>
-                                    <option value="Lead Mechanices / Departement Mechanices" >Lead Mechanices</option>
+                                    <option value="Lead Mechanices" >Lead Mechanices</option>
                                     <option value="Mechanices" >Mechanices</option>
                                     <option value="Logistic" >Logistic</option>
                                     {{-- <option value="MEMBER" >MEMBER</option> --}}

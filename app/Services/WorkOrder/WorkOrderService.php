@@ -49,6 +49,18 @@ class WorkOrderService extends AppService implements AppServiceInterface
     public function update($id, $data)
 {
     $row = WorkOrderTable::findOrFail($id);
+    // maintenance->WorkOrder->User
+    $akun = Auth::user()->name;
+    // dd($row->User->name);
+    if (!$row->User->contains('name', $akun)) {
+        // Simpan pesan dalam flash message
+        session()->flash('error', 'Hanya maintainer yang diassign yang dapat memulai maintenance.');
+        // Arahkan pengguna ke halaman yang dituju (misalnya, halaman beranda)
+        return redirect()->route('workorder.index');
+    }
+    // if (Auth::user()->id !== $data->assign) {
+    //     abort(403);
+    // }
     // $workOrder = WorkOrderTable::all();
 
     // Update foto jika ada perubahan
