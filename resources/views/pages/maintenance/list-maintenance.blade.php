@@ -49,6 +49,8 @@
                     </button>
                 </div>
             </div>
+            @if ($maintenance->count())
+
             @foreach ($maintenance as $item)
             <div class="card w-100 mt-6">
                 <div class="card-body">
@@ -101,6 +103,11 @@
                 </div>
             </div>
             @endforeach
+            @else
+            <h3 class="text-success">
+                there are currently no vehicles that require approval
+            </h3>
+            @endif
     </div>
 </div>
 

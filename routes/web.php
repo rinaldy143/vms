@@ -27,45 +27,27 @@ use Illuminate\Support\Facades\DB;
 Auth::routes();
 
 Route::group(['prefix' => '/'], function () {
-    Route::get('/login', [AuthController::class, 'index'])->name('login');
-    Route::get('/reset', function() {
-        return view('/pages/auth/reset');
+    Route::middleware('guest:web')->group(function () {
+        // Gunakan middleware 'guest:web' untuk menandai pengguna yang belum login
+        // Gunakan middleware 'redirect.authenticated' untuk mengarahkan pengguna yang sudah login
+        Route::get('/login', [AuthController::class, 'index'])->name('login');
+        Route::post('/', [AuthController::class, 'login'])->name('login.post');
+        Route::get('/reset', function() {
+            return view('/pages/auth/reset');
+        });
     });
-    Route::post('/dashboard', [AuthController::class, 'login'])->name('login.post');
+    // Route::get('/login', [AuthController::class, 'index'])->name('login');
+    // Route::post('/', [AuthController::class, 'login'])->name('login.post');
     Route::group(['middleware' => 'auth'], function () {
         Route::get('/', function() {
             return view('/pages/dashboard');
         });
-        Route::get('/dashboard', function() {
-            return view('/pages/dashboard');
-        });
-        // Route::get('/maintenance/maintenance', function() {
-        //     return view('/pages/maintenance/maintenance');
+        // Route::get('/dashboard', function() {
+        //     return view('/pages/dashboard');
         // });
-        // Route::get('/maintenance/list-maintenance', function() {
-        //     return view('/pages/maintenance/list-maintenance');
-        // });
-        // Route::get('/maintenance/list-maintenance/detail-maintenance', function() {
-        //     return view('/pages/maintenance/detail-maintenance');
-        // });
-        // Route::get('/maintenance/report', function() {
-        //     return view('/pages/maintenance/report');
-        // });
+        Route::get('/', [App\Http\Controllers\ChartController::class, 'index'])->name('dashboard.index');
+
         Route::post('/workorder/{rm_id}/request-sparepart', [App\Http\Controllers\WorkOrder\WorkOrderController::class, 'requestSparepart'])->name('workorder.requestSparepart');
-
-
-
-        // Route::get('/maintenance/workorder', function() {
-        //     return view('/pages/work-order/workorder');
-        // });
-
-        // Route::get('/vehicles', function() {
-        //     $model_vehicle = ModelVehicle::all();
-        //     $vehiclesT = DB::table('type_vehicles')->get();
-        //     $vehicles = DB::table('vehicles')->get();
-        //     return view('/pages/vehicle/vehicle1', ['model_vehicle' => $model_vehicle, 'vehiclesT' => $vehiclesT, 'vehicles' => $vehicles]);
-        // });
-
         Route::resource('spareparts', App\Http\Controllers\Sparepart\SparepartController::class);
         Route::resource('weightproduct', App\Http\Controllers\WeightProduct\WeightProductController::class);
         Route::group(['prefix' => 'sparepart', 'as' => 'spareparts.'], function () {
@@ -100,10 +82,6 @@ Route::group(['prefix' => '/'], function () {
             return view('/pages/vehicle/vehicle-setting');
         });
 
-        // Route::get('/history', function() {
-        //     return view('/pages/history');
-        // });
-
         Route::get('/access-features', function() {
             return view('/pages/access-features');
         });
@@ -113,7 +91,6 @@ Route::group(['prefix' => '/'], function () {
         });
         Route::get('logout', [AuthController::class, 'logout']);
         Route::put('/weightproduct', [App\Http\Controllers\WeightProduct\WeightProductController::class, 'updatePrioritas'])->name('weightproduct.updatePrioritas');
-        // Route::put('/weightproduct/updatePrioritas', [WeightProductController::class, 'updatePrioritas'])->name('weightproduct.updatePrioritas');
     });
 });
 

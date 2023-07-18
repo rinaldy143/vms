@@ -13,6 +13,8 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Auth\RequestGuard;
+use Illuminate\Support\Facades\DB;
+use App\Models\Entity\User;
 
 class AuthController extends ApiController
 {
@@ -43,10 +45,18 @@ class AuthController extends ApiController
     {
         try {
             $user = $this->service->login($request);
+            $users = User::select(DB::raw("COUNT(*) as count"), 'role')
+            // ->whereYear('created_at', date('Y'))
+            ->groupBy('role')
+            ->orderBy('role', 'ASC')
+            ->pluck('count', 'role');
+
+            return view('pages.dashboard', compact('users'));
             // return $this->sendSuccess($user, null, 200);
-            return view('pages.dashboard');
         } catch (Exception $e) {
-            return $this->sendError(null, $e->getMessage(), $e->getCode());
+            $errorMessage = $e->getMessage();
+            return view('pages.auth.login', compact('errorMessage'));
+            // return $this->sendError(null, $e->getMessage(), $e->getCode());
         }
     }
 

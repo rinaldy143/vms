@@ -3,7 +3,7 @@
 @section('content')
 <div class="content">
     <div class="d-flex align-items-center position-absolute subtitle-1 p-2">
-            <a href="/dashboard" style="z-index: 100" class="subtitle-1">
+            <a href="/" style="z-index: 100" class="subtitle-1">
             <span style="margin-left: 57.75px"><img src="/assets/media/icons/system-icon/outline/Arrow - left.svg" alt=""></span>
             Back
         </a>

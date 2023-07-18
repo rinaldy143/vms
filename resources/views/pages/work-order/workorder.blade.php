@@ -53,6 +53,8 @@
                     </button>
                 </div>
             </div>
+            @if ($maintenance->count())
+
                 @foreach ($maintenance as $item)
 
                 @if (isset($item->workorder) && $item->workorder->photo !== null)
@@ -110,6 +112,12 @@
                 @endif
                 @endforeach
                 {{ $maintenance->links() }}
+                @else
+                <h3 class="text-success">
+                    all vehicles have completed maintenance
+                </h3>
+                @endif
+
 
     </div>
 </div>
