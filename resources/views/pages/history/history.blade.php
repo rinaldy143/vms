@@ -3,27 +3,11 @@
 @section('content')
 <div class="content">
     <div class="container">
-        <div class="heading-3 position-absolute">Work Order</div>
         @if(session('error'))
-        <script>
-            alert('{{ session('error') }}');
-        </script>
-     @endif
-        <div class="d-flex justify-content-end">
-            <div class="d-flex align-items-center position-relative my-1">
-                <!--begin::Svg Icon | path: icons/duotune/general/gen021.svg-->
-                <span class="position-absolute ms-6">
-                    <img src="/img/Search.png" alt="">
-                </span>
-                <!--end::Svg Icon-->
-                <input type="text" data-kt-customer-table-filter="search"
-                    class="form-control form-control-lg w-325px h-50px ps-15" placeholder="Search...">
-
-                <div class="px-10 btn btn-icon btn-active-light-primary w-30px h-30px w-md-40px h-md-40px">
-                    <img src="/img/Frame 1637.png" alt="">
-                </div>
-            </div>
-        </div>
+            <script>
+                alert('{{ session('error') }}');
+            </script>
+        @endif
             <h2 class="my-5">History</h2>
             {{-- <a class="btn btn-danger text-3 rounded-8 w-200px p-md-3 " href="/workorder">list work order</a> --}}
             {{-- <a class="btn border border-dark text-dark text-3 rounded-8 w-200px p-md-3 h-100 me-4" href="#">onprocess work order</a> --}}

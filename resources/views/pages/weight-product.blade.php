@@ -7,19 +7,7 @@
         <div class="d-flex justify-content-between align-items-center">
             <div class="text-black fw-bolder heading-3 fs-1 me-3">Weight Product </div>
         </div>
-        <div class="nav my-10">
-            <a href="/list-maintenance">
-                <div class="subtitle-1 me-10">Maintenance</div>
-            </a>
-            @can('viewAny', App\Models\Entity\RequestMaintenance::class)
-            <a href="/workorder">
-                <div class="subtitle-1 me-10 " >Work Order</div>
-            </a>
-            @endcan
-            <a href="/weightproduct">
-                <div class="subtitle-1 me-10 text-danger" style="border-bottom: 1px solid #FF0000">Weight Product</div>
-            </a>
-        </div>
+
         <!--begin::Row-->
         <nav class="navbar navbar-expand-md navbar-light">
             <div class="container px-0 py-5">

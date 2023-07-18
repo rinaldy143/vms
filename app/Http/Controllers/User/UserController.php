@@ -59,8 +59,12 @@ class UserController extends ApiController
      */
     public function store(StoreUserRequest $request)
     {
-        $user = $this->service->create($request);
-        return $this->sendSuccess($user, null, 201);
+        $data = $this->service->create($request);
+        $collect = User::all();
+        $user = PaginationHelper::paginate($collect, 12);
+        // return $this->sendSuccess($user, null, 201);
+        return view('pages.users', compact('user'));
+
     }
 
     /**

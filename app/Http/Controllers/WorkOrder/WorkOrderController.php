@@ -81,7 +81,18 @@ class WorkOrderController extends ApiController
         ->whereNull('wo_id')
         ->join('work_orders', 'request_maintenances.id', '=', 'work_orders.rm_id')
         ->update(['request_maintenances.wo_id' => DB::raw('work_orders.id')]);
-        return $this->sendSuccess($data, null, 201);
+        // return $this->sendSuccess($data, null, 201);
+        $maintenance = RequestMaintenance::where(function ($query) {
+            $query->orWhereNotNull('analysist')
+            // ->orWhereNotNull('analysist')
+                ->orWhereExists(function ($subquery) {
+                    $subquery->select(DB::raw(1))
+                        ->from('work_orders')
+                        ->whereRaw('work_orders.rm_id = request_maintenances.id');
+                        // ->whereNull('analysist');
+                });
+        })->paginate(15);
+        return view('pages.work-order.workorder', compact('maintenance', 'data'));
     }
 
     /**

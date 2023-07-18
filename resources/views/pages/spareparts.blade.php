@@ -16,9 +16,6 @@
                         <input type="text" name="search" data-kt-customer-table-filter="search"
                             class="form-control form-control-lg w-350px ps-15" placeholder="Search...">
                     </form>
-                    <div class="px-10 btn btn-icon btn-active-light-primary w-30px h-30px w-md-40px h-md-40px">
-                        <img src="/img/Frame 1637.png" alt="">
-                    </div>
                 </div>
         </div>
         <!--begin::Row-->

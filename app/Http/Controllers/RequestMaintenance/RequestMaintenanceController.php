@@ -13,8 +13,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Helpers\PaginationHelper;
-
-
+use Termwind\Components\Dd;
 
 class RequestMaintenanceController extends ApiController
 {
@@ -43,9 +42,61 @@ class RequestMaintenanceController extends ApiController
     {
         // $data = $this->service->dataTable($request);
         $maintenance = RequestMaintenance::all();
+        // $vehicles = Vehicle::whereDoesntHave('requestMaintenances')->get();
+        // $vehicles = Vehicle::whereDoesntHave('requestMaintenances')
+        // ->orWhereHas('requestMaintenances.workOrder', function ($query) {
+        //     $query->whereNull('photo');
+        // })
+        // ->get();
+
+        // $subquery = DB::table('request_maintenances')
+        // ->select(DB::raw(1))
+        // ->whereRaw('request_maintenances.vehicle_id = vehicles.id')
+        // ->whereNull('request_maintenances.wo_id');
+
+        // $vehicles = DB::table('vehicles')
+        //     ->whereNotExists(function ($query) use ($subquery) {
+        //         $query->select(DB::raw(1)) // Selecting 1 inside the subquery
+        //             ->from('request_maintenances')
+        //             ->whereRaw('request_maintenances.vehicle_id = vehicles.id')
+        //             ->whereNull('request_maintenances.wo_id');
+        //     })
+        //     ->get();
+
+        $subquery = DB::table('request_maintenances')
+        ->select(DB::raw(1))
+        ->leftJoin('work_orders', 'work_orders.id', '=', 'request_maintenances.wo_id')
+        ->whereColumn('request_maintenances.vehicle_id', 'vehicles.id')
+        ->where(function ($query) {
+            $query->whereNull('request_maintenances.wo_id')
+                ->orWhereNull('work_orders.photo');
+        });
+
+    $vehicles = DB::table('vehicles')
+        ->whereNotExists(function ($query) use ($subquery) {
+            $query->select(DB::raw(1))
+                ->from('request_maintenances')
+                ->leftJoin('work_orders', 'work_orders.id', '=', 'request_maintenances.wo_id')
+                ->whereColumn('request_maintenances.vehicle_id', 'vehicles.id')
+                ->where(function ($innerQuery) use ($subquery) {
+                    $innerQuery->whereNull('request_maintenances.wo_id')
+                        ->orWhereNull('work_orders.photo');
+                });
+        })
+        ->get();
+
+
+
+
+
+
+
+
+
+
         $vehicle = Vehicle::all();
         $trailer = Trailer::all();
-        return view('pages.maintenance.maintenance', compact('maintenance', 'vehicle','trailer'));
+        return view('pages.maintenance.maintenance', compact('maintenance', 'vehicle','trailer','vehicles'));
 
         // return $this->sendSuccess($data, null, 200);
     }

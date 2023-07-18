@@ -33,7 +33,11 @@
                                             <option value="{{ $users->id }}" data-telepon="{{ $user->phone_number }}">{{$users->name}}</option>
                                             @endforeach
                                     </select> --}}
-                                    <select class="form-control" aria-label="maintain" id="maintain" name="user_id[]" multiple="multiple" size="4">
+                                    <div id="warningMessage" style="display: none; color: red;">
+                                        Anda hanya bisa memilih dua opsi.
+                                    </div>
+
+                                    <select class="form-control" aria-label="maintain" id="maintain" name="user_id[]" multiple="multiple" size="4" onchange="limitSelection(this);">
                                         <option value="" disabled selected>{{__('add maintainer')}}</option>
                                         @foreach ($user as $item)
                                         @if ($item->role == 'Mechanices')
@@ -116,9 +120,29 @@ selectElement.addEventListener('change', function() {
 });
 
 
-cancelButton.addEventListener('click', function() {
-  selectElement.selectedIndex = -1; // Menghilangkan pilihan yang terpilih
-  previewContainer.innerHTML = ''; // Menghapus preview
-});
+    cancelButton.addEventListener('click', function() {
+    selectElement.selectedIndex = -1; // Menghilangkan pilihan yang terpilih
+    previewContainer.innerHTML = ''; // Menghapus preview
+    });
 
+    function limitSelection(selectElement) {
+        // Ambil semua opsi yang dipilih dalam elemen select
+        const selectedOptions = Array.from(selectElement.selectedOptions);
+
+        // Jika jumlah opsi yang dipilih melebihi dua, batasi ke dua
+        if (selectedOptions.length > 2) {
+            // Tampilkan pesan peringatan
+            document.getElementById('warningMessage').style.display = 'block';
+
+            // Batasi pilihan ke dua opsi pertama
+            for (let i = 0; i < selectedOptions.length; i++) {
+                if (i >= 2) {
+                    selectedOptions[i].selected = false;
+                }
+            }
+        } else {
+            // Sembunyikan pesan peringatan jika jumlah pilihan valid
+            document.getElementById('warningMessage').style.display = 'none';
+        }
+    }
 </script>

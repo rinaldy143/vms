@@ -3,29 +3,13 @@
 @section('content')
 <div class="content">
     <div class="container">
-        <div class="heading-3 position-absolute">Maintenances</div>
-        <div class="d-flex justify-content-end">
-            <div class="d-flex align-items-center position-relative my-1">
-                <!--begin::Svg Icon | path: icons/duotune/general/gen021.svg-->
-                <span class="position-absolute ms-6">
-                    <img src="/img/Search.png" alt="">
-                </span>
-                <!--end::Svg Icon-->
-                <input type="text" data-kt-customer-table-filter="search"
-                    class="form-control form-control-lg w-325px h-50px ps-15" placeholder="Search...">
-
-                <div class="px-10 btn btn-icon btn-active-light-primary w-30px h-30px w-md-40px h-md-40px">
-                    <img src="/img/Frame 1637.png" alt="">
-                </div>
-            </div>
-        </div>
         <div class="nav my-10">
             <a href="/list-maintenance">
                 <div class="subtitle-1 me-10 text-danger" style="border-bottom: 1px solid #FF0000">Maintenance</div>
             </a>
             @can('viewAny', App\Models\Entity\WorkOrder::class)
             <a href="/workorder">
-                <div class="subtitle-1 me-10 " >Work Order</div>
+                <div class="subtitle-1 me-10 " >Request Maintenance</div>
             </a>
             @endcan
         </div>
@@ -47,8 +31,7 @@
                                     <option value="" disabled selected class="fw-bolder" >{{__('Select Vehicle Code')}}</option>
                                         {{-- <option value="">&#160;&#160;&#160;&#160;D 1123 ABC</option>
                                         <option value="">&#160;&#160;&#160;&#160;D 2130 BAC</option> --}}
-                                        @foreach ($vehicle as $model)
-
+                                        @foreach ($vehicles as $model)
                                         <option value="{{$model->id}}" {{ old('vehicle_id')==$model->id ?
                                             'selected' : '' }}>{{$model->plat_number}}</option>
                                         @endforeach

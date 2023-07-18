@@ -99,13 +99,17 @@
                                     @if ($maintenance->workorder !== null)
                                     @foreach ($maintenance->WorkOrder->User as $user)
                                     <div class="px-5">
+                                        @if($user->photo == null)
+                                        <img class="pt-3" width="50px" src="/img/Ellipse 44.png" alt="dawda">
+                                        @else
                                         <img class="pt-3" width="50px" src="/img/users/{{ $user->photo }}" alt="dawda">
+                                        @endif
                                     </div>
                                     <div class="h-50">
                                         <h2>{{ $user->name }}</h2>
 
                                         {{-- <h2>{{ $maintenance->WorkOrder()->latest()->first()->User()->name }}</h2> --}}
-                                        <span class="fw-lighter">{{ $user->name }}</span>
+                                        <span class="fw-lighter">{{ $user->role }}</span>
                                     </div>
                                     @endforeach
                                      @else
