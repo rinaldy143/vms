@@ -9,7 +9,7 @@
             </a>
             @can('viewAny', App\Models\Entity\WorkOrder::class)
             <a href="/workorder">
-                <div class="subtitle-1 me-10 " >Request Maintenance</div>
+                <div class="subtitle-1 me-10 " >Work Order</div>
             </a>
             @endcan
         </div>

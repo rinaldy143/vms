@@ -42,26 +42,6 @@ class RequestMaintenanceController extends ApiController
     {
         // $data = $this->service->dataTable($request);
         $maintenance = RequestMaintenance::all();
-        // $vehicles = Vehicle::whereDoesntHave('requestMaintenances')->get();
-        // $vehicles = Vehicle::whereDoesntHave('requestMaintenances')
-        // ->orWhereHas('requestMaintenances.workOrder', function ($query) {
-        //     $query->whereNull('photo');
-        // })
-        // ->get();
-
-        // $subquery = DB::table('request_maintenances')
-        // ->select(DB::raw(1))
-        // ->whereRaw('request_maintenances.vehicle_id = vehicles.id')
-        // ->whereNull('request_maintenances.wo_id');
-
-        // $vehicles = DB::table('vehicles')
-        //     ->whereNotExists(function ($query) use ($subquery) {
-        //         $query->select(DB::raw(1)) // Selecting 1 inside the subquery
-        //             ->from('request_maintenances')
-        //             ->whereRaw('request_maintenances.vehicle_id = vehicles.id')
-        //             ->whereNull('request_maintenances.wo_id');
-        //     })
-        //     ->get();
 
         $subquery = DB::table('request_maintenances')
         ->select(DB::raw(1))
@@ -84,15 +64,6 @@ class RequestMaintenanceController extends ApiController
                 });
         })
         ->get();
-
-
-
-
-
-
-
-
-
 
         $vehicle = Vehicle::all();
         $trailer = Trailer::all();
@@ -192,7 +163,11 @@ class RequestMaintenanceController extends ApiController
     public function destroy(string $id)
     {
         $datum = $this->service->delete($id);
-        return $this->sendSuccess($datum, null, 200);
+        // return $this->sendSuccess($datum, null, 200);
+        $maintenance = RequestMaintenance::whereNull('analysist')->get();
+        $vehicle = Vehicle::all();
+        $trailer = Trailer::all();
+        return view('pages.maintenance.list-maintenance', compact('maintenance', 'vehicle','trailer'));
     }
 
     public function WP(Request $request)

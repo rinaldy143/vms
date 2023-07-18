@@ -90,8 +90,11 @@ class UserController extends ApiController
     {
         $user = $this->service->update($id, $request);
         // $this->authorize('update', User::class);
+        $collect = User::all();
 
-        return $this->sendSuccess($user, null, 200);
+        $user = PaginationHelper::paginate($collect, 12);
+        // return $this->sendSuccess($user, null, 201);
+        return view('pages.users', compact('user'));
     }
 
     public function search(Request $request)
@@ -164,8 +167,9 @@ class UserController extends ApiController
         // $this->authorize('delete', User::class);
 
         $user = $this->service->delete($id);
-
-
-        return $this->sendSuccess($user, null, 200);
+        $collect = User::all();
+        $user = PaginationHelper::paginate($collect, 12);
+        // return $this->sendSuccess($user, null, 201);
+        return view('pages.users', compact('user'));
     }
 }

@@ -51,7 +51,13 @@ class SparepartController extends ApiController
     public function store(StoreSparepartRequest $request)
     {
         $data = $this->service->create($request);
-        return $this->sendSuccess($data, null, 201);
+        $sparepart = Sparepart::all();
+        $spareparts = PaginationHelper::paginate($sparepart, 12);
+
+
+        return view('pages.spareparts', compact('spareparts'));
+
+        // return $this->sendSuccess($data, null, 201);
     }
 
     /**
@@ -76,7 +82,13 @@ class SparepartController extends ApiController
     public function update(UpdateSparepartRequest $request, string $id)
     {
         $datum = $this->service->update($id, $request);
-        return $this->sendSuccess($datum, null, 200);
+        $sparepart = Sparepart::all();
+        $spareparts = PaginationHelper::paginate($sparepart, 12);
+
+
+
+        return view('pages.spareparts', compact('spareparts'));
+        // return $this->sendSuccess($datum, null, 200);
     }
 
     /**
@@ -120,6 +132,10 @@ class SparepartController extends ApiController
     public function destroy(string $id)
     {
         $datum = $this->service->delete($id);
-        return $this->sendSuccess($datum, null, 200);
+        $sparepart = Sparepart::all();
+        $spareparts = PaginationHelper::paginate($sparepart, 12);
+
+
+        return view('pages.spareparts', compact('spareparts'));
     }
 }

@@ -23,9 +23,9 @@ class WeightProductController extends ApiController
     {
         $this->service = $service;
         parent::__construct($request);
-        $this->middleware('can:create, App\Models\Entity\WeightProduct')->only('store');
-        $this->middleware('can:delete, App\Models\Entity\WeightProduct')->only('destroy');
-        $this->middleware('can:update, App\Models\Entity\WeightProduct')->only('update');
+        // $this->middleware('can:create, App\Models\Entity\WeightProduct')->only('store');
+        // $this->middleware('can:delete, App\Models\Entity\WeightProduct')->only('destroy');
+        // $this->middleware('can:update, App\Models\Entity\WeightProduct')->only('update');
         $this->middleware('can:viewAny, App\Models\Entity\WeightProduct')->only('index');
 
     }
@@ -83,7 +83,10 @@ class WeightProductController extends ApiController
     public function update(UpdateWeightProductRequest $request, string $id)
     {
         $datum = $this->service->update($id, $request);
-        return $this->sendSuccess($datum, null, 200);
+        // return $this->sendSuccess($datum, null, 200);
+        $weight_product = WeightProduct::all();
+
+        return view('pages.weight-product', compact('weight_product'));
     }
 
     /**
@@ -96,7 +99,10 @@ class WeightProductController extends ApiController
     public function updatePrioritas()
     {
         $datum = $this->service->updatePrioritas();
-        return $this->sendSuccess($datum, null, 200);
+        // return $this->sendSuccess($datum, null, 200);
+        $weight_product = WeightProduct::all();
+
+        return view('pages.weight-product', compact('weight_product'));
     }
 
     /**

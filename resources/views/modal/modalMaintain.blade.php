@@ -34,26 +34,25 @@
                                             @endforeach
                                     </select> --}}
                                     <div id="warningMessage" style="display: none; color: red;">
-                                        Anda hanya bisa memilih dua opsi.
+                                        Anda hanya bisa memilih maksimal empat opsi.
                                     </div>
 
-                                    <select class="form-control" aria-label="maintain" id="maintain" name="user_id[]" multiple="multiple" size="4" onchange="limitSelection(this);">
+                                    <select class="form-control" aria-label="maintain" id="maintain" name="user_id[]" multiple="multiple" size="5" onchange="limitSelection(this);">
                                         <option value="" disabled selected>{{__('add maintainer')}}</option>
                                         @foreach ($user as $item)
                                         @if ($item->role == 'Mechanices')
-                                          <option value="{{ $item->id }}" data-phone="{{ $item->phone_number }}" data-image="{{ $item->photo }}">{{ $item->name }}</option>
-                                          @endif
+                                        <option value="{{ $item->id }}" data-phone="{{ $item->phone_number }}" data-image="{{ $item->photo ? $item->photo : '../../img/Ellipse 44.png' }}">{{ $item->name }}</option>
+                                        @endif
                                         @endforeach
-                                      </select>
-
-
-                                      {{-- <div id="previewContainer" class="preview-container"></div> --}}
+                                    </select>
 
                                         @error('maintain')
                                         <div class="invalid-feedback d-flex">
                                             {{ $message }}
                                         </div>
                                         @enderror
+                                        <p class="text-dark" style="padding-top:10%">Untuk lebih dari satu maintaier, pilih sambil menekan ctrl</p>
+
                                 </div>
                             </div>
                         </div>
@@ -94,7 +93,6 @@ selectElement.addEventListener('change', function() {
     const name = option.textContent;
     const phone = option.getAttribute('data-phone');
     const image = option.getAttribute('data-image');
-
     const previewItem = document.createElement('div');
     previewItem.classList.add('preview-item');
 
@@ -130,13 +128,13 @@ selectElement.addEventListener('change', function() {
         const selectedOptions = Array.from(selectElement.selectedOptions);
 
         // Jika jumlah opsi yang dipilih melebihi dua, batasi ke dua
-        if (selectedOptions.length > 2) {
+        if (selectedOptions.length > 4) {
             // Tampilkan pesan peringatan
             document.getElementById('warningMessage').style.display = 'block';
 
-            // Batasi pilihan ke dua opsi pertama
+            // Batasi pilihan ke empat opsi pertama
             for (let i = 0; i < selectedOptions.length; i++) {
-                if (i >= 2) {
+                if (i >= 4) {
                     selectedOptions[i].selected = false;
                 }
             }

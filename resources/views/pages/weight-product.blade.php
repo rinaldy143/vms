@@ -81,6 +81,7 @@
                                         <th scope="col" class="fw-bold" style="font-size: 16px;">Nilai Bobot</th>
                                         <th scope="col" class="fw-bold" style="font-size: 16px;">Status</th>
                                         <th scope="col" class="fw-bold" style="font-size: 16px;">Bobot</th>
+                                        <th scope="col" class="fw-bold" style="font-size: 16px;">Edit</th>
                                         {{-- <th scope="col" class="fw-bold" style="font-size: 16px;">Activity Maintenance</th>
                                         <th scope="col" class="fw-bold" style="font-size: 16px;">Detail</th> --}}
                                     </tr>
@@ -105,6 +106,14 @@
                                         <td class="col-2" style="font-size: 16px;">
                                             {{$item->bobot}}
                                         </td>
+                                        <td class="col-2" style="font-size: 16px;">
+                                            <a class="btn btn-danger me-3 font-weight-bolder py-2" style="border-radius: 8px;" data-toggle="modal"
+                                            href="#modaleditKriteria{{$item->id}}" title="Restock">
+                                            Edit
+                                            </a>
+                                        </td>
+                                        @include('modal.modaleditKriteria')
+
                                         {{-- <td style="font-size: 16px;">
                                             {{$item->activity_maintenance}}
                                         </td>
@@ -133,7 +142,10 @@
         <!--end::Row-->
     </div>
     {{-- <div> --}}
-        @include('modal.modalKriteria')
+        <div class="">
+
+            @include('modal.modalKriteria')
+        </div>
     {{-- </div> --}}
     <!-- Modal contact-->
 

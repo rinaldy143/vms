@@ -31,11 +31,11 @@
                             <!--end::Svg Icon-->Restock
                         </button> --}}
                         @can('create', App\Models\Entity\Sparepart::class)
-                            <a class="btn btn-danger me-3 font-weight-bolder py-2" style="border-radius: 8px;" data-toggle="modal"
+                            {{-- <a class="btn btn-danger me-3 font-weight-bolder py-2" style="border-radius: 8px;" data-toggle="modal"
                             href="#modalRestock" title="Restock">
                             <img class="pt-2" src="/img/Plus.png" alt="">
                             Restock
-                            </a>
+                            </a> --}}
                             <a class="btn me-3 text-danger font-weight-bolder py-2" style="border: 1px solid red; border-radius: 8px;" data-toggle="modal"
                             href="#modalSparepart" title="Add Sparepart">
                             <img class="pt-2" src="/img/Plus 1.png" alt="">
@@ -94,17 +94,18 @@
                                         </a>
                                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                             <form action="{{route('spareparts.destroy', ($item->id))}}" method="POST">
-                                                <a href="" class="dropdown-item">
+                                                {{-- <a href="#modaleditsparepart{{$item->id}}" class="dropdown-item">
                                                     <img src="/assets/media/icons/system-icon/outline/Edit Square.svg" alt="" width="25px">
                                                     Update
-                                                </a>
+                                                </a> --}}
+                                                <a class="dropdown-item" data-toggle="modal" id="btn1" href="#modaleditsparepart{{$item->id}}"> <img src="/assets/media/icons/system-icon/outline/Edit Square.svg" width="25px" alt=""> Update</a>
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="dropdown-item">
-                                                    <img src="/assets/media/icons/system-icon/outline/Delete.svg" alt="" width="25px">
-                                                    Delete
-                                                </button>
+                                                <button type="submit" class="dropdown-item"> <img src="/assets/media/icons/system-icon/outline/Delete.svg" width="25px" alt=""> Delete</button>
                                             </form>
+                                        </div>
+                                        <div>
+                                            @include('modal.modaleditsparepart')
                                         </div>
                                     </li>
                                 </ul>
@@ -143,11 +144,9 @@
         <!--end::Row-->
     </div>
     <div>
-        @include('modal.modalRestock')
-    </div>
-    <div>
         @include('modal.modalsparepart')
     </div>
+
     <!-- Modal contact-->
 
 

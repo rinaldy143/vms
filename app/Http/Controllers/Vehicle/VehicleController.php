@@ -8,6 +8,8 @@ use App\Http\Requests\Vehicle\UpdateVehicleRequest;
 use App\Models\Entity\ModelVehicle;
 use App\Models\Entity\TypeVehicle;
 use App\Models\Entity\Vehicle;
+use App\Models\Entity\RequestMaintenance;
+use App\Models\Entity\WorkOrder;
 use App\Services\Vehicle\VehicleService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -42,7 +44,10 @@ class VehicleController extends ApiController
         $vehicles = Vehicle::all();
         $vehiclesT = TypeVehicle::all();
         $model_vehicle = ModelVehicle::all();
-        return view('pages.vehicle.vehicle1', compact('vehicles', 'vehiclesT','model_vehicle'));
+        $rm = RequestMaintenance::all();
+        $wo = WorkOrder::all();
+        $model_vehicle = ModelVehicle::all();
+        return view('pages.vehicle.vehicle1', compact('vehicles', 'vehiclesT','model_vehicle','rm','wo'));
 
         // return $this->sendSuccess($data, null, 200);
     }
@@ -58,8 +63,10 @@ class VehicleController extends ApiController
         $data = $this->service->create($request);
         $vehicles = Vehicle::all();
         $vehiclesT = TypeVehicle::all();
+        $rm = RequestMaintenance::all();
+        $wo = WorkOrder::all();
         $model_vehicle = ModelVehicle::all();
-        return view('pages.vehicle.vehicle1', compact('vehicles', 'vehiclesT','model_vehicle'));
+        return view('pages.vehicle.vehicle1', compact('vehicles', 'vehiclesT','model_vehicle','rm','wo'));
     }
 
     /**
@@ -71,7 +78,13 @@ class VehicleController extends ApiController
     public function show(string $id)
     {
         $datum = $this->service->getById($id);
-        return $this->sendSuccess($datum, null, 200);
+        $vehicles = Vehicle::all();
+        $vehiclesT = TypeVehicle::all();
+        $rm = RequestMaintenance::all();
+        $wo = WorkOrder::all();
+        $model_vehicle = ModelVehicle::all();
+        return view('pages.vehicle.vehicle1', compact('vehicles', 'vehiclesT','model_vehicle','rm','wo'));
+        // return $this->sendSuccess($datum, null, 200);
     }
 
     /**
@@ -84,8 +97,13 @@ class VehicleController extends ApiController
     public function update(UpdateVehicleRequest $request, string $id)
     {
         $datum = $this->service->update($id, $request);
-
-        return $this->sendSuccess($datum, null, 200);
+        $vehicles = Vehicle::all();
+        $vehiclesT = TypeVehicle::all();
+        $rm = RequestMaintenance::all();
+        $wo = WorkOrder::all();
+        $model_vehicle = ModelVehicle::all();
+        return view('pages.vehicle.vehicle1', compact('vehicles', 'vehiclesT','model_vehicle','rm','wo'));
+        // return $this->sendSuccess($datum, null, 200);
     }
 
     /**
@@ -106,6 +124,12 @@ class VehicleController extends ApiController
     public function destroy(string $id)
     {
         $datum = $this->service->delete($id);
-        return $this->sendSuccess($datum, null, 200);
+        $vehicles = Vehicle::all();
+        $vehiclesT = TypeVehicle::all();
+        $rm = RequestMaintenance::all();
+        $wo = WorkOrder::all();
+        $model_vehicle = ModelVehicle::all();
+        return view('pages.vehicle.vehicle1', compact('vehicles', 'vehiclesT','model_vehicle','rm','wo'));
+        // return $this->sendSuccess($datum, null, 200);
     }
 }

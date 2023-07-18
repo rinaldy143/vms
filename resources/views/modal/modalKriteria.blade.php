@@ -22,7 +22,7 @@
                                 <span class="text-danger">*</span>
                             </label>
                             <div class="field-input pt-2 pb-6">
-                                <input type="text" id="kriteria" name="kriteria" class="form-control" placeholder="Ex. ol-01" maxlength="200" value={{old('kriteria')}}>
+                                <input type="text" id="kriteria" name="kriteria" class="form-control" placeholder="aktivitas" maxlength="200" value={{old('kriteria')}}>
                                 @error('kriteria')
                                 <div class="invalid-feedback d-flex">
                                     {{ $message }}
@@ -35,7 +35,7 @@
                                 <span class="text-danger">*</span>
                             </label>
                             <div class="field-input pt-2 pb-6">
-                                <input type="text" id="status" name="status" class="form-control" placeholder="Ex. ol-01" maxlength="200" value={{old('status')}}>
+                                <input type="text" id="status" name="status" class="form-control" placeholder="cost / benefit" maxlength="200" value={{old('status')}}>
                                 @error('status')
                                 <div class="invalid-feedback d-flex">
                                     {{ $message }}
@@ -50,7 +50,7 @@
                             </label>
                             <div class="field-input pt-2 pb-6">
                                 <input type="text" id="nilai_bobot" name="nilai_bobot" class="form-control"
-                                   placeholder="Ex. Castrol" maxlength="200" value={{old('nilai_bobot')}}>
+                                   placeholder="2" maxlength="200" value={{old('nilai_bobot')}}>
                                 @error('nilai_bobot')
                                 <div class="invalid-feedback d-flex">
                                     {{ $message }}

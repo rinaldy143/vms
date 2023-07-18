@@ -53,7 +53,8 @@ class WeightProductService extends AppService implements AppServiceInterface
         $row = WeightProductTable::findOrFail($id);
         $row->update([
             'kriteria' => $data['kriteria'],
-        ]);
+            'nilai_bobot' => $data['nilai_bobot'],
+            'status' => $data['status'],        ]);
         return $row;
 
     }

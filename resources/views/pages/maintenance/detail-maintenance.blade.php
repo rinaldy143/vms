@@ -29,13 +29,11 @@
                                     <div class="d-flex row">
                                         <div class="col-lg-6">
                                             <p>Start BD Date</p>
-                                            <p>Breakdown Type</p>
                                             <p>Unit Condition</p>
                                             <p>Created by</p>
                                         </div>
                                         <div class="col-lg-6">
                                             <p>: {{$maintenance->created_at}}</p>
-                                            <p>: {{$maintenance->breakdown_type}}</p>
                                             <p>: {{$maintenance->unit_condition}}</p>
                                             <p>: {{$maintenance->report_by}}</p>
                                         </div>
@@ -100,10 +98,14 @@
                                     @csrf
                                     @method('DELETE')
                                 </form> --}}
-                                <button class="btn border mx-3 border-danger text-danger text-3 rounded-8 w-200px p-md-3 h-100">reject</button>
-                                <input class="btn shadow btn-danger text-3 rounded-8 w-200px p-md-3 h-100" type="submit" value="Accept">
+                                {{-- <button class="btn border mx-3 border-danger text-danger text-3 rounded-8 w-200px p-md-3 h-100">reject</button> --}}
+                                <input class="btn shadow btn-danger text-3 rounded-8 w-200px p-md-3 h-100" style="margin-left: 10px" type="submit" value="Accept">
                             </div>
-
+                        </form>
+                        <form action="{{route('maintenance.destroy', ($maintenance->id))}}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class=" my-5 btn border border-danger text-danger text-3 rounded-8 w-200px p-md-3 h-100"> Reject</button>
                         </form>
                     </div>
                 </div>

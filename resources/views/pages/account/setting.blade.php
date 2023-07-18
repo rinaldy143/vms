@@ -14,10 +14,10 @@
             <div class="card drop-shadow border border-secondary align-items-center">
                 {{-- <img src="/img/img_videos/{{$video->thumbnail}}" alt="" class="card-img-top video-thumb "> --}}
                 <div class="pt-10">
-                    <a class="download round m-lg-3" title="" data-toggle="modal" href="#modalUpdate">
+                    {{-- <a class="download round m-lg-3" title="" data-toggle="modal" href="#modalUpdate">
                         <img src="img/kebab.png" alt="download" title="download"
                             style="right: 20px;position: absolute;" />
-                    </a>
+                    </a> --}}
                     @if(auth()->user()->photo == "")
                     <img class="bd-placeholder-img rounded-circle border mt-5"  width="100px" height="100px" src="/img/Ellipse 44.png" alt="">
                     @else
@@ -36,7 +36,7 @@
         </div>
     </div>
     <div class="d-flex justify-content-center mb-5">
-        <div class="btn btn-outline-danger" style="width: 326px" data-toggle="modal" href="#modalPassword">Change Password</div>
+        {{-- <div class="btn btn-outline-danger" style="width: 326px" data-toggle="modal" href="#modalPassword">Change Password</div> --}}
     </div>
     <div class="d-flex justify-content-center">
         <a class="btn btn-danger" style="width: 326px" href="{{ route('logout') }}">Logout</a>
