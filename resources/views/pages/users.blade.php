@@ -94,11 +94,11 @@
                     @can('create', App\Models\Entity\User::class)
                         <div class="card-title">
                             <!--begin::Search-->
-                            <button type="button" class="btn me-3" style="border: 1px solid">
+                            {{-- <button type="button" class="btn me-3" style="border: 1px solid">
                                 <!--begin::Svg Icon | path: icons/duotune/arrows/arr078.svg-->
                                 <img src="/img/Download.png" alt="">
                                 <!--end::Svg Icon-->Export
-                            </button>
+                            </button> --}}
                             <a class="btn btn-danger me-3 fw-bold py-3"  data-toggle="modal"
                             href="#modalUser" title="Download">
                             <img class src="/img/Add User.png" alt="">

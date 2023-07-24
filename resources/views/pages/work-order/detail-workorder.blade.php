@@ -123,11 +123,14 @@
                                     Add Maintain
                                 </span> --}}
                                     @else
+                                    @can('viewAny', App\Models\Entity\WorkOrder::class)
+
                                         <a class="btn btn-danger me-3 font-weight-bolder py-2 w-25" style="border-radius: 8px;" data-toggle="modal"
                                         href="#modalMaintain" title="Maintainer">
                                         <img class="pt-2" src="/img/Plus.png" alt="">
                                         Add Maintain
                                         </a>
+                                    @endcan
                                     @endif
                                         <!-- Tambahkan checkbox lainnya sesuai kebutuhan -->
                                         <div id="previewContainer" class="pt-10 preview-container d-flex flex-wrap"></div>
@@ -284,11 +287,6 @@
                                         <input type="file" src="/assets/media/icons/system-icon/outline/Edit Square.svg" class="form-control-file"
                                         id="photo" name="photo" style="display: none" multiple onchange="previewImage()" onclick="document.getElementById('labelImg').style.opacity = 0">
                                     </div>
-                                    @error('photo')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                    @enderror
 
                                 </div>
                                 <div class="border-0 pt-20 mt-10 row">

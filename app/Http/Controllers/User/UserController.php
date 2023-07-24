@@ -42,7 +42,7 @@ class UserController extends ApiController
     {
 
         $users = $this->service->dataTable($request);
-        $collect = User::all();
+        $collect = User::where('role', '<>', 'admin')->get();
         $user = PaginationHelper::paginate($collect, 12);
         $type_role = TypeRole::all();
         // $this->authorize('view', $users);

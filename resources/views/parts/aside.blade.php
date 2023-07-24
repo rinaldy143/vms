@@ -12,7 +12,7 @@
         <a href="/" class="d-flex align-items-center" style="padding-top: 60px;">
             <img src="/assets/media/logos/VMS Logo.svg" alt="Logo" class="h-55.69px logo me-2">
             <div style="width: 116px" class="subtitle-1">
-                Vehicle Management System
+                Vehicle Maintenance System
             </div>
         </a>
         <!--end::Logo-->

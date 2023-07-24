@@ -19,7 +19,7 @@
             </a>
             @endcan
         </div>
-            <h2 class="my-5">Maintenance</h2>
+            <h2 class="my-5">Work Order</h2>
             <a class="btn btn-danger text-3 rounded-8 w-200px p-md-3 " href="/workorder">list work order</a>
             {{-- <a class="btn border border-dark text-dark text-3 rounded-8 w-200px p-md-3 h-100 me-4" href="#">onprocess work order</a> --}}
             <div class="d-flex align-items-center position-relative my-5">

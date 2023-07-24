@@ -22,7 +22,7 @@
                             <div class="text-left">
                                 <!--begin::Title-->
                                 <div class="w-lg-400px text-dark mb-5">
-                                    <div class="heading-1">Login Vehicle Management System</div>
+                                    <div class="heading-1">Login Vehicle Maintenance System</div>
                                 </div>
                                 <!--end::Title-->
                                 <!--begin::Subtitle-->

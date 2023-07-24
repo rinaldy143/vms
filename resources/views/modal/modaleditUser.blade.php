@@ -80,7 +80,7 @@
                                         <option value="{{$model->role}}" {{ old('role')==$model->role ?
                                         'selected' : '' }}>{{$model->role}}</option>
                                     @endforeach --}}
-                                    <option value="ADMIN" >ADMIN</option>
+                                    {{-- <option value="ADMIN" >ADMIN</option> --}}
                                     <option value="Operation" >Operation</option>
                                     <option value="Lead Mechanices" >Lead Mechanices</option>
                                     <option value="Mechanices" >Mechanices</option>

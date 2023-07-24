@@ -57,7 +57,7 @@
                             @enderror
 
                             <label for="count" class="subtitle-1">
-                                count
+                                Stock
                                 <span class="text-danger">*</span>
                             </label>
                             <div class="field-input pt-2 pb-6">

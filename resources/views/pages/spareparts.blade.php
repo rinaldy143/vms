@@ -65,11 +65,11 @@
                             </ul>
                         </button>
 
-                        <button type="button" class="btn me-3 border" style="border-radius: 8px">
+                        {{-- <button type="button" class="btn me-3 border" style="border-radius: 8px">
                             <!--begin::Svg Icon | path: icons/duotune/arrows/arr078.svg-->
                             <img src="/img/Download.png" alt="">
                             <!--end::Svg Icon--> <strong>Export</strong>
-                        </button>
+                        </button> --}}
 
                         <!--end::Search-->
                     </div>
