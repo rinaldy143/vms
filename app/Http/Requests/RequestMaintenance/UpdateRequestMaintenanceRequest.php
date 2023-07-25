@@ -26,6 +26,14 @@ class UpdateRequestMaintenanceRequest extends FormRequest
         return [
             'analysist'  => 'required|string|max:255',
             'aprove_by'  => 'string|max:255',
+            'priority'  => 'required|string|max:255',
+            'activity_maintenance'  => 'required|string|max:255',
+            'C1'  => 'nullable|numeric|max:255',
+            'C2'  => 'nullable|numeric|max:255',
+            'C3'  => 'nullable|numeric|max:255',
+            'C4'  => 'nullable|numeric|max:255',
+            'preferensi'  => 'nullable|string|max:255',
+            'vektor'  => 'nullable|string|max:255',
             // 'wo_id'  => 'string|max:255',
         ];
     }

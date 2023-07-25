@@ -43,10 +43,9 @@
                                         </span>
                                     </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="{{route('spareparts.ascending')}}"> <img src="/assets/media/icons/system-icon/outline/Arrow - Up-1.svg" width="25px" alt=""> Ascending</a>
-                                        <a class="dropdown-item" href="{{route('spareparts.descending')}}"> <img src="/assets/media/icons/system-icon/outline/Arrow - Down-1.svg" width="25px" alt=""> Descending</a>
-                                        <a class="dropdown-item" href="{{route('spareparts.highStock')}}"> <img src="/assets/media/icons/system-icon/outline/Delete.svg" width="25px" alt=""> High Stock</a>
-                                        <a class="dropdown-item" href="{{route('spareparts.lowStock')}}"> <img src="/assets/media/icons/system-icon/outline/Delete.svg" width="25px" alt=""> Low Stock</a>
+                                    <a class="dropdown-item" href="{{route('workorder.priority')}}"> Priority</a>
+                                        <a class="dropdown-item" href="{{route('workorder.status')}}"> Status</a>
+                                        <a class="dropdown-item" href="{{route('workorder.plat')}}"> Vehicle</a>
                                 </div>
                             </li>
                         </ul>
@@ -79,7 +78,7 @@
                                         <img src="/img/image 1.png" alt="">
                                         <div class="ms-5">
                                             <h1 style="font-size: 16px;margin-bottom: 0;">{{$item->vehicle->plat_number}}</h1>
-                                            <p class="text-primary" style="font-size: 14px;margin-bottom: 0;">T-01, T-02</p>
+                                            {{-- <p class="text-primary" style="font-size: 14px;margin-bottom: 0;">T-01, T-02</p> --}}
                                         </div>
                                     </div>
                                 </th>
@@ -101,6 +100,7 @@
                                     <td style="font-size: 16px;">
                                         {{$item->activity_maintenance}}
                                     </td>
+                                    {{-- {{ dd($item); }} --}}
                                     <td>
                                         <a class="btn btn-danger text-3 rounded-8 w-100 p-md-3 h-100 me-4" href="{{route('workorder.show', $item->id)}}">Choose</a>
                                     </td>

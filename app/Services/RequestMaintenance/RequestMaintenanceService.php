@@ -33,12 +33,12 @@ class RequestMaintenanceService extends AppService implements AppServiceInterfac
     public function create($data)
     {
         $user = Auth::user();
-        $dampak = $data['dampak'];
-        $activity_maintenance = $data['activity_maintenance'];
-        $C1 = $this->getValueForSelectedDampak($dampak);
-        $C4 = $this->getValueForSelectedActivity($activity_maintenance);
-        $weightProduct = WeightProduct::get();
-        $preferensi = 1;
+        // $dampak = $data['dampak'];
+        // $activity_maintenance = $data['activity_maintenance'];
+        // $C1 = $this->getValueForSelectedDampak($dampak);
+        // $C4 = $this->getValueForSelectedActivity($activity_maintenance);
+        // $weightProduct = WeightProduct::get();
+        // $preferensi = 1;
         // $vektor = 1;
 
         $newRequestMaintenance = new RequestMaintenanceTable([
@@ -47,14 +47,14 @@ class RequestMaintenanceService extends AppService implements AppServiceInterfac
             'vehicle_id' => $data['vehicle_id'],
             'km_Unit' => $data['km_Unit'],
             'hm_Unit' => $data['hm_Unit'],
-            'dampak' => $dampak,
+            // 'dampak' => $dampak,
             'unit_condition' => $data['unit_condition'],
-            'priority' => $data['priority'],
-            'activity_maintenance' => $activity_maintenance,
+            // 'priority' => $data['priority'],
+            // 'activity_maintenance' => $activity_maintenance,
             'analysist' => $data['analysist'],
-            'C1' => $C1,
-            'C4' => $C4,
-            'vektor' => $data['vektor'],
+            // 'C1' => $C1,
+            // 'C4' => $C4,
+            // 'vektor' => $data['vektor'],
         ]);
 
         $newRequestMaintenance->save();
@@ -63,32 +63,31 @@ class RequestMaintenanceService extends AppService implements AppServiceInterfac
         $newRequestMaintenance->C3 = $newRequestMaintenance->id ? $newRequestMaintenance->vehicle->selected_value2 : null;
         $newRequestMaintenance->save();
 
-        // Perhitungan preferensi
-        $preferensi *= pow($C1, $weightProduct->where('kriteria', 'Dampak')->pluck('bobot')->first());
-        $preferensi *= pow($newRequestMaintenance->C2, $weightProduct->where('kriteria', 'Model')->pluck('bobot')->first());
-        $preferensi *= pow($newRequestMaintenance->C3, $weightProduct->where('kriteria', 'tipe')->pluck('bobot')->first());
-        $preferensi *= pow($C4, $weightProduct->where('kriteria', 'Aktivitas')->pluck('bobot')->first());
+        // // Perhitungan preferensi
+        // $preferensi *= pow($C1, $weightProduct->where('kriteria', 'Dampak')->pluck('bobot')->first());
+        // $preferensi *= pow($newRequestMaintenance->C2, $weightProduct->where('kriteria', 'Model')->pluck('bobot')->first());
+        // $preferensi *= pow($newRequestMaintenance->C3, $weightProduct->where('kriteria', 'tipe')->pluck('bobot')->first());
+        // $preferensi *= pow($C4, $weightProduct->where('kriteria', 'Aktivitas')->pluck('bobot')->first());
 
-        // Setelah perhitungan preferensi selesai, update nilai preferensi
-        $newRequestMaintenance->preferensi = $preferensi;
-        $newRequestMaintenance->save();
+        // // Setelah perhitungan preferensi selesai, update nilai preferensi
+        // $newRequestMaintenance->preferensi = $preferensi;
+        // $newRequestMaintenance->save();
 
-        // Perhitungan vektor berdasarkan preferensi sebelum submit
-        $preferensiData = RequestMaintenanceTable::pluck('preferensi')->toArray();
+        // // Perhitungan vektor berdasarkan preferensi sebelum submit
+        // $preferensiData = RequestMaintenanceTable::pluck('preferensi')->toArray();
 
 
-        if (count($preferensiData) > 0) {
-            // Menghitung total preferensi
-            $totalPreferensi = array_sum($preferensiData);
+        // if (count($preferensiData) > 0) {
+        //     // Menghitung total preferensi
+        //     $totalPreferensi = array_sum($preferensiData);
 
-            // Mengupdate vektor pada setiap data
-            $requestMaintenanceData = RequestMaintenanceTable::all();
-            foreach ($requestMaintenanceData as $requestMaintenance) {
-                $requestMaintenance->vektor = $requestMaintenance->preferensi / $totalPreferensi;
-                $requestMaintenance->save();
-            }
-        }
-
+        //     // Mengupdate vektor pada setiap data
+        //     $requestMaintenanceData = RequestMaintenanceTable::all();
+        //     foreach ($requestMaintenanceData as $requestMaintenance) {
+        //         $requestMaintenance->vektor = $requestMaintenance->preferensi / $totalPreferensi;
+        //         $requestMaintenance->save();
+        //     }
+        // }
         return $newRequestMaintenance;
     }
 
@@ -133,12 +132,51 @@ class RequestMaintenanceService extends AppService implements AppServiceInterfac
     public function update($id, $data)
     {
         $user = Auth::user(); // Mendapatkan user yang sedang login
-
+        $dampak = $data['dampak'];
+        $activity_maintenance = $data['activity_maintenance'];
+        $C1 = $this->getValueForSelectedDampak($dampak);
+        $C4 = $this->getValueForSelectedActivity($activity_maintenance);
+        $weightProduct = WeightProduct::get();
+        $preferensi = 1;
         $row = RequestMaintenanceTable::findOrFail($id);
+
         $row->update([
             'analysist' => $data['analysist'],
             // 'wo_id' => $data['wo_id'],
-            'aprove_by' => $user->name,        ]);
+            'dampak' => $dampak,
+            'priority' => $data['priority'],
+            'activity_maintenance' => $activity_maintenance,
+            'analysist' => $data['analysist'],
+            'C1' => $C1,
+            'C4' => $C4,
+            'vektor' => $data['vektor'],
+            'aprove_by' => $user->name,
+        ]);
+                // Perhitungan preferensi
+                $preferensi *= pow($C1, $weightProduct->where('kriteria', 'Dampak')->pluck('bobot')->first());
+                $preferensi *= pow($row->C2, $weightProduct->where('kriteria', 'Model')->pluck('bobot')->first());
+                $preferensi *= pow($row->C3, $weightProduct->where('kriteria', 'tipe')->pluck('bobot')->first());
+                $preferensi *= pow($C4, $weightProduct->where('kriteria', 'Aktivitas')->pluck('bobot')->first());
+
+                // Setelah perhitungan preferensi selesai, update nilai preferensi
+                $row->preferensi = $preferensi;
+                $row->save();
+
+                // Perhitungan vektor berdasarkan preferensi sebelum submit
+                $preferensiData = RequestMaintenanceTable::pluck('preferensi')->toArray();
+
+
+                if (count($preferensiData) > 0) {
+                    // Menghitung total preferensi
+                    $totalPreferensi = array_sum($preferensiData);
+
+                    // Mengupdate vektor pada setiap data
+                    $requestMaintenanceData = RequestMaintenanceTable::all();
+                    foreach ($requestMaintenanceData as $requestMaintenance) {
+                        $requestMaintenance->vektor = $requestMaintenance->preferensi / $totalPreferensi;
+                        $requestMaintenance->save();
+                    }
+                }
         return $row;
     }
 

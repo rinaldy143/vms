@@ -49,7 +49,10 @@ class WorkOrderController extends ApiController
                         ->whereRaw('work_orders.rm_id = request_maintenances.id');
                         // ->whereNull('analysist');
                 });
-        })->paginate(15);
+        })
+        ->paginate(15);
+
+
         return view('pages.work-order.workorder', compact('maintenance', 'data'));
 
         // return $this->sendSuccess($data, null, 200);
@@ -184,4 +187,59 @@ class WorkOrderController extends ApiController
         return $this->sendSuccess($datum, null, 200);
     }
 
+    public function filterStatus(Request $request)
+    {
+        $maintenance = RequestMaintenance::select('request_maintenances.*')
+        ->leftJoin('work_orders', 'request_maintenances.id', '=', 'work_orders.rm_id')
+        ->orderByRaw("
+            CASE
+                WHEN work_orders.assign_by IS NULL THEN 1
+                WHEN work_orders.analysist IS NOT NULL THEN 3
+                ELSE 2
+            END
+        ")
+        ->paginate(15);
+
+    return view('pages.work-order.workorder', compact('maintenance'));
+
+    }
+
+    public function vehicleName(Request $request)
+    {
+        $maintenance = RequestMaintenance::where(function ($query) {
+            $query->orWhereNotNull('analysist')
+                  ->orWhereExists(function ($subquery) {
+                      $subquery->select(DB::raw(1))
+                               ->from('work_orders')
+                               ->whereRaw('work_orders.rm_id = request_maintenances.id');
+                  });
+        })
+        ->join('vehicles', 'request_maintenances.vehicle_id', '=', 'vehicles.id')
+        ->orderBy('vehicles.plat_number', 'asc')
+        ->select('request_maintenances.*')
+        ->paginate(15);
+
+        return view('pages.work-order.workorder', compact('maintenance'));
+
+    }
+
+    public function priority(Request $request)
+    {
+        $maintenance = RequestMaintenance::where(function ($query) {
+            $query->orWhereNotNull('analysist')
+            // ->orWhereNotNull('analysist')
+                ->orWhereExists(function ($subquery) {
+                    $subquery->select(DB::raw(1))
+                        ->from('work_orders')
+                        ->whereRaw('work_orders.rm_id = request_maintenances.id');
+                        // ->whereNull('analysist');
+                });
+        })
+        ->orderBy('priority', 'asc')
+        ->orderBy('vektor', 'desc')
+        ->paginate(15);
+
+        return view('pages.work-order.workorder', compact('maintenance'));
+
+    }
 }

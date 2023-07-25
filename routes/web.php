@@ -63,6 +63,11 @@ Route::group(['prefix' => '/'], function () {
         Route::get('/list-maintenance', [App\Http\Controllers\RequestMaintenance\RequestMaintenanceController::class, 'list']);
         Route::get('/history', [App\Http\Controllers\WorkOrder\WorkOrderController::class, 'history']);
         Route::get('/history/{id}', [App\Http\Controllers\WorkOrder\WorkOrderController::class, 'detailhistory'])->name('detailhistory');;
+        Route::group(['prefix' => 'workorders', 'as' => 'workorder.'], function () {
+            Route::get('/status', [App\Http\Controllers\WorkOrder\WorkOrderController::class, 'filterStatus'])->name('status');
+            Route::get('/plat', [App\Http\Controllers\WorkOrder\WorkOrderController::class, 'vehicleName'])->name('plat');
+            Route::get('/priority', [App\Http\Controllers\WorkOrder\WorkOrderController::class, 'priority'])->name('priority');
+        });
 
         Route::group(['prefix' => 'user', 'as' => 'users.'], function () {
             Route::get('/search', [App\Http\Controllers\User\UserController::class, 'search'])->name('search');

@@ -58,10 +58,10 @@
                         <thead>
                             <tr>
                                 <th scope="col" class="fw-bold" style="font-size: 16px;">CN Unit Vehicle</th>
-                                <th scope="col" class="fw-bold" style="font-size: 16px;">Priority</th>
+                                <th scope="col" class="fw-bold" style="font-size: 16px;">KM Unit</th>
                                 <th scope="col" class="fw-bold" style="font-size: 16px;">Start BD Date</th>
                                 <th scope="col" class="fw-bold" style="font-size: 16px;">Status</th>
-                                <th scope="col" class="fw-bold" style="font-size: 16px;">Activity Maintenance</th>
+                                <th scope="col" class="fw-bold" style="font-size: 16px;">Unit Condition</th>
                                 @can('view', App\Models\Entity\RequestMaintenance::class)
                                 <th scope="col" class="fw-bold" style="font-size: 16px;">Detail</th>
                                 @endcan
@@ -79,7 +79,7 @@
                                 </div>
                             </th>
                                 <td class="col-2" style="font-size: 16px;">
-                                    {{$item->priority}}
+                                    {{$item->km_Unit}}
                                 </td>
                                 <td style="font-size: 16px;">
                                     {{$item->created_at}}
@@ -90,7 +90,7 @@
                                     @endif
                                 </td>
                                 <td style="font-size: 16px;">
-                                    {{$item->activity_maintenance}}
+                                    {{$item->unit_condition}}
                                 </td>
                                 @can('view', App\Models\Entity\RequestMaintenance::class)
                                 <td>

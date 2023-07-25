@@ -81,9 +81,11 @@ class RequestMaintenanceController extends ApiController
         // $data = $this->service->list($request);
         // $maintenance = RequestMaintenance::all();
 
-        $maintenance = RequestMaintenance::whereNull('analysist')
-        ->orderByRaw("CASE WHEN priority = 'normal' THEN vektor ELSE priority END ASC")
-        ->get();
+        // $maintenance = RequestMaintenance::whereNull('analysist')
+        // ->orderByRaw("CASE WHEN priority = 'normal' THEN vektor ELSE priority END ASC")
+        // ->get();
+        $maintenance = RequestMaintenance::whereNull('analysist')->orderBy('created_at', 'asc')->get();
+
 
             // $vehicle = Vehicle::all();
         // $trailer = Trailer::all();

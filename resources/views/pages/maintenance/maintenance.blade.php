@@ -100,19 +100,26 @@
                             </div>
                         </div>
                         <div class="row col-lg-12">
-                            <div class="form-group mt-4 col-lg-3 me-10">
+
+                            {{-- <div class="form-group mt-4 col-lg-3 me-10"> --}}
                                 <label for="CN" class="subtitle-1">Unit Condition<span class="text-danger">*</span></label>
-                                <div class="form-select radio-btn my-5">
-                                    <input type="radio" id="unit_condition1" name="unit_condition" value="Operasi" {{ old('unit_condition') == 'Operasi' ? 'checked' : '' }}>
-                                    <label for="unit_condition1">Operasi</label><br>
+                                <div class="form-group mt-4 col-lg-3 me-10">
+                                    <div class="form-select radio-btn my-5">
+                                        <input type="radio" id="unit_condition1" name="unit_condition" value="Operasi" {{ old('unit_condition') == 'Operasi' ? 'checked' : '' }}>
+                                        <label for="unit_condition1">Operasi</label><br>
+                                    </div>
                                 </div>
-                                <div class="form-select radio-btn my-5">
-                                    <input type="radio" id="unit_condition2" name="unit_condition" value="Breakdown" {{ old('unit_condition') == 'Breakdown' ? 'checked' : '' }}>
-                                    <label for="unit_condition2">Breakdown</label><br>
+                                <div class="form-group mt-4 col-lg-3 me-10">
+                                    <div class="form-select radio-btn my-5">
+                                        <input type="radio" id="unit_condition2" name="unit_condition" value="Breakdown" {{ old('unit_condition') == 'Breakdown' ? 'checked' : '' }}>
+                                        <label for="unit_condition2">Breakdown</label><br>
+                                    </div>
                                 </div>
-                                <div class="form-select radio-btn my-5">
-                                    <input type="radio" id="unit_condition3" name="unit_condition" value="Standby" {{ old('unit_condition') == 'Standby' ? 'checked' : '' }}>
-                                    <label for="unit_condition3">Standby</label><br>
+                                <div class="form-group mt-4 col-lg-3 me-10">
+                                    <div class="form-select radio-btn my-5">
+                                        <input type="radio" id="unit_condition3" name="unit_condition" value="Standby" {{ old('unit_condition') == 'Standby' ? 'checked' : '' }}>
+                                        <label for="unit_condition3">Standby</label><br>
+                                    </div>
                                 </div>
                                 @error('unit_condition')
                                 <div class="invalid-feedback d-flex">
@@ -120,7 +127,7 @@
                                 </div>
                                 @enderror
                             </div>
-                            <div class="form-group mt-4 col-lg-3 me-10">
+                            {{-- <div class="form-group mt-4 col-lg-3 me-10">
                                 <label for="priority" class="subtitle-1">Priority<span class="text-danger">*</span></label>
                                 <div class="form-select radio-btn my-5">
                                     <input type="radio" id="priority1" name="priority" value="Normal" {{ old('priority') == 'Normal' ? 'checked' : '' }}>
@@ -155,9 +162,9 @@
                                     {{ $message }}
                                 </div>
                                 @enderror
-                            </div>
+                            </div> --}}
                         </div>
-                        <div class="row col-lg-12">
+                        {{-- <div class="row col-lg-12">
                             <div class="form-group mt-4 col-lg-4 me-10">
                                 <label for="CN" class="subtitle-1">Activity Maintenance<span class="text-danger">*</span></label>
                                 <div class="form-select radio-btn my-5">
@@ -189,7 +196,7 @@
                                 {{ $message }}
                             </div>
                             @enderror
-                        </div>
+                        </div> --}}
 
 
 
@@ -249,27 +256,27 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
 
 <script>
-$(document).ready(function(){ //Make script DOM ready
-    $('#myProblem').change(function() { //jQuery Change Function
-        var opval = $(this).val(); //Get value from select element
-        if(opval=="modalProblem"){ //Compare it and if true
-            $('#modalProblem').modal("show"); //Open Modal
-        }
-    });
-});
+// $(document).ready(function(){ //Make script DOM ready
+//     $('#myProblem').change(function() { //jQuery Change Function
+//         var opval = $(this).val(); //Get value from select element
+//         if(opval=="modalProblem"){ //Compare it and if true
+//             $('#modalProblem').modal("show"); //Open Modal
+//         }
+//     });
+// });
 
-$(".cancel").click(function(){
-            $("#modalProblem").modal('hide');
-        });
+// $(".cancel").click(function(){
+//             $("#modalProblem").modal('hide');
+//         });
 
 
-        var checkList = document.getElementById('list1');
-        checkList.getElementsByClassName('anchor')[0].onclick = function(evt) {
-        if (checkList.classList.contains('visible'))
-            checkList.classList.remove('visible');
-        else
-            checkList.classList.add('visible');
-        }
+//         var checkList = document.getElementById('list1');
+//         checkList.getElementsByClassName('anchor')[0].onclick = function(evt) {
+//         if (checkList.classList.contains('visible'))
+//             checkList.classList.remove('visible');
+//         else
+//             checkList.classList.add('visible');
+//         }
 
 </script>
 
