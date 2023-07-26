@@ -204,7 +204,7 @@
                                             <select class="form-control" name="sparepart_id[]">
                                                 <option value="" disabled selected>{{__('Pilih Sparepart')}}</option>
                                                 @foreach ($sparepart as $index => $item)
-                                                <option value="{{ $item->id }}" data-count="{{ $item->count }}" {{ old('sparepart_id.' . $index) == $item->id ? 'selected' : '' }}>{{ $item->name }}</option>
+                                                <option value="{{ $item->id }}" data-count="{{ $item->count - 3 }}" {{ old('sparepart_id.' . $index) == $item->id ? 'selected' : '' }}>{{ $item->name }} : {{ $item->brand }}</option>
                                                 @endforeach
                                                 </select>
                                                 @error('sparepart_id.*')
