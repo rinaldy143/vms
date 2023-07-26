@@ -42,7 +42,7 @@ class UserController extends ApiController
     {
 
         $users = $this->service->dataTable($request);
-        $collect = User::all();
+        $collect = User::where('role', '<>', 'admin')->get();
         $user = PaginationHelper::paginate($collect, 12);
         $type_role = TypeRole::all();
         // $this->authorize('view', $users);
@@ -59,8 +59,12 @@ class UserController extends ApiController
      */
     public function store(StoreUserRequest $request)
     {
-        $user = $this->service->create($request);
-        return $this->sendSuccess($user, null, 201);
+        $data = $this->service->create($request);
+        $collect = User::where('role', '<>', 'admin')->get();
+        $user = PaginationHelper::paginate($collect, 12);
+        // return $this->sendSuccess($user, null, 201);
+        return view('pages.users', compact('user'));
+
     }
 
     /**
@@ -86,8 +90,11 @@ class UserController extends ApiController
     {
         $user = $this->service->update($id, $request);
         // $this->authorize('update', User::class);
+        $collect = User::where('role', '<>', 'admin')->get();
 
-        return $this->sendSuccess($user, null, 200);
+        $user = PaginationHelper::paginate($collect, 12);
+        // return $this->sendSuccess($user, null, 201);
+        return view('pages.users', compact('user'));
     }
 
     public function search(Request $request)
@@ -160,8 +167,9 @@ class UserController extends ApiController
         // $this->authorize('delete', User::class);
 
         $user = $this->service->delete($id);
-
-
-        return $this->sendSuccess($user, null, 200);
+        $collect = User::where('role', '<>', 'admin')->get();
+        $user = PaginationHelper::paginate($collect, 12);
+        // return $this->sendSuccess($user, null, 201);
+        return view('pages.users', compact('user'));
     }
 }

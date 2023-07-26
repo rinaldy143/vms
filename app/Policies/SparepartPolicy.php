@@ -42,7 +42,7 @@ class SparepartPolicy
      */
     public function create(User $user): Response|bool
     {
-        return $user->role == 'ADMIN';
+        return $user->role == 'ADMIN' || $user->role == 'Logistic';
     }
 
     /**

@@ -17,9 +17,6 @@
                         <input type="text" name="search" data-kt-customer-table-filter="search"
                             class="form-control form-control-lg w-350px ps-15" placeholder="Search...">
                     </form>
-                    <div class="px-10 btn btn-icon btn-active-light-primary w-30px h-30px w-md-40px h-md-40px">
-                        <img src="/img/Frame 1637.png" alt="">
-                    </div>
                 </div>
         </div>
         <!--begin::Row-->
@@ -97,11 +94,11 @@
                     @can('create', App\Models\Entity\User::class)
                         <div class="card-title">
                             <!--begin::Search-->
-                            <button type="button" class="btn me-3" style="border: 1px solid">
+                            {{-- <button type="button" class="btn me-3" style="border: 1px solid">
                                 <!--begin::Svg Icon | path: icons/duotune/arrows/arr078.svg-->
                                 <img src="/img/Download.png" alt="">
                                 <!--end::Svg Icon-->Export
-                            </button>
+                            </button> --}}
                             <a class="btn btn-danger me-3 fw-bold py-3"  data-toggle="modal"
                             href="#modalUser" title="Download">
                             <img class src="/img/Add User.png" alt="">
@@ -150,7 +147,7 @@
                     @if($model->photo == "")
                     <img class="bd-placeholder-img rounded-circle border mt-5"  width="100px" height="100px" src="/img/Ellipse 44.png" alt="">
                     @else
-                    <img class="bd-placeholder-img rounded-circle border mt-5"  width="100px" height="100px" src="/storage/{{$model->photo}}" alt="">
+                    <img class="bd-placeholder-img rounded-circle border mt-5"  width="100px" height="100px" src="/img/users/{{$model->photo}}" alt="">
                     @endif
                     <div class="card-body ">
                         <h2 class="card-text text-color-dark font-weight-bold text-3 pb-1 mb-4 px-10 text-truncate text-center">{{$model->name}}

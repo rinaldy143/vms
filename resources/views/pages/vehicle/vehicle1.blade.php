@@ -23,14 +23,14 @@
                         <div class="pt-2 ">
                             <div class="d-flex align-items-center py-8">
                                 @can('create', App\Models\Entity\Trailer::class)
-                                    <a href="#modalVehicle" class="btn btn-danger fs-7 px-4 w-100 " data-toggle="modal"><img src="/assets/media/icons/system-icon/outline/Plus-3.svg" width="20px" alt="">Add Vehicle/Trailer</a>
+                                    <a href="#modalVehicle" class="btn btn-danger fs-7 px-4 w-100 " data-toggle="modal"><img src="/assets/media/icons/system-icon/outline/Plus-3.svg" width="20px" alt="">Add Vehicle</a>
                                 @endcan
 
                             </div>
-                            <div class="d-flex justify-content-between align-items-center">
+                            {{-- <div class="d-flex justify-content-between align-items-center">
                                 <a href="#" class="btn border fs-7 w-75" style="background-color: #fff"><img src="/assets/media/icons/system-icon/outline/Swap-1.svg" width="20px" alt=""> Syncronize Vehicles</a>
                                 <a href="/vehicle/setting" class="btn border px-4" style="background-color: #fff"><img src="/assets/media/icons/system-icon/outline/Setting.svg" alt=""></a>
-                            </div>
+                            </div> --}}
 
                             <div class="separator separator-dashed my-5"></div>
                             <!--begin::Notice-->
@@ -45,10 +45,10 @@
                                     class="form-control form-control-lg ps-15" placeholder="Search...">
                                 </form>
                             </div>
-                            <div class="d-flex justify-content-between align-items-center pt-8">
+                            {{-- <div class="d-flex justify-content-between align-items-center pt-8">
                                 <a href="/vehicles" class="btn btn-danger w-50">Vehicle </a>
                                 <a href="/trailer" class="btn w-50"style="background-color: #fff">Trailer </a>
-                            </div>
+                            </div> --}}
                             <!--end::Notice-->
                             <!--begin::Items-->
                             <div class="py-2">
@@ -63,7 +63,8 @@
 
                                         <div class="d-flex flex-column w-100">
                                             <a href="javascript:void(0)" id="changeLink" class="fs-5 text-danger btn-address fw-bolder text-hover-danger border p-3 my-1 {{$key==0?'text-danger':'text-dark'}}" style="border-radius: 8px; background-color:#fff;"
-                                            onclick="changeAddress('{{$model->plat_number}}','{{$model->monthly_maintenance}}','{{$model->ModelVehicle->vehicle_model}}','{{$model->TypeVehicle->vehicle_type}}', '{{$model->id}}');">{{$model->plat_number}}</a>
+                                            onclick="changeAddress('{{$model->plat_number}}', '{{$model->monthly_maintenance}}', '{{$model->ModelVehicle->vehicle_model}}', '{{$model->TypeVehicle->vehicle_type}}', '{{$model->id}}', '{{$model->requestMaintenances->last()->dampak ?? '-'}}', '{{$model->requestMaintenances->last()->WorkOrder->updated_at ?? '-'}}', '{{'/history/' . ($model->requestMaintenances->last()->id ?? '#')}}');">{{$model->plat_number}}</a>
+
                                         </div>
                                     </div>
                                 </div>
@@ -144,12 +145,15 @@
                                         <h4 class="bvehicle fw-bold pb-5" id="vehicle-model_vehicle_id"> {{$vehicles[0]->ModelVehicle->vehicle_model}}</h4>
                                         <p class="pvehicle mb-2 fs-7">Scheduling Maintained</p>
                                         <h4 class="bvehicle fw-bold" id="vehicle-monthly_maintenance">{{$vehicles[0]->monthly_maintenance}}</h4>
+                                        {{-- {{dd($vehicles[0]->requestMaintenances->last()->dampak)}} --}}
+
+
                                     </div>
                                     <div class="col-lg-6 px-1">
                                         <p class="pvehicle mb-2 fs-7">Vehicle Type</p>
                                         <h4 class="bvehicle fw-bold pb-5" id="vehicle-type_vehicle_id">{{$vehicles[0]->TypeVehicle->vehicle_type}}</h4>
                                         <p class="pvehicle mb-2 fs-7">Last Maintained</p>
-                                        <h4 class="bvehicle fw-bold">20 May 2022</h4>
+                                        <h4 class="bvehicle fw-bold" id="vehicle-last-update">{{$vehicles[0]->requestMaintenances->last()->WorkOrder->updated_at ?? '-'}}</h4>
                                     </div>
                                 </div>
                             </div>
@@ -157,8 +161,8 @@
                                 {{-- <button type="submit" class="border-0 btn-white">  <img src="/assets/media/icons/system-icon/outline/Delete.svg" width="25px" alt=""></button> --}}
                                 <div class="img-fluid align-item-center mx-auto d-block">
                                     <img src="/img/Mask group.svg" alt="">
-                                    <p class="text-center">Trailer Connected</p>
-                                    <h3 class="text-primary text-center fs-4">T-01, T-02</h3>
+                                    {{-- <p class="text-center">Trailer Connected</p>
+                                    <h3 class="text-primary text-center fs-4">T-01, T-02</h3> --}}
                                 </div>
                             </div>
 
@@ -179,13 +183,13 @@
                                     <div class="card-title">
                                         <!--begin::Search-->
                                         <h2>
-                                            History Maintained
+                                            Latest Maintained
                                         </h2>
                                         <!--end::Search-->
                                     </div>
 
                                     <!-- Right Side Of Navbar -->
-                                    <div class="card-title">
+                                    {{-- <div class="card-title">
                                         <!--begin::Search-->
                                         <div class="d-flex align-items-center position-relative my-1">
                                             <!--begin::Svg Icon | path: icons/duotune/general/gen021.svg-->
@@ -204,7 +208,7 @@
                                         </div>
 
                                         <!--end::Search-->
-                                    </div>
+                                    </div> --}}
 
                                 </div>
                             </div>
@@ -214,50 +218,24 @@
                                 Date
                             </div>
                             <div class="pvehicle col-lg-5 col-md-5 subtitle-1">
-                                Maintentance Type
+                                Dampak
                             </div>
 
                         </div>
                         <hr class="solid">
                         <div class="scroll">
                             <div class="d-flex flex-row-fluid mt-6">
-                                <div class="col-lg-3 col-md-3 subtitle-1 fw-bold">
-                                    20 May 2022
+                                <div class="col-lg-3 col-md-3 subtitle-1 fw-bold" id="vehicle-last-update">
+                                        <h4 class="bvehicle fw-bold" id="vehicle-last-update1">{{$vehicles[0]->requestMaintenances->last()->WorkOrder->updated_at ?? '-'}}</h4>
                                 </div>
                                 <div class="col-lg-5 col-md-5 subtitle-1">
-                                    Maintenance
+                                    <h4 class="bvehicle fw-bold pb-5" id="vehicle-last-maintain">{{$vehicles[0]->requestMaintenances->last()->dampak ?? '-'}}</h4>
                                 </div>
                                 <div class=" col-lg-4 col-md-4" style="text-align: right" >
-                                    <a class="fs-4" style="color: #6E6666" href="#">Detail <img src="/assets/media/icons/system-icon/outline/Arrow - Right.svg" alt="" >
+                                    <a class="fs-4" id="vehicle-rm"  style="color: #6E6666" href="{{'/history/' . ($vehicles[0]->requestMaintenances->last()->id ?? '#')}}">Detail <img src="/assets/media/icons/system-icon/outline/Arrow - Right.svg" alt="" >
                                     </a>
                                 </div>
                             </div>
-                            <div class="d-flex flex-row-fluid mt-6">
-                                <div class="col-lg-3 col-md-3 subtitle-1 fw-bold">
-                                    10 May 2022
-                                </div>
-                                <div class="col-lg-5 col-md-5 subtitle-1">
-                                    Accident
-                                </div>
-                                <div class=" col-lg-4 col-md-4" style="text-align: right" >
-                                    <a class="fs-4" style="color: #6E6666" href="#">Detail <img src="/assets/media/icons/system-icon/outline/Arrow - Right.svg" alt="" >
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="d-flex flex-row-fluid mt-6">
-                                <div class="col-lg-3 col-md-3 subtitle-1 fw-bold">
-                                    20 April 2022
-                                </div>
-                                <div class="col-lg-5 col-md-5 subtitle-1">
-                                    Maintenance
-                                </div>
-                                <div class=" col-lg-4 col-md-4" style="text-align: right" >
-                                    <a class="fs-4" style="color: #6E6666" href="#">Detail <img src="/assets/media/icons/system-icon/outline/Arrow - Right.svg" alt="" >
-                                    </a>
-                                </div>
-                            </div>
-
-
                         </div>
                     </div>
                 </div>
@@ -314,15 +292,22 @@
   let vehicles = {!!$vehicles!!};
   let vehiclesT = {!!$vehiclesT!!};
   let model_vehicle = {!!$model_vehicle!!};
+  let rm = {!!$rm!!};
+  let wo = {!!$wo!!};
 
 //   let t = document.getElementById("edit").href;
     // changeAddress(vehicles[0].plat_number,vehicles[0].monthly_maintenance,model_vehicle[0].vehicle_model,vehiclesT[0].vehicle_type,vehicles[0].id);
 
-    function changeAddress(plat_number, monthly_maintenance, vehicle_model, vehicle_type, id){
+    function changeAddress(plat_number, monthly_maintenance, vehicle_model, vehicle_type, id, dampak, updated_at, rm_id ){
         $('#vehicle-plat_number').html(plat_number);
         $('#vehicle-model_vehicle_id').html(vehicle_model);
         $('#vehicle-monthly_maintenance').html(monthly_maintenance);
         $('#vehicle-type_vehicle_id').html(vehicle_type);
+        $('#vehicle-last-maintain').html(dampak);
+        $('#vehicle-last-update').html(updated_at);
+        $('#vehicle-last-update1').html(updated_at);
+        $('#vehicle-rm').attr("href", rm_id);
+
         // $('#edit').html(id);
         // $('#edit').attr('href', "#modaleditvehicle");
         // var href = $(this).attr('href');
@@ -330,6 +315,7 @@
         var url = "{{ route('vehicles.destroy', '') }}";
         $("#delete").attr("action", url + '/' + id);
         $("#edit").attr("href", "#modaleditvehicle" + id);
+
     }
 
     $('.btn-address').on('click', function(){

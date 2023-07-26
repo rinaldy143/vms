@@ -28,8 +28,26 @@ class WorkOrder extends AppModel
         'req_sparepart',
         'rm_id',
         'user_id',
-        'type_job_id',
+        'damage_component',
+        'damaged_level',
+        'jobsite_location',
+        'analysist',
+        'assign_by',
+        'photo',
     ];
+
+    public function Maintenance()
+    {
+        return $this->belongsTo(RequestMaintenance::class, 'rm_id');
+    }
+    public function User()
+    {
+        return $this->belongsToMany(User::class,  'users_work_order', 'work_order_table_id', 'user_id');
+    }
+    public function spareparts()
+    {
+        return $this->belongsToMany(Sparepart::class,   'request_spareparts', 'wo_id', 'sparepart_id')->withPivot('jumlah');
+    }
 
     /**
      * The attributes that should be hidden for arrays.

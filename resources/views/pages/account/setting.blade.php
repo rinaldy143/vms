@@ -3,7 +3,7 @@
 @section('content')
 <div class="content">
     <div class="d-flex align-items-center position-absolute subtitle-1 p-2">
-            <a href="/dashboard" style="z-index: 100" class="subtitle-1">
+            <a href="/" style="z-index: 100" class="subtitle-1">
             <span style="margin-left: 57.75px"><img src="/assets/media/icons/system-icon/outline/Arrow - left.svg" alt=""></span>
             Back
         </a>
@@ -14,11 +14,16 @@
             <div class="card drop-shadow border border-secondary align-items-center">
                 {{-- <img src="/img/img_videos/{{$video->thumbnail}}" alt="" class="card-img-top video-thumb "> --}}
                 <div class="pt-10">
-                    <a class="download round m-lg-3" title="" data-toggle="modal" href="#modalUpdate">
+                    {{-- <a class="download round m-lg-3" title="" data-toggle="modal" href="#modalUpdate">
                         <img src="img/kebab.png" alt="download" title="download"
                             style="right: 20px;position: absolute;" />
-                    </a>
-                    <img class="d-flex bd-placeholder-img rounded-circle border justify-content-center" width="80px" height="80px" src="img/Ellipse 44.svg" alt="">
+                    </a> --}}
+                    @if(auth()->user()->photo == "")
+                    <img class="bd-placeholder-img rounded-circle border mt-5"  width="100px" height="100px" src="/img/Ellipse 44.png" alt="">
+                    @else
+                    <img class="bd-placeholder-img rounded-circle border mt-5"  width="100px" height="100px" src="/img/users/{{auth()->user()->photo}}" alt="">
+                    @endif
+                    {{-- <img class="d-flex bd-placeholder-img rounded-circle border justify-content-center" width="80px" height="80px" src="/img/users/" alt=""> --}}
                 </div>
                 <div class="card-body">
                     <h2 class="card-text text-color-dark font-weight-bold text-3 pb-1 mb-4 px-10 text-truncate text-center">{{auth()->user()->name}}
@@ -31,7 +36,7 @@
         </div>
     </div>
     <div class="d-flex justify-content-center mb-5">
-        <div class="btn btn-outline-danger" style="width: 326px" data-toggle="modal" href="#modalPassword">Change Password</div>
+        {{-- <div class="btn btn-outline-danger" style="width: 326px" data-toggle="modal" href="#modalPassword">Change Password</div> --}}
     </div>
     <div class="d-flex justify-content-center">
         <a class="btn btn-danger" style="width: 326px" href="{{ route('logout') }}">Logout</a>

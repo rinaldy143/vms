@@ -30,6 +30,11 @@ class Sparepart extends AppModel
         'photo',
     ];
 
+    public function workorders()
+    {
+        return $this->belongsToMany(Sparepart::class,   'request_spareparts', 'wo_id', 'sparepart_id')->withPivot('jumlah');
+    }
+
     /**
      * The attributes that should be hidden for arrays.
      *

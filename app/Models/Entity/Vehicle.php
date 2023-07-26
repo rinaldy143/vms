@@ -32,7 +32,14 @@ class Vehicle extends AppModel
         // 'id_fms',
         'model_vehicle_id',
         'type_vehicle_id',
+        'selected_value1',
+        'selected_value2',
     ];
+
+    public function requestMaintenances()
+    {
+        return $this->hasMany(RequestMaintenance::class, 'vehicle_id');
+    }
 
     public function ModelVehicle()
     {

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class RequestMaintenance extends AppModel
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory;
 
     /**
      * The table associated with the model.
@@ -25,12 +25,44 @@ class RequestMaintenance extends AppModel
     protected $fillable = [
         'report_by',
         'report_problem',
-        'maintenance_date',
+        'dampak',
+        // 'maintenance_date',
         'vehicle_id',
-        'trailer_id',
-        'type_maintenance_id',
+        // 'trailer_id',
+        'km_Unit',
+        'hm_Unit',
+        'wo_id',
+        'unit_condition',
+        'priority',
+        'activity_maintenance',
+        'analysist',
+        'aprove_by',
+        'C1',
+        'C2',
+        'C3',
+        'C4',
     ];
 
+    public function Vehicle()
+    {
+        return $this->belongsTo(Vehicle::class, 'vehicle_id');
+    }
+    public function Trailer()
+    {
+        return $this->belongsTo(Trailer::class, 'trailer_id');
+    }
+    public function User()
+    {
+        return $this->belongsTo(User::class, 'report_by');
+    }
+    public function WorkOrder()
+    {
+        return $this->belongsTo(WorkOrder::class, 'wo_id');
+    }
+    public function WeightProduct()
+    {
+        return $this->hasMany(WeightProduct::class);
+    }
     /**
      * The attributes that should be hidden for arrays.
      *

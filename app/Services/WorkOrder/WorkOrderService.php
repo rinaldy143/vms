@@ -2,9 +2,16 @@
 
 namespace App\Services\WorkOrder;
 
+use App\Models\Entity\RequestMaintenance;
+use App\Models\Entity\Sparepart;
+use App\Models\Entity\WorkOrder;
+use App\Models\Table\RequestMaintenanceTable;
 use App\Models\Table\WorkOrderTable;
 use App\Services\AppService;
 use App\Services\AppServiceInterface;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class WorkOrderService extends AppService implements AppServiceInterface
 {
@@ -22,24 +29,97 @@ class WorkOrderService extends AppService implements AppServiceInterface
 
     public function getById($id)
     {
-        return WorkOrderTable::findOrFail($id);
+        $workOrder = WorkOrderTable::with('users')->findOrFail($id);
+        return $workOrder;
     }
 
     public function create($data)
     {
-        return WorkOrderTable::create([
-            'name' => $data['name'],
+        $user = Auth::user(); // Mendapatkan user yang sedang login
+
+        $workOrder = WorkOrderTable::create([
+            'rm_id' => $data['rm_id'],
+            'assign_by' => $user->name,
         ]);
+
+        $workOrder->user()->attach($data['user_id']);
+
     }
 
     public function update($id, $data)
-    {
-        $row = WorkOrderTable::findOrFail($id);
-        $row->update([
-            'name' => $data['name'],
-        ]);
-        return $row;
+{
+    $row = WorkOrderTable::findOrFail($id);
+    // maintenance->WorkOrder->User
+    $akun = Auth::user()->name;
+    // dd($row->User->name);
+    if (!$row->User->contains('name', $akun)) {
+        // Simpan pesan dalam flash message
+        session()->flash('error', 'Hanya maintainer yang diassign yang dapat memulai maintenance.');
+        // Arahkan pengguna ke halaman yang dituju (misalnya, halaman beranda)
+        return redirect()->route('workorder.index');
     }
+    // if (Auth::user()->id !== $data->assign) {
+    //     abort(403);
+    // }
+    // $workOrder = WorkOrderTable::all();
+
+    // Update foto jika ada perubahan
+    if ($data->hasFile('photo')) {
+        if ($data->file('photo')->isValid()) {
+            $imgName = $data->photo->getClientOriginalName();
+            $data->photo->move(public_path('/img/workorder'), $imgName);
+            $row->photo = $imgName;
+        }
+    } elseif (!$data->hasFile('photo') && !$row->photo) {
+        unset($row->photo);
+    }
+
+    // Update data lainnya dari form pertama
+    $row->fill([
+        'jobsite_location' => $data['jobsite_location'],
+        'damage_component' => $data['damage_component'],
+        'damaged_level' => $data['damaged_level'],
+        'analysist' => $data['analysist']
+    ]);
+
+    $row->save();
+
+    // Tangkap data sparepart dan jumlah dari form
+    $sparepartIds = $data['sparepart_id'];
+    $jumlahs = $data['jumlah'];
+
+    try {
+        DB::beginTransaction();
+
+        // Loop melalui data sparepart dan jumlah
+        foreach ($sparepartIds as $index => $sparepartId) {
+            $jumlah = $jumlahs[$index];
+
+            // Cari sparepart berdasarkan ID
+            $sparepart = Sparepart::findOrFail($sparepartId);
+
+            // Periksa ketersediaan stok
+            if ($sparepart->count < $jumlah) {
+                throw new \Exception("Stok $sparepart->name tidak cukup.");
+            }
+
+            // Kurangi jumlah stok
+            $sparepart->count -= $jumlah;
+            $sparepart->save();
+
+            // Tambahkan sparepart ke workorder
+            $row->spareparts()->attach($sparepartId, ['jumlah' => $jumlah]);
+        }
+
+        DB::commit();
+
+        return $row;
+    } catch (\Exception $e) {
+        // DB::rollBack();
+        // throw new \Exception("Stok $sparepart->name tidak cukup.");
+
+    }
+}
 
     public function delete($id)
     {
@@ -47,4 +127,6 @@ class WorkOrderService extends AppService implements AppServiceInterface
         $row->delete();
         return $row;
     }
+
+
 }

@@ -24,7 +24,13 @@ class UpdateWorkOrderRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string|max:255',
-        ];
+            'jobsite_location'  => 'string|max:255',
+            'damage_component'  => 'string|max:255',
+            'damaged_level'  => 'string|max:255',
+            // 'sparepart_id'  => 'string|max:255',
+            // 'jumlah.*' => 'integer',
+            'analysist'  => 'string|max:255',
+            'photo'  => 'mimes:png,jpg,svg',
+            ];
     }
 }

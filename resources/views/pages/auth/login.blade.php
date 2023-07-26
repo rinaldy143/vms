@@ -7,6 +7,8 @@
 @endsection
 @section('content')
 <body id="kt_body" class="content bg_body">
+
+    <!-- Tampilkan notifikasi atau alert jika ada $errorMessage -->
     <!--begin::Main-->
     <div class="d-flex flex-column flex-root">
     <!--begin::Content-->
@@ -20,7 +22,7 @@
                             <div class="text-left">
                                 <!--begin::Title-->
                                 <div class="w-lg-400px text-dark mb-5">
-                                    <div class="heading-1">Login Vehicle Management System</div>
+                                    <div class="heading-1">Login Vehicle Maintenance System</div>
                                 </div>
                                 <!--end::Title-->
                                 <!--begin::Subtitle-->
@@ -56,6 +58,11 @@
                                 </div>
                                 <!--end::Input-->
                             </div>
+                            @if(isset($errorMessage))
+                            <div class="alert alert-danger" role="alert">
+                                {{ $errorMessage }}
+                            </div>
+                            @endif
                             <!--end::Input group-->
                             <!--begin::Actions-->
                             <div class="w-lg-400px text-center">
@@ -72,7 +79,7 @@
                                 <!--end::Submit button-->
                                 <!--begin::Separator-->
                                 <div class="text-center mt-6">
-                                    <a href="/reset" style="color: #0094BC; font-size: 16px">Forgot password?</a>
+                                    {{-- <a href="/reset" style="color: #0094BC; font-size: 16px">Forgot password?</a> --}}
                                 </div>
                                 <!--end::Separator-->
                             </div>

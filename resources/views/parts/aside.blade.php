@@ -9,10 +9,10 @@
     <!--begin::Brand-->
     <div class="aside-logo py-8" id="kt_aside_logo">
         <!--begin::Logo-->
-        <a href="/dashboard" class="d-flex align-items-center" style="padding-top: 60px;">
+        <a href="/" class="d-flex align-items-center" style="padding-top: 60px;">
             <img src="/assets/media/logos/VMS Logo.svg" alt="Logo" class="h-55.69px logo me-2">
             <div style="width: 116px" class="subtitle-1">
-                Vehicle Management System
+                Vehicle Maintenance System
             </div>
         </a>
         <!--end::Logo-->
@@ -24,7 +24,12 @@
     <div class="w-lg-220px">
         <a href="/account-setting">
             <div class="d-flex justify-content-center">
-                <img src="/img/Ellipse 44.svg" alt="" style="width: 48px">
+                @if(auth()->user()->photo == "")
+                    <img src="/img/Ellipse 44.png" alt="" style="width: 48px; border-radius: 20px">
+                    {{-- <img class="bd-placeholder-img rounded-circle border mt-5"  width="100px" height="100px" src="/img/Ellipse 44.png" alt=""> --}}
+                    @else
+                    <img src="/img/users/{{auth()->user()->photo}}" alt="" style="width: 48px; border-radius: 20px">
+                    @endif
                 <div class="d-flex align-items-center mx-1">
                     <div class="mx-2">
                         <div class="row m-0 p-0">
@@ -56,17 +61,28 @@
             <div class="menu menu-column">
                 <div class="menu-item body-1" style="margin-left: 40px">Navigation</div>
                 <div class="menu-item py-3" style="margin-left: 57px">
-                    <a class="menu-link" href="/dashboard">
+                    <a class="menu-link" href="/">
                         <span><img src="/assets/media/icons/system-icon/outline/Chart.svg" alt=""></span>
                         <span class="subtitle-1">Dashboard</span>
                     </a>
                 </div>
+                @can('viewAny', App\Models\Entity\RequestMaintenance::class)
+                @if(auth()->user()->role == 'Mechanices')
                 <div class="menu-item py-3" style="margin-left: 57px">
-                    <a class="menu-link" href="/maintenance/report">
+                    <a class="menu-link" href="/workorder">
                         <span><img src="/assets/media/icons/system-icon/material-style/codicon_tools.svg" alt=""></span>
                         <span class="subtitle-1">Maintenances</span>
                     </a>
                 </div>
+                @else
+                <div class="menu-item py-3" style="margin-left: 57px">
+                    <a class="menu-link" href="/list-maintenance">
+                        <span><img src="/assets/media/icons/system-icon/material-style/codicon_tools.svg" alt=""></span>
+                        <span class="subtitle-1">Maintenances</span>
+                    </a>
+                </div>
+                @endif
+                @endcan
                 @can('create', App\Models\Entity\Vehicle::class)
                 <div class="menu-item py-3" style="margin-left: 57px">
                     <a class="menu-link" href="/vehicles">
@@ -97,12 +113,14 @@
                         <span class="subtitle-1">History</span>
                     </a>
                 </div>
+                @can('viewAny', App\Models\Entity\weightproduct::class)
                 <div class="menu-item py-3" style="margin-left: 57px">
-                    <a class="menu-link" href="/access-features">
+                    <a class="menu-link" href="/weightproduct">
                         <span><img src="/assets/media/icons/system-icon/outline/Key.svg" alt=""></span>
-                        <span class="subtitle-1">Access Features</span>
+                        <span class="subtitle-1">Weight Product</span>
                     </a>
                 </div>
+                @endcan
             </div>
             <!--end::Menu-->
         </div>

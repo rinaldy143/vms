@@ -50,5 +50,59 @@ class ModelVehicleSeeder extends Seeder
                 'vehicle_model' => 'Colt Diesel Double (CDD) Box Reefer'
             ]
         );
+        ModelVehicleTable::create(
+            [
+                'id' => '00000001-0000-0000-0000-000000000007',
+                'vehicle_model' => 'Van Mitsubishi Colt L300.'
+            ]
+        );
+        ModelVehicleTable::create(
+            [
+                'id' => '00000001-0000-0000-0000-000000000008',
+                'vehicle_model' => 'Van Mercedes-Benz Sprinter'
+            ]
+        );
+        ModelVehicleTable::create(
+            [
+                'id' => '00000001-0000-0000-0000-000000000009',
+                'vehicle_model' => 'Van Ford Transit'
+            ]
+        );
+        ModelVehicleTable::create(
+            [
+                'id' => '00000001-0000-0000-0000-000000000010',
+                'vehicle_model' => 'Pickup Ford Ranger'
+            ]
+        );
+        ModelVehicleTable::create(
+            [
+                'id' => '00000001-0000-0000-0000-000000000011',
+                'vehicle_model' => 'Pickup Toyota Hilux'
+            ]
+        );
+        ModelVehicleTable::create(
+            [
+                'id' => '00000001-0000-0000-0000-000000000012',
+                'vehicle_model' => 'Tronton Hino FM'
+            ]
+        );
+        ModelVehicleTable::create(
+            [
+                'id' => '00000001-0000-0000-0000-000000000013',
+                'vehicle_model' => 'Tronton Isuzu Giga'
+            ]
+        );
+        ModelVehicleTable::create(
+            [
+                'id' => '00000001-0000-0000-0000-000000000014',
+                'vehicle_model' => 'Isuzu Wingbox'
+            ]
+        );
+        ModelVehicleTable::create(
+            [
+                'id' => '00000001-0000-0000-0000-000000000015',
+                'vehicle_model' => 'Mitsubishi Fuso Wingbox'
+            ]
+        );
     }
 }

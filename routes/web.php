@@ -27,38 +27,29 @@ use Illuminate\Support\Facades\DB;
 Auth::routes();
 
 Route::group(['prefix' => '/'], function () {
-    Route::get('/login', [AuthController::class, 'index'])->name('login');
-    Route::get('/reset', function() {
-        return view('/pages/auth/reset');
+    Route::middleware('guest:web')->group(function () {
+        // Gunakan middleware 'guest:web' untuk menandai pengguna yang belum login
+        // Gunakan middleware 'redirect.authenticated' untuk mengarahkan pengguna yang sudah login
+        Route::get('/login', [AuthController::class, 'index'])->name('login');
+        Route::post('/', [AuthController::class, 'login'])->name('login.post');
+        Route::get('/reset', function() {
+            return view('/pages/auth/reset');
+        });
     });
-    Route::post('/dashboard', [AuthController::class, 'login'])->name('login.post');
+    // Route::get('/login', [AuthController::class, 'index'])->name('login');
+    // Route::post('/', [AuthController::class, 'login'])->name('login.post');
     Route::group(['middleware' => 'auth'], function () {
         Route::get('/', function() {
             return view('/pages/dashboard');
         });
-        Route::get('/dashboard', function() {
-            return view('/pages/dashboard');
-        });
-        Route::get('/maintenance/maintenance', function() {
-            return view('/pages/maintenance/maintenance');
-        });
-        Route::get('/maintenance/report', function() {
-            return view('/pages/maintenance/report');
-        });
-
-
-        Route::get('/maintenance/workorder', function() {
-            return view('/pages/maintenance/workorder');
-        });
-
-        // Route::get('/vehicles', function() {
-        //     $model_vehicle = ModelVehicle::all();
-        //     $vehiclesT = DB::table('type_vehicles')->get();
-        //     $vehicles = DB::table('vehicles')->get();
-        //     return view('/pages/vehicle/vehicle1', ['model_vehicle' => $model_vehicle, 'vehiclesT' => $vehiclesT, 'vehicles' => $vehicles]);
+        // Route::get('/dashboard', function() {
+        //     return view('/pages/dashboard');
         // });
+        Route::get('/', [App\Http\Controllers\ChartController::class, 'index'])->name('dashboard.index');
 
+        Route::post('/workorder/{rm_id}/request-sparepart', [App\Http\Controllers\WorkOrder\WorkOrderController::class, 'requestSparepart'])->name('workorder.requestSparepart');
         Route::resource('spareparts', App\Http\Controllers\Sparepart\SparepartController::class);
+        Route::resource('weightproduct', App\Http\Controllers\WeightProduct\WeightProductController::class);
         Route::group(['prefix' => 'sparepart', 'as' => 'spareparts.'], function () {
             Route::get('/search', [App\Http\Controllers\Sparepart\SparepartController::class, 'search'])->name('search');
             Route::get('/ascending', [App\Http\Controllers\Sparepart\SparepartController::class, 'ascending'])->name('ascending');
@@ -67,6 +58,17 @@ Route::group(['prefix' => '/'], function () {
             Route::get('/lowStock', [App\Http\Controllers\Sparepart\SparepartController::class, 'lowStock'])->name('lowStock');
         });
         Route::resource('users', App\Http\Controllers\User\UserController::class);
+        Route::resource('maintenance', App\Http\Controllers\RequestMaintenance\RequestMaintenanceController::class);
+        Route::resource('workorder', App\Http\Controllers\WorkOrder\WorkOrderController::class);
+        Route::get('/list-maintenance', [App\Http\Controllers\RequestMaintenance\RequestMaintenanceController::class, 'list']);
+        Route::get('/history', [App\Http\Controllers\WorkOrder\WorkOrderController::class, 'history']);
+        Route::get('/history/{id}', [App\Http\Controllers\WorkOrder\WorkOrderController::class, 'detailhistory'])->name('detailhistory');;
+        Route::group(['prefix' => 'workorders', 'as' => 'workorder.'], function () {
+            Route::get('/status', [App\Http\Controllers\WorkOrder\WorkOrderController::class, 'filterStatus'])->name('status');
+            Route::get('/plat', [App\Http\Controllers\WorkOrder\WorkOrderController::class, 'vehicleName'])->name('plat');
+            Route::get('/priority', [App\Http\Controllers\WorkOrder\WorkOrderController::class, 'priority'])->name('priority');
+        });
+
         Route::group(['prefix' => 'user', 'as' => 'users.'], function () {
             Route::get('/search', [App\Http\Controllers\User\UserController::class, 'search'])->name('search');
             Route::get('/Operation', [App\Http\Controllers\User\UserController::class, 'operation'])->name('operation');
@@ -85,10 +87,6 @@ Route::group(['prefix' => '/'], function () {
             return view('/pages/vehicle/vehicle-setting');
         });
 
-        Route::get('/history', function() {
-            return view('/pages/history');
-        });
-
         Route::get('/access-features', function() {
             return view('/pages/access-features');
         });
@@ -97,6 +95,7 @@ Route::group(['prefix' => '/'], function () {
             return view('/pages/account/setting');
         });
         Route::get('logout', [AuthController::class, 'logout']);
+        Route::put('/weightproduct', [App\Http\Controllers\WeightProduct\WeightProductController::class, 'updatePrioritas'])->name('weightproduct.updatePrioritas');
     });
 });
 

@@ -20,7 +20,7 @@ class SparepartSeeder extends Seeder
             'name' => 'Oli',
             'brand' => 'TOP_1',
             'count' => '70',
-            'photo' => 'spareparts/Mask group.png'
+            // 'photo' => 'spareparts/Mask group.png'
         ]);
 
         SparepartTable::create([
@@ -29,7 +29,7 @@ class SparepartSeeder extends Seeder
             'name' => 'Oli',
             'brand' => 'TOP_2',
             'count' => '75',
-            'photo' => 'spareparts/Mask group.png'
+            // 'photo' => 'spareparts/Mask group.png'
         ]);
     }
 }

@@ -16,9 +16,6 @@
                         <input type="text" name="search" data-kt-customer-table-filter="search"
                             class="form-control form-control-lg w-350px ps-15" placeholder="Search...">
                     </form>
-                    <div class="px-10 btn btn-icon btn-active-light-primary w-30px h-30px w-md-40px h-md-40px">
-                        <img src="/img/Frame 1637.png" alt="">
-                    </div>
                 </div>
         </div>
         <!--begin::Row-->
@@ -29,16 +26,16 @@
                     <div class="card-title">
                         <!--begin::Search-->
                         {{-- <button type="button" class="btn btn-danger me-3 py-2 font-weight-bolder " style="border-radius: 8px;">
-                            <!--begin::Svg Icon | path: icons/duotune/arrows/arr078.svg-->
+                            <!--begin::Svg Icon | path: icons/duotune/arrows/arr078.svg- >
                             <img class="pt-2" src="img/Plus.png" alt="">
                             <!--end::Svg Icon-->Restock
                         </button> --}}
                         @can('create', App\Models\Entity\Sparepart::class)
-                            <a class="btn btn-danger me-3 font-weight-bolder py-2" style="border-radius: 8px;" data-toggle="modal"
+                            {{-- <a class="btn btn-danger me-3 font-weight-bolder py-2" style="border-radius: 8px;" data-toggle="modal"
                             href="#modalRestock" title="Restock">
                             <img class="pt-2" src="/img/Plus.png" alt="">
                             Restock
-                            </a>
+                            </a> --}}
                             <a class="btn me-3 text-danger font-weight-bolder py-2" style="border: 1px solid red; border-radius: 8px;" data-toggle="modal"
                             href="#modalSparepart" title="Add Sparepart">
                             <img class="pt-2" src="/img/Plus 1.png" alt="">
@@ -68,11 +65,11 @@
                             </ul>
                         </button>
 
-                        <button type="button" class="btn me-3 border" style="border-radius: 8px">
+                        {{-- <button type="button" class="btn me-3 border" style="border-radius: 8px">
                             <!--begin::Svg Icon | path: icons/duotune/arrows/arr078.svg-->
                             <img src="/img/Download.png" alt="">
                             <!--end::Svg Icon--> <strong>Export</strong>
-                        </button>
+                        </button> --}}
 
                         <!--end::Search-->
                     </div>
@@ -97,17 +94,18 @@
                                         </a>
                                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                             <form action="{{route('spareparts.destroy', ($item->id))}}" method="POST">
-                                                <a href="" class="dropdown-item">
+                                                {{-- <a href="#modaleditsparepart{{$item->id}}" class="dropdown-item">
                                                     <img src="/assets/media/icons/system-icon/outline/Edit Square.svg" alt="" width="25px">
                                                     Update
-                                                </a>
+                                                </a> --}}
+                                                <a class="dropdown-item" data-toggle="modal" id="btn1" href="#modaleditsparepart{{$item->id}}"> <img src="/assets/media/icons/system-icon/outline/Edit Square.svg" width="25px" alt=""> Update</a>
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="dropdown-item">
-                                                    <img src="/assets/media/icons/system-icon/outline/Delete.svg" alt="" width="25px">
-                                                    Delete
-                                                </button>
+                                                <button type="submit" class="dropdown-item"> <img src="/assets/media/icons/system-icon/outline/Delete.svg" width="25px" alt=""> Delete</button>
                                             </form>
+                                        </div>
+                                        <div>
+                                            @include('modal.modaleditsparepart')
                                         </div>
                                     </li>
                                 </ul>
@@ -117,7 +115,7 @@
                             @if ($item->photo == null)
                                 <img src="/img/Mask group.png" alt="" title="" width="50px" height="50px">
                             @else
-                                <img src="/storage/{{$item->photo}}" alt="" width="50px" height="50px">
+                                <img src="/img/sparepart/{{$item->photo}}" alt="" width="50px" height="50px">
                             @endif
                             <ul class="m-0" style="list-style: none">
                                 <li class="py-1">Identity : <strong>{{$item->id_sparepart}}</strong></li>
@@ -146,11 +144,9 @@
         <!--end::Row-->
     </div>
     <div>
-        @include('modal.modalRestock')
-    </div>
-    <div>
         @include('modal.modalsparepart')
     </div>
+
     <!-- Modal contact-->
 
 
