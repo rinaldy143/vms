@@ -118,11 +118,17 @@
                                     <h1 class="w-75" style="font-size: 16px; line-height: 24px">Sparepart will need restock</h1>
                                     <div style="border: 1px solid #CFCCCC; width: 95%; margin-top:7px;"></div>
                                     <table class="table">
+                                        @if ($sparepart->count())
                                         <tbody>
                                             <tr>
                                                 <th class="col-2">
                                                     <div class="d-flex">
                                                         <h1 style="font-size: 16px; line-height: 24px; color: #EF3434;">ID</h1>
+                                                    </div>
+                                                </th>
+                                                <th class="col-2">
+                                                    <div class="d-flex">
+                                                        <h1 style="font-size: 16px; line-height: 24px; color: #EF3434;">Brand</h1>
                                                     </div>
                                                 </th>
                                                 <th class="col-4">
@@ -142,11 +148,17 @@
                                             @foreach($sparepart as $item)
                                             <tr>
                                                 <td>{{ $item->id_sparepart}}</td>
+                                                <td>{{ $item->brand}}</td>
                                                 <td>{{ $item->name }}</td>
                                                 <td>{{ $item->count }}</td>
                                             </tr>
                                             @endforeach
                                         </tbody>
+                                        @else
+                                        <h3 class="text-success">
+                                            there are currently no sparepart who need restock
+                                        </h3>
+                                        @endif
                                     </table>
                                 </div>
                             </div>

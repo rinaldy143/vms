@@ -15,6 +15,7 @@ use App\Models\Entity\Vehicle;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 
 class WorkOrderController extends ApiController
@@ -40,15 +41,30 @@ class WorkOrderController extends ApiController
     {
         $data = $this->service->dataTable($request);
         // $maintenance = RequestMaintenance::whereNotNull('analysist')->get();
-        $maintenance = RequestMaintenance::where(function ($query) {
-            $query->orWhereNotNull('analysist')
-            // ->orWhereNotNull('analysist')
-                ->orWhereExists(function ($subquery) {
-                    $subquery->select(DB::raw(1))
-                        ->from('work_orders')
-                        ->whereRaw('work_orders.rm_id = request_maintenances.id');
-                        // ->whereNull('analysist');
-                });
+        // $maintenance = RequestMaintenance::where(function ($query) {
+        //     $query->orWhereNotNull('analysist')
+        //     // ->orWhereNotNull('analysist')
+        //         ->orWhereExists(function ($subquery) {
+        //             $subquery->select(DB::raw(1))
+        //                 ->from('work_orders')
+        //                 ->whereRaw('work_orders.rm_id = request_maintenances.id');
+        //                 // ->whereNull('analysist');
+        //         });
+        // })
+        // ->paginate(15);
+        $userRole = Auth::user()->role;
+
+        $maintenance = RequestMaintenance::where(function ($query) use ($userRole) {
+            if ($userRole === 'Mechanices') {
+                $query->orWhereNull('analysist');
+            } else {
+                $query->orWhereNotNull('analysist');
+            }
+            $query->orWhereExists(function ($subquery) {
+                $subquery->select(DB::raw(1))
+                    ->from('work_orders')
+                    ->whereRaw('work_orders.rm_id = request_maintenances.id');
+            });
         })
         ->paginate(15);
 
@@ -206,9 +222,16 @@ class WorkOrderController extends ApiController
 
     public function vehicleName(Request $request)
     {
-        $maintenance = RequestMaintenance::where(function ($query) {
-            $query->orWhereNotNull('analysist')
-                  ->orWhereExists(function ($subquery) {
+
+        $userRole = Auth::user()->role;
+
+        $maintenance = RequestMaintenance::where(function ($query) use ($userRole) {
+            if ($userRole === 'Mechanices') {
+                $query->orWhereNull('analysist');
+            } else {
+                $query->orWhereNotNull('analysist');
+            }
+            $query->orWhereExists(function ($subquery) {
                       $subquery->select(DB::raw(1))
                                ->from('work_orders')
                                ->whereRaw('work_orders.rm_id = request_maintenances.id');
@@ -225,10 +248,15 @@ class WorkOrderController extends ApiController
 
     public function priority(Request $request)
     {
-        $maintenance = RequestMaintenance::where(function ($query) {
-            $query->orWhereNotNull('analysist')
-            // ->orWhereNotNull('analysist')
-                ->orWhereExists(function ($subquery) {
+        $userRole = Auth::user()->role;
+
+        $maintenance = RequestMaintenance::where(function ($query) use ($userRole) {
+            if ($userRole === 'Mechanices') {
+                $query->orWhereNull('analysist');
+            } else {
+                $query->orWhereNotNull('analysist');
+            }
+            $query->orWhereExists(function ($subquery) {
                     $subquery->select(DB::raw(1))
                         ->from('work_orders')
                         ->whereRaw('work_orders.rm_id = request_maintenances.id');

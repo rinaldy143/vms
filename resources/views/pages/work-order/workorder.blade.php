@@ -44,7 +44,10 @@
                                     </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{route('workorder.priority')}}"> Priority</a>
-                                        <a class="dropdown-item" href="{{route('workorder.status')}}"> Status</a>
+                                    @if (Auth::user()->role === 'Mechanices')
+                                    @else
+                                    <a class="dropdown-item" href="{{route('workorder.status')}}"> Status</a>
+                                    @endif
                                         <a class="dropdown-item" href="{{route('workorder.plat')}}"> Vehicle</a>
                                 </div>
                             </li>

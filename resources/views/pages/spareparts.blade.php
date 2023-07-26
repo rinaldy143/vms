@@ -115,7 +115,7 @@
                             @if ($item->photo == null)
                                 <img src="/img/Mask group.png" alt="" title="" width="50px" height="50px">
                             @else
-                                <img src="/img/{{$item->photo}}" alt="" width="50px" height="50px">
+                                <img src="/img/sparepart/{{$item->photo}}" alt="" width="50px" height="50px">
                             @endif
                             <ul class="m-0" style="list-style: none">
                                 <li class="py-1">Identity : <strong>{{$item->id_sparepart}}</strong></li>

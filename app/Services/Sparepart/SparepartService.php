@@ -34,7 +34,7 @@ class SparepartService extends AppService implements AppServiceInterface
 
         if ($data->photo) {
             $imgName = $data->photo->getClientOriginalName() . '-' . time() . '.' . $data->photo->extension();
-            $data->photo->move(public_path('/img/users'), $imgName);
+            $data->photo->move(public_path('/img/sparepart'), $imgName);
         }
         return SparepartTable::create([
             'id_sparepart' => $data['id_sparepart'],

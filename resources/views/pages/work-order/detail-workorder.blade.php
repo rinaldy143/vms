@@ -254,6 +254,32 @@
                                 </div>
                             </div>
 
+                            <div class="my-4">
+                                <h2 class="pt-3">Request Sparepart</h2>
+
+                                <div class="form-group d-flex align-items-center py-5">
+                                    @if ($maintenance->workorder->Spareparts->isEmpty())
+                                    <p class="text-success">No sparepart requested</p>
+                                    @else
+                                        @foreach ($maintenance->workorder->Spareparts as $sparepart)
+                                        <div class="px-5">
+                                            @if ($sparepart->photo == null)
+                                                <img src="/img/Mask group.png" alt="" style="width: 48px; border-radius: 20px">
+                                            @else
+                                                <img class="pt-3" width="50px" src="/img/users/{{ $sparepart->photo }}" alt="dawda">
+                                            @endif
+                                        </div>
+                                        <div class="h-50">
+                                            <h2>{{ $sparepart->name }}</h2>
+                                            {{-- <h2>{{ $maintenance->WorkOrder()->latest()->first()->User()->name }}</h2> --}}
+                                            <span class="fw-lighter">{{ $sparepart->pivot->jumlah }}</span>
+                                        </div>
+                                        @endforeach
+                                    @endif
+
+                                </div>
+                            </div>
+
                             @else
 
                             @endif
