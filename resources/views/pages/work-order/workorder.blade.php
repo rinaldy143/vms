@@ -24,13 +24,13 @@
             {{-- <a class="btn border border-dark text-dark text-3 rounded-8 w-200px p-md-3 h-100 me-4" href="#">onprocess work order</a> --}}
             <div class="d-flex align-items-center position-relative my-5">
                 <!--begin::Svg Icon | path: icons/duotune/general/gen021.svg-->
-                <span class="position-absolute ms-6">
+                {{-- <span class="position-absolute ms-6">
                     <img src="/img/Search.png" alt="">
                 </span>
                 <!--end::Svg Icon-->
                 <input type="text" data-kt-customer-table-filter="search"
-                    class="form-control form-control-lg w-100 h-50px ps-15" placeholder="Search...">
-                <div class="card-title" style="padding-left: 5px; margin-left: 5px;">
+                    class="form-control form-control-lg w-100 h-50px ps-15" placeholder="Search..."> --}}
+                <div class="card-title position-absolute" style="padding-left: 5px; margin-left: 5px; right:0%; ">
                     <!--begin::Search-->
                     <button type="button" class="btn me-3 px-5 py-1 border" style="border-radius: 8px">
                         <ul class="menu-nav p-0 m-0">
@@ -61,7 +61,7 @@
 
                 @if (isset($item->workorder) && $item->workorder->photo !== null)
                 @else
-                <div class="card w-100 mt-6">
+                <div class="card w-100 mt-15">
                     <div class="card-body">
                         <table class="table align-middle">
                             <thead>

@@ -68,7 +68,7 @@
                                 class="fw-bold text-black subtitle-1">{{__('KM Unit')}} <span
                                     class="text-danger">*</span></label>
                                 <input type="text" id="km_Unit" name="km_Unit" class="form-control mt-2"
-                                    placeholder="28 KM" maxlength="200" value={{old('km_Unit')}}>
+                                    placeholder="28" maxlength="200" value={{old('km_Unit')}}>
                                 @error('km_Unit')
                                 <div class="invalid-feedback d-flex">
                                     {{ $message }}
@@ -79,7 +79,7 @@
                                 <label for="hm_Unit"
                                 class="fw-bold text-black subtitle-1">{{__('HM Unit')}}
                                 <input type="text" id="hm_Unit" name="hm_Unit" class="form-control mt-2"
-                                    placeholder="100 HM" maxlength="200" value={{old('hm_Unit')}}>
+                                    placeholder="100" maxlength="200" value={{old('hm_Unit')}}>
                                 @error('hm_Unit')
                                 <div class="invalid-feedback d-flex">
                                     {{ $message }}

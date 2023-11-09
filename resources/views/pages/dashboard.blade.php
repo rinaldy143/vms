@@ -247,10 +247,19 @@
     };
 
     const config = {
-        type: 'line',
-        data: datas,
-        options: {}
-    };
+    type: 'line',
+    data: datas,
+    options: {
+        scales: {
+            y: {
+                ticks: {
+                    stepSize: 1, // Interval antar nilai di sumbu y
+                    precision: 0, // Jumlah angka di belakang koma
+                },
+            },
+        },
+    },
+};
 
     const myChart = new Chart(
         document.getElementById('lineChart'),

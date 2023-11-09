@@ -36,11 +36,12 @@ class ChartController extends Controller
         ->whereNotNull('work_orders.photo')
         ->whereYear('request_maintenances.created_at', date('Y'))
         ->groupBy(DB::raw("month_name"))
-        ->orderBy('request_maintenances.id', 'asc')
+        ->orderBy('request_maintenances.created_at', 'asc')
         ->pluck('count', 'month_name');
 
         $labelsJSON = $vehicleCounts->keys();
         $dataJSON = $vehicleCounts->values();
+        // dd($dataJSON);
         return view('pages.dashboard', compact('users','totaluser','sparepart','totalsparepart','totalvehicle','rm','labelsJSON','dataJSON'));
     }
 }

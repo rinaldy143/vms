@@ -21,12 +21,12 @@
             <div class="d-flex align-items-center position-relative my-5">
                 <!--begin::Svg Icon | path: icons/duotune/general/gen021.svg-->
                 <span class="position-absolute ms-6">
-                    <img src="/img/Search.png" alt="">
+                    {{-- <img src="/img/Search.png" alt=""> --}}
                 </span>
                 <!--end::Svg Icon-->
-                <input type="text" data-kt-customer-table-filter="search"
-                    class="form-control form-control-lg w-100 h-50px ps-15" placeholder="Search...">
-                <div class="card-title" style="padding-left: 5px; margin-left: 5px;">
+                {{-- <input type="text" data-kt-customer-table-filter="search"
+                    class="form-control form-control-lg w-100 h-50px ps-15" placeholder="Search..."> --}}
+                {{-- <div class="card-title" style="padding-left: 5px; margin-left: 5px;">
                     <!--begin::Search-->
                     <button type="button" class="btn me-3 px-5 py-1 border" style="border-radius: 8px">
                         <ul class="menu-nav p-0 m-0">
@@ -47,7 +47,7 @@
                             </li>
                         </ul>
                     </button>
-                </div>
+                </div> --}}
             </div>
             @if ($maintenance->count())
 

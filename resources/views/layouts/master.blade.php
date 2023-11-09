@@ -33,6 +33,8 @@
 <body id="kt_body" class="content header-fixed header-tablet-and-mobile-fixed toolbar-enabled toolbar-fixed aside-enabled aside-fixed">
     <!--begin::Main-->
     <!--begin::Root-->
+    @include('parts.mobile')
+
     <div class="d-flex flex-column flex-root">
         <!--begin::Page-->
         <div class="page d-flex flex-row flex-column-fluid">
