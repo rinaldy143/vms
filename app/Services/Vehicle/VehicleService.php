@@ -142,7 +142,7 @@ class VehicleService extends AppService implements AppServiceInterface
     public function delete($id)
     {
         $row = VehicleTable::findOrFail($id);
-        $row->delete();
+        $row->forceDelete();
         return $row;
     }
 }

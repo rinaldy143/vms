@@ -268,7 +268,7 @@
                                             @if ($sparepart->photo == null)
                                                 <img src="/img/Mask group.png" alt="" style="width: 48px; border-radius: 20px">
                                             @else
-                                                <img class="pt-3" width="50px" src="/img/users/{{ $sparepart->photo }}" alt="dawda">
+                                                <img class="pt-3" width="50px" src="/img/sparepart/{{ $sparepart->photo }}" alt="dawda">
                                             @endif
                                         </div>
                                         <div class="h-50">
