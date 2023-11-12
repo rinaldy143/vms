@@ -27,7 +27,7 @@ class Vehicle extends AppModel
         'plat_number',
         // 'trailer_connected',
         // 'photo',
-        'monthly_maintenance',
+        // 'monthly_maintenance',
         // 'last_maintenance',
         // 'id_fms',
         'model_vehicle_id',

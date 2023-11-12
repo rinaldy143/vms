@@ -47,10 +47,8 @@
                                     name="type_vehicle_id" required>
                                     <option value="" disabled selected>{{__('Select Vehicle Type')}}</option>
                                         @foreach ($vehiclesT as $model1)
-                                            {{-- <option value="{{$model1->id}}" {{ old('type_vehicle_id')==$model1->id ?
-                                            'selected' : '' }}>{{$model1->vehicle_type}}
-                                            </option> --}}
-                                            <option value="{{ $model1->id }}" {{ old('type_vehicle_id', $model1->id) == $model1->id ? 'selected' : '' }}>
+                                            <option value="{{ $model->TypeVehicle->id }}"
+                                                {{ old('type_vehicle_id', $model->TypeVehicle->id) == $model1->id ? 'selected' : '' }}>
                                                 {{ $model1->vehicle_type }}
                                             </option>
                                         @endforeach
@@ -69,7 +67,7 @@
                                         @foreach ($model_vehicle as $model2)
                                         {{-- <option value="{{$model2->id}}" {{ old('ModelVehicle')==$model2->id ?
                                             'selected' : '' }}>{{$model2->vehicle_model}}</option> --}}
-                                            <option value="{{ $model2->id }}" {{ old('type_vehicle_id', $model2->id) == $model2->id ? 'selected' : '' }}>
+                                            <option value="{{ $model->ModelVehicle->id }}" {{ old('type_vehicle_id', $model->ModelVehicle->id) == $model2->id ? 'selected' : '' }}>
                                                 {{ $model2->vehicle_model }}
                                             </option>
                                         @endforeach
@@ -82,24 +80,6 @@
                                         @enderror
                                 </div>
 
-                                <label for="monthly_maintenance"
-                                class="fw-bold text-black mt-4">{{__('Monthly Maintenance')}} <span
-                                class="text-danger">*</span></label>
-                            </label>
-                            <div class="input-group date border border-secondary  rounded" data-provide="datepicker">
-                                <input type="text" id="monthly_maintenance" name="monthly_maintenance" class="datepicker form-control  border-0 rounded"  required value='{{$model->monthly_maintenance}}'
-                                @isset($value)
-                                value="{{old($monthly_maintenance) ? old($monthly_maintenance) : $value}}"
-                                @else value="{{old($model->monthly_maintenance)}}" @endisset>
-                                @error('monthly_maintenance')
-                                <div class="invalid-feedback d-flex">
-                                    {{ $message }}
-                                </div>
-                                @enderror
-                                <div class="input-group-addon border-0" style="background-color: #fff">
-                                    <span><img src="/assets/media/icons/system-icon/outline/Calendar.svg" width="23px" alt=""></span>
-                                </div>
-                            </div>
 
                             </div>
                         </div>

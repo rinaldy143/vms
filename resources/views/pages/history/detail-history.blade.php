@@ -23,6 +23,17 @@
                             <h1 style="font-size: 16px;margin-bottom: 0;">{{$maintenance->vehicle->plat_number}}</h1>
                             <p class="text-primary" style="font-size: 14px;margin-bottom: 0;">T-01, T-02</p>
                         </div>
+                        <div class="status" style="margin-left: auto;">
+                            @if(empty($maintenance->workorder->assign_by))
+                                Waiting Start Breakdown
+                            @elseif($maintenance->workorder->analysist !== null && $maintenance->workorder->photo !== null)
+                                Finish
+                            @elseif($maintenance->workorder->analysist !== null)
+                                On Maintenance
+                            @else
+                                Waiting End Breakdown
+                            @endif
+                        </div>
                     </div>
                     <div class="mt-8">
                         <h3>Maintenance</h3>
@@ -35,12 +46,14 @@
                                             {{-- <p>Breakdown Type</p> --}}
                                             <p>Unit Condition</p>
                                             <p>Created by</p>
+                                            <p>Dampak</p>
                                         </div>
                                         <div class="col-lg-6">
                                             <p>: {{$maintenance->created_at}}</p>
                                             {{-- <p>: {{$maintenance->breakdown_type}}</p> --}}
                                             <p>: {{$maintenance->unit_condition}}</p>
                                             <p>: {{$maintenance->report_by}}</p>
+                                            <p>: {{$maintenance->dampak}}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -155,7 +168,7 @@
                         <div class="my-4">
                             <h2 class="pt-3">Maintenance Proof</h2>
                             <div class="px-5">
-                                    <img class="pt-3" width="25%" src="/img/workorder/{{ $maintenance->workorder->photo }}" alt="dawda">
+                                    <img class="pt-3" width="25%" src="/img/workorder/{{ $maintenance->workorder->photo }}" alt="Photo">
                             </div>
                         </div>
                 </div>

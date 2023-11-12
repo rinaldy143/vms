@@ -65,31 +65,7 @@ class RequestMaintenanceService extends AppService implements AppServiceInterfac
         // $newRequestMaintenance->C3 = $newRequestMaintenance->id ? $newRequestMaintenance->vehicle->selected_value2 : null;
         $newRequestMaintenance->save();
 
-        // // Perhitungan preferensi
-        // $preferensi *= pow($C1, $weightProduct->where('kriteria', 'Dampak')->pluck('bobot')->first());
-        // $preferensi *= pow($newRequestMaintenance->C2, $weightProduct->where('kriteria', 'Model')->pluck('bobot')->first());
-        // $preferensi *= pow($newRequestMaintenance->C3, $weightProduct->where('kriteria', 'tipe')->pluck('bobot')->first());
-        // $preferensi *= pow($C4, $weightProduct->where('kriteria', 'Aktivitas')->pluck('bobot')->first());
 
-        // // Setelah perhitungan preferensi selesai, update nilai preferensi
-        // $newRequestMaintenance->preferensi = $preferensi;
-        // $newRequestMaintenance->save();
-
-        // // Perhitungan vektor berdasarkan preferensi sebelum submit
-        // $preferensiData = RequestMaintenanceTable::pluck('preferensi')->toArray();
-
-
-        // if (count($preferensiData) > 0) {
-        //     // Menghitung total preferensi
-        //     $totalPreferensi = array_sum($preferensiData);
-
-        //     // Mengupdate vektor pada setiap data
-        //     $requestMaintenanceData = RequestMaintenanceTable::all();
-        //     foreach ($requestMaintenanceData as $requestMaintenance) {
-        //         $requestMaintenance->vektor = $requestMaintenance->preferensi / $totalPreferensi;
-        //         $requestMaintenance->save();
-        //     }
-        // }
         return $newRequestMaintenance;
     }
 
@@ -178,7 +154,7 @@ class RequestMaintenanceService extends AppService implements AppServiceInterfac
                 // Perhitungan preferensi
                 $preferensi *= pow($C1, $weightProduct->where('kriteria', 'Dampak')->pluck('bobot')->first());
                 $preferensi *= pow($row->C2, $weightProduct->where('kriteria', 'KM')->pluck('bobot')->first());
-                $preferensi *= pow($row->C3, $weightProduct->where('kriteria', 'tipe')->pluck('bobot')->first());
+                $preferensi *= pow($row->C3, $weightProduct->where('kriteria', 'Tipe')->pluck('bobot')->first());
                 $preferensi *= pow($C4, $weightProduct->where('kriteria', 'Aktivitas')->pluck('bobot')->first());
                 // dd($preferensi);
                 // Setelah perhitungan preferensi selesai, update nilai preferensi

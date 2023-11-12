@@ -73,7 +73,7 @@
                                                 </th>
                                                 <th class="col-4">
                                                     <div class="d-flex">
-                                                        <h1 style="font-size: 16px; line-height: 24px; color: #EF3434;">Priority</h1>
+                                                        <h1 style="font-size: 16px; line-height: 24px; color: #EF3434;">Unit Condition</h1>
                                                     </div>
                                                 </th>
                                             </tr>
@@ -82,7 +82,7 @@
                                             <tr>
                                                 <td>{{ $item->Vehicle->plat_number}}</td>
                                                 <td>{{ $item->Vehicle->TypeVehicle->vehicle_type }}</td>
-                                                <td>{{ $item->priority }}</td>
+                                                <td>{{ $item->unit_condition }}</td>
                                             </tr>
                                             @endforeach
                                         </tbody>

@@ -55,22 +55,26 @@
                                 <p class="pt-4 fs-4 text-muted">List Vehicle</p>
                                 @if ($vehicles->count())
                                 <!--begin::Item-->
-                                @foreach ($vehicles as $key=>$model)
+                                @foreach ($vehicles as $key => $model)
+                                    @php
+                                    $lastRequestMaintenance = $model->requestMaintenances->whereNotNull('wo_id')->last();
+                                    @endphp
 
-
-                                <div class="d-flex flex-stack pt-3 ">
-                                    <div class="d-flex w-100">
-
-                                        <div class="d-flex flex-column w-100">
-                                            <a href="javascript:void(0)" id="changeLink" class="fs-5 text-danger btn-address fw-bolder text-hover-danger border p-3 my-1 {{$key==0?'text-danger':'text-dark'}}" style="border-radius: 8px; background-color:#fff;"
-                                            onclick="changeAddress('{{$model->plat_number}}', '{{$model->monthly_maintenance}}', '{{$model->ModelVehicle->vehicle_model}}', '{{$model->TypeVehicle->vehicle_type}}', '{{$model->id}}', '{{$model->requestMaintenances->last()->dampak ?? '-'}}', '{{$model->requestMaintenances->last()->WorkOrder->updated_at ?? '-'}}', '{{'/history/' . ($model->requestMaintenances->last()->id ?? '#')}}');">{{$model->plat_number}}</a>
-
+                                    <div class="d-flex flex-stack pt-3">
+                                        <div class="d-flex w-100">
+                                            <div class="d-flex flex-column w-100">
+                                                <a href="javascript:void(0)" id="changeLink" class="fs-5 text-danger btn-address fw-bolder text-hover-danger border p-3 my-1 {{$key==0?'text-danger':'text-dark'}}" style="border-radius: 8px; background-color:#fff;" onclick="changeAddress('{{$model->plat_number}}', '{{$model->ModelVehicle->vehicle_model}}', '{{$model->TypeVehicle->vehicle_type}}',
+                                                 '{{$model->id}}',
+                                                 '{{$lastRequestMaintenance->dampak ?? '-'}}',
+                                                 '{{$lastRequestMaintenance->WorkOrder->updated_at ?? '-'}}',
+                                                 '{{ '/history/' . ($lastRequestMaintenance->WorkOrder->rm_id ?? '#') }}');"
+                                                  >{{$model->plat_number}}</a>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                @include('modal.modaleditvehicle')
-
+                                    @include('modal.modaleditvehicle')
                                 @endforeach
+
 
                                 @else
                                 <div class="pt-3 ">
@@ -143,8 +147,9 @@
                                     <div class="col-lg-6 px-1">
                                         <p class="pvehicle mb-2 fs-7" >Model Vehicle</p>
                                         <h4 class="bvehicle fw-bold pb-5" id="vehicle-model_vehicle_id"> {{$vehicles[0]->ModelVehicle->vehicle_model}}</h4>
-                                        <p class="pvehicle mb-2 fs-7">Scheduling Maintained</p>
-                                        <h4 class="bvehicle fw-bold" id="vehicle-monthly_maintenance">{{$vehicles[0]->monthly_maintenance}}</h4>
+                                        <p class="pvehicle mb-2 fs-7">Last Maintained</p>
+                                        <h4 class="bvehicle fw-bold" id="vehicle-last-update">{{$vehicles[0]->requestMaintenances->last()->WorkOrder->updated_at ?? '-'}}</h4>
+
                                         {{-- {{dd($vehicles[0]->requestMaintenances->last()->dampak)}} --}}
 
 
@@ -152,8 +157,6 @@
                                     <div class="col-lg-6 px-1">
                                         <p class="pvehicle mb-2 fs-7">Vehicle Type</p>
                                         <h4 class="bvehicle fw-bold pb-5" id="vehicle-type_vehicle_id">{{$vehicles[0]->TypeVehicle->vehicle_type}}</h4>
-                                        <p class="pvehicle mb-2 fs-7">Last Maintained</p>
-                                        <h4 class="bvehicle fw-bold" id="vehicle-last-update">{{$vehicles[0]->requestMaintenances->last()->WorkOrder->updated_at ?? '-'}}</h4>
                                     </div>
                                 </div>
                             </div>
@@ -226,13 +229,16 @@
                         <div class="scroll">
                             <div class="d-flex flex-row-fluid mt-6">
                                 <div class="col-lg-3 col-md-3 subtitle-1 fw-bold" id="vehicle-last-update">
-                                        <h4 class="bvehicle fw-bold" id="vehicle-last-update1">{{$vehicles[0]->requestMaintenances->last()->WorkOrder->updated_at ?? '-'}}</h4>
+                                @php
+                                    $lastRequestMaintenance = $vehicles[0]->requestMaintenances->whereNotNull('wo_id')->last();
+                                @endphp
+                                    <h4 class="bvehicle fw-bold" id="vehicle-last-update1">{{$lastRequestMaintenance->WorkOrder->updated_at ?? '-'}}</h4>
                                 </div>
                                 <div class="col-lg-5 col-md-5 subtitle-1">
-                                    <h4 class="bvehicle fw-bold pb-5" id="vehicle-last-maintain">{{$vehicles[0]->requestMaintenances->last()->dampak ?? '-'}}</h4>
+                                    <h4 class="bvehicle fw-bold pb-5" id="vehicle-last-maintain">{{$lastRequestMaintenance->dampak ?? '-'}}</h4>
                                 </div>
                                 <div class=" col-lg-4 col-md-4" style="text-align: right" >
-                                    <a class="fs-4" id="vehicle-rm"  style="color: #6E6666" href="{{'/history/' . ($vehicles[0]->requestMaintenances->last()->id ?? '#')}}">Detail <img src="/assets/media/icons/system-icon/outline/Arrow - Right.svg" alt="" >
+                                    <a class="fs-4" id="vehicle-rm"  style="color: #6E6666" href="{{'/history/' . ($lastRequestMaintenance->WorkOrder->rm_id ?? '#')}}">Detail <img src="/assets/media/icons/system-icon/outline/Arrow - Right.svg" alt="" >
                                     </a>
                                 </div>
                             </div>
@@ -289,19 +295,14 @@
     // todayHighlight: true,
   });
 
-  let vehicles = {!!$vehicles!!};
-  let vehiclesT = {!!$vehiclesT!!};
-  let model_vehicle = {!!$model_vehicle!!};
-  let rm = {!!$rm!!};
-  let wo = {!!$wo!!};
+
 
 //   let t = document.getElementById("edit").href;
     // changeAddress(vehicles[0].plat_number,vehicles[0].monthly_maintenance,model_vehicle[0].vehicle_model,vehiclesT[0].vehicle_type,vehicles[0].id);
 
-    function changeAddress(plat_number, monthly_maintenance, vehicle_model, vehicle_type, id, dampak, updated_at, rm_id ){
+    function changeAddress(plat_number, vehicle_model, vehicle_type, id, dampak, updated_at, rm_id ){
         $('#vehicle-plat_number').html(plat_number);
         $('#vehicle-model_vehicle_id').html(vehicle_model);
-        $('#vehicle-monthly_maintenance').html(monthly_maintenance);
         $('#vehicle-type_vehicle_id').html(vehicle_type);
         $('#vehicle-last-maintain').html(dampak);
         $('#vehicle-last-update').html(updated_at);

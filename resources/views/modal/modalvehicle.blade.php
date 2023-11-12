@@ -78,21 +78,6 @@
                                         </div>
                                         @enderror
                                 </div>
-                                <label for="monthly_maintenance"
-                                    class="fw-bold text-black mt-4">{{__('Monthly Maintenance')}} <span
-                                    class="text-danger">*</span></label>
-                                </label>
-                                <div class="input-group date border border-secondary  rounded" data-provide="datepicker">
-                                    <input type="text" id="monthly_maintenance" name="monthly_maintenance" class="datepicker form-control  border-0 rounded"  required value={{old('monthly_maintenance')}}>
-                                    @error('monthly_maintenance')
-                                    <div class="invalid-feedback d-flex">
-                                        {{ $message }}
-                                    </div>
-                                    @enderror
-                                    <div class="input-group-addon border-0" style="background-color: #fff">
-                                        <span><img src="/assets/media/icons/system-icon/outline/Calendar.svg" width="23px" alt=""></span>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>

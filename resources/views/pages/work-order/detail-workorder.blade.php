@@ -35,12 +35,14 @@
                                             {{-- <p>Breakdown Type</p> --}}
                                             <p>Unit Condition</p>
                                             <p>Created by</p>
+                                            <p>Dampak</p>
                                         </div>
                                         <div class="col-lg-6">
                                             <p>: {{$maintenance->created_at}}</p>
                                             {{-- <p>: {{$maintenance->breakdown_type}}</p> --}}
                                             <p>: {{$maintenance->unit_condition}}</p>
                                             <p>: {{$maintenance->report_by}}</p>
+                                            <p>: {{$maintenance->dampak}}</p>
                                         </div>
                                     </div>
                                 </div>

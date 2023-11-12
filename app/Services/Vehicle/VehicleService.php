@@ -41,13 +41,11 @@ class VehicleService extends AppService implements AppServiceInterface
 
         return VehicleTable::create([
             'plat_number' => $data['plat_number'],
-            'monthly_maintenance' => $data['monthly_maintenance'],
             'model_vehicle_id' => $selectedModel,
             'type_vehicle_id' => $selectedType,
             'selected_value1' => $selectedValue1,
             'selected_value2' => $selectedValue2,
         ]);
-        // dd($data);
     }
 
     private function getValueForSelectedType($selectedType)
@@ -116,7 +114,6 @@ class VehicleService extends AppService implements AppServiceInterface
         $row = VehicleTable::findOrFail($id);
         $row->update([
             'plat_number' => $data['plat_number'],
-            'monthly_maintenance' => $data['monthly_maintenance'],
             'model_vehicle_id' => $data['model_vehicle_id'],
             'type_vehicle_id' => $data['type_vehicle_id'],
         ]);
@@ -130,6 +127,12 @@ class VehicleService extends AppService implements AppServiceInterface
         // Search in the title and body columns from the posts table
         $vehicles = Vehicle::query()
             ->where('plat_number', 'LIKE', "%{$search}%")
+            ->orWhereHas('ModelVehicle', function ($query) use ($search) {
+                $query->where('vehicle_model', 'LIKE', "%{$search}%");
+            })
+            ->orWhereHas('TypeVehicle', function ($query) use ($search) {
+                $query->where('vehicle_type', 'LIKE', "%{$search}%");
+            })
             ->get();
 
         // Return the search view with the resluts compacted
