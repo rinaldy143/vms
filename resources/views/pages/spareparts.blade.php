@@ -16,6 +16,20 @@
                         <input type="text" name="search" data-kt-customer-table-filter="search"
                             class="form-control form-control-lg w-350px ps-15" placeholder="Search...">
                     </form>
+                    <ul class="menu-nav p-0 m-0">
+                        <li class="menu-item dropdown ">
+                            <a class="nav-link text-dark" style="padding: 11px 11px;" href="#" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <img src="/img/Filter 2.png" alt=""><strong> Filter</strong>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{route('spareparts.ascending')}}"> <img src="/assets/media/icons/system-icon/outline/Arrow - Up-1.svg" width="25px" alt=""> Ascending</a>
+                                    <a class="dropdown-item" href="{{route('spareparts.descending')}}"> <img src="/assets/media/icons/system-icon/outline/Arrow - Down-1.svg" width="25px" alt=""> Descending</a>
+                                    <a class="dropdown-item" href="{{route('spareparts.highStock')}}"> <img src="/assets/media/icons/system-icon/outline/Delete.svg" width="25px" alt=""> High Stock</a>
+                                    <a class="dropdown-item" href="{{route('spareparts.lowStock')}}"> <img src="/assets/media/icons/system-icon/outline/Delete.svg" width="25px" alt=""> Low Stock</a>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
         </div>
         <!--begin::Row-->
@@ -48,22 +62,7 @@
                     <!-- Right Side Of Navbar -->
                     <div class="card-title">
                         <!--begin::Search-->
-                        <button type="button" class="btn me-3 p-0 border" style="border-radius: 8px">
-                            <ul class="menu-nav p-0 m-0">
-                                <li class="menu-item dropdown ">
-                                    <a class="nav-link text-dark" style="padding: 11px 11px;" href="#" role="button"
-                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <img src="/img/Filter 2.png" alt=""><strong> Filter</strong>
-                                    </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                            <a class="dropdown-item" href="{{route('spareparts.ascending')}}"> <img src="/assets/media/icons/system-icon/outline/Arrow - Up-1.svg" width="25px" alt=""> Ascending</a>
-                                            <a class="dropdown-item" href="{{route('spareparts.descending')}}"> <img src="/assets/media/icons/system-icon/outline/Arrow - Down-1.svg" width="25px" alt=""> Descending</a>
-                                            <a class="dropdown-item" href="{{route('spareparts.highStock')}}"> <img src="/assets/media/icons/system-icon/outline/Delete.svg" width="25px" alt=""> High Stock</a>
-                                            <a class="dropdown-item" href="{{route('spareparts.lowStock')}}"> <img src="/assets/media/icons/system-icon/outline/Delete.svg" width="25px" alt=""> Low Stock</a>
-                                    </div>
-                                </li>
-                            </ul>
-                        </button>
+
 
                         {{-- <button type="button" class="btn me-3 border" style="border-radius: 8px">
                             <!--begin::Svg Icon | path: icons/duotune/arrows/arr078.svg-->
@@ -80,6 +79,7 @@
         <!--end::Row-->
         <!--begin::Row-->
         <div class="row pt-5 pb-5">
+
             @foreach ($spareparts as $item)
                 <div class="col-lg-4 col-md-6 col-11 pb-5">
                     <!--begin::Card-->
@@ -231,6 +231,7 @@
     }
 </style>
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
 
 <script>
