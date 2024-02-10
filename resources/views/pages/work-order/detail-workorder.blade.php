@@ -35,12 +35,14 @@
                                             {{-- <p>Breakdown Type</p> --}}
                                             <p>Unit Condition</p>
                                             <p>Created by</p>
+                                            <p>Dampak</p>
                                         </div>
                                         <div class="col-lg-6">
                                             <p>: {{$maintenance->created_at}}</p>
                                             {{-- <p>: {{$maintenance->breakdown_type}}</p> --}}
                                             <p>: {{$maintenance->unit_condition}}</p>
                                             <p>: {{$maintenance->report_by}}</p>
+                                            <p>: {{$maintenance->dampak}}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -204,7 +206,7 @@
                                             <select class="form-control" name="sparepart_id[]">
                                                 <option value="" disabled selected>{{__('Pilih Sparepart')}}</option>
                                                 @foreach ($sparepart as $index => $item)
-                                                <option value="{{ $item->id }}" data-count="{{ $item->count }}" {{ old('sparepart_id.' . $index) == $item->id ? 'selected' : '' }}>{{ $item->name }}</option>
+                                                <option value="{{ $item->id }}" data-count="{{ $item->count - 3 }}" {{ old('sparepart_id.' . $index) == $item->id ? 'selected' : '' }}>{{ $item->name }} : {{ $item->brand }}</option>
                                                 @endforeach
                                                 </select>
                                                 @error('sparepart_id.*')
@@ -266,7 +268,7 @@
                                             @if ($sparepart->photo == null)
                                                 <img src="/img/Mask group.png" alt="" style="width: 48px; border-radius: 20px">
                                             @else
-                                                <img class="pt-3" width="50px" src="/img/users/{{ $sparepart->photo }}" alt="dawda">
+                                                <img class="pt-3" width="50px" src="/img/sparepart/{{ $sparepart->photo }}" alt="dawda">
                                             @endif
                                         </div>
                                         <div class="h-50">

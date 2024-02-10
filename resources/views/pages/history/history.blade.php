@@ -13,15 +13,15 @@
             {{-- <a class="btn border border-dark text-dark text-3 rounded-8 w-200px p-md-3 h-100 me-4" href="#">onprocess work order</a> --}}
             <div class="d-flex align-items-center position-relative my-5">
                 <!--begin::Svg Icon | path: icons/duotune/general/gen021.svg-->
-                <span class="position-absolute ms-6">
+                {{-- <span class="position-absolute ms-6">
                     <img src="/img/Search.png" alt="">
                 </span>
                 <!--end::Svg Icon-->
                 <input type="text" data-kt-customer-table-filter="search"
-                    class="form-control form-control-lg w-100 h-50px ps-15" placeholder="Search...">
-                <div class="card-title" style="padding-left: 5px; margin-left: 5px;">
-                    <!--begin::Search-->
-                    <button type="button" class="btn me-3 px-5 py-1 border" style="border-radius: 8px">
+                    class="form-control form-control-lg w-100 h-50px ps-15" placeholder="Search..."> --}}
+                <div class="card-title position-absolute" style="padding-left: 5px; margin-left: 5px; right:0%; ">
+                        <!--begin::Search-->
+                    {{-- <button type="button" class="btn me-3 px-5 py-1 border" style="border-radius: 8px">
                         <ul class="menu-nav p-0 m-0">
                             <li class="menu-item dropdown ">
                                     <a class="nav-link text-dark" style="padding: 11px 11px;" href="#" role="button"
@@ -32,21 +32,18 @@
                                         </span>
                                     </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="{{route('spareparts.ascending')}}"> <img src="/assets/media/icons/system-icon/outline/Arrow - Up-1.svg" width="25px" alt=""> Ascending</a>
-                                        <a class="dropdown-item" href="{{route('spareparts.descending')}}"> <img src="/assets/media/icons/system-icon/outline/Arrow - Down-1.svg" width="25px" alt=""> Descending</a>
-                                        <a class="dropdown-item" href="{{route('spareparts.highStock')}}"> <img src="/assets/media/icons/system-icon/outline/Delete.svg" width="25px" alt=""> High Stock</a>
-                                        <a class="dropdown-item" href="{{route('spareparts.lowStock')}}"> <img src="/assets/media/icons/system-icon/outline/Delete.svg" width="25px" alt=""> Low Stock</a>
+                                        <a class="dropdown-item" href="{{route('workorder.plat')}}"> Vehicle</a>
                                 </div>
                             </li>
                         </ul>
-                    </button>
+                    </button> --}}
                 </div>
             </div>
                 @foreach ($maintenance as $item)
 
                 @if (isset($item->workorder) && $item->workorder->photo !== null)
                 @else
-                <div class="card w-100 mt-6">
+                <div class="card w-100 mt-16">
                     <div class="card-body">
                         <table class="table align-middle">
                             <thead>

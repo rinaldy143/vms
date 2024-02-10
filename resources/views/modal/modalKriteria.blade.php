@@ -35,11 +35,16 @@
                                 <span class="text-danger">*</span>
                             </label>
                             <div class="field-input pt-2 pb-6">
-                                <input type="text" id="status" name="status" class="form-control" placeholder="cost / benefit" maxlength="200" value={{old('status')}}>
+                                <select id="status" name="status" class="form-control" required>
+                                    <option value="" disabled selected>{{ __('Select Status') }}</option>
+                                    <option value="cost" {{ old('status') == 'cost' ? 'selected' : '' }}>Cost</option>
+                                    <option value="benefit" {{ old('status') == 'benefit' ? 'selected' : '' }}>Benefit</option>
+                                </select>
+
                                 @error('status')
-                                <div class="invalid-feedback d-flex">
-                                    {{ $message }}
-                                </div>
+                                    <div class="invalid-feedback d-flex">
+                                        {{ $message }}
+                                    </div>
                                 @enderror
                             </div>
                         </div>

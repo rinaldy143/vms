@@ -25,7 +25,6 @@ class UpdateVehicleRequest extends FormRequest
     {
         return [
             'plat_number' => 'required|string|max:255',
-            'monthly_maintenance' => 'required',
             'model_vehicle_id' => 'required',
             'type_vehicle_id' => 'required',
         ];
