@@ -21,7 +21,7 @@
                         <img src="/img/image 1.png" alt="">
                         <div class="ms-5">
                             <h1 style="font-size: 16px;margin-bottom: 0;">{{$maintenance->vehicle->plat_number}}</h1>
-                            <p class="text-primary" style="font-size: 14px;margin-bottom: 0;">T-01, T-02</p>
+                            {{-- <p class="text-primary" style="font-size: 14px;margin-bottom: 0;">T-01, T-02</p> --}}
                         </div>
                     </div>
                     <div class="mt-8">
