@@ -24,7 +24,9 @@ class UpdateVehicleRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string|max:255',
+            'plat_number' => 'required|string|max:255',
+            'model_vehicle_id' => 'required',
+            'type_vehicle_id' => 'required',
         ];
     }
 }

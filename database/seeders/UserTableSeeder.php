@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Entity\User;
+use App\Models\Table\TypeRoleTable;
 use App\Models\Table\UserTable;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -18,7 +19,9 @@ class UserTableSeeder extends Seeder
     {
         UserTable::firstOrCreate([
             "id" => "00000001-0000-0000-0000-000000000001",
-           'email' => 'admin@transtrack.id'
+           'email' => 'admin@tes.id',
+           'phone_country_code' => '+62',
+           'phone_number' => '083879721192',
         ], [
             'name' => 'Admin',
             'password' => Hash::make('password'),
@@ -26,11 +29,13 @@ class UserTableSeeder extends Seeder
         ]);
         UserTable::firstOrCreate([
             "id" => "00000001-0000-0000-0000-000000000002",
-           'email' => 'member@transtrack.id'
+           'email' => 'member@tes.id',
+           'phone_country_code' => '+62',
+           'phone_number' => '083879721192',
         ], [
             'name' => 'Member',
             'password' => Hash::make('password'),
-            'role' => 'MEMBER',
+            'role' => 'Mechanices',
         ]);
     }
 }

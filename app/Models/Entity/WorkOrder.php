@@ -6,6 +6,8 @@ use App\Models\AppModel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+use function PHPSTORM_META\map;
+
 class WorkOrder extends AppModel
 {
     use HasFactory, SoftDeletes;
@@ -23,8 +25,29 @@ class WorkOrder extends AppModel
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'req_sparepart',
+        'rm_id',
+        'user_id',
+        'damage_component',
+        'damaged_level',
+        'jobsite_location',
+        'analysist',
+        'assign_by',
+        'photo',
     ];
+
+    public function Maintenance()
+    {
+        return $this->belongsTo(RequestMaintenance::class, 'rm_id');
+    }
+    public function User()
+    {
+        return $this->belongsToMany(User::class,  'users_work_order', 'work_order_table_id', 'user_id');
+    }
+    public function spareparts()
+    {
+        return $this->belongsToMany(Sparepart::class,   'request_spareparts', 'wo_id', 'sparepart_id')->withPivot('jumlah');
+    }
 
     /**
      * The attributes that should be hidden for arrays.

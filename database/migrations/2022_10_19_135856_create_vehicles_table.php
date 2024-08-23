@@ -18,11 +18,12 @@ return new class extends Migration
             $table->string('plat_number')->nullable();
             $table->boolean('trailer_connected')->nullable();
             $table->string('photo')->nullable();
-            $table->integer('monthly_maintenance')->nullable();
             $table->integer('last_maintenance')->nullable();
             $table->integer('id_fms')->nullable();
             $table->foreignUuid('model_vehicle_id')->nullable()->references('id')->on('model_vehicles');
             $table->foreignUuid('type_vehicle_id')->nullable()->references('id')->on('type_vehicles');
+            $table->float('selected_value1')->nullable();
+            $table->float('selected_value2')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

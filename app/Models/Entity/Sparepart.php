@@ -23,8 +23,17 @@ class Sparepart extends AppModel
      * @var array<int, string>
      */
     protected $fillable = [
+        'id_sparepart',
         'name',
+        'brand',
+        'count',
+        'photo',
     ];
+
+    public function workorders()
+    {
+        return $this->belongsToMany(Sparepart::class,   'request_spareparts', 'wo_id', 'sparepart_id')->withPivot('jumlah');
+    }
 
     /**
      * The attributes that should be hidden for arrays.
@@ -43,4 +52,16 @@ class Sparepart extends AppModel
     protected $dates = [
         //
     ];
+
+    protected $appends = [
+        'photo_url',
+    ];
+
+    public function getPhotoUrlAttribute()
+    {
+        if (!blank($this->photo)) {
+            return asset($this->photo);
+        }
+        return null;
+    }
 }

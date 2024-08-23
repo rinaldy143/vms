@@ -23,7 +23,9 @@ class RequestSparepart extends AppModel
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'description',
+        'wo_id',
+        'sparepart_id',
     ];
 
     /**

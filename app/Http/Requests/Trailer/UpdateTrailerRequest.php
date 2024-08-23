@@ -24,7 +24,12 @@ class UpdateTrailerRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string|max:255',
-        ];
+            'code_trailer' => 'required|string|max:255',
+            'vehicle_connected' => 'required',
+            // 'photo',
+            'monthly_maintenance' => 'required',
+            // 'last_maintenance',
+            'model_trailer_id' => 'required',
+            'type_trailer_id' => 'required',        ];
     }
 }

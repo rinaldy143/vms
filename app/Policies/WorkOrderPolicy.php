@@ -19,7 +19,7 @@ class WorkOrderPolicy
      */
     public function viewAny(User $user): Response|bool
     {
-        return true;
+        return $user->role == 'ADMIN' || $user->role == 'Lead Mechanices';
     }
 
     /**
@@ -29,9 +29,9 @@ class WorkOrderPolicy
      * @param WorkOrder $data
      * @return Response|bool
      */
-    public function view(User $user, WorkOrder $data): Response|bool
+    public function view(User $user): Response|bool
     {
-        return true;
+        return $user->role == 'ADMIN' || $user->role == 'Mechanices';
     }
 
     /**

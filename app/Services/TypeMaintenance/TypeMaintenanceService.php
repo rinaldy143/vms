@@ -28,7 +28,7 @@ class TypeMaintenanceService extends AppService implements AppServiceInterface
     public function create($data)
     {
         return TypeMaintenanceTable::create([
-            'name' => $data['name'],
+            'maintenance_type' => $data['maintenance_type'],
         ]);
     }
 
@@ -36,7 +36,7 @@ class TypeMaintenanceService extends AppService implements AppServiceInterface
     {
         $row = TypeMaintenanceTable::findOrFail($id);
         $row->update([
-            'name' => $data['name'],
+            'maintenance_type' => $data['maintenance_type'],
         ]);
         return $row;
     }

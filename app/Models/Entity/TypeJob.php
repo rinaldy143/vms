@@ -23,7 +23,7 @@ class TypeJob extends AppModel
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'job_type',
     ];
 
     /**
