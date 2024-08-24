@@ -14,8 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('users_work_order', function (Blueprint $table) {
-            // $table->id();
-            $table->uuid('id')->primary();
+            $table->id();
+            // $table->uuid('id')->primary();
             // $table->bigInteger('user_id')->unsigned();
             // $table->bigInteger('wo_id')->unsigned();
             // $table->foreignUuid('user_id')->references('id')->on('users')->onDelete('cascade');
