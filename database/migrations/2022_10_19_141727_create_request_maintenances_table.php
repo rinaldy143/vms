@@ -30,7 +30,6 @@ return new class extends Migration
             // $table->foreignUuid('trailer_id')->nullable()->references('id')->on('trailers');
             $table->integer('km_Unit')->nullable();
             $table->integer('hm_Unit')->nullable();
-            $table->string('wo_id')->nullable()->references('id')->on('work_orders');
             $table->string('unit_condition')->nullable();
             $table->string('priority')->nullable();
             $table->string('activity_maintenance')->nullable();

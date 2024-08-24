@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('request_spareparts', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
             $table->string('description')->nullable();
             $table->foreignUuid('wo_id')->nullable()->references('id')->on('work_orders');
             $table->foreignUuid('sparepart_id')->nullable()->references('id')->on('spareparts');

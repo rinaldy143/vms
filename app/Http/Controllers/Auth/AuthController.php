@@ -60,11 +60,11 @@ class AuthController extends ApiController
             $rm = RequestMaintenance::where('aprove_by', null)->get();
 
             $vehicleCounts = RequestMaintenance::join('work_orders', 'request_maintenances.wo_id', '=', 'work_orders.id')
-            ->select(DB::raw("COUNT(*) as count"), DB::raw("MONTHNAME(work_orders.updated_at) as month_name"))
+            ->select(DB::raw("COUNT(*) as count"), DB::raw("TO_CHAR(work_orders.updated_at, 'Month') as month_name"))
             ->whereNotNull('work_orders.photo')
             ->whereYear('request_maintenances.created_at', date('Y'))
-            ->groupBy(DB::raw("month_name"))
-            ->orderBy('request_maintenances.created_at', 'asc')
+            ->groupBy(DB::raw("TO_CHAR(work_orders.updated_at, 'Month')"))
+            ->orderBy(DB::raw("MIN(work_orders.updated_at)"))
             ->pluck('count', 'month_name');
 
             $labelsJSON = $vehicleCounts->keys();
