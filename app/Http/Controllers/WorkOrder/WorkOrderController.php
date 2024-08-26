@@ -96,21 +96,25 @@ class WorkOrderController extends ApiController
         $data = $this->service->create($request);
         // dd($data);
 
-        DB::table('request_maintenances')
-        ->whereNull('wo_id')
-        ->join('work_orders', 'request_maintenances.id', '=', 'work_orders.rm_id')
-        ->update(['request_maintenances.wo_id' => DB::raw('work_orders.id')]);
-        // return $this->sendSuccess($data, null, 201);
+        DB::statement('
+            UPDATE request_maintenances
+            SET wo_id = work_orders.id
+            FROM work_orders
+            WHERE request_maintenances.id = work_orders.rm_id
+            AND request_maintenances.wo_id IS NULL
+        ');
+
+        // Mengambil data maintenance dengan kondisi tertentu
         $maintenance = RequestMaintenance::where(function ($query) {
             $query->orWhereNotNull('analysist')
-            // ->orWhereNotNull('analysist')
                 ->orWhereExists(function ($subquery) {
                     $subquery->select(DB::raw(1))
                         ->from('work_orders')
                         ->whereRaw('work_orders.rm_id = request_maintenances.id');
-                        // ->whereNull('analysist');
                 });
         })->paginate(15);
+
+        // Mengembalikan view dengan data
         return view('pages.work-order.workorder', compact('maintenance', 'data'));
     }
 
