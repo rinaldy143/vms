@@ -2,16 +2,17 @@
 
 namespace App\Services\WorkOrder;
 
-use App\Models\Entity\RequestMaintenance;
+use Illuminate\Support\Str;
+use App\Services\AppService;
+use Illuminate\Http\Request;
 use App\Models\Entity\Sparepart;
 use App\Models\Entity\WorkOrder;
-use App\Models\Table\RequestMaintenanceTable;
-use App\Models\Table\WorkOrderTable;
-use App\Services\AppService;
-use App\Services\AppServiceInterface;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\Table\WorkOrderTable;
+use Illuminate\Support\Facades\Auth;
+use App\Services\AppServiceInterface;
+use App\Models\Entity\RequestMaintenance;
+use App\Models\Table\RequestMaintenanceTable;
 
 class WorkOrderService extends AppService implements AppServiceInterface
 {
@@ -42,8 +43,9 @@ class WorkOrderService extends AppService implements AppServiceInterface
             'assign_by' => $user->name,
         ]);
 
-        $workOrder->user()->attach($data['user_id']);
-
+        $workOrder->user()->attach($data['user_id'], [
+            'id' => Str::uuid(), // Generate UUID for the 'id' column
+        ]);
     }
 
     public function update($id, $data)
@@ -108,7 +110,13 @@ class WorkOrderService extends AppService implements AppServiceInterface
             $sparepart->save();
 
             // Tambahkan sparepart ke workorder
-            $row->spareparts()->attach($sparepartId, ['jumlah' => $jumlah]);
+            $row->spareparts()->attach([
+                $sparepartId => [
+                    'jumlah' => $jumlah,
+                    'id' => Str::uuid(), // Generate UUID for the 'id' column
+                ]
+            ]);
+
         }
 
         DB::commit();
@@ -116,7 +124,7 @@ class WorkOrderService extends AppService implements AppServiceInterface
         return $row;
     } catch (\Exception $e) {
         // DB::rollBack();
-        // throw new \Exception("Stok $sparepart->name tidak cukup.");
+        // throw new \Exception("$e->getMessage()");
 
     }
 }

@@ -49,11 +49,14 @@ class AuthController extends ApiController
         try {
             $user = $this->service->login($request);
             $users = User::select(DB::raw("COUNT(*) as count"), 'role')
-            ->where('role', '<>', 'admin')
+            ->whereNot('role', 'ADMIN') // Menggunakan whereNot untuk PostgreSQL
             ->groupBy('role')
             ->orderBy('role', 'ASC')
             ->pluck('count', 'role');
-            $totaluser = User::where('role', '<>', 'admin')->count();
+
+            $totaluser = User::whereNot('role', 'ADMIN')->count();
+
+
             $totalsparepart = Sparepart::count();
             $totalvehicle = Vehicle::count();
             $sparepart = Sparepart::where('count', '<', 50)->get();
