@@ -85,14 +85,14 @@
                             </div>
                             <!--end::Actions-->
                         </form>
-                        <div class="w-lg-400px align-item-center mt-10">
+                        {{-- <div class="w-lg-400px align-item-center mt-10">
                             <div class="text-center caption">Powered by</div>
                             <div class="d-flex justify-content-center mt-1">
                                 <a href="https://www.transtrack.id/" target="_blank">
                                     <img src="/img/Frame 1622.svg" alt="">
                                 </a>
                             </div>
-                        </div>
+                        </div> --}}
                     <!--end::Form-->
                 </div>
                 <div class="align-self-center" data-aos="fade-left">
