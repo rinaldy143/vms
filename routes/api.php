@@ -30,6 +30,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'v1'], function () {
     Route::post('/auth/login', [AuthController::class, 'login']);
+    Route::get('/supabase/fetch-users', [AuthController::class, 'fetchUsers'])->name('fetchUsers');
 
     Route::get('/modelvehicle', [ModelVehicleController::class, 'index']);
     Route::post('/modelvehicle', [ModelVehicleController::class, 'store']);

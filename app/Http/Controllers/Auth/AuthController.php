@@ -121,4 +121,33 @@ class AuthController extends ApiController
         Auth::guard('web')->logout();
         return redirect('/');
     }
+
+    public function fetchUsers()
+    {
+        $supabaseUrl = env('SUPABASE_URL');
+        $supabaseKey = env('SUPABASE_KEY');
+
+        $url = $supabaseUrl . '/rest/v1/users?select=*';
+
+        $headers = [
+            'Content-Type: application/json',
+            'apikey: ' . $supabaseKey,
+            'Authorization: Bearer ' . $supabaseKey,
+        ];
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+        $response = curl_exec($ch);
+        $error = curl_error($ch);
+        curl_close($ch);
+
+        if ($error) {
+            return response()->json(['error' => $error], 400);
+        }
+
+        $data = json_decode($response, true);
+        return response()->json($data);
+    }
 }
