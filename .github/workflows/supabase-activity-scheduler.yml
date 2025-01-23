@@ -11,4 +11,4 @@ jobs:
 
     steps:
       - name: Send HTTP Request
-        run: curl https://vms-personal.vercel.app/api/v1/supabase/fetch-users
+        run: curl https://vms-alpha.vercel.app/supabase/fetch-users
