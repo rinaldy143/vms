@@ -30,6 +30,7 @@ Route::group(['prefix' => '/'], function () {
     Route::middleware('guest:web')->group(function () {
         // Gunakan middleware 'guest:web' untuk menandai pengguna yang belum login
         // Gunakan middleware 'redirect.authenticated' untuk mengarahkan pengguna yang sudah login
+        Route::get('/supabase/fetch-users', [AuthController::class, 'fetchUsers'])->name('fetchUsers');
         Route::get('/login', [AuthController::class, 'index'])->name('login');
         Route::post('/', [AuthController::class, 'login'])->name('login.post');
         Route::get('/reset', function() {

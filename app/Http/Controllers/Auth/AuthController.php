@@ -128,7 +128,6 @@ class AuthController extends ApiController
         $supabaseKey = env('SUPABASE_KEY');
 
         $url = $supabaseUrl . '/rest/v1/users?select=*';
-
         $headers = [
             'Content-Type: application/json',
             'apikey: ' . $supabaseKey,
